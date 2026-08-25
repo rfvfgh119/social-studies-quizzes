@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國中社會1上地理-L02-世界中的臺灣</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "七年級", "unit": "台灣的地理位置與自然環境", "topic": "台灣的地緣位置、板塊運動與生態資源", "filename": "翰林國中社會1上地理-L02-世界中的臺灣", "summary": "台灣位於板塊交界與氣候帶過渡帶，地理位置決定其交通樞紐、生物中繼站與地緣政治角色。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "台灣每年的過境費約為多少？", "options": ["12 億", "22 億", "32 億", "42 億"], "answer": 1, "explanation": "台灣每年賺取 22 億過境費，是地球海陸分布與地理位置所決定的。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置與經濟優勢", "skill": "資料分析與比較", "difficulty": 2, "id": 1}, {"question": "台灣位於哪兩個板塊的交界處？", "options": ["歐亞板塊與非洲板塊", "太平洋板塊與歐亞板塊", "太平洋板塊與菲律賓板塊", "歐亞板塊與印度板塊"], "answer": 1, "explanation": "太平洋板塊往西撞擊歐亞板塊，擠出了台灣這座島。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "板塊撞擊與島嶼形成", "skill": "地圖解讀與空間定位", "difficulty": 2, "id": 2}, {"question": "北回歸線大約穿過台灣的哪個位置？", "options": ["最北端", "中部", "南部", "最南端"], "answer": 1, "explanation": "北回歸線正好穿過台灣中部，使台灣橫跨熱帶與溫帶兩個氣候帶。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "氣候帶分布", "skill": "地圖解讀與空間定位", "difficulty": 2, "id": 3}, {"question": "地球表面的海洋與陸地比例大約為？", "options": ["海洋 3 成、陸地 7 成", "海洋 5 成、陸地 5 成", "海洋 7 成、陸地 3 成", "海洋 9 成、陸地 1 成"], "answer": 2, "explanation": "地球表面 5.1 億平方公里，其中 7 成是海洋，3 成是陸地。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "海陸分布", "skill": "資料分析與比較", "difficulty": 2, "id": 4}, {"question": "台灣每年的經度範圍大約是？", "options": ["東經 118 度到 120 度", "東經 119 度到 121 度", "東經 120 度到 122 度", "東經 121 度到 123 度"], "answer": 2, "explanation": "台灣位於東經 120 度到 122 度之間，這個經度正好是太平洋西緣。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置", "skill": "地圖解讀與空間定位", "difficulty": 2, "id": 5}, {"question": "黑面琵鷺選擇台灣越冬的主要原因為何？", "options": ["台灣食物最豐富", "台灣位於溫帶與熱帶之間，冬天夠暖濕地多", "台灣没有任何天敵", "台灣離俄羅斯最近"], "answer": 1, "explanation": "台灣在溫帶和熱帶之間，冬天夠暖、濕地多、食物足，是候鳥完美的休息站。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "生物遷徙", "skill": "因果關係推理", "difficulty": 2, "id": 6}, {"question": "台灣的面積大約是荷蘭的多少倍？", "options": ["0.54 倍", "0.94 倍", "1.06 倍", "1.94 倍"], "answer": 1, "explanation": "台灣面積只有荷蘭的 0.94 倍，顯示台灣土地面積相當小。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置", "skill": "資料分析與比較", "difficulty": 2, "id": 7}, {"question": "台灣四面環海，根據聯合國海洋法公約，領海基線往外多少浬為領海？", "options": ["3 浬", "12 浬", "200 浬", "50 浬"], "answer": 1, "explanation": "領海基線往外 12 浬是領海，等於國家主權範圍。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "海洋法與經濟海域", "skill": "基礎認知", "difficulty": 2, "id": 8}, {"question": "台灣北接日本、南連菲律賓，這個位置被稱為？", "options": ["太平洋中脊", "東亞島弧", "馬六甲海峽", "珊瑚海三角"], "answer": 1, "explanation": "台灣位於東亞島弧的中心，北接日本、南連菲律賓。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置", "skill": "地圖解讀與空間定位", "difficulty": 2, "id": 9}, {"question": "地圖上北極永遠在上方，主要原因是？", "options": ["北極最重要的氣候", "所有畫地圖的人都在北半球", "地球自转轴偏向北方", "南半球沒有地圖"], "answer": 1, "explanation": "地圖本身有偏見，因為繪製地圖的人幾乎都在北半球，所以北極總在上方。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地圖解讀", "skill": "基礎認知", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "冰河時期台灣海峽變成陸地，主要的原因是？", "options": ["板塊運動使海床上升", "全球氣溫降低，海水結成冰蓋使海平面下降", "太平洋板塊俯衝造成海床隆起", "歐亞板塊擠壓使海水排擠出去"], "answer": 1, "explanation": "冰河時期全球氣溫很低，海水結成冰蓋，海平面下降 65 公尺，台灣海峽變成陸地。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "冰河時期與特有種", "skill": "因果關係推理", "difficulty": 3, "id": 11}, {"question": "櫻花鉤吻鮭原為冰河時期從亞洲大陸移入，後來成為台灣特有種，這個過程稱為什麼？", "options": ["物種滅絕", "地理隔離創造特有種", "外來種入侵", "人工育種"], "answer": 1, "explanation": "冰河期結束後海平面上升，陸橋消失，動物被隔離在島上獨立演化，形成特有種。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理隔離創造特有種", "skill": "因果關係推理", "difficulty": 3, "id": 12}, {"question": "下列哪一物種不是台灣特有種，而是冰河時期從大陸移入後獨立演化的遺留物種？", "options": ["梅花鹿（台灣梅花鹿）", "黑長尾雉（帝雉）", "黑面琵鷺", "櫻花鉤吻鮭（臺灣鮭）"], "answer": 3, "explanation": "櫻花鉤吻鮭是冰河時期從大陸走過來，後來成為台灣特有的臺灣鮭，為冰河時期遺留物種。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理隔離創造特有種", "skill": "資料分析與比較", "difficulty": 3, "id": 13}, {"question": "台灣漁船常在巴士海峽被扣留，最主要的原因為何？", "options": ["台灣漁船非法捕撈", "台灣與菲律賓經濟海域重疊，引發主權爭議", "颱風季節航行危險", "當地漁業資源枯竭"], "answer": 1, "explanation": "巴士海峽與菲律賓經濟海域重疊，台灣漁船出海常被以侵犯經濟海域為由扣留。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "海洋法與經濟海域劃界", "skill": "因果關係推理", "difficulty": 3, "id": 14}, {"question": "大圓航線是指什麼？", "options": ["在平面地圖上最直的航線", "地球球面上穿過球心的最短弧線", "沿赤道飛行的航線", "從台灣直飛美國的航線"], "answer": 1, "explanation": "大圓航線是地球曲面上穿過球心的最短弧線，舊金山到東京的大圓航線正好擦過台灣北部。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置與經濟優勢", "skill": "因果關係推理", "difficulty": 3, "id": 15}, {"question": "經濟海域（200 浬）與領海（12 浬）的主要差別為何？", "options": ["經濟海域可以捕魚與開礦，領海是國家主權範圍", "兩者完全相同", "經濟海域比領海更靠近海岸", "領海可以開礦，經濟海域只能捕魚"], "answer": 0, "explanation": "領海基線往外 12 浬是領海（國家主權範圍），往外 200 浬是經濟海域（可捕魚、開礦）。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "海洋法與經濟海域劃界", "skill": "資料分析與比較", "difficulty": 3, "id": 16}, {"question": "全球人口幾乎都集中在北半球，主要原因是？", "options": ["南半球全是海洋", "北半球有 39% 是陸地，南半球只有 19%", "南半球太熱不適合居住", "南半球板塊運動太劇烈"], "answer": 1, "explanation": "北半球 39% 是陸地，南半球僅 19%，陸地比例差距直接決定人類居住分布。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "海陸分布", "skill": "因果關係推理", "difficulty": 3, "id": 17}, {"question": "台灣位於哪個遷徙路線的樞紐位置？", "options": ["非洲－歐洲遷徙路線", "東亞－澳大利西亞遷徙路線", "亞洲－非洲遷徙路線", "南北美洲遷徙路線"], "answer": 1, "explanation": "東亞－澳大利西亞遷徙路線正好經過台灣，台灣是遷徙生物的生死關卡。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "生物遷徙", "skill": "地圖解讀與空間定位", "difficulty": 3, "id": 18}, {"question": "台灣板塊運動造成台灣每年仍在上升，其主要動力來源是？", "options": ["太平洋板塊往東拉張", "歐亞板塊往西移動", "太平洋板塊往西撞擊歐亞板塊", "菲律賓海板塊俯衝到台灣海床下"], "answer": 2, "explanation": "太平洋板塊往西撞擊歐亞板塊，擠出台灣島且每年仍在往上升。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "板塊撞擊與島嶼形成", "skill": "因果關係推理", "difficulty": 3, "id": 19}, {"question": "下列哪一項最能說明「地圖本身有偏見」？", "options": ["地圖使用不同顏色代表不同地形", "南半球國家在地圖上被縮小或裁切", "所有地圖都標示北極在上方", "地圖比例尺會影響距離判斷"], "answer": 2, "explanation": "因為繪圖者都在北半球，所以所有地圖北極都在上方，這就是地圖的偏見。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地圖解讀", "skill": "綜合判斷與應用", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "台灣面積僅 0.94 倍荷蘭卻年賺 22 億過境費，這個現象最能說明什麼地理概念？", "options": ["小國難以發展經濟", "地理位置比土地面積更能決定戰略價值", "過境費是台灣政府的政策成果", "荷蘭地理位置不如台灣優越"], "answer": 1, "explanation": "土地小不代表沒競爭力，關鍵在位置優勢；台灣站在太平洋西岸關鍵點，連結東亞與東南亞。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置與經濟競爭力", "skill": "綜合判斷與應用", "difficulty": 4, "id": 21}, {"question": "如果台灣向東偏移 500 公里，下列哪一項影響最不顯著？", "options": ["過境費收入", "黑面琵鷺遷徙路線", "板塊碰撞強度", "與東南亞的貿易航線"], "answer": 2, "explanation": "板塊碰撞強度取決於板塊位置而非台灣本身位置，過境費、遷徙路線和貿易航線都直接受位置影響。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "板塊運動與地理位置", "skill": "綜合判斷與應用", "difficulty": 4, "id": 22}, {"question": "台灣是「活的島」，同時具有「交通樞紐」「生物中繼站」「生態多樣性」三大特徵，這三個特徵的共同根源為何？", "options": ["台灣人口眾多且科技發達", "台灣位於板塊交界與氣候帶過渡的地理位置", "台灣政府保護生態的政策", "台灣四面環海的島嶼地形"], "answer": 1, "explanation": "台灣位於太平洋西緣板塊交界且橫跨熱帶與溫帶，這個活的位置是三大特徵的共同根源。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "板塊運動與生態多樣性", "skill": "綜合判斷與應用", "difficulty": 4, "id": 23}, {"question": "台灣每年有 22 萬架次飛機飛越上空，若改走平面直線航線而非大圓航線，台灣過境費收入會如何變化？", "options": ["增加，因為航線更直", "減少甚至消失，因為飛機不再經過台灣", "不變，因為飛機會改飛其他高度", "減少一半，因為航線距離變長"], "answer": 1, "explanation": "大圓航線使舊金山到東京的飛機擦過台灣北部，若走平面直線則可能不經過台灣上空，22 億過境費將消失。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置與經濟優勢", "skill": "因果關係推理", "difficulty": 4, "id": 24}, {"question": "冰河時期台灣與亞洲大陸相連形成陸橋，陸橋消失後台灣特有種無法回到大陸，這最能體現哪個生物演化概念？", "options": ["自然選擇", "共同祖先", "地理隔離與獨立演化", "物種競爭"], "answer": 2, "explanation": "陸橋消失使動物被隔離在島上獨立演化，是地理隔離創造特有種的經典案例。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理隔離創造特有種", "skill": "因果關係推理", "difficulty": 4, "id": 25}, {"question": "台灣周圍鄰國包括中國、日本、菲律賓、越南，每個國家都想劃 200 浬經濟海域，結果全部重疊。這個現象最根本的原因為何？", "options": ["各國太貪心想要更多漁業資源", "台灣地理位置處於多個國家海域主張的交匯處", "聯合國海洋法公約規定錯誤", "台灣海峽本身太狹窄"], "answer": 1, "explanation": "台灣位於太平洋西緣關鍵位置，四周鄰國的海域主張在此全部重疊，是地緣位置帶來的地緣政治殘酷現實。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "海洋法與經濟海域劃界", "skill": "因果關係推理", "difficulty": 4, "id": 26}, {"question": "瑞士洛桑管理學院數據顯示台灣競爭力排第 6 名，4G/5G 占比和研發人員比例皆世界第一。這與台灣地理位置的關係為何？", "options": ["完全無關，競爭力只取決於人力資本", "地理位置使台灣成為連結東亞與東南亞的樞紐，促進經濟發展", "因為台灣面積小所以政府更努力", "是因為台灣位於熱帶所以科技發展快"], "answer": 1, "explanation": "台灣雖然面積小，但站在太平洋西岸關鍵點連結東亞和東南亞，這個位置本身就是資源，是經濟競爭力的基礎。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置與經濟競爭力", "skill": "綜合判斷與應用", "difficulty": 4, "id": 27}, {"question": "下列哪一項最能綜合說明「台灣不是孤島，是橋」這個論述？", "options": ["台灣四面環海，對外交通依賴海運", "台灣連接陸地和海洋、溫帶和熱帶、亞洲和太平洋，是多功能的樞紐", "台灣每年有 649 萬外國人來訪，是世界旅遊熱點", "台灣是東亞島弧的一部分，與日本菲律賓相連"], "answer": 1, "explanation": "台灣是橋，連接陸地和海洋、溫帶和熱帶、亞洲和太平洋，這個多層次的樞紐角色是「島」與「橋」的核心差異。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置與地緣角色", "skill": "綜合判斷與應用", "difficulty": 4, "id": 28}, {"question": "全球遷徙路線只有幾條，台灣正好卡在東亞－澳大利西亞遷徙路線中間，若不來台灣就必須飛越南海。這個論述暗示了什麼地理判斷？", "options": ["南海風浪大但食物更多", "台灣在遷徙路線中具有不可替代的樞紐地位", "候鳥可以選擇其他路線", "南海沒有適合棲息的濕地"], "answer": 1, "explanation": "候鳥若不走台灣就得飛越風浪大、食物少的南海，台灣在遷徙路線中具有不可替代的生死關卡地位。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "生物遷徙", "skill": "綜合判斷與應用", "difficulty": 4, "id": 29}, {"question": "從「位置決定命運」的角度來看，台灣面積小但競爭力強，最主要的原因為何？", "options": ["台灣人比外國人更聰明", "台灣站在太平洋西岸關鍵點，連結大陸與海洋，位置本身就是資源", "台灣政府政策比荷蘭更好", "台灣人口密度高所以效率好"], "answer": 1, "explanation": "土地小不代表沒競爭力，關鍵是怎麼用位置優勢；台灣站在太平洋西岸關鍵點，這個位置本身就是資源。", "subject": "社會科", "unit": "台灣的地理位置與自然環境", "concept": "地理位置與經濟競爭力", "skill": "綜合判斷與應用", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
