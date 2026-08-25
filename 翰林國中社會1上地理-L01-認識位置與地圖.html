@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國中社會1上地理-L01-認識位置與地圖</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "地理", "grade": "國二", "unit": "地球與地圖", "topic": "經緯線、時區與地圖應用", "filename": "翰林國中社會1上地理-L01-認識位置與地圖", "summary": "介紹經緯線、時區、地圖要素與位置概念，並探討地理知識背後的權力與歷史脈絡。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "1884年華盛頓會議中，多少個國家的代表協商決定了全球經緯度的基準？", "options": ["15個國家", "25個國家", "36個國家", "48個國家"], "answer": 1, "explanation": "1884年華盛頓秘密會議中，25個國家代表閉門協商，決定格林威治天文台為零度經線基準。", "subject": "地理", "unit": "地球與地圖", "concept": "經緯度的人為建構", "skill": "地理資訊批判分析", "difficulty": 2, "id": 1}, {"question": "經線具有下列何種特性？", "options": ["經線是互相平行的圓圈", "經線長度各不相同", "經線是連接南北極的半圓弧線", "經線由赤道向兩極逐漸縮短"], "answer": 2, "explanation": "經線是連接南北極的半圓弧線，每條經線長度完全相同，約四萬零三百零七公尺。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "讀圖與繪圖能力", "difficulty": 2, "id": 2}, {"question": "緯線從赤道向兩極的變化規律為何？", "options": ["長度逐漸增加", "長度保持不变", "向兩極逐漸縮短，極點縮成一點", "與經線平行且等長"], "answer": 2, "explanation": "緯線是與地軸垂直的圓圈，赤道最長，向兩極逐漸縮短，到了南北極點緯線縮成一個點。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "讀圖與繪圖能力", "difficulty": 2, "id": 3}, {"question": "東經180度與西經180度是同一條線，這條線被稱為什麼？", "options": ["本初子午線", "赤道", "國際換日線", "回歸線"], "answer": 2, "explanation": "東經180度和西經180度其實是同一條線，即國際換日線，穿越此線日期會跳一天。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "空間定位與座標判讀", "difficulty": 2, "id": 4}, {"question": "緯度如何影響氣候？", "options": ["緯度越高氣溫越高", "緯度決定接收太陽輻射的量，影響氣候帶分布", "緯度與氣候無關", "赤道與兩極接收的太陽能量相同"], "answer": 1, "explanation": "緯度直接決定接收多少太陽輻射：赤道陽光直射能量集中，兩極斜射能量分散，形成熱帶、溫帶、寒帶的氣候帶。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "讀圖與繪圖能力", "difficulty": 2, "id": 5}, {"question": "地球自轉一周360度需24小時，換算每小時自轉多少度？", "options": ["10度", "15度", "20度", "24度"], "answer": 1, "explanation": "360度除以24小時等於每小時自轉15度，因此每15度經度就是一個時區。", "subject": "地理", "unit": "地球與地圖", "concept": "時區劃分", "skill": "時區計算能力", "difficulty": 2, "id": 6}, {"question": "下列哪一項不是地圖必須具備的四要素之一？", "options": ["圖名", "圖例", "經緯網", "比例尺"], "answer": 2, "explanation": "地圖四要素為圖名、圖例、方向標、比例尺；經緯網並非地圖四要素之一。", "subject": "地理", "unit": "地球與地圖", "concept": "地圖四要素", "skill": "讀圖與繪圖能力", "difficulty": 2, "id": 7}, {"question": "關於比例尺的三種表示法，何者敘述正確？", "options": ["數字法在任何縮放下皆準確", "文字法無法換算實際距離", "圖示法在影印放大時仍準確", "三種表示法縮放後精確度相同"], "answer": 2, "explanation": "圖示法以線段刻度表示，影印放大時線段比例尺跟著一起放大，相對比例關係不變，因此仍準確。", "subject": "地理", "unit": "地球與地圖", "concept": "地圖比例尺", "skill": "比例尺應用與換算", "difficulty": 2, "id": 8}, {"question": "關於相對位置與絕對位置，下列敘述何者正確？", "options": ["相對位置的座標值會隨觀察者改變", "絕對位置以地標為基準描述", "經緯度座標屬於絕對位置", "相對位置不依賴基準點"], "answer": 2, "explanation": "絕對位置用座標系統定位，經緯度是絕對位置的座標，不管誰來看座標不變。", "subject": "地理", "unit": "地球與地圖", "concept": "相對位置與絕對位置", "skill": "空間定位與座標判讀", "difficulty": 2, "id": 9}, {"question": "穿越國際換日線時，往東與往西分別會如何調整日期？", "options": ["往東加一天，往西減一天", "往東減一天，往西加一天", "往東加一天，往西加一天", "往東減一天，往西減一天"], "answer": 1, "explanation": "穿越國際換日線時，往東減一天，往西加一天，就像遊戲中穿越傳送門讀檔重來。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "讀圖與繪圖能力", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "台北（東經120度）與倫敦（0度經線）的時差為多少小時？", "options": ["6小時", "8小時", "10小時", "12小時"], "answer": 1, "explanation": "經度差120度除以每時區15度，等於8小時；台北比倫敦快8小時。", "subject": "地理", "unit": "地球與地圖", "concept": "時區劃分", "skill": "時區計算能力", "difficulty": 3, "id": 11}, {"question": "當倫敦（0度）為午夜12點時，台北（東經120度）是幾點？", "options": ["晚上8點", "凌晨4點", "早上8點", "下午4點"], "answer": 2, "explanation": "台北比倫敦快8小時，倫敦午夜12點時，台北為早上8點。", "subject": "地理", "unit": "地球與地圖", "concept": "時區劃分", "skill": "時區計算能力", "difficulty": 3, "id": 12}, {"question": "1707年英國艦隊觸礁沉沒的近2000名水手喪生，此事件直接推動了哪項立法？", "options": ["地圖標準化法案", "經度法案", "航海安全條例", "時區統一法案"], "answer": 1, "explanation": "1707年英國艦隊因經度測量錯誤導致四艘戰艦觸礁沉沒，此慘案推動了經度法案的誕生。", "subject": "地理", "unit": "地球與地圖", "concept": "經緯度的人為建構", "skill": "地理資訊批判分析", "difficulty": 3, "id": 13}, {"question": "下列何者關於經線的敘述是錯誤的？", "options": ["每條經線長度相同", "經線總共有360條", "經線是連接南北極的半圓", "經線之間互相平行"], "answer": 3, "explanation": "經線在南北極匯聚，並非互相平行；緯線才是互相平行的圓圈。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "讀圖與繪圖能力", "difficulty": 3, "id": 14}, {"question": "小天的位置在老師的西南方，則老師在小天的什麼方向？", "options": ["西南方", "東北方向", "西北方向", "東南方向"], "answer": 1, "explanation": "這是相對位置的陷阱：小天在老師西南方，互換基準點後，老師就在小天東北方向。", "subject": "地理", "unit": "地球與地圖", "concept": "相對位置與絕對位置", "skill": "空間定位與座標判讀", "difficulty": 3, "id": 15}, {"question": "若一張地圖的比例尺為1:10000，圖上距離5公分代表實際距離多少公尺？", "options": ["500公尺", "5000公尺", "50000公尺", "50公尺"], "answer": 0, "explanation": "1:10000表示圖上1公分代表實際10000公分（100公尺），5公分代表500公尺。", "subject": "地理", "unit": "地球與地圖", "concept": "地圖比例尺", "skill": "比例尺應用與換算", "difficulty": 3, "id": 16}, {"question": "中國全境使用單一時區，儘管東西跨度超過五個時區，這種時區被稱為什麼？", "options": ["天文時區", "標準時區", "政治時區", "自然時區"], "answer": 2, "explanation": "中國雖東西跨度超過五個時區卻只用單一時區，這稱為政治時區，顯示時區是人類強加的規則。", "subject": "地理", "unit": "地球與地圖", "concept": "時區劃分", "skill": "地理資訊批判分析", "difficulty": 3, "id": 17}, {"question": "屏東縣地圖與台灣行政區圖相比，何者敘述正確？", "options": ["屏東縣地圖是小比例尺，範圍大內容簡略", "台灣行政區圖是大比例尺，範圍小內容詳細", "兩者比例尺相同但用途不同", "屏東縣地圖是大比例尺，範圍小但內容詳細"], "answer": 3, "explanation": "大比例尺地圖涵蓋範圍小但內容詳細；小比例尺範圍大但內容簡略。屏東縣地圖範圍較小，為大比例尺。", "subject": "地理", "unit": "地球與地圖", "concept": "地圖比例尺", "skill": "比例尺應用與換算", "difficulty": 3, "id": 18}, {"question": "若某地經度為西經90度，該地位於本初子午線的哪一側？", "options": ["東側", "西側", "正北方向", "正南方向"], "answer": 1, "explanation": "西經表示位於本初子午線（0度經線）的西側，因此西經90度在格林威治天文台的西邊。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "空間定位與座標判讀", "difficulty": 3, "id": 19}, {"question": "比較1904年與2017年的台北松山內湖地圖，可發現環境變遷的證據包括哪些？", "options": ["稻田變成住宅區、基隆河河道被截彎取直", "山地全部變成平原", "台灣海峽陸橋隆起", "台北盆地持續沉降"], "answer": 0, "explanation": "1904年與2017年台北松山內湖比較顯示：稻田變成住宅區、基隆河河道被截彎取直、劍南路站位置曾是河道。", "subject": "地理", "unit": "地球與地圖", "concept": "地圖的社會與歷史脈絡", "skill": "地理資訊批判分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "1884年華盛頓會議選擇倫敦格林威治作為零度經線基準，最主要的歷史背景因素為何？", "options": ["倫敦是當時世界人口最多的城市", "大英帝國海權最強，海軍需要精確定位", "英國天文學家最先發現經度測量方法", "英國是唯一反對時區劃分的國家"], "answer": 1, "explanation": "選擇倫敦是因為當時大英帝國海權最強，海軍需要最精確的定位；經緯度是人類權力博弈的產物。", "subject": "地理", "unit": "地球與地圖", "concept": "經緯度的人為建構", "skill": "地理資訊批判分析", "difficulty": 4, "id": 21}, {"question": "地理教材說「經緯度根本不是自然產物」，此論述的核心意義為何？", "options": ["經緯度是古代中國人發明的", "經緯度是科學家隨意設定的數字遊戲", "經緯度體系反映了人類權力博弈與歷史選擇", "自然地球本身含有經緯度座標"], "answer": 2, "explanation": "經緯度是1884年國際會議协商的人造體系，格林威治基準的選擇源於大英帝國海權優勢，反映權力與歷史脈絡。", "subject": "地理", "unit": "地球與地圖", "concept": "經緯度的人為建構", "skill": "地理資訊批判分析", "difficulty": 4, "id": 22}, {"question": "關於時區與地球物理現實的關係，下列何者最符合教材觀點？", "options": ["地球自然存在24個時區", "時區是人類強加的規則，地球本身無時區概念", "時區完全沿經線劃分，不受政治影響", "全球時區標準由聯合國每年重新協商"], "answer": 1, "explanation": "時區是人類強加的規則，地球本身沒有時區概念；太陽只按物理規律運行，時區邊界常沿國界彎曲。", "subject": "地理", "unit": "地球與地圖", "concept": "時區劃分", "skill": "地理資訊批判分析", "difficulty": 4, "id": 23}, {"question": "電子地圖與紙本地圖相比，下列何者為電子地圖的潛在風險？", "options": ["紙本地圖無法標示比例尺", "電子地圖資料更新有延遲，施工路段可能未標註", "紙本地圖提供GPS即時定位功能", "電子地圖的比例尺永遠精確無誤"], "answer": 1, "explanation": "電子地圖資料更新有延遲，施工路段可能還沒標註，這是數位時代的地理風險；正確紙本地圖是備援系統。", "subject": "地理", "unit": "地球與地圖", "concept": "地圖的社會與歷史脈絡", "skill": "地理資訊批判分析", "difficulty": 4, "id": 24}, {"question": "「每一張地圖都是選擇性呈現，繪圖者決定什麼被顯示、什麼被隱藏」，此觀點的核心意涵為何？", "options": ["地圖繪製技術尚不成熟", "地圖具有權力意涵，反映繪圖者的觀點與選擇", "所有地圖的資訊完全準確可靠", "地圖只用於導航，無其他社會意義"], "answer": 1, "explanation": "地圖是選擇性的世界模型，繪圖者的選擇本身是一種權力；課本教你讀地圖，但沒教你質疑地圖。", "subject": "地理", "unit": "地球與地圖", "concept": "地圖的社會與歷史脈絡", "skill": "地理資訊批判分析", "difficulty": 4, "id": 25}, {"question": "若一名學生主張「曼谷穿短袖、台北穿羽絨服是因為天氣預報不準」，根據教材內容，此論斷的錯誤根源為何？", "options": ["天氣預報技術在東南亞落後", "忽略了緯度對太陽能量分配的決定性影響", "曼谷與台北的海拔高度差異過大", "羽絨服的保暖性能不足"], "answer": 1, "explanation": "緯度決定太陽能量分配：曼谷位於低緯度熱帶，太陽終年接近直射；台北位於中緯度溫帶，冬天斜射角度大能量分散，氣溫低。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "地理資訊批判分析", "difficulty": 4, "id": 26}, {"question": "經線總長約40307公尺，若以每小時15度劃分时區，理論上經線與緯線各有幾條？", "options": ["經線360條，緯線360條", "經線360條，緯線180條", "經線180條，緯線360條", "經線360條，緯線無限多條"], "answer": 0, "explanation": "經線總共360條（0-180度東經、0-180度西經）；緯線從0到90度南北各90條，加上兩極點共180條，但理論上緯線有無限多條（每個緯度值都有）。教材僅明確說明經線360條。", "subject": "地理", "unit": "地球與地圖", "concept": "經線與緯線的特性", "skill": "讀圖與繪圖能力", "difficulty": 4, "id": 27}, {"question": "從「相對位置」的概念出發，下列哪一情境最能說明其「依賴觀察者基準」的特性？", "options": ["某地座標為北緯25度、東經121度", "便利商店在紅綠燈旁", "家到學校步行需10分鐘", "台北101高508公尺"], "answer": 1, "explanation": "「便利商店在紅綠燈旁」以地標為基準描述位置，依賴觀察者位置，基準點不同答案可能不同，是相對位置的典型例子。", "subject": "地理", "unit": "地球與地圖", "concept": "相對位置與絕對位置", "skill": "空間定位與座標判讀", "difficulty": 4, "id": 28}, {"question": "比較1904年與2017年台北松山內湖地圖，發現劍南路站的位置曾是河道。此觀察最能支持教材中哪一觀點？", "options": ["地形圖永遠準確無誤", "地圖保存了被遺忘的地理記憶，是環境變遷的證據庫", "基隆河自古就是直線河道", "台北市區從未發生過洪水"], "answer": 1, "explanation": "不同年代的地圖是時空切片，比較後可發現環境變遷；地圖保存被遺忘的地理記憶，是環境變遷的證據庫。", "subject": "地理", "unit": "地球與地圖", "concept": "地圖的社會與歷史脈絡", "skill": "地理資訊批判分析", "difficulty": 4, "id": 29}, {"question": "教材結論說「地理不只是背座標，它是解讀人類如何理解地球的鑰匙」，此句的深層意涵最接近下列哪一選項？", "options": ["地理只需要記憶經緯度座標即可", "地理是權力、科學與歷史的交會點", "經緯度是自然產物，不需要質疑", "地圖繪製完全由電腦自動完成"], "answer": 1, "explanation": "經緯度是人造的、時區是政治協商結果、地圖是選擇性的世界模型；地理是權力、科學和歷史的交會點。", "subject": "地理", "unit": "地球與地圖", "concept": "經緯度的人為建構", "skill": "地理資訊批判分析", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
