@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國中社會1上公民-L02-人性尊嚴與人權保障</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "公民", "grade": "國中", "unit": "人權與性別平等", "topic": "人性尊嚴與人權保障", "filename": "翰林國中社會1上公民-L02-人性尊嚴與人權保障", "summary": "以梅西故事引入人性尊嚴概念，說明人權法律保障的歷史淵源與台灣性平三法的實踐。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "人權的本質是什麼？", "options": ["自由", "人性尊嚴", "法律保障", "社會福利"], "answer": 1, "explanation": "教材明確指出：人權的本質是人性尊嚴，不是自由。自由不等於人權的全部。", "subject": "公民", "unit": "人權與性別平等", "concept": "人性尊嚴", "skill": "概念理解", "difficulty": 2, "id": 1}, {"question": "梅西幼年時因為什麼原因差點被球隊放棄？", "options": ["踢球技術不好", "身材太矮小", "家庭经济困難", "沒有團隊合作精神"], "answer": 1, "explanation": "梅西幼年時比同齡人矮小太多，教練認為他太瘦小贏不了比賽，差點讓他放棄足球夢。", "subject": "公民", "unit": "人權與性別平等", "concept": "性別歧視", "skill": "概念理解", "difficulty": 2, "id": 2}, {"question": "用刻板印象評斷一個人，直接傷害了什麼？", "options": ["自由", "人權", "人性尊嚴", "平等權"], "answer": 2, "explanation": "教材指出：用刻板印象評斷一個人，直接傷害了他的「人性尊嚴」。", "subject": "公民", "unit": "人權與性別平等", "concept": "人性尊嚴", "skill": "概念理解", "difficulty": 2, "id": 3}, {"question": "世界人權宣言是在哪一年通過的？", "options": ["1945年", "1948年", "1950年", "1960年"], "answer": 1, "explanation": "世界人權宣言是1948年通過，是二戰結束後的第三年。", "subject": "公民", "unit": "人權與性別平等", "concept": "世界人權宣言", "skill": "概念理解", "difficulty": 2, "id": 4}, {"question": "世界人權宣言的推動背景與何事有關？", "options": ["冷戰對峙", "納粹對猶太人的大屠殺", "美國獨立戰爭", "法國大革命"], "answer": 1, "explanation": "宣言是納粹大屠殺後產生的，六百萬猶太人慘遭殺害，讓全世界看到極端恐怖。", "subject": "公民", "unit": "人權與性別平等", "concept": "世界人權宣言", "skill": "概念理解", "difficulty": 2, "id": 5}, {"question": "台灣幾部性平相關法律？", "options": ["1部", "2部", "3部", "4部"], "answer": 2, "explanation": "台灣有三部性平法律：性別平等教育法、性別平等工作法、性騷擾防治法。", "subject": "公民", "unit": "人權與性別平等", "concept": "性平三法", "skill": "概念理解", "difficulty": 2, "id": 6}, {"question": "性別平等教育法主要管什麼範圍？", "options": ["職場", "校園", "公共場所", "網路空間"], "answer": 1, "explanation": "性別平等教育法管校園，規定學校不得在招生、課程、活動上有性別歧視。", "subject": "公民", "unit": "人權與性別平等", "concept": "性平三法", "skill": "概念理解", "difficulty": 2, "id": 7}, {"question": "「同工不同酬」在哪部法律中被明確禁止？", "options": ["性別平等教育法", "性騷擾防治法", "性別平等工作法", "勞基法"], "answer": 2, "explanation": "性別平等工作法規定雇主不得歧視，招募薪資工作規定都要平等，同工不同酬明確違法。", "subject": "公民", "unit": "人權與性別平等", "concept": "性平三法", "skill": "概念理解", "difficulty": 2, "id": 8}, {"question": "性別刻板印象是從哪裡來的？", "options": ["天生自然的", "社會形塑的結果", "基因遺傳的", "宗教信仰決定的"], "answer": 1, "explanation": "社會上對男女的不同期待（如男生要勇敢、女生要溫柔）都是社會形塑的結果，不是天生就該這樣。", "subject": "公民", "unit": "人權與性別平等", "concept": "性別刻板印象", "skill": "概念理解", "difficulty": 2, "id": 9}, {"question": "性騷擾包括哪兩種形式？", "options": ["言語與肢體", "網路與現實", "明示與暗示", "單方面與雙向"], "answer": 0, "explanation": "性騷擾是對人身安全的侵害，包括言語和肢體兩種形式，皆為明示或暗示的性意味行為。", "subject": "公民", "unit": "人權與性別平等", "concept": "性騷擾", "skill": "概念理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "某公司的女員工發現自己與男性同事做相同工作，但薪資較低，她可以依據哪部法律主張權利？", "options": ["性別平等教育法", "性別平等工作法", "性騷擾防治法", "消費者保護法"], "answer": 1, "explanation": "性別平等工作法規範職場，規定雇主不得歧視，招募薪資都要平等，同工不同酬明確違法。", "subject": "公民", "unit": "人權與性別平等", "concept": "性平三法", "skill": "法律應用", "difficulty": 3, "id": 11}, {"question": "下列哪一種行為屬於性別歧視？", "options": ["認為男生應該勇敢", "學校招生時限制女生名額", "迪士尼公主故事演變", "MeToo運動發聲"], "answer": 1, "explanation": "學校招生時限制女生名額是明確的歧視行為，直接傷害人性尊嚴；而性別刻板印象只是社會期待。", "subject": "公民", "unit": "人權與性別平等", "concept": "性別歧視", "skill": "案例分析", "difficulty": 3, "id": 12}, {"question": "一位女學生在學校遭受同学言語性騷擾，她應該向哪裡提出調查申請？", "options": ["警察局", "性別平等委員會", "家長會長", "法院"], "answer": 1, "explanation": "校園性騷擾事件可向性別平等委員會提出調查申請，被害人可以得到法律保護。", "subject": "公民", "unit": "人權與性別平等", "concept": "性騷擾防治", "skill": "法律應用", "difficulty": 3, "id": 13}, {"question": "下列哪種處理方式最符合性騷擾防治的原則？", "options": ["只懲罰加害人", "只保護被害人", "懲罰加害人、保護被害人也教育大眾", "不予理會"], "answer": 2, "explanation": "性騷擾防治不只是懲罰加害人，還要保護被害人和教育大眾，具有懲罰、保護與教育三重功能。", "subject": "公民", "unit": "人權與性別平等", "concept": "性騷擾防治", "skill": "案例分析", "difficulty": 3, "id": 14}, {"question": "「性騷擾」與「性侵害」的主要差異在哪裡？", "options": ["性騷擾更嚴重", "性侵害是用強暴脅迫等手段違反被害人意願的犯罪行為", "兩者完全相同", "性騷擾不需要法律介入"], "answer": 1, "explanation": "性侵害是更嚴重的犯罪，用強暴脅迫恐嚇等手段，違反被害人意願發生性行為；性騷擾是影響學習或工作權益的不當行為。", "subject": "公民", "unit": "人權與性別平等", "concept": "性騷擾", "skill": "案例分析", "difficulty": 3, "id": 15}, {"question": "迪士尼公主從早期強調外貌到後來追求自由探索，反映了什麼現象？", "options": ["商業獲利考量", "性別觀念進步與人權意識提升", "教育政策改變", "童話故事傳統"], "answer": 1, "explanation": "迪士尼公主的演變反映社會觀念的進步與人權意識的提升，早期符合性別刻板印象，後期追求自由探索。", "subject": "公民", "unit": "人權與性別平等", "concept": "性別刻板印象", "skill": "案例分析", "difficulty": 3, "id": 16}, {"question": "偏見升級後會變成什麼？", "options": ["人權", "尊嚴", "歧視", "平等"], "answer": 2, "explanation": "教材指出：偏見升級就會變成歧視，歧視就是不公平的對待，直接傷害他人的人性尊嚴。", "subject": "公民", "unit": "人權與性別平等", "concept": "性別歧視", "skill": "概念理解", "difficulty": 3, "id": 17}, {"question": "關於「自由」與「人權」的關係，下列敘述何者正確？", "options": ["自由就是人權的全部", "人權就是自由", "自由不等於人權的全部", "人權不需要自由"], "answer": 2, "explanation": "教材明確說明：很多人以為人權就是自由，但自由不等於人權的全部；人權的本質是人性尊嚴。", "subject": "公民", "unit": "人權與性別平等", "concept": "人性尊嚴", "skill": "概念理解", "difficulty": 3, "id": 18}, {"question": "性平三法被比喻為遊戲裡的三條防線，其適用範圍依次是？", "options": ["職場、校園、其他場所", "校園、其他場所、職場", "校園、職場、其他場所", "其他場所、校園、職場"], "answer": 2, "explanation": "性別平等教育法管校園、性別平等工作法管職場、性騷擾防治法管其他場所，三法構成人權保障的防線。", "subject": "公民", "unit": "人權與性別平等", "concept": "性平三法", "skill": "概念理解", "difficulty": 3, "id": 19}, {"question": "加害人受到性騷擾處分後，還需要接受什麼？", "options": ["自由處分", "性別平等輔導課程", "社區服務", "金錢賠償"], "answer": 1, "explanation": "性騷擾防治不只是懲罰，還會有性別平等輔導課程，這不只有懲罰也是教育。", "subject": "公民", "unit": "人權與性別平等", "concept": "性騷擾防治", "skill": "法律應用", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "MeToo運動最早由誰在什麼時候發起？", "options": ["塔拉納伯克，2006年", "艾莉莎米蘭諾，2007年", "聯合國，1948年", "Disney公司，2013年"], "answer": 0, "explanation": "MeToo運動最早由美國女性塔拉納伯克於2006年發起，2007年好萊塢醜聞爆發後讓運動全球大爆發。", "subject": "公民", "unit": "人權與性別平等", "concept": "MeToo運動", "skill": "社會觀察", "difficulty": 4, "id": 21}, {"question": "台灣MeToo運動興起後，對法律面產生了什麼影響？", "options": ["廢除了性平三法", "推動立法院修法使性騷擾防治更周全", "取消了性別平等委員會", "沒有任何改變"], "answer": 1, "explanation": "MeToo運動引發社會震撼，也推動了立法院修法，讓性騷擾防治更周全，體現法律隨社會觀念前進。", "subject": "公民", "unit": "人權與性別平等", "concept": "MeToo運動", "skill": "社會觀察", "difficulty": 4, "id": 22}, {"question": "關於人權保障，教材主張什麼觀點？", "options": ["只要有好法律就足夠", "只要觀念改變就足夠", "法律保障與社會觀念需要雙軌並進", "人權保障不需要法律"], "answer": 2, "explanation": "教材強調：法律不夠，社會觀念也要跟著改變；人權保障需要法律的支撐，但最終要靠社會的共識。", "subject": "公民", "unit": "人權與性別平等", "concept": "人性尊嚴", "skill": "綜合評析", "difficulty": 4, "id": 23}, {"question": "電視劇《人選之人造浪者》在台灣MeToo運動中扮演什麼角色？", "options": ["與運動無關", "被認為啟發了這場運動，成為運動口號來源", "是反對運動的劇", "只影響影視圈"], "answer": 1, "explanation": "該劇被認為啟發了台灣MeToo運動，劇中台詞「我們不要就這樣算了」成為運動口號。", "subject": "公民", "unit": "人權與性別平等", "concept": "MeToo運動", "skill": "社會觀察", "difficulty": 4, "id": 24}, {"question": "梅西的故事最能說明什麼核心概念？", "options": ["自由是最重要的人權", "身材歧視與人性尊嚴的關係", "法律不需要保障人權", "體育與人權無關"], "answer": 1, "explanation": "梅西因為身材矮小差點被歧視，最終證明自己，體現了人性尊嚴是人權的核心，不能被外表或刻板印象否定。", "subject": "公民", "unit": "人權與性別平等", "concept": "人性尊嚴", "skill": "綜合評析", "difficulty": 4, "id": 25}, {"question": "「我們每個人都是守護者」這句話在教材中的意義是什麼？", "options": ["口號而已", "人權保障最終要靠每個人的行動與社會共識", "只有警察才能守護人權", "每個人只需要遵守法律"], "answer": 1, "explanation": "教材結尾強調：人權保障需要法律支撐但最終要靠社會共識，每個人都是守護者，遇到不公要勇敢站出來。", "subject": "公民", "unit": "人權與性別平等", "concept": "人性尊嚴", "skill": "綜合評析", "difficulty": 4, "id": 26}, {"question": "為什麼教材說「很多權利都是血淚換來的」？", "options": ["權利是自然產生的", "世界人權宣言與性平法律都是經歷戰爭與迫害後才制定的", "血淚比喻形容而已", "權利不需要爭取"], "answer": 1, "explanation": "世界人權宣言是納粹大屠殺後的教訓，性平三法也源於長期爭取，教材點出每一部法律背後都是真實的人與奮鬥。", "subject": "公民", "unit": "人權與性別平等", "concept": "世界人權宣言", "skill": "綜合評析", "difficulty": 4, "id": 27}, {"question": "下列哪一選項最能體現「歧視」與「刻板印象」的區別？", "options": ["認為女生應該溫柔是歧視", "學校不錄取女生是刻板印象", "認為女生邏輯差是偏見，不錄取女生工作才是歧視", "性別刻板印象就是歧視"], "answer": 2, "explanation": "教材指出：偏見（如認為女生邏輯差）是刻板印象，升級後才變成歧視（如不錄取女生），兩者有程度差異。", "subject": "公民", "unit": "人權與性別平等", "concept": "性別歧視", "skill": "綜合評析", "difficulty": 4, "id": 28}, {"question": "台灣性平三法的設計精神最接近下列哪一種比喻？", "options": ["三道防線，任何地方都不能讓歧視通過", "單一防線，只在學校防範", "事後懲罰機制，沒有防線", "完全依賴自覺，沒有法律介入"], "answer": 0, "explanation": "教材將性平三法比喻為遊戲裡的三條防線，任何地方都不能讓歧視通過，校園、職場、其他場所全面涵蓋。", "subject": "公民", "unit": "人權與性別平等", "concept": "性平三法", "skill": "綜合評析", "difficulty": 4, "id": 29}, {"question": "公民課學習人權與性別平等的真正意義是什麼？", "options": ["背誦法條取得高分", "理解背後血淚與奮鬥的故事，學會尊重每個人", "記住所有法律條文", "只了解外國案例"], "answer": 1, "explanation": "教材結尾說明：公民課的意義不是背法條，而是理解背後那些血淚與奮鬥的故事，懂得尊重身邊的每一個人。", "subject": "公民", "unit": "人權與性別平等", "concept": "人性尊嚴", "skill": "綜合評析", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
