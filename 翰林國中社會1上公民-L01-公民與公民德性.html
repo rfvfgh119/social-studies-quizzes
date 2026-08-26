@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國中社會1上公民-L01-公民與公民德性</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "公民", "grade": "國中", "unit": "公民身分與社會參與", "topic": "國民與公民、國籍法與公民德性", "filename": "翰林國中社會1上公民-L01-公民與公民德性", "summary": "以遊戲比喻解析國民與公民差異、國籍法及公民德性五項。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，國民與公民最主要的差異是什麼？", "options": ["國民可以投票，公民不能", "公民有參政權，國民沒有", "國民是外國人，公民是本國人身分", "兩者沒有差異，只是稱呼不同"], "answer": 1, "explanation": "教材明確指出國民與公民的差別在「參政權」，公民可以行使選舉、罷免、公民投票等權利，國民則是被動身份，沒有這些主動權利。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "國民與公民的參政權差異", "skill": "概念辨析", "difficulty": 2, "id": 1}, {"question": "台灣取得國籍的主要依據是什麼？", "options": ["出生地規則", "血統規則", "歸化規則", "僑民規則"], "answer": 1, "explanation": "教材說明台灣國籍以血統為主（屬人原則），出生地為輔，父母有一方是台灣人，孩子出生就是台灣國民。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "國籍取得方式", "skill": "記憶理解", "difficulty": 2, "id": 2}, {"question": "下列哪一項是公民德性之一？", "options": ["追求財富", "遵守法律規範", "避免社交", "服從權威"], "answer": 1, "explanation": "教材列出的五項公民德性包括：參與公共事務、遵守法律規範、理性思考批判、和平尊重包容、捍衛公平正義。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民德性五項", "skill": "記憶理解", "difficulty": 2, "id": 3}, {"question": "小瀚今年13歲，他擁有哪些權利？", "options": ["可以投票選舉總統", "可以參加公民投票", "可以罷免公職人員", "沒有參政權，只是國民身份"], "answer": 3, "explanation": "教材指出18歲是分水嶺，18歲以下只有國民身份，沒有參政權。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "國民與公民的參政權差異", "skill": "概念辨析", "difficulty": 2, "id": 4}, {"question": "歸化取得國籍在2023年有什麼重要改變？", "options": ["必須放棄原國籍", "允許保留雙重國籍", "只有結婚才能歸化", "取消歸化制度"], "answer": 1, "explanation": "教材提到2023年彭蒙惠拿到身分證時規則改寫，現在可以同時擁有兩個國籍。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "國籍法修改", "skill": "記憶理解", "difficulty": 2, "id": 5}, {"question": "教材中提到的「理性思考批判」技能，主要是為了應對什麼社會現象？", "options": ["經濟不景氣", "假訊息氾濫", "教育資源不足", "人口老化"], "answer": 1, "explanation": "教材說明理性思考批判是在假訊息時代的生存技能，教育部都出了警覺查明證實三步法來應對假訊息。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民德性應用", "skill": "概念理解", "difficulty": 2, "id": 6}, {"question": "家庭被比喻為什麼？", "options": ["伺服器", "新手村", "正式服", "測試服"], "answer": 1, "explanation": "教材將家庭比喻為新手村，因為家庭是社會最基本的單位，在這裡學會第一套生存規則。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "家庭功能比喻", "skill": "概念理解", "difficulty": 2, "id": 7}, {"question": "校園學生參與學生代表會屬於哪一項公民德性？", "options": ["遵守法律規範", "參與公共事務", "理性思考批判", "和平尊重包容"], "answer": 1, "explanation": "教材指出參與校園公共事務是公民參與的實戰訓練，屬於第一項公民德性「參與公共事務」。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民德性情境", "skill": "概念應用", "difficulty": 2, "id": 8}, {"question": "台灣憲法保障的人性尊嚴是指什麼？", "options": ["每個人都應該有錢", "每個人都值得被當人對待", "每個人都必須守法", "每個人都要投票"], "answer": 1, "explanation": "教材說明人性尊嚴的含義是「每個人都值得被當人對待」，這不是恩賜是基本設定。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "人性尊嚴內涵", "skill": "概念理解", "difficulty": 2, "id": 9}, {"question": "原住民族的部落主要承擔什麼功能？", "options": ["商業交易場所", "文化傳承的伺服器", "政府行政機關", "軍事防禦要塞"], "answer": 1, "explanation": "教材指出部落不只是地理概念，它是文化傳承的伺服器，公民參與部落事務就是捍衛公平正義的實戰。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "部落功能", "skill": "概念理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "小明15歲，發現鄰居有違法行為，他應該如何處理才能體現公民德性？", "options": ["保持沉默，避免惹麻煩", "主動向警察檢舉，遵守法律規範", "在社群媒體上爆料，讓很多人知道", "自己去警告鄰居，不讓警察知道"], "answer": 1, "explanation": "遵守法律規範是公民德性之一，向警察檢舉違法行為是守法表現；而其他選項或違法的、或可能侵犯他人權利。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民德性情境應用", "skill": "情境應用", "difficulty": 3, "id": 11}, {"question": "下列哪種家庭型態在教材中被提及為現代社會常見的多元家庭？", "options": ["三代同堂的大家庭", "單親家庭", "皇族家庭", "封建家庭"], "answer": 1, "explanation": "教材提到家庭型態從傳統大家庭到現代小家庭，包括單親家庭、隔代教養、新住民家庭等多元型態。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "家庭形態變遷", "skill": "資料解讀", "difficulty": 3, "id": 12}, {"question": "小華在網路看到一篇關於政治人物的負面新聞，沒有查證就轉發，這違反哪項公民德性？", "options": ["參與公共事務", "遵守法律規範", "理性思考批判", "和平尊重包容"], "answer": 2, "explanation": "教材強調理性思考批判是在假訊息時代的生存技能，沒有查證就轉發正是不理性的表現。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民德性辨析", "skill": "情境分析", "difficulty": 3, "id": 13}, {"question": "台灣國籍法以血統為主、出生地為輔，這意味著什麼？", "options": ["所有在台灣出生的人都是台灣國民", "父母有一方是台灣人，孩子出生才是台灣國民", "在台灣出生且父母是外国人的人，也可能是台灣國民", "只有台灣父母的孩子才能取得國籍"], "answer": 2, "explanation": "血統為主意味著父母有一方是台灣人即可；出生地為輔意味著在台灣出生也可能取得國籍，但非唯一條件。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "國籍取得原則", "skill": "概念分析", "difficulty": 3, "id": 14}, {"question": "下列哪一項最能體現「和平尊重包容」的公民德性？", "options": ["在投票時支持自己喜歡的候選人", "在網路上批評反對黨的政策", "在課堂上認真聽老師講課", "尊重少數族群的語言和文化傳統"], "answer": 3, "explanation": "教材指出和平尊重包容是民主社會中跟意見不同的人和平共處，多數尊重少數是成熟社會的表現。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民德性實踐", "skill": "情境判斷", "difficulty": 3, "id": 15}, {"question": "原住民族部落面臨的主要挑戰不包括下列哪一項？", "options": ["土地開發", "文化斷層", "語言流失", "科技發展落後"], "answer": 3, "explanation": "教材明確提到部落面臨土地開發、文化斷層、語言流失等挑戰，未提及科技發展落後。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "原住民族議題", "skill": "資料解讀", "difficulty": 3, "id": 16}, {"question": "學生在學校享有哪些權利？", "options": ["只有學習權，沒有其他權利", "學習權、受教育權和言論自由", "只有言論自由，沒有學習權", "所有權利都和成人一樣"], "answer": 1, "explanation": "教材說明學生有學習權、受教育權，也有表達意見的言論自由，這些是法律賦予的基本人權。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "學生權利", "skill": "概念理解", "difficulty": 3, "id": 17}, {"question": "教材將公民身分比喻為一套操作系統，其中「硬體」和「軟體」分別指什麼？", "options": ["硬體是國籍，軟體是公民德性", "硬體是公民德性，軟體是國籍", "硬體是參政權，軟體是人權", "硬體是人權，軟體是參政權"], "answer": 0, "explanation": "教材明確指出「國籍是硬體，公民德性是軟體」，兩者缺一不可。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民身分比喻", "skill": "概念理解", "difficulty": 3, "id": 18}, {"question": "下列哪種行為最能體現「捍衛公平正義」的公民德性？", "options": ["在投票所排隊投票", "協助社區清理環境", "為弱勢發聲，要求政策改變", "遵守交通規則不紅燈"], "answer": 2, "explanation": "教材說明捍衛公平正義是公民德性的終極技能，公平正義不是等來的，是公民用勇氣爭取來的。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民德性實踐", "skill": "情境判斷", "difficulty": 3, "id": 19}, {"question": "2023年歸化放寬雙重國籍的政策，可能帶來什麼影響？", "options": ["所有人不必放棄原國籍就能歸化", "台灣國民可以同時擁有外國國籍", "外國人歸化台灣後仍可保留原國籍", "雙重國籍者可以免除所有法律責任"], "answer": 2, "explanation": "教材說明2023年規則改變後，歸化者可以同時擁有兩個國籍，但並未說台灣國民可以自由擁有雙重國籍。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "國籍法政策分析", "skill": "因果推論", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "教材說「法律是底線道德是上限」，這在公民社會中有什麼意義？", "options": ["法律不重要，道德才重要", "公民只需守法，不需要有道德", "公民應在守法基礎上，主動追求更高道德標準", "道德比法律更強制性"], "answer": 2, "explanation": "教材指出法律是底線，道德是上限，公民要做的不只是守法，而是要主動消除一切歧視，追求更高標準。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "法律與道德關係", "skill": "價值判斷", "difficulty": 4, "id": 21}, {"question": "小瀚13歲時只是「硬體就緒」，18歲後「軟體啟動」，這個比喻說明什麼？", "options": ["18歲前不需要學習任何公民知識", "公民身分是天生就有的，不需要學習", "國籍是基礎，公民德性需要後天培養並持續升級", "18歲後自然就會成為好公民"], "answer": 2, "explanation": "教材說明公民德性不是學會就結束，是一輩子的版本更新，需要不斷練習和升級。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民身分發展", "skill": "綜合分析", "difficulty": 4, "id": 22}, {"question": "在假訊息氾濫的時代，公民應該如何實踐「理性思考批判」？", "options": ["完全不碰網路資訊", "只相信政府發布的訊息", "運用警覺、查明、證實三步法辨別資訊真偽", "轉發所有資訊讓更多人看到"], "answer": 2, "explanation": "教材明確指出教育部推出警覺查明證實三步法，說明這是應對假訊息的具體技能。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民德性實踐", "skill": "策略應用", "difficulty": 4, "id": 23}, {"question": "多元家庭型態的出現，對公民社會有什麼意義？", "options": ["社會崩壞的現象", "時代版本更新的結果，需要政策協助家庭發揮功能", "與公民德性無關", "應該恢復傳統家庭型態"], "answer": 1, "explanation": "教材指出家庭型態變遷是時代版本更新的結果，政府已開始用政策協助家庭發揮功能。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "家庭與社會變遷", "skill": "綜合評價", "difficulty": 4, "id": 24}, {"question": "為什麼教材說「公民不是一個被動的身份標籤，公民是一種主動選擇」？", "options": ["因為公民可以隨時放棄身份", "因為公民需要主動參與公共事務、實踐公民德性", "因為國民才是被動的，公民是主動的", "因為只有18歲以上才能選擇是否成為公民"], "answer": 1, "explanation": "教材結尾強調公民是一種主動選擇，選擇成為這塊土地的玩家，而不是被動的玩家，每個玩家都能影響伺服器走向。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民身分本質", "skill": "價值論證", "difficulty": 4, "id": 25}, {"question": "校園被稱為「民主的微型演練」，這說明什麼？", "options": ["校園和政府無關", "學生在學校學會的民主技能會影響成年後的公民生活", "學校只是讀書的地方，不需要民主參與", "學生代表會沒有實際意義"], "answer": 1, "explanation": "教材指出學生代表會、學生議會是民主的微型演練，在校園學會的民主技能會帶到成年後的公民生活。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "校園與公民教育", "skill": "因果推論", "difficulty": 4, "id": 26}, {"question": "原住民族部落面臨土地開發、文化斷層等挑戰，公民應該如何回應？", "options": ["保持距離，不關心中原住民族事務", "協助開發土地以促進經濟成長", "參與部落事務，捍衛公平正義，尊重多元文化", "要求政府完全取消土地開發"], "answer": 2, "explanation": "教材指出公民參與部落事務就是捍衛公平正義的實戰，尊重多元文化是公民必須練就的第五項技能。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民參與實踐", "skill": "策略制定", "difficulty": 4, "id": 27}, {"question": "教材將民主社會比喻為伺服器，下列哪項最符合這個比喻？", "options": ["伺服器不會改變，永遠運作", "每個玩家都能影響伺服器走向，共同開發系統", "只有管理員才能決定伺服器規則", "玩家只能被動接受伺服器設定"], "answer": 1, "explanation": "教材結尾說「每個玩家都能影響伺服器走向，你的每一次投票每一次發聲，都是在寫這套系統的下一行代碼」。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "民主社會比喻", "skill": "概念綜合", "difficulty": 4, "id": 28}, {"question": "雙重國籍政策的放寬，可能對公民身分認同產生什麼影響？", "options": ["國籍與公民身分認同完全無關", "可能促進多元文化包容，但也需強化公民德性教育", "雙重國籍者不需要遵守台灣法律", "公民身分認同會自動變得強烈"], "answer": 1, "explanation": "教材指出2023年規則改變允許雙重國籍，這是社會版本更新，但仍需透過公民德性教育來強化認同與責任。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "國籍政策影響", "skill": "影響評估", "difficulty": 4, "id": 29}, {"question": "教材說「別讓別人替你寫，拿起你的鍵盤，成為這套系統的共同開發者」，這呼應了哪項公民德性？", "options": ["遵守法律規範", "參與公共事務", "理性思考批判", "捍衛公平正義"], "answer": 1, "explanation": "這句話呼應第一項公民德性「參與公共事務」，鼓勵公民主動參與社會、影響系統走向，而不是被動接受。", "subject": "公民", "unit": "公民身分與社會參與", "concept": "公民參與呼應", "skill": "文本理解", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
