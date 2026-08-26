@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - deployed_urls</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會", "grade": "國中一年級", "unit": "社會一次上（公民＋地理）", "topic": "公民素養與人權尊嚴、臺灣的地理定位", "filename": "deployed_urls", "summary": "涵括公民單元的人性尊嚴人權保障與公民德性，以及地理單元的臺灣世界定位，培養國中生基本社會科素養。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "人權源於哪一種根本基礎，因而具有不可剝奪的特性？", "options": ["國家法律賦予", "人性尊嚴", "經濟能力", "社會地位"], "answer": 1, "explanation": "人權是基於人性尊嚴而固有之權利，不依賴國家法律賦予，而是人與生俱來的尊嚴所衍生。", "subject": "公民", "unit": "L01與L02", "concept": "人性尊嚴與人權的關係", "skill": "概念理解", "difficulty": 2, "id": 1}, {"question": "下列何者最能說明「人性尊嚴」的涵義？", "options": ["個人的財富多寡", "每個人都因其為「人」而具有內在價值", "社會地位的高低", "學業成績的優劣"], "answer": 1, "explanation": "人性尊嚴指每個人都因其為「人」而具有內在價值，這種價值不取決於財富、地位或能力。", "subject": "公民", "unit": "L02", "concept": "人性尊嚴", "skill": "概念理解", "difficulty": 2, "id": 2}, {"question": "政府保護弱勢族群（如老人、身心障礙者）的主要理論基礎是：", "options": ["維護社會階級制度", "人性尊嚴要求國家積極保障每個人的基本需求", "弱勢族群不需要與其他人在法律上平等", "資源有限，只能優先照顧特定群體"], "answer": 1, "explanation": "人性尊嚴要求國家積極履行保障義務，特別是对弱勢族群提供協助，使每個人都能有尊嚴地生活。", "subject": "公民", "unit": "L02", "concept": "人權保障與國家義務", "skill": "概念理解", "difficulty": 2, "id": 3}, {"question": "公民德性中最基本的表現之一是：", "options": ["遵守法律與尊重他人", "追求個人最大利益", "避免參與任何公共事務", "在公共場合發表任意言論"], "answer": 0, "explanation": "公民德性包含守法、尊重他人、承擔責任與參與公共事務等基本素養。", "subject": "公民", "unit": "L01", "concept": "公民德性", "skill": "概念理解", "difficulty": 2, "id": 4}, {"question": "下列何者屬於「公民義務」而非「公民權利」？", "options": ["受教育的權利", "投票的權利", "依法納稅的義務", "言論自由的權利"], "answer": 2, "explanation": "依法納稅是公民對國家的義務；其他選項均為公民享有的權利。", "subject": "公民", "unit": "L01", "concept": "公民權利與義務的區別", "skill": "概念辨析", "difficulty": 2, "id": 5}, {"question": "臺灣位於下列哪一海域之間？", "options": ["南海與巴士海峽", "太平洋與臺灣海峽", "東海與日本海", "印度洋與南海"], "answer": 1, "explanation": "臺灣西臨臺灣海峽，東臨太平洋，是連接東北亞與東南亞的重要樞紐。", "subject": "地理", "unit": "L02", "concept": "臺灣的地理位置", "skill": "空間認知", "difficulty": 2, "id": 6}, {"question": "臺灣北邊臨接的海域是：", "options": ["南海", "東海", "太平洋", "巴士海峽"], "answer": 1, "explanation": "臺灣北邊臨接東海，南邊臨接南海，東邊為太平洋，西邊為臺灣海峽。", "subject": "地理", "unit": "L02", "concept": "臺灣的地理位置", "skill": "空間認知", "difficulty": 2, "id": 7}, {"question": "臺灣位於亞洲的哪一區域？", "options": ["南亞", "東南亞", "東亞", "中亞"], "answer": 2, "explanation": "臺灣位於東亞地區，是太平洋西岸島鏈的重要一環。", "subject": "地理", "unit": "L02", "concept": "臺灣的區域定位", "skill": "空間認知", "difficulty": 2, "id": 8}, {"question": "下列哪一項屬於「第一層面的人權」（生存與基本需求）？", "options": ["言論自由", "受教育權", "身體生命權", "參政權"], "answer": 2, "explanation": "身體生命權是人類最基本的人權，屬於生存與基本需求的層面，是其他人權的前提。", "subject": "公民", "unit": "L02", "concept": "基本人權的類型", "skill": "概念理解", "difficulty": 2, "id": 9}, {"question": "臺灣島位於北迴線通過的位置，其氣候帶主要屬於：", "options": ["北極圈內的寒帶", "熱帶與亞熱帶", "溫帶與寒帶", "只有熱帶"], "answer": 1, "explanation": "臺灣島被北迴線穿過，南部屬熱帶氣候，北部屬亞熱帶氣候。", "subject": "地理", "unit": "L02", "concept": "臺灣的地理環境", "skill": "空間認知", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "某國政府以「維護公共安全」為由，無限期拘留一名異議人士，此舉最可能違反何種人權保障原則？", "options": ["保障人權不得任意剝奪人身自由", "政府有權為了多數人利益犧牲少數人", "安全問題可以超越人性尊嚴", "異議人士不享有基本人權"], "answer": 0, "explanation": "任何人身自由的限制都須依法進行，不得任意剝奪；以公共安全為由無限期拘留，違反人權保障原則。", "subject": "公民", "unit": "L02", "concept": "人權保障的限制與底線", "skill": "情境判斷", "difficulty": 3, "id": 11}, {"question": "以下哪一種情境最能展現「公民德性」？", "options": ["在網路上隨意謾罵不認同的人", "遵守交通規則並主動讓座給需要的人", "只關心自己的權益，不顧社會大眾", "逃避參與社區環境清潔活動"], "answer": 1, "explanation": "遵守規則、尊重他人是公民德性的具體表現；其他選項均為缺乏公民德性的行為。", "subject": "公民", "unit": "L01", "concept": "公民德性的表現", "skill": "情境判斷", "difficulty": 3, "id": 12}, {"question": "從地理位置來看，臺灣在亞洲貿易網絡中最具優勢的原因是：", "options": ["臺灣四面環山，陸路交通發達", "位於太平洋與臺灣海峽之間，是東西向海運樞紐", "臺灣位於亞洲正中心，四周距離相等", "臺灣四面環海，無需與其他國家貿易"], "answer": 1, "explanation": "臺灣位於太平洋與臺灣海峽之間，北連東北亞、南接東南亞，是國際海運的重要中轉站。", "subject": "地理", "unit": "L02", "concept": "臺灣的地理優勢", "skill": "區域分析", "difficulty": 3, "id": 13}, {"question": "某學校規定學生必須穿著整齊制服才能入學，此規定若過度限制學生的個人選擇，可能涉及侵害何種人權？", "options": ["生命權", "人性尊嚴與個人自由發展的空間", "投票權", "參政權"], "answer": 1, "explanation": "人性尊嚴包含個人自由發展的空間；若規定過度限制，可能侵害學生的人格發展權。", "subject": "公民", "unit": "L02", "concept": "人權保障的適用範圍", "skill": "情境判斷", "difficulty": 3, "id": 14}, {"question": "臺灣東部面向太平洋，西部面對臺灣海峽，此地理特徵對臺灣發展最主要的影響是：", "options": ["使臺灣只能發展農業", "西部港口利於對外貿易，東部山脈影響陸路交通", "東西兩岸的氣候完全相同", "太平洋使臺灣东部人口比西部更密集"], "answer": 1, "explanation": "西部濒临臺灣海峽，港口眾多利於貿易；東部臨太平洋但中央山脈縱貫，交通較為不便。", "subject": "地理", "unit": "L02", "concept": "地理環境對臺灣發展的影響", "skill": "因果分析", "difficulty": 3, "id": 15}, {"question": "下列關於「人權與人性尊嚴」的敘述，何者最為正確？", "options": ["人權是人為了獲得尊嚴而向政府爭取的恩賜", "人性尊嚴是人權的基礎，人權是人權尊嚴的法律保障", "只要法律保障人權，人性尊嚴就自然存在", "人性尊嚴與人權毫無關係"], "answer": 1, "explanation": "人性尊嚴是人權的理論基礎，人權則是將人性尊嚴轉化為具體法律保障的制度設計。", "subject": "公民", "unit": "L01與L02", "concept": "人性尊嚴與人權的連結", "skill": "概念辨析", "difficulty": 3, "id": 16}, {"question": "某公民為了改善社區治安，積極參與里民會議並提出建議，此行為展現了何種公民德性？", "options": ["消極避世，不問政事", "參與公共事務、關心社會的責任感", "只關注個人私利", "盲目服從他人意見"], "answer": 1, "explanation": "積極參與公共事務並提出建設性意見，是公民德性中參與與責任感的具體展現。", "subject": "公民", "unit": "L01", "concept": "公民德性：參與公共事務", "skill": "情境判斷", "difficulty": 3, "id": 17}, {"question": "臺灣與中國大陸、日本、菲律賓等國家關係密切，從地理角度分析，主要原因是：", "options": ["臺灣的地形與這些國家完全相同", "臺灣地理位置鄰近這些國家，便於海上與空中往來", "這些國家都位於同一個地震帶上", "臺灣與這些國家的語言完全相同"], "answer": 1, "explanation": "臺灣地理位置鄰近中國大陸、日本與菲律賓，海空交通便捷，是區域互動的地理基礎。", "subject": "地理", "unit": "L02", "concept": "臺灣的鄰近區域關係", "skill": "因果分析", "difficulty": 3, "id": 18}, {"question": "政府提供低收入戶生活補助，此舉最能體現下列何種理念？", "options": ["社會資源應該平均分配給所有人", "人性尊嚴要求國家保障每個人的基本生活需求", "低收入戶不具備人性尊嚴", "政府不應干涉個人生活"], "answer": 1, "explanation": "人性尊嚴要求國家積極作為，保障弱勢族群的基本生活，使其能保有尊嚴地生活。", "subject": "公民", "unit": "L02", "concept": "國家對人權的保障義務", "skill": "情境判斷", "difficulty": 3, "id": 19}, {"question": "下列關於臺灣在亞洲地理位置的敘述，何者正確？", "options": ["臺灣位於亞洲最西端", "臺灣位於亞洲東側太平洋西岸，北臨東海，南接南海", "臺灣位於亞洲正中央，四面陸地相接", "臺灣遠離亞洲大陸，與周邊國家無關"], "answer": 1, "explanation": "臺灣位於亞洲東側、太平洋西岸，北臨東海、南接南海，是連接東北亞與東南亞的重要島嶼。", "subject": "地理", "unit": "L02", "concept": "臺灣的區域位置", "skill": "空間認知與分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "某國政府為了推動經濟發展，計劃拆除一處老舊社區，居民抗爭要求保留。從人權保障與公民德性的角度分析，政府最應優先考量的是：", "options": ["完全忽略居民意見，因為經濟發展最重要", "在追求公共利益與保障居民基本權利之間尋求平衡", "只考慮居民意見，完全放棄發展計畫", "經濟發展與人權保障永遠無法兼顧"], "answer": 1, "explanation": "國家在追求公共利益的同時，仍須保障人民的基本人權與人性尊嚴，需尋求兩者的平衡。", "subject": "公民", "unit": "L01與L02", "concept": "人權保障與公共利益的平衡", "skill": "價值判斷與论证", "difficulty": 4, "id": 21}, {"question": "臺灣位在環太平洋地震帶上，同時也是東亞貿易的重要樞紐。從地理與公民素養的角度，下列哪一項最適合描述臺灣的未來挑戰？", "options": ["地理優勢使人們不需關心公共事務", "應結合地理優勢與公民參與，共同面對地震災害與國際競爭的挑戰", "地震帶上的人不具備公民德性", "貿易樞紐地位使人們不需要關注環境保護"], "answer": 1, "explanation": "臺灣的地理環境帶來地震風險，同時經濟定位要求國際競爭力，需結合公民參與共同面對挑戰。", "subject": "公民與地理", "unit": "L01、L02綜合", "concept": "公民素養與地理環境的綜合思考", "skill": "綜合分析", "difficulty": 4, "id": 22}, {"question": "有人認為「人權保障是發達國家的特權，開發中國家應先解決貧窮，不急於人權」。你如何評價此觀點？", "options": ["此觀點正確，因為貧窮國家的人不需要人權", "此觀點錯誤，因為人性尊嚴與人權是普世價值，不因國家富裕與否而改變", "此觀點部分正確，人權保障應該由國際組織完全負責", "此觀點正確，經濟發展完成後再談人權"], "answer": 1, "explanation": "人權源於人性尊嚴，是普世價值，不因國家發展程度而改變；解決貧窮與保障人權並非對立，而是互為促進。", "subject": "公民", "unit": "L02", "concept": "人權的普世性", "skill": "價值判斷與论证", "difficulty": 4, "id": 23}, {"question": "臺灣在東亞經濟圈中扮演關鍵樞紐角色，結合地理與公民素養，下列哪一項最能說明此定位的意義？", "options": ["臺灣只需專注經濟發展，不需要關心公民素養", "臺灣的地理樞紐地位要求公民具備國際視野與合作精神，以促進區域和平繁榮", "地理位置與公民素養毫無關聯", "樞紐地位使人們不必遵守國際規範"], "answer": 1, "explanation": "臺灣的地理樞紐地位意味著與多国互動頻繁，公民需具備國際視野、尊重多元與合作精神，方能促進區域和平繁榮。", "subject": "公民與地理", "unit": "L01與L02綜合", "concept": "臺灣的定位與公民素養", "skill": "綜合分析", "difficulty": 4, "id": 24}, {"question": "某學校舉辦「人權模擬法庭」活動，學生扮演法官審理人權爭議案件。此活動最有助於培養學生的何種素養？", "options": ["僅培養法律知識，無關其他素養", "理解人權保障的複雜性，培養批判思考與公民責任感", "學生只需記憶條文即可，不需思考", "此活動浪費時間，對學習無幫助"], "answer": 1, "explanation": "模擬法庭活動讓學生體驗人權爭議的複雜性，在角色中理解人性尊嚴的重要性，並培養批判思考與公民責任感。", "subject": "公民", "unit": "L01與L02綜合", "concept": "人權教育與公民參與", "skill": "綜合分析", "difficulty": 4, "id": 25}, {"question": "下列哪一選項最能說明「人性尊嚴」與「人權保障」之間的內在關係？", "options": ["人性尊嚴是人權的保障，人權是人性尊嚴的來源", "人性尊嚴是理論基礎，人權保障是制度實踐；兩者相互依存", "人性尊嚴只是哲學概念，與現實的人權無關", "人權保障優先於人性尊嚴，兩者可分家"], "answer": 1, "explanation": "人性尊嚴是人權的理論根基，人權保障則是將尊嚴落實現實制度的途徑，兩者相輔相成、不可分割。", "subject": "公民", "unit": "L02", "concept": "人性尊嚴與人權的內在關係", "skill": "概念分析", "difficulty": 4, "id": 26}, {"question": "在東亞區域中，臺灣雖地理位置重要，但常因政治因素受限。從公民素養角度，臺灣人最應該：", "options": ["放棄參與國際事務，只顧自己", "培養公民德性，以和平、理性、尊重的態度參與區域互動", "對其他國家持敵對態度", "認為地理位置不重要，不需要任何準備"], "answer": 1, "explanation": "面對區域政治的複雜性，臺灣公民應培養守法、尊重、責任與參與的德性，以和平理性方式促進國際交流。", "subject": "公民與地理", "unit": "L01與L02綜合", "concept": "公民德性與區域互動", "skill": "價值判斷與论证", "difficulty": 4, "id": 27}, {"question": "某地方法院判決政府某項政策違憲，理由是該政策侵犯了人民的學習自由。此案例最能說明：", "options": ["法院不應干預政府政策", "司法是保障人權的重要機制，人性尊嚴受到侵害時可有救濟途徑", "所有政府政策都應該是正確的", "學習自由不屬於基本人權"], "answer": 1, "explanation": "司法權是保障人權的重要機制，當政府政策侵害人性尊嚴時，法院可透過違憲審查提供救濟，確保人權不受侵害。", "subject": "公民", "unit": "L02", "concept": "人權保障的司法機制", "skill": "因果分析", "difficulty": 4, "id": 28}, {"question": "從地理與公民綜合觀點分析，臺灣作為島國，其公民在面對全球化的時代，最應具備的能力是：", "options": ["只了解自己島嶼的事務，不必關心世界", "具備本土認同與國際視野，尊重多元文化並積極參與國際事務", "完全依賴其他國家處理所有事務", "認為島國地位使人無需具備任何特殊能力"], "answer": 1, "explanation": "臺灣作為島國，地理上四面環海，與世界緊密相連；公民需兼具本土認同與國際視野，尊重多元，方能應對全球化挑戰。", "subject": "公民與地理", "unit": "L01與L02綜合", "concept": "島國公民的素養與視野", "skill": "綜合分析", "difficulty": 4, "id": 29}, {"question": "有學生主張：「只要我不違法，就不需要關心他人的人權是否受保障。」此觀點最欠缺下列何種公民素養？", "options": ["守法意識", "尊重他人、關懷社會的公民責任感與參與意識", "個人利益至上的原則", "對法律條文的熟悉程度"], "answer": 1, "explanation": "公民德性不僅是守法，更包含尊重他人、關心社會、參與公共事務的積極態度；僅做到不違法不足以成為良好的公民。", "subject": "公民", "unit": "L01", "concept": "公民德性的積極面向", "skill": "價值判斷與论证", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
