@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國中社會1上歷史-L01-史前臺灣與原住民文化ok</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "三年級", "unit": "臺灣史前時代", "topic": "臺灣史前文化的發展與南島語族遷徙", "filename": "翰林國中社會1上歷史-L01-史前臺灣與原住民文化ok", "summary": "以遊戲伺服器比喻臺灣史前時代，說明文化發展、南島語族遷徙與原住民歷史。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "臺灣史前時代大約從多久以前開始？", "options": ["約五萬年前", "約七千年前", "約兩千年前", "約一六八四年"], "answer": 0, "explanation": "教材指出臺灣史前時代從五萬年前開服，一直到一六八四年清帝國時期結束。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前時代分期", "skill": "時序記憶", "difficulty": 2, "id": 1}, {"question": "長濱文化是臺灣哪個時期的代表文化？", "options": ["舊石器時代", "新石器時代", "金屬器時代", "大航海時代"], "answer": 0, "explanation": "長濱文化被教材描述為最早的玩家，使用打製石器，代表舊石器時代。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前文化分期", "skill": "概念比對", "difficulty": 2, "id": 2}, {"question": "打製石器與磨製石器的本質差異在於什麼？", "options": ["磨製石器比打製石器更精緻、更鋒利", "打製石器比磨製石器更先進", "兩者沒有差異", "打製石器是用金屬打造而成"], "answer": 0, "explanation": "教材比喻打製石器到磨製石器就像從木棒跳到附魔鐵劍，磨製石器代表科技升級，攻擊力大幅提升。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "打製與磨製石器", "skill": "概念比對", "difficulty": 2, "id": 3}, {"question": "長濱文化的史前先民主要的生存方式是什麼？", "options": ["採集與狩獵", "農耕與畜牧", "煉鐵與貿易", "採集與農耕"], "answer": 0, "explanation": "長濱文化的人用火，但不會種田不會養動物，只能靠採集和狩獵維持生存。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前文化分期", "skill": "概念理解", "difficulty": 2, "id": 4}, {"question": "新石器時代大約出現在多久以前？", "options": ["大約七千年前", "大約五萬年前", "大約兩千年前", "大約一千五百年前"], "answer": 0, "explanation": "教材指出大約七千年前伺服器發生重大版本更新，稱為新石器時代。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前時代分期", "skill": "時序記憶", "difficulty": 2, "id": 5}, {"question": "下列哪一項不是新石器時代出現的新技能？", "options": ["煉鐵技術", "磨製石器", "農業", "稻米種植"], "answer": 0, "explanation": "煉鐵技術出現在金屬器時代（約兩千年前），磨製石器和農業才是新石器時代的新技能。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前文化分期", "skill": "概念比對", "difficulty": 2, "id": 6}, {"question": "稻米成為新石器時代主食的主要原因是什麼？", "options": ["種子大，乾燥後可以長期儲存", "最容易種植", "最符合原住民口味", "可以代替狩獵"], "answer": 0, "explanation": "教材提到稻米種子大，乾燥後可以長期儲存，等於學會建立倉庫系統，再也不用擔心斷糧。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "農業革命", "skill": "概念理解", "difficulty": 2, "id": 7}, {"question": "下列哪一個文化不屬於新石器時代？", "options": ["十三行文化", "大坌坑文化", "圓山文化", "卑南文化"], "answer": 0, "explanation": "十三行文化是金屬器時代的代表，大坌坑、圓山、卑南文化才是新石器時代的產物。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前文化分期", "skill": "概念比對", "difficulty": 2, "id": 8}, {"question": "金屬器時代大約出現在多久以前？", "options": ["大約兩千年前", "大約五萬年前", "大約七千年前", "大約一千年前"], "answer": 0, "explanation": "教材指出大約兩千年前伺服器又更新，這次稱為金屬器時代。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前文化分期", "skill": "時序記憶", "difficulty": 2, "id": 9}, {"question": "十三行文化遺址中挖出了哪些物品，證明當時已會煉鐵？", "options": ["煉鐵爐跟鐵渣", "石器跟陶器", "玻璃珠跟銅錢", "骨器跟貝器"], "answer": 0, "explanation": "十三行文化遺址挖出了煉鐵爐跟鐵渣，證明當時已經會煉鐵；玻璃珠和銅錢則是貿易證據。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "金屬器時代", "skill": "概念理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "農業的出現對史前先民社會造成的最大改變是什麼？", "options": ["食物穩定，人口開始暴增，文化活動加速", "人們不再需要勞動", "所有原住民都轉為農耕生活", "狩獵完全被淘汰"], "answer": 0, "explanation": "教材指出農業讓食物穩定，人口暴增，文化活動也跟著加速，是改變遊戲規則的創新。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "農業革命", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "十三行文化遺址發現玻璃珠和中國銅錢，這代表什麼意義？", "options": ["臺灣已與東南亞和中國大陸展開貿易", "臺灣當時沒有自己的製造業", "玻璃珠是原住民自己生產的", "中國銅錢是後來才傳入的"], "answer": 0, "explanation": "玻璃珠和中國銅錢證明臺灣玩家已跟東南亞和中國大陸展開貿易，代表貿易系統的開啟。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "金屬器時代", "skill": "證據推論", "difficulty": 3, "id": 12}, {"question": "在金屬器時代，玻璃珠取代玉器成為裝飾品，這代表什麼現象？", "options": ["新裝備上架，反映貿易帶來生活風格改變", "玉器已經完全消失", "原住民不再使用任何裝飾品", "玻璃珠比玉器更昂貴"], "answer": 0, "explanation": "教材比喻玻璃珠取代玉器就像遊戲裡新裝備上架，代表貿易引入的新事物改變了原有的生活方式。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "金屬器時代", "skill": "文化分析", "difficulty": 3, "id": 13}, {"question": "新石器時代的出現對人類定居生活有什麼關鍵影響？", "options": ["人類不再需要跟著獵物移動，可以建立固定住所", "人類完全放棄狩獵", "人類開始建造城市", "人類開始使用金屬工具"], "answer": 0, "explanation": "農業出現前人類只能跟著獵物移動，沒有固定住所；農業讓食物穩定，人類得以定居。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "農業革命", "skill": "因果分析", "difficulty": 3, "id": 14}, {"question": "下列關於史前文化分期的排序，何者正確？", "options": ["長濱文化→新石器時代文化→十三行文化", "十三行文化→長濱文化→新石器時代文化", "新石器時代文化→長濱文化→十三行文化", "長濱文化→十三行文化→新石器時代文化"], "answer": 0, "explanation": "依時間順序：約五萬年前的長濱文化（舊石器時代）→約七千年前的新石器時代文化（大坌坑、圓山、卑南）→約兩千年前的十三行文化（金屬器時代）。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前文化分期", "skill": "時序排列", "difficulty": 3, "id": 15}, {"question": "教材將農業比喻為「改變遊戲規則的Bug」，其主要原因是？", "options": ["人類從此可以自己生產資源，不再完全依賴野生資源", "農業讓狩獵變得更容易", "農業讓人類可以飛翔", "農業使人類不再需要喝水"], "answer": 0, "explanation": "農業讓人類從「撿野怪掉落的資源」轉為「自己種」，學會自主生產資源，這是革命性的改變。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "農業革命", "skill": "概念分析", "difficulty": 3, "id": 16}, {"question": "金屬器時代相比新石器時代，最大的進步除了武器升級之外，還包括什麼？", "options": ["貿易系統的開啟", "人口大量減少", "農業技術完全消失", "石器技術被全面淘汰"], "answer": 0, "explanation": "金屬器時代不只是武器升級，更關鍵的是與東南亞、中國大陸展開貿易，開啟了貿易系統。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "金屬器時代", "skill": "文化分析", "difficulty": 3, "id": 17}, {"question": "大坌坑文化、圓山文化、卑南文化共同屬於哪個時代？", "options": ["新石器時代", "舊石器時代", "金屬器時代", "大航海時代"], "answer": 0, "explanation": "這三個文化都是新石器時代（約七千年前版本更新）的產物。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前文化分期", "skill": "概念理解", "difficulty": 3, "id": 18}, {"question": "史前先民從採集狩獵轉向農耕，這個轉變最關鍵的催化因素是什麼？", "options": ["發現可以種植並儲存糧食的作物（如稻米）", "人口過多迫使他們尋找新食物", "氣候變冷迫使他們遷徙", "外來文明傳播了農業技術"], "answer": 0, "explanation": "教材指出稻米種子大、可長期儲存，讓人類建立倉庫系統，這是從採集轉向農耕的關鍵。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "農業革命", "skill": "因果分析", "difficulty": 3, "id": 19}, {"question": "十三行文化出土的玻璃珠來源最可能是？", "options": ["透過與東南亞的貿易而來", "臺灣本地生產", "從中國大陸直接進口玻璃原料", "從歐洲跨洋貿易而來"], "answer": 0, "explanation": "教材指出十三行文化遺址發現玻璃珠和中國銅錢，證明臺灣已與東南亞和中國大陸展開貿易。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "金屬器時代", "skill": "證據推論", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "構樹基因研究如何支持「臺灣是南島語族遷徙起點」的理論？", "options": ["太平洋島上的構樹基因與臺灣南部的構樹基因相同，顯示構樹是跟著南島玩家一起遷徙過海", "構樹只能生長在臺灣，無法在其他地方存活", "構樹是南島語族從馬達加斯加帶來的", "構樹的基因與太平洋島嶼的植物完全無關"], "answer": 0, "explanation": "學者比對基因發現太平洋島上的構樹幾乎都跟臺灣南部構樹基因相同，構樹是跟著南島玩家一起遷徙過海的鐵證。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "南島語族遷徙", "skill": "證據推論", "difficulty": 4, "id": 21}, {"question": "為什麼太平洋島上的構樹能證明南島語族從臺灣出發，而不是從其他地方遷徙？", "options": ["因為太平洋諸島的環境不適合構樹自然生長，顯示構樹是隨人類遷徙帶來的", "因為構樹只能生長在馬達加斯加", "因為太平洋島上的構樹是後來從歐洲引進的", "因為構樹在太平洋諸島是自然原生植物"], "answer": 0, "explanation": "太平洋諸島環境不適合構樹自然生長，卻發現與臺灣基因相同的構樹，證明它是跟著南島玩家一起遷徙過海的。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "南島語族遷徙", "skill": "證據推論", "difficulty": 4, "id": 22}, {"question": "邵族的白鹿傳說在史前研究中具有什麼功能與意義？", "options": ["它是先民用口傳方式記錄遷徙路線的生存知識", "它是純屬虛構的童話故事，沒有歷史價值", "它是漢人移民帶來的傳說", "它是關於神話信仰的宗教文本"], "answer": 0, "explanation": "教材指出白鹿傳說中祖先追蹤白鹿找到日月潭定居，這就是一份遷徙導航記錄，是先民用口語寫下的遷徙日記。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "口傳歷史的功能", "skill": "文化分析", "difficulty": 4, "id": 23}, {"question": "教材將口傳傳說比喻為「伺服器日誌」，主要想強調口傳傳說的什麼功能？", "options": ["保存遷徙的生存知識，作為沒有文字時代的記錄方式", "娛樂後人的故事創作", "記錄戰鬥與戰爭的過程", "傳承宗教祭祀的儀式"], "answer": 0, "explanation": "口傳傳說在不具文字的情況下，保存了先民遷徙路線與生存知識，是另一種形式的伺服器日誌。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "口傳歷史的功能", "skill": "概念分析", "difficulty": 4, "id": 24}, {"question": "南島語族的分布範圍極廣，其遷徙路線大致為何？", "options": ["從臺灣出發，沿海路經過印尼、新幾內亞，到達太平洋諸島", "從馬達加斯加出發，沿非洲海岸到達臺灣", "從夏威夷出發，向西到達紐西蘭", "從中國大陸出發，直接橫渡太平洋到紐西蘭"], "answer": 0, "explanation": "教材指出南島語族從臺灣出發，沿海路經過印尼、新幾內亞，到達太平洋諸島，西至馬達加斯加，東至復活節島。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "南島語族遷徙", "skill": "時序與空間理解", "difficulty": 4, "id": 25}, {"question": "下列關於臺灣原住民族的敘述，何者正確？", "options": ["目前共有十六個官方認定的族群，分為平埔族與高山各族", "原住民只有高山各族，沒有平埔族", "原住民在漢人移民之前才來到臺灣", "原住民族群的稱呼與分類從未改變過"], "answer": 0, "explanation": "教材指出原住民共有十六個官方認定族群，分為住在西部平原的平埔族與住在山區和東部的高山各族，名稱歷經多次變更。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "原住民族群分類", "skill": "概念理解", "difficulty": 4, "id": 26}, {"question": "清帝國時期對臺灣原住民的稱呼是什麼？", "options": ["熟番與生番", "平埔族與高砂族", "高山族與山地同胞", "原住民族"], "answer": 0, "explanation": "清帝國時期稱原住民為熟番和生番，日治時期改為平埔族和高砂族，中華民國時期稱為高山族和山地同胞。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "原住民族群分類", "skill": "時序記憶", "difficulty": 4, "id": 27}, {"question": "下列關於史前時代與歷史時代的區分，何者正確？", "options": ["史前時代沒有文字記錄，歷史時代有文字；臺灣史前時代結束於一六八四年清帝國統治時期", "史前時代和歷史時代沒有明確的區分", "史前時代已經有完整的文字記錄", "一六八四年之後臺灣仍處於史前時代"], "answer": 0, "explanation": "教材指出史前時代沒有文字（玩家沒有留下存檔記錄），到一六八四年清帝國強制刷新，史前時代結束。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前時代分期", "skill": "概念比對", "difficulty": 4, "id": 28}, {"question": "綜合構樹基因研究與口傳傳說，我們可以如何理解史前先民的遷徙方式？", "options": ["先民沿著海路遷徙，攜帶熟悉的植物與動物作為生存資源，並以口傳方式記錄路線", "先民完全依靠導航儀器遷徙", "先民是在漢人引導下才開始遷徙", "遷徙是隨機發生的，沒有任何記錄"], "answer": 0, "explanation": "構樹基因證明先民遷徙時帶上熟悉的生存資源，口傳傳說（如白鹿傳說）記錄遷徙路線，顯示遷徙是有計畫且被記錄的。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "南島語族遷徙", "skill": "綜合分析", "difficulty": 4, "id": 29}, {"question": "從長濱文化到十三行文化，臺灣史前時代的發展軌跡最適合以下列哪一個敘述來概括？", "options": ["從採集狩獵到農耕，再到金屬器與貿易，科技與社會不斷升級", "從農耕到狩獵，科技逐漸退步", "始終以採集狩獵為主，沒有顯著變化", "從鐵器時代直接進入大航海時代"], "answer": 0, "explanation": "教材總結：石器從打製變磨製（科技升級）、農業出現（自主生產）、鐵器出現（更高階技術）、貿易展開（與其他伺服器連線），是一部玩家不斷升級的史詩。", "subject": "社會科", "unit": "臺灣史前時代", "concept": "史前時代分期", "skill": "綜合分析", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
