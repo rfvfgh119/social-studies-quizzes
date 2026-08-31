@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國中社會1上歷史-L02-大航海時代各方勢力的競逐</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科／歷史", "grade": "國三", "unit": "明清時期的臺灣", "topic": "大航海時代的臺灣：荷西鄭統治時期", "filename": "翰林國中社會1上歷史-L02-大航海時代各方勢力的競逐", "summary": "以遊戲比喻講解17世紀臺灣荷西鄭三時期，強調臺灣因戰略地位成為東亞貿易必爭之地。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，17世紀臺灣成為全球強權爭相進入的原因為何？", "options": ["因為臺灣盛產黃金與鑽石", "因為臺灣位於西太平洋航線樞紐，控制東亞貿易流量", "因為臺灣氣候溫暖，適合種植咖啡與可可", "因為臺灣擁有天然深水港，可供軍艦停泊"], "answer": 1, "explanation": "教材指出臺灣位於西太平洋南北航線樞紐，從日本到菲律賓、中國到南洋都經過這裡，誰控制臺灣誰就控制東亞貿易流量。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "臺灣地理位置的戰略價值", "skill": "歷史時序排列", "difficulty": 2, "id": 1}, {"question": "荷蘭人於1624年登陸臺灣南部，所建造的主要城池名稱為何？", "options": ["熱蘭遮城", "普羅民遮城", "聖薩爾瓦多城", "聖多明哥城"], "answer": 0, "explanation": "教材提到荷蘭人在臺南安平建熱蘭遮城當總部，並在赤崁建普羅民遮城控制內陸，兩者皆為荷蘭所建。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "荷西統治時期建設", "skill": "歷史時序排列", "difficulty": 2, "id": 2}, {"question": "西班牙人於1626年佔領臺灣北部，其主要貿易目標是與哪個國家往來？", "options": ["中國", "日本", "荷蘭", "葡萄牙"], "answer": 1, "explanation": "教材指出西班牙人在臺灣北部的目標是跟日本做貿易賺更多錢，但後來因日本鎖國政策而失敗。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "西班牙統治時期", "skill": "歷史時序排列", "difficulty": 2, "id": 3}, {"question": "鄭成功於1661年進攻臺灣，首先攻下的城池為何？", "options": ["熱蘭遮城", "普羅民遮城", "聖薩爾瓦多城", "臺灣府城"], "answer": 1, "explanation": "教材說明鄭成功先攻下普羅民遮城切斷荷蘭人補給，再圍攻熱蘭遮城九個月。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "鄭成功收臺過程", "skill": "歷史時序排列", "difficulty": 2, "id": 4}, {"question": "鄭氏政權在臺灣推行何種制度以節省軍費開支？", "options": ["移民屯田制度", "軍屯制度（寓兵於農）", "稅收免稅政策", "軍事征伐制度"], "answer": 1, "explanation": "教材提到鄭成功推行軍屯制度讓軍隊自己種田自己吃，稱為寓兵於農，節省龐大軍費。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "鄭氏統治措施", "skill": "基礎辨識", "difficulty": 2, "id": 5}, {"question": "清朝正式將臺灣納入版圖的標誌事件為何？", "options": ["1662年鄭成功收臺", "1683年施琅攻臺", "1684年設立臺灣府", "1642年荷蘭統一臺灣"], "answer": 2, "explanation": "教材指出1684年清朝設立臺灣府隸屬福建省，標誌臺灣正式進入清朝統治時代。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "清朝領臺", "skill": "歷史時序排列", "difficulty": 2, "id": 6}, {"question": "荷蘭東印度公司（VOC）擁有何種國家級特權？", "options": ["可以宣戰、組軍", "可以立法、徵稅", "可以傳教、設學", "可以自治、鑄幣"], "answer": 0, "explanation": "教材說明荷蘭東印度公司擁有國家級特權可以宣戰、可以組軍，等同被政府授權的超級公會。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "荷蘭統治特點", "skill": "基礎辨識", "difficulty": 2, "id": 7}, {"question": "西班牙統治臺灣北部多久後被荷蘭驅逐？", "options": ["6年", "16年", "26年", "38年"], "answer": 1, "explanation": "教材提到西班牙1626年佔領北部，1642年被荷蘭擊敗，統治共16年。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "西班牙統治時期", "skill": "歷史時序排列", "difficulty": 2, "id": 8}, {"question": "鄭氏政權進口何種物資用於支撐反清事業？", "options": ["絲綢與瓷器", "香料與白銀", "武器與軍備", "蔗糖與鹿皮"], "answer": 2, "explanation": "教材指出鄭氏用臺灣的蔗糖鹿皮換回軍用物資，進口清單裡有武器和軍備，貿易帶有明顯軍事目的。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "鄭氏統治經濟", "skill": "基礎辨識", "difficulty": 2, "id": 9}, {"question": "臺灣在荷蘭人手中主要擔任何種角色？", "options": ["軍事基地", "政治中心", "轉口貿易站", "宗教傳教站"], "answer": 2, "explanation": "教材說明荷蘭人把臺灣南部變成刷金幣基地，用蔗糖鹿皮稻米跟中國日本南洋做生意，臺灣變成超級轉口站。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "荷蘭統治經濟", "skill": "基礎辨識", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "比較荷蘭與西班牙統治臺灣的目的，下列何者正確？", "options": ["荷蘭以軍事征服為主，西班牙以商業貿易為主", "荷蘭追求最大利潤轉口貿易，西班牙想與日本貿易但失敗", "兩者均以傳教為主要目的", "荷蘭以殖民拓墾為主，西班牙以資源開採為主"], "answer": 1, "explanation": "教材指出荷蘭人是純商業導向追求最大利潤，西班牙人目標是跟日本做貿易賺更多錢，但日本鎖國後其轉口貿易崩盤。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "荷西統治目的比較", "skill": "比較分析", "difficulty": 3, "id": 11}, {"question": "臺灣的地理位置如何影響其17世紀的歷史發展？", "options": ["因群山環繞而孤立，未受外來勢力影響", "因位於航線樞紐成為各勢力爭奪的貿易中繼站", "因氣候宜人吸引歐洲移民定居發展農業", "因資源豐富成為歐洲殖民帝國直轄領地"], "answer": 1, "explanation": "教材強調臺灣位於西太平洋南北航線樞紐，誰控制臺灣誰就控制東亞貿易流量，因此成為必爭之地。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "地理因素與歷史發展", "skill": "因果推理", "difficulty": 3, "id": 12}, {"question": "鄭氏政權與荷蘭人在臺灣的統治有何根本差異？", "options": ["鄭氏以商業獲利為主，荷蘭以政治控制為主", "鄭氏政治導向貿易為手段，荷蘭純商業導向追求利潤", "鄭氏專注農業發展，荷蘭專注海上貿易", "鄭氏排斥外來貿易，荷蘭開放自由貿易"], "answer": 1, "explanation": "教材明確比較：荷蘭人純商業導向追求最大利潤，鄭氏則是政治導向貿易只是手段，需要資金軍備支撐反清事業。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "荷鄭統治比較", "skill": "比較分析", "difficulty": 3, "id": 13}, {"question": "清朝實施海禁政策對鄭氏政權造成何種影響？", "options": ["完全切斷鄭氏與中國貿易，使其經濟崩潰", "斷絕經濟來源但鄭氏仍透過走私與中國做生意", "促進鄭氏轉向南洋發展新貿易路線", "迫使鄭氏放棄臺灣撤返福建"], "answer": 1, "explanation": "教材提到清朝為了斷鄭氏經濟來源實施海禁，但鄭氏還是透過走私跟中國做生意。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "清朝海禁政策", "skill": "因果推理", "difficulty": 3, "id": 14}, {"question": "西班牙統治臺灣北部逐漸失去興趣的主要原因為何？", "options": ["原住民反抗激烈導致統治困難", "荷蘭軍事壓迫迫使西班牙撤離", "日本鎖國政策使轉口貿易崩盤，無法獲利", "臺灣北部資源貧乏缺乏開發價值"], "answer": 2, "explanation": "教材指出1633年日本頒布鎖國政策只准荷蘭貿易，西班牙人在臺灣的轉口貿易直接崩盤，發現賺不到錢而逐漸失去興趣。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "西班牙統治衰落原因", "skill": "因果推理", "difficulty": 3, "id": 15}, {"question": "荷蘭統治時期臺灣的主要出口商品為何？", "options": ["絲綢與瓷器", "香料與咖啡", "蔗糖、鹿皮與稻米", "白銀與黃金"], "answer": 2, "explanation": "教材說明荷蘭人用蔗糖鹿皮稻米跟中國日本南洋做生意，換回絲綢瓷器香料白銀再轉賣。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "荷蘭統治經濟", "skill": "基礎辨識", "difficulty": 3, "id": 16}, {"question": "鄭成功收復臺灣的關鍵戰役為何？", "options": ["澎湖海戰", "熱蘭遮城圍攻戰", "基隆戰役", "淡水戰役"], "answer": 1, "explanation": "教材描述鄭成功圍攻熱蘭遮城整整九個月，1662年荷蘭人終於投降退出臺灣。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "鄭成功收臺過程", "skill": "歷史時序排列", "difficulty": 3, "id": 17}, {"question": "清朝統治開始後，臺灣的行政區劃有何變革？", "options": ["設立臺灣省直屬中央", "設立臺灣府隸屬福建省", "劃分為三個行政區分別統治", "維持鄭氏承天府制度不變"], "answer": 1, "explanation": "教材指出1684年清朝設立臺灣府隸屬福建省，標誌臺灣正式進入清朝統治時代。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "清朝領臺行政變革", "skill": "基礎辨識", "difficulty": 3, "id": 18}, {"question": "根據西班牙傳教士記錄，當時臺灣原住民與漢人交換何種物資？", "options": ["鹽巴交換稻米", "硫磺交換花布", "鹿皮交換鐵器", "象牙交換布料"], "answer": 1, "explanation": "教材提到原住民用硫磺跟漢人交換花布和小東西，硫磺被運回中國製作火藥。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "漢原接觸與貿易", "skill": "史料解讀", "difficulty": 3, "id": 19}, {"question": "17世紀臺灣統治者輪替的正確時間順序為何？", "options": ["荷蘭→西班牙→鄭氏→清朝", "西班牙→荷蘭→鄭氏→清朝", "荷蘭→鄭氏→西班牙→清朝", "西班牙→荷蘭→清朝→鄭氏"], "answer": 0, "explanation": "教材依序說明荷蘭1624年佔南部、西班牙1626年佔北部、1642年荷蘭驅逐西班牙、1662年鄭成功收臺、1683年施琅攻臺、1684年清朝設府。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "統治輪替時序", "skill": "歷史時序排列", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "從全球史觀點，17世紀臺灣在大航海時代扮演何種角色？", "options": ["歐洲殖民帝国的邊緣農業殖民地", "東亞貿易網絡的戰略樞紐與多勢力交會舞台", "獨立發展的島國文明中心", "單純的太平洋島嶼停泊站"], "answer": 1, "explanation": "教材強調臺灣位於西太平洋航線樞紐，是全球最強海上帝國爭相登入搶地盤，是多勢力交會的舞台，從來不是邊緣地帶而是世界中心舞台。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "全球史觀下的臺灣", "skill": "區域連結與全球史觀", "difficulty": 4, "id": 21}, {"question": "比較荷、西、鄭三者在臺灣的統治策略，下列何者最具代表性？", "options": ["荷蘭以軍事征服為主、西班牙以宗教傳教為主、鄭氏以經濟開發為主", "荷蘭以商業轉口為主、西班牙以對日貿易為主、鄭氏以政治軍事為主", "三者皆以採礦開墾為主要經濟活動", "三者均以建立基督教政權為共同目標"], "answer": 1, "explanation": "教材分析荷蘭純商業導向追求利潤，西班牙目標是跟日本貿易，鄭氏政治導向貿易為手段支撐反清事業，各有不同統治策略。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "三時期統治策略比較", "skill": "比較分析", "difficulty": 4, "id": 22}, {"question": "教材說「臺灣從來都不是邊緣地帶」，其核心論點為何？", "options": ["因為臺灣土地肥沃適合農業發展", "因為臺灣地理位置決定其為東亞貿易必爭之地", "因為臺灣文化多元融合中國與歐洲元素", "因為臺灣人口眾多經濟發達"], "answer": 1, "explanation": "教材最後結論指出臺灣因為地理位置成為必爭之地，每個勢力都在臺灣留下深刻印記，所以從來不是邊緣地帶而是世界中心舞台。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "臺灣歷史地位評價", "skill": "史料解讀與史觀理解", "difficulty": 4, "id": 23}, {"question": "鄭氏政權如何連結中國內陸與東亞海上貿易網絡？", "options": ["透過官方朝貢貿易體系", "透過走私管道與中國做生意", "透過開放多個通商口岸", "透過與清朝簽訂貿易協定"], "answer": 1, "explanation": "教材提到清朝實施海禁斷絕鄭氏經濟來源，但鄭氏還是透過走私跟中國做生意，顯示其連結內陸與海外的方式。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "鄭氏貿易網絡", "skill": "因果推理", "difficulty": 4, "id": 24}, {"question": "荷蘭東印度公司的特權設計反映17世紀何種歷史現象？", "options": ["歐洲民族國家的形成", "商業資本主義與國家權力結合的殖民地擴張模式", "宗教改革後的傳教運動", "工業革命前的手工業發展"], "answer": 1, "explanation": "教材描述荷蘭東印度公司擁有國家級特權可以宣戰組軍，等同被政府授權的超級公會，反映商業資本與國家權力結合的殖民擴張模式。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "殖民擴張模式分析", "skill": "史料解讀與史觀理解", "difficulty": 4, "id": 25}, {"question": "西班牙統治時期的歷史記錄對後世研究有何貢獻？", "options": ["詳細記載臺灣原住民的生活面貌", "完整記錄臺灣漢人移民的遷徙路線", "分析歐洲殖民政策的成敗得失", "比較不同宗教的傳教成效"], "answer": 0, "explanation": "教材指出西班牙傳教士記錄當時臺灣原住民的生活，發現漢人早已在臺灣活動，這些記錄讓我們看到當時臺灣的真實面貌。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "史料價值與史學研究", "skill": "史料解讀", "difficulty": 4, "id": 26}, {"question": "清朝領臺後臺灣的國際地位發生何種轉變？", "options": ["持續作為東亞貿易樞紐保持國際重要性", "因海禁政策逐漸邊緣化", "成為清朝對外開放大洋航運的窗口", "轉為歐洲列強共同管理的國際自由港"], "answer": 1, "explanation": "教材最後提到清朝開海禁後臺灣才慢慢邊緣化，顯示領臺後臺灣從世界中心舞台逐漸失去國際地位。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "臺灣國際地位轉變", "skill": "因果推理", "difficulty": 4, "id": 27}, {"question": "綜合三時期統治，臺灣發展的關鍵動力為何？", "options": ["外來勢力的商業利益與戰略需求", "臺灣本土文化的自主發展", "清朝政府的系統性開發政策", "原住民社會的內部演進"], "answer": 0, "explanation": "教材開頭強調臺灣因為商業利益成為血腥伺服器，每個統治者都把臺灣當成刷金幣的開關，顯示外來勢力利益驅動是發展關鍵動力。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "臺灣發展動力分析", "skill": "綜合分析", "difficulty": 4, "id": 28}, {"question": "17世紀臺灣的多勢力交會反映何種全球歷史趨勢？", "options": ["區域貿易網絡的衰落", "大航海時代全球化擴張與碰撞", "封建制度的強化", "宗教戰爭的蔓延"], "answer": 1, "explanation": "教材描述17世紀臺灣像剛開服的大逃殺遊戲，全球最強海上帝國爭相登入搶地盤，反映大航海時代全球化擴張與多勢力碰撞的歷史趨勢。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "全球史觀與歷史趨勢", "skill": "區域連結與全球史觀", "difficulty": 4, "id": 29}, {"question": "從教材比喻來看，17世紀臺灣統治者輪替如同「伺服器主人」變換，此比喻主要強調何種特點？", "options": ["統治者帶來穩定治理", "經濟活動如同遊戲刷金幣的功利目的", "文化融合促進社會進步", "軍事衝突加速技術發展"], "answer": 1, "explanation": "教材開頭以遊戲比喻，指出每一任統治者都把臺灣當成刷金幣的開關，強調統治者功利目的與商業利益驅使的特點。", "subject": "社會科／歷史", "unit": "明清時期的臺灣", "concept": "史觀理解與比喻解讀", "skill": "史料解讀與史觀理解", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
