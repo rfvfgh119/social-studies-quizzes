@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林社會5上1-1從地圖探索位置與發展有何關聯？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科（地理）", "grade": "國中七年級", "unit": "臺灣的自然環境與人文適應", "topic": "臺灣的地理位置、季風氣候與資源利用", "filename": "翰林社會5上1-1從地圖探索位置與發展有何關聯？", "summary": "以遊戲化比喻解說臺灣地理位置、季風氣候與資源利用的關聯。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "臺灣位於哪兩個地理區域的交界處？", "options": ["亞洲大陸與太平洋", "亞洲大陸與印度洋", "歐洲大陸與大西洋", "澳洲大陸與太平洋"], "answer": 0, "explanation": "臺灣精準位在全球最大陸地（亞洲大陸）的東方邊緣與最大海洋（太平洋）的西方交界處。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的全球位置", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 1}, {"question": "世界地圖中的五大洲是指哪些洲？", "options": ["亞洲、歐洲、非洲、北美洲、南美洲（還包含大洋洲與南极洲）", "亞洲、歐洲、非洲、北美洲、南美洲", "亞洲、歐洲、非洲、美洲、大洋洲", "亞洲、歐洲、非洲、美洲、南极洲"], "answer": 1, "explanation": "五大洲包括亞洲、歐洲、非洲、北美洲與南美洲，三大洋為太平洋、大西洋與印度洋。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "五大洲三大洋", "skill": "基礎認知", "difficulty": 2, "id": 2}, {"question": "台灣海峽位於臺灣與哪個地區之間？", "options": ["中國大陆", "菲律賓", "日本", "韓國"], "answer": 0, "explanation": "臺灣與中國之間隔著臺灣海峽，此海域是重要的航運路線。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的周邊環境", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 3}, {"question": "巴士海峽位於臺灣與哪個地區之間？", "options": ["菲律賓", "中國", "日本", "澳洲"], "answer": 0, "explanation": "巴士海峽分隔臺灣與菲律賓，是重要的航運路線與戰略要道。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的周邊環境", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 4}, {"question": "歐洲航海家在古代地圖上給臺灣的別名叫什麼？", "options": ["Formosa（福爾摩沙）", "Java（爪哇）", "Ceylon（錫蘭）", "Malacca（馬六甲）"], "answer": 0, "explanation": "歐洲航海家在大航海時代發現臺灣後，將其標記為Formosa（福爾摩沙），成為台灣的傳奇代號。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的歷史名稱", "skill": "基礎認知", "difficulty": 2, "id": 5}, {"question": "臺灣總面積約為多少平方公里？", "options": ["約3萬6千平方公里", "約10萬平方公里", "約50萬平方公里", "約1萬平方公里"], "answer": 0, "explanation": "臺灣包含本島、澎湖群島、金門、馬祖、釣魚臺列嶼和南海諸島等，總面積約3萬6千平方公里。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的版圖範圍", "skill": "基礎認知", "difficulty": 2, "id": 6}, {"question": "臺灣屬於哪一種國家類型的地理特徵？", "options": ["海洋國家", "內陸國家", "島嶼國家", "大陸國家"], "answer": 0, "explanation": "臺灣持續利用海洋地理優勢發展航運、漁業、觀光等產業，是名副其實的海洋國家。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的地理定位", "skill": "基礎認知", "difficulty": 2, "id": 7}, {"question": "臺灣古地圖上首次出現的地標，除了大員外，還包括哪些地方？", "options": ["綠島、蘭嶼", "澎湖、金門", "馬祖、釣魚臺", "琉球、沖繩"], "answer": 0, "explanation": "歐洲古地圖上首次標記了大員、綠島、蘭嶼，代表歐洲玩家成功解鎖了臺灣的區域地圖。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的歷史地圖", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 8}, {"question": "臺灣位於哪一大洋的西岸？", "options": ["太平洋", "大西洋", "印度洋", "北冰洋"], "answer": 0, "explanation": "臺灣位在世界最大的海洋——太平洋的西方交界處。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的全球位置", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 9}, {"question": "以下哪個海域是臺灣重要的戰略航運路線？", "options": ["臺灣海峽與巴士海峽", "日本海與东海", "南海與孟加拉灣", "波斯灣與亞丁灣"], "answer": 0, "explanation": "臺灣海峽與巴士海峽是臺灣周邊重要的航運路線，也是兵家必爭的戰略要道。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的周邊海域", "skill": "基礎認知", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "冬季東北季風經過海洋吸收水氣後，主要影響臺灣的哪個地區？", "options": ["北部與東北部", "南部與西南部", "中部山區", "东部海岸"], "answer": 0, "explanation": "東北季風從北方帶來寒冷乾燥的風，經過海洋吸收水氣後，使北部與東北部氣候濕冷、容易降雨。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "東北季風對氣候的影響", "skill": "氣候現象與因果分析", "difficulty": 3, "id": 11}, {"question": "臺灣冬季南部降雨量較少，可能導致什麼問題？", "options": ["水庫缺水與稻田休耕", "颱風侵襲與洪水氾濫", "土石流與坍方", "高溫與乾旱"], "answer": 0, "explanation": "冬季南部受東北季風背風側影響降雨稀少，有時面臨水庫缺水，導致稻田只能休耕。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "季風氣候的區域差異", "skill": "氣候現象與因果分析", "difficulty": 3, "id": 12}, {"question": "新竹居民是利用哪種季風特性來製作柿餅？", "options": ["冬季的東北季風", "夏季的西南季風", "春季的東南季風", "秋季的西北季風"], "answer": 0, "explanation": "新竹居民利用冬季強勁的東北季風配合日曬，將柿子加工成柿餅，延長保存期限。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "人地互動與環境利用", "skill": "氣候現象與因果分析", "difficulty": 3, "id": 13}, {"question": "寒流與暖流交會對臺灣海洋生態有何影響？", "options": ["造就豐富的海洋生物資源", "導致海水溫度單一化", "使漁業資源減少", "造成海洋污染加劇"], "answer": 0, "explanation": "臺灣處於寒流與暖流交會地帶，不同季節有不同的魚群到來，造就極豐富的海洋生物資源。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "寒暖流交會的生態效應", "skill": "氣候現象與因果分析", "difficulty": 3, "id": 14}, {"question": "冬季隨寒流來臺灣西南沿海產卵的魚種是？", "options": ["烏魚", "黑鮪魚", "魟魚", "鯖魚"], "answer": 0, "explanation": "每年冬季烏魚群隨寒流而來，到臺灣西南沿海產卵，烏魚子是冬季限定的珍貴物資。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "寒流伴隨的漁汛", "skill": "跨學科整合應用", "difficulty": 3, "id": 15}, {"question": "春夏季隨暖流北上，洄游到臺灣東部海域的魚種是？", "options": ["黑鮪魚", "烏魚", "飛魚", "旗魚"], "answer": 0, "explanation": "每年春夏季黑鮪魚隨暖流北上，洄游到臺灣東部海域進行繁殖，屏東舉辦黑鮪魚文化觀光季。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "暖流伴隨的漁汛", "skill": "跨學科整合應用", "difficulty": 3, "id": 16}, {"question": "蘭嶼達悟族的地下屋建築主要是為了因應什麼環境挑戰？", "options": ["惡劣氣候與颱風", "地震與火山噴發", "洪水與土石流", "極端高溫與缺水"], "answer": 0, "explanation": "蘭嶼達悟族的傳統地下屋設計，專門抵禦臺灣東南部惡劣的氣候與強勁颱風。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "人地互動與環境適應", "skill": "人地關係推論", "difficulty": 3, "id": 17}, {"question": "老街的騎樓設計主要是為了因應臺灣的什麼氣候特徵？", "options": ["冬季北部多雨", "夏季高温", "全年乾燥", "地震頻繁"], "answer": 0, "explanation": "騎樓設計讓居民在下雨時也能輕鬆逛街，是臺灣人因應北部冬季多雨氣候的建築智慧。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "人地互動與環境適應", "skill": "人地關係推論", "difficulty": 3, "id": 18}, {"question": "黑面琵鷺每年何時從北方飛到臺灣度冬？", "options": ["9到10月", "3到5月", "6到7月", "11到12月"], "answer": 0, "explanation": "每年9到10月氣溫下降時，黑面琵鷺從北方飛到臺灣度冬，隔年3到5月才飛回北方繁殖。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的生態資源", "skill": "氣候現象與因果分析", "difficulty": 3, "id": 19}, {"question": "黑面琵鷺在臺灣最重要的棲息地在哪裡？", "options": ["台南七股的魚塭和潟湖", "屏東沿海", "花蓮海岸", "澎湖灣"], "answer": 0, "explanation": "台南七股的魚塭和潟湖是黑面琵鷺重要的渡冬棲息地，也是重要的生態區域。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的生態資源", "skill": "地圖判讀與空間定位", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "臺灣地理位置的「戰略樞紐」地位，主要體現在哪個方面？", "options": ["位於最大陸地與最大海洋的交界，是東亞航運關鍵節點", "位於亞洲正中央，方便往返各大洲", "四面環海，完全與外界隔絕", "位於赤道附近，氣候全年炎熱"], "answer": 0, "explanation": "臺灣位於亞洲大陸東方邊緣與太平洋西方交界，是海上貿易與文化交流的戰略樞紐，具有不可替代的地理位置優勢。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的地理優勢分析", "skill": "人地關係推論", "difficulty": 4, "id": 21}, {"question": "從人地互動的角度，臺灣居民如何將地理劣勢轉化為優勢？", "options": ["利用冬季風製作柿餅、設計騎樓防雨、建地下屋避颱風", "放棄農業發展工業", "依賴進口糧食", "遷移所有居民到平地"], "answer": 0, "explanation": "臺灣居民因地制宜：利用冬季風製作柿餅延長保存、騎樓設計應對多雨、地下屋抵禦颱風，展現優秀的環境適應智慧。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "人地互動與環境適應", "skill": "人地關係推論", "difficulty": 4, "id": 22}, {"question": "臺灣作為海洋國家，其地理優勢如何轉化為經濟發展動能？", "options": ["發展航運、漁業、觀光等海洋相關產業", "發展內陸農業為主要經濟", "發展高山牧業", "依賴礦業開採"], "answer": 0, "explanation": "臺灣利用海陸交界優勢發展航運貿易、寒暖流交會帶來豐沛漁業資源，以及海洋觀光，形成完整的海洋經濟體系。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "地理優勢與經濟發展", "skill": "跨學科整合應用", "difficulty": 4, "id": 23}, {"question": "寒流與暖流交替來臨，對臺灣漁業的季節性分布有何影響？", "options": ["冬季烏魚在西南沿海、春夏季黑鮪魚在東部海域", "全年魚種相同", "只有南部有漁業", "漁業全年無休"], "answer": 0, "explanation": "寒暖流交替造成漁汛季節性分布：冬季烏魚群南下西南沿海，春夏季黑鮪魚北上東部海域，形成本土特色漁業文化。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "寒暖流交會與漁業經濟", "skill": "氣候現象與因果分析", "difficulty": 4, "id": 24}, {"question": "黑面琵鷺選擇臺灣渡冬，最能說明臺灣的哪一項地理優勢？", "options": ["溫暖濕潤的氣候適合鳥類越冬", "高山地形提供築巢場所", "人口密度低無人干擾", "全年炎熱無四季變化"], "answer": 0, "explanation": "臺灣冬季溫暖濕潤，加上七股魚塭潟湖提供充足食物，使黑面琵鷺等稀有候鳥選擇來臺度冬，展現生態多樣性的優勢。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的生態多樣性", "skill": "人地關係推論", "difficulty": 4, "id": 25}, {"question": "若將臺灣的地理位置比喻為遊戲中的「戰略樞紐」，其「Buff」效果最可能是？", "options": ["貿易加成、文化交融、資源豐富", "防禦力大幅提升", "移動速度加倍", "全屬性隨機提升"], "answer": 0, "explanation": "戰略樞紐位置帶來海陸貿易加成、多元文化交融（中、日影響）及寒暖流交會帶來豐富海洋資源等多重優勢。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "地理優勢的綜合分析", "skill": "跨學科整合應用", "difficulty": 4, "id": 26}, {"question": "臺灣的氣候機制如何影響不同區域的人居模式與產業發展？", "options": ["北部多雨發展騎樓，南部乾燥發展蓄水與柿餅加工", "全臺气候一致，人居模式相同", "南部多雨所以騎樓在南部普遍", "北部乾燥所以沒有騎樓"], "answer": 0, "explanation": "東北季風使北部多雨因此發展騎樓防雨，新竹利用冬季風製作柿餅；南部冬季乾燥發展蓄水設施，顯示人地互動的區域差異。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "氣候與人居模式的關係", "skill": "人地關係推論", "difficulty": 4, "id": 27}, {"question": "臺灣四大區域（北部、南部、東部、蘭嶼）各自因應氣候與地理條件，發展出不同的適應策略。下列配對何者正確？", "options": ["北部→騎樓防雨、新竹→東北風製柿餅、蘭嶼→地下屋避颱風、南部→蓄水設施", "北部→地下屋、南部→騎樓、蘭嶼→柿餅、東部→蓄水", "全臺灣都蓋騎樓", "蘭嶼居民全部搬遷到平地"], "answer": 0, "explanation": "北部多雨建騎樓、新竹利用東北風製柿餅、蘭嶼建地下屋避颱風、南部開發蓄水設施，各區域因地制宜展現多元適應智慧。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "人地互動的區域差異", "skill": "跨學科整合應用", "difficulty": 4, "id": 28}, {"question": "從五大洲三大洋的觀點來看，臺灣在全球海陸格局中扮演什麼角色？", "options": ["亞洲與太平洋交界的黃金交叉點，連接東亞與太平洋的樞紐", "太平洋正中央的孤立島嶼", "亞洲大陸的延伸平原", "印度洋與太平洋的邊界"], "answer": 0, "explanation": "臺灣位於最大陸地與最大海洋的黃金交叉點，是連接東亞各國與太平洋世界的戰略樞紐，具有無可比擬的地理價值。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "臺灣的戰略地位", "skill": "地圖判讀與空間定位", "difficulty": 4, "id": 29}, {"question": "綜合分析臺灣的地理位置、氣候與資源，下列哪項最能說明「地理優勢如何轉化為國家發展動能」？", "options": ["戰略樞紐位置帶來航運貿易，寒暖流交會帶來漁業資源，多元氣候孕育生態多樣性", "臺灣位置偏遠不利發展", "臺灣只有農業沒有其他產業", "地理對發展毫無影響"], "answer": 0, "explanation": "臺灣地理位置帶來航運貿易優勢，寒暖流交會造就漁業富饒，多元氣候支撐生態多樣性，三者共同構成臺灣的海洋國家發展基礎。", "subject": "社會科", "unit": "臺灣的自然環境與人文適應", "concept": "地理優勢的綜合應用", "skill": "跨學科整合應用", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
