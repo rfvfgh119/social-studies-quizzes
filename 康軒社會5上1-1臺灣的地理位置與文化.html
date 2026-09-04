@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上1-1臺灣的地理位置與文化</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "地理", "grade": "二年級", "unit": "台灣的地理位置與文化", "topic": "台灣的地緣戰略位置、周邊島嶼與多元文化", "filename": "康軒社會5上1-1臺灣的地理位置與文化", "summary": "以遊戲比喻講解台灣地理位置、周邊島嶼、海洋文化與多元社會特色。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "台灣位在亞洲的哪個方位？", "options": ["亞洲西部", "亞洲東部", "亞洲南部", "亞洲北部"], "answer": 1, "explanation": "台灣位於亞洲東部、太平洋西側。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "地理位置的重要性", "skill": "判斷地理位置", "difficulty": 2, "id": 1}, {"question": "台灣東邊鄰近哪一個海域？", "options": ["台灣海峽", "東海", "太平洋", "巴士海峽"], "answer": 2, "explanation": "台灣東邊是浩瀚的太平洋，是天然屏障與貿易航線。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "周邊海域", "skill": "判斷地理位置", "difficulty": 2, "id": 2}, {"question": "台灣西邊與哪個地方相隔？", "options": ["菲律賓", "日本", "中國大陸", "南韓"], "answer": 2, "explanation": "台灣西邊是台灣海峽，與中國大陸相隔。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "周邊海域", "skill": "判斷地理位置", "difficulty": 2, "id": 3}, {"question": "台灣南邊連接哪一個海峽？", "options": ["台灣海峽", "巴士海峽", "東海", "太平洋"], "answer": 1, "explanation": "台灣南邊是巴士海峽，連接菲律賓。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "周邊海域", "skill": "判斷地理位置", "difficulty": 2, "id": 4}, {"question": "台灣東北鄰近哪兩個國家？", "options": ["菲律賓與印尼", "日本與南韓", "中國與越南", "澳洲與紐西蘭"], "answer": 1, "explanation": "台灣東北有東海，鄰近日本與南韓。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "鄰國關係", "skill": "判斷地理位置", "difficulty": 2, "id": 5}, {"question": "下列哪一個島嶼不屬於台灣的範圍？", "options": ["澎湖群島", "金門列嶼", "海南島", "釣魚台"], "answer": 2, "explanation": "海南島是中國的島嶼，不屬於台灣範圍。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "周邊島嶼", "skill": "判斷地理位置", "difficulty": 2, "id": 6}, {"question": "台灣總面積大約是多少平方公里？", "options": ["三萬六千平方公里", "十萬平方公里", "一萬平方公里", "五十萬平方公里"], "answer": 0, "explanation": "台灣總面積約三萬六千平方公里。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "島嶼範圍", "skill": "判斷地理位置", "difficulty": 2, "id": 7}, {"question": "哪一個島嶼形狀像烏龜？", "options": ["綠島", "蘭嶼", "龜山島", "小琉球"], "answer": 2, "explanation": "龜山島因形狀像烏龜而得名。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "島嶼特色", "skill": "判斷地理位置", "difficulty": 2, "id": 8}, {"question": "台灣位於亞洲的哪個方位，緊鄰太平洋？", "options": ["亞洲西部", "亞洲東部", "亞洲南部", "亞洲中部"], "answer": 1, "explanation": "台灣位於亞洲東部，太平洋西側。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "地理位置的重要性", "skill": "判斷地理位置", "difficulty": 2, "id": 9}, {"question": "下列哪一個海域在台灣西邊？", "options": ["太平洋", "東海", "台灣海峽", "巴士海峽"], "answer": 2, "explanation": "台灣海峽位於台灣西邊，與中國大陸相隔。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "周邊海域", "skill": "判斷地理位置", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "台灣為什麼被稱為「兵家必爭之地」？", "options": ["因為地形崎嶇難行", "因為位於國際貿易路線重要節點", "因為氣候條件特殊", "因為資源特別豐富"], "answer": 1, "explanation": "台灣位於亞洲東部與太平洋交界，是國際貿易路線的重要節點。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "地緣戰略位置", "skill": "分析經濟效益", "difficulty": 3, "id": 11}, {"question": "航路服務費是台灣從哪裡獲得的收入？", "options": ["從漁業出口", "從飛機經過台灣上空", "從礦產開採", "從陸路貿易"], "answer": 1, "explanation": "飛機經過台灣上空需繳航路服務費，一年約幾十億台幣。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "航路服務費", "skill": "分析經濟效益", "difficulty": 3, "id": 12}, {"question": "2023年統計有多少架次飛機通過台灣上空？", "options": ["約19萬架次", "約10萬架次", "約50萬架次", "約5萬架次"], "answer": 0, "explanation": "2023年近19萬架次飛機通過台灣上空。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "航路服務費", "skill": "分析經濟效益", "difficulty": 3, "id": 13}, {"question": "台灣為什麼被稱為「航線黃金交叉點」？", "options": ["因為有黃色路標", "因為是東北亞與東南亞航線中點", "因為海盜多", "因為天氣變化大"], "answer": 1, "explanation": "台灣位於亞洲東部，是東北亞與東南亞航線的中點基地。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "地緣戰略位置", "skill": "分析經濟效益", "difficulty": 3, "id": 14}, {"question": "「海女」是指什麼？", "options": ["海灘游泳選手", "潛水採集海膽海菜的職業", "漁船駕駛員", "海洋研究員"], "answer": 1, "explanation": "海女是潛水採集海膽、海菜並販售補貼家用的職業。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "海洋文化", "skill": "比較文化差異", "difficulty": 3, "id": 15}, {"question": "牽罟文化是什麼樣的活動？", "options": ["獨行捕魚", "團隊拉網捕魚共享漁獲", "海邊觀鳥", "潛水競賽"], "answer": 1, "explanation": "牽罟是集合眾人拉網捕魚、共享漁獲的團隊活動。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "海洋文化", "skill": "比較文化差異", "difficulty": 3, "id": 16}, {"question": "漢人信奉的媽祖主要祈求什麼？", "options": ["學習進步", "出海平安", "財源廣進", "身體健康"], "answer": 1, "explanation": "媽祖是漁民出海平安的信仰代表。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "海洋信仰", "skill": "比較文化差異", "difficulty": 3, "id": 17}, {"question": "達悟族（雅美族）舉行祭典主要祈求什麼？", "options": ["丰收糧食", "漁獲豐盛", "風調雨順", "家人團聚"], "answer": 1, "explanation": "達悟族祭典祈求漁獲豐盛，拼板舟是他們的特色載具。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "海洋信仰", "skill": "比較文化差異", "difficulty": 3, "id": 18}, {"question": "台灣被稱為「移民聖地」是因為什麼？", "options": ["只有原住民", "有原住民族、漢人與新住民", "沒有外人", "只有漢人"], "answer": 1, "explanation": "台灣有原住民族、早期漢人移入，近年也有東南亞新住民。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "多元文化", "skill": "解釋多元社會現象", "difficulty": 3, "id": 19}, {"question": "台灣的移民節定在每年的哪一天？", "options": ["6月18日", "9月18日", "12月18日", "3月18日"], "answer": 2, "explanation": "政府訂定每年12月18日為移民節。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "多元文化政策", "skill": "解釋多元社會現象", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "為什麼台灣的地理位置能帶來經濟上的「Buff」？", "options": ["因為有高山阻擋", "因為位於國際航線中點可收取航路服務費", "因為氣候溫暖", "因為島嶼眾多"], "answer": 1, "explanation": "台灣位於航線中點，飛機經過需繳航路服務費，帶來幾十億收入。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "地緣戰略位置", "skill": "分析經濟效益", "difficulty": 4, "id": 21}, {"question": "海女文化與牽罟文化的主要差異在哪裡？", "options": ["海女是個人技能，牽罟是團隊合作", "兩者沒有差異", "海女是捕魚，牽罟是養殖", "海女是觀光，牽罟是信仰"], "answer": 0, "explanation": "海女是個人潛水採集技能，牽罟是眾人合作拉網的團隊活動。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "海洋文化", "skill": "比較文化差異", "difficulty": 4, "id": 22}, {"question": "媽祖信仰與達悟族祭典的共同點是什麼？", "options": ["都是漢人信仰", "都與海洋生活相關", "都已經消失", "都是觀光活動"], "answer": 1, "explanation": "媽祖祈求出海平安，達悟族祈求漁獲豐盛，都反映與海共生的文化。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "海洋信仰", "skill": "比較文化差異", "difficulty": 4, "id": 23}, {"question": "為什麼多元文化對台灣很重要？", "options": ["因為會造成衝突", "因為能豐富社會、促進和諧共處", "因為沒必要", "因為只有單一文化好"], "answer": 1, "explanation": "多元文化讓台灣社會更豐富，政府透過移民節促進尊重與和諧。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "多元文化", "skill": "解釋多元社會現象", "difficulty": 4, "id": 24}, {"question": "台灣周邊島嶼對台灣有什麼意義？", "options": ["沒有意義", "像專屬DLC地圖，豐富生活與文化", "只佔面積", "只是觀光景點"], "answer": 1, "explanation": "這些島嶼形成獨特生態系統，影響生活與文化，豐富台灣特色。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "島嶼特色", "skill": "解釋多元社會現象", "difficulty": 4, "id": 25}, {"question": "台灣海峽與巴士海峽的方位關係為何？", "options": ["都在東邊", "台灣海峽在西，巴士海峽在南", "都在南邊", "台灣海峽在南，巴士海峽在西"], "answer": 1, "explanation": "台灣海峽在台灣西邊與中國相隔，巴士海峽在南邊連接菲律賓。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "周邊海域", "skill": "判斷地理位置", "difficulty": 4, "id": 26}, {"question": "新住民主要來自哪些地區？", "options": ["歐洲與美洲", "東南亞如越南、印尼", "非洲與中東", "只有韓國與日本"], "answer": 1, "explanation": "近年新住民多來自東南亞國家如越南、印尼。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "多元文化", "skill": "解釋多元社會現象", "difficulty": 4, "id": 27}, {"question": "為什麼說台灣是「傳奇伺服器」？", "options": ["因為遊戲名稱", "因為地理位置重要且文化多元", "因為地形像伺服器", "因為沒有其他人知道"], "answer": 1, "explanation": "台灣地緣位置戰略重要、經濟受益、文化多元，如同傳奇伺服器。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "地緣戰略位置", "skill": "解釋多元社會現象", "difficulty": 4, "id": 28}, {"question": "澎湖、金門、馬祖、釣魚台這些島嶼的意義是什麼？", "options": ["都是同一種地形", "都是台灣範圍的一部分，各有特色", "只有澎湖重要", "都是外國所有"], "answer": 1, "explanation": "這些島嶼都是台灣範圍，影響生活文化，形成獨特生態系統。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "周邊島嶼", "skill": "判斷地理位置", "difficulty": 4, "id": 29}, {"question": "海洋文化如何影響台灣社會發展？", "options": ["沒有影響", "從捕魚技能發展出信仰、合作精神與多元生活方式", "只影響經濟", "只影響觀光"], "answer": 1, "explanation": "海洋文化孕育出海女、牽罟、媽祖信仰等，反映與海共生的社會發展。", "subject": "地理", "unit": "台灣的地理位置與文化", "concept": "海洋文化", "skill": "解釋多元社會現象", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
