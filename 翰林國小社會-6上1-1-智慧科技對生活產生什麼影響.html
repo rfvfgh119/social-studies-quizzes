@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國小社會｜6上1-1｜智慧科技對生活產生什麼影響？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "七年級", "unit": "科技與生活", "topic": "智慧科技的發展與應用", "filename": "翰林國小社會｜6上1-1｜智慧科技對生活產生什麼影響？", "summary": "以遊戲化方式介紹智慧科技演進、生活應用與利弊，建立正確科技觀。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "第一部手提電話是由哪個國家的公司在哪一年研發出來的？", "options": ["美國，1973年", "日本，1985年", "中國，1990年", "英國，2000年"], "answer": 0, "explanation": "教材明確指出美國公司在1973年研發出第一支手提電話。", "subject": "社會科", "unit": "科技與生活", "concept": "行動通訊發展", "skill": "知識辨識", "difficulty": 2, "id": 1}, {"question": "2007年哪家公司推出iPhone，被形容為手機史上的版本大更新？", "options": ["三星公司", "蘋果公司", "微軟公司", "華為公司"], "answer": 1, "explanation": "教材說明2007年蘋果公司推出iPhone，是手機史上的重大里程碑。", "subject": "社會科", "unit": "科技與生活", "concept": "行動通訊發展", "skill": "知識辨識", "difficulty": 2, "id": 2}, {"question": "早期大哥大（手提電話）的特點為何？", "options": ["輕便小巧、價格親民", "體積龐大、價格昂貴", "功能多元、價格便宜", "防水防摔、便於攜帶"], "answer": 1, "explanation": "教材指出早期手提電話價格非常昂貴，體積超級龐大，像磚塊一樣，故稱大哥大或黑金剛。", "subject": "社會科", "unit": "科技與生活", "concept": "行動通訊發展", "skill": "知識辨識", "difficulty": 2, "id": 3}, {"question": "2000年初的手機主要功能為何？", "options": ["社交媒體、影片串流", "通話、簡訊與簡單娛樂", "遠端遙控家電、AI助理", "線上購物、電子支付"], "answer": 1, "explanation": "教材提到2000年初的手機主要就是通話、簡訊和簡單娛樂功能（如貪食蛇）。", "subject": "社會科", "unit": "科技與生活", "concept": "行動通訊發展", "skill": "知識辨識", "difficulty": 2, "id": 4}, {"question": "AI人工智慧常用於哪些應用領域？", "options": ["烹飪、運動與旅遊", "語音辨識、圖片辨識與監控", "繪畫、音樂創作與寫作", "醫療手術、太空探索與建築"], "answer": 1, "explanation": "教材明確列出AI常用於語音辨識、圖片辨識和監控。", "subject": "社會科", "unit": "科技與生活", "concept": "AI生活應用", "skill": "知識辨識", "difficulty": 2, "id": 5}, {"question": "智慧校園中的「數位學生證」具備哪些功能？", "options": ["播放音樂、觀看影片", "感應記錄到校離校時間，並可結合借書或付費乘車", "遙控家中家電", "即時翻譯外語對話"], "answer": 1, "explanation": "教材說明數位學生證可感應記錄到校離校時間，有些還結合借書或付費乘車功能。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧住宅與校園", "skill": "知識辨識", "difficulty": 2, "id": 6}, {"question": "智慧圖書館的特點為何？", "options": ["需要服務員協助借還書籍", "有借閱證就能刷卡自行借還", "僅供老師進出閱讀", "必須預先登記才能使用"], "answer": 1, "explanation": "教材指出智慧圖書館沒有服務員，有借閱證就能刷卡進入，自行借還書籍。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧公共服務", "skill": "知識辨識", "difficulty": 2, "id": 7}, {"question": "智慧站牌的主要功能是？", "options": ["播放娛樂廣告", "自動販賣飲料", "完整呈現公車即時資訊", "監控乘客上下車"], "answer": 2, "explanation": "教材提到智慧站牌能完整呈現公車資訊，讓民眾即時掌握公車到站時間。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧公共服務", "skill": "知識辨識", "difficulty": 2, "id": 8}, {"question": "空氣品質感測器設置的主要目的是？", "options": ["自動淨化空氣", "讓民眾了解環境狀況，做好保護措施", "控制室內溫度", "偵測火災發生"], "answer": 1, "explanation": "教材說明設置空氣品質感測器是讓民眾了解環境狀況，從而做好相關保護措施。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧公共服務", "skill": "知識辨識", "difficulty": 2, "id": 9}, {"question": "下列何者屬於智慧住宅的應用？", "options": ["校園電子白板教學", "道路即時影像監控", "用手機遠端遙控洗衣機、掃地機", "公車智慧站牌"], "answer": 2, "explanation": "教材指出智慧住宅可用AI裝置和手機遠端遙控洗衣機、掃地機、電子鍋等家電。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧住宅與校園", "skill": "知識辨識", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "早期人們使用固定式電話的主要限制為何？", "options": ["無法長距離通話", "需要支付高額月租費", "必須待在同一處才能通話，無法隨身攜帶", "只能在白天使用"], "answer": 2, "explanation": "教材提到早期固定式電話很像被傳送點綁住，直到手機出現才能隨身攜帶，解決了移動通訊的問題。", "subject": "社會科", "unit": "科技與生活", "concept": "行動通訊發展", "skill": "分析比較", "difficulty": 3, "id": 11}, {"question": "智慧住宅與智慧校園在科技應用上的共同點為何？", "options": ["都需要使用物聯網感測器監測空氣品質", "都可以利用AI裝置與手機遠端操控提升生活與學習便利性", "都必須安裝智慧站牌", "都只能由管理者操作"], "answer": 1, "explanation": "智慧住宅可用AI裝置和手機遠端操控家電；智慧校園也有智慧學習教室和數位學生證，兩者皆利用AI與手機提升便利性。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧住宅與校園", "skill": "分析比較", "difficulty": 3, "id": 12}, {"question": "下列哪一項屬於智慧科技的「負面影響」？", "options": ["改善交通擁塞", "提升公共服務效率", "睡眠中斷與眼睛疲勞", "促進城鄉均衡發展"], "answer": 2, "explanation": "教材指出長時間使用智慧裝置可能造成睡眠中斷、眼睛疲勞、頸部手腕疼痛等負面影響。", "subject": "社會科", "unit": "科技與生活", "concept": "科技雙面刃", "skill": "應用判斷", "difficulty": 3, "id": 13}, {"question": "iPhone在2007年推出後，對手機產業造成了什麼影響？", "options": ["讓所有手機廠停止研發", "引發各廠爭相研發類似智慧型手機，推動產業創新發展", "使手機價格大幅上漲", "導致固定式電話重新流行"], "answer": 1, "explanation": "教材說明iPhone推出後各廠爭相研發類似設計，直到今天智慧型手機仍不斷發展創新。", "subject": "社會科", "unit": "科技與生活", "concept": "行動通訊發展", "skill": "分析比較", "difficulty": 3, "id": 14}, {"question": "智慧公共服務如何影響城鄉發展？", "options": ["僅限於都會區使用，縮小城鄉差距", "因應人們需求而產生，逐步在城鄉普及，改善城鄉發展不平衡", "只服務政府機關，不開放民眾使用", "使城鄉差距更加擴大"], "answer": 1, "explanation": "教材指出智慧公共服務逐步在城鄉普及，可以改善城鄉發展不平衡的狀況。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧公共服務", "skill": "分析比較", "difficulty": 3, "id": 15}, {"question": "關於AI（人工智慧）的敘述，下列何者正確？", "options": ["AI是完全取代人類思考的電腦程式", "AI透過電腦模擬人類心智來解決問題", "AI只能用於手機功能，無法應用於家電", "AI是2007年才發展出來的技術"], "answer": 1, "explanation": "教材定義AI是透過電腦模擬人類心智解決問題，常用於語音辨識、圖片辨識和監控。", "subject": "社會科", "unit": "科技與生活", "concept": "AI生活應用", "skill": "分析比較", "difficulty": 3, "id": 16}, {"question": "下列哪一項是智慧校園的應用？", "options": ["遠端遙控家中電子鍋", "道路即時影像監控", "電子白板互動與數位學習平臺", "智慧站牌公車資訊"], "answer": 2, "explanation": "教材提到智慧校園建置智慧學習教室，師生能用電子白板互動及數位學習平臺，屬於校園應用。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧住宅與校園", "skill": "應用判斷", "difficulty": 3, "id": 17}, {"question": "下列哪一項是智慧科技的正面效益？", "options": ["注意力下降", "與他人交流變弱", "提升政府效能和公共服務品質", "長時間使用導致頸部疼痛"], "answer": 2, "explanation": "教材指出智慧科技用於改善公共設施、交通，提升政府效能和品質，是智慧公共服務的正面效益。", "subject": "社會科", "unit": "科技與生活", "concept": "科技雙面刃", "skill": "應用判斷", "difficulty": 3, "id": 18}, {"question": "智慧手機帶來的負面影響中，「與他人交流變弱」屬於哪一層面？", "options": ["生理層面", "心理層面", "社交層面", "經濟層面"], "answer": 2, "explanation": "與他人交流變弱屬於社交層面的負面影響，教材將此列為智慧科技問題的其中之一。", "subject": "社會科", "unit": "科技與生活", "concept": "科技雙面刃", "skill": "分析比較", "difficulty": 3, "id": 19}, {"question": "從固定式電話到智慧型手機的發展過程，反映出科技演進的什麼趨勢？", "options": ["設備越來越笨重、功能越來越少", "設備越來越便攜、功能越來越多元", "價格持續上漲，只有少數人用得起", "完全取代了所有傳統通訊方式，沒有任何問題"], "answer": 1, "explanation": "從固定式電話→大哥大→2000年初手機→智慧型手機，體現設備越來越便攜、功能越來越多元的演進趨勢。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧科技演進", "skill": "分析比較", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "如果小明每天使用手機超過6小時，最可能出現哪些健康問題？", "options": ["視力變好、睡眠充足", "頸部手腕疼痛、注意力下降、睡眠中斷", "體能變強、社交能力提升", "反應變快、學習效率提高"], "answer": 1, "explanation": "教材指出長時間使用智慧裝置可能造成睡眠中斷、眼睛疲勞、頸部手腕疼痛及注意力下降等問題。", "subject": "社會科", "unit": "科技與生活", "concept": "科技雙面刃", "skill": "綜合評鑑", "difficulty": 4, "id": 21}, {"question": "關於智慧科技的利弊，下列哪一項評析最為適當？", "options": ["智慧科技只有好處，完全沒有負面影響", "智慧科技完全有害，應該全面禁止使用", "智慧科技是雙面刃，善用可帶來便利，但需注意負面影響", "智慧科技只對年輕人有利，對老年人沒有任何幫助"], "answer": 2, "explanation": "教材明確提出「科技是雙面刃」，智慧科技帶來便利的同時也可能產生健康與社交等負面影響。", "subject": "社會科", "unit": "科技與生活", "concept": "科技雙面刃", "skill": "綜合評鑑", "difficulty": 4, "id": 22}, {"question": "下列哪一項措施最能有效改善城鄉發展不平衡的問題？", "options": ["在都會區增建更多購物中心", "僅擴充都會區的智慧公共服務", "逐步在城鄉普及智慧公共服務，如空氣品質感測器、智慧站牌等", "取消鄉村的網路建設"], "answer": 2, "explanation": "教材指出智慧公共服務逐步在城鄉普及，可以改善城鄉發展不平衡的狀況。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧公共服務", "skill": "綜合評鑑", "difficulty": 4, "id": 23}, {"question": "某校引入AI語音辨識系統協助學生學習外語，此舉主要體現了AI的什麼特色？", "options": ["AI可以完全取代老師的教學工作", "AI透過電腦模擬人類心智來解決特定問題", "AI只能用於監控用途", "AI的發展與科技演進無關"], "answer": 1, "explanation": "AI透過電腦模擬人類心智解決問題，語音辨識是其典型應用之一，體現了AI的智能化特徵。", "subject": "社會科", "unit": "科技與生活", "concept": "AI生活應用", "skill": "應用判斷", "difficulty": 4, "id": 24}, {"question": "一位長輩不會使用智慧型手機，最可能遭遇什麼困難？", "options": ["無法獲得任何資訊", "不會操作，像是新手教程沒過", "手機會自動傷害他", "智慧型手機對他完全沒有用處"], "answer": 1, "explanation": "教材提到有些人不會操作智慧型手機，像新手教程沒過，反映數位落差的問題。", "subject": "社會科", "unit": "科技與生活", "concept": "科技雙面刃", "skill": "應用判斷", "difficulty": 4, "id": 25}, {"question": "從1973年第一部手提電話到2007年iPhone，再到今天智慧型手機的不斷創新，此發展過程說明了什麼？", "options": ["科技發展是一蹴可幾的", "科技演進是為了讓人類生活更便利，持續研發與創新", "科技發展只受美國公司主導", "早期的科技設備比現代的更好用"], "answer": 1, "explanation": "教材指出人們為了讓生活更便利，持續研發科學技術，從早期手提電話到iPhone再到現今智慧型手機的演進正說明了這一點。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧科技演進", "skill": "綜合評鑑", "difficulty": 4, "id": 26}, {"question": "下列哪一項是智慧科技在「公共服務領域」的正確應用？", "options": ["在家中用手機遙控掃地機器人", "智慧圖書館刷卡自行借還書籍", "校園數位學生證記錄到校時間", "智慧型手機玩線上遊戲"], "answer": 1, "explanation": "智慧圖書館屬於智慧公共服務的範疇；B為公共服務，A為智慧住宅，C為智慧校園，D為個人娛樂。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧公共服務", "skill": "綜合評鑑", "difficulty": 4, "id": 27}, {"question": "若某市計畫導入智慧科技來提升交通管理效能，下列哪項措施最不適當？", "options": ["設置道路即時影像監控掌握路況", "設立智慧站牌提供公車即時資訊", "在每個路口安裝空氣品質感測器", "全面拆除所有交通號誌"], "answer": 3, "explanation": "拆除交通號誌會造成交通混亂，不符合智慧科技改善公共服務的宗旨，其余選項皆為教材中提到的正確應用。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧公共服務", "skill": "綜合評鑑", "difficulty": 4, "id": 28}, {"question": "關於智慧住宅，下列敘述何者最適當？", "options": ["智慧住宅只能用AI裝置操控，無法用手機遙控", "智慧住宅的核心是用AI裝置結合手機遠端遙控，達成節能與方便功能", "智慧住宅只需要裝設掃地機器人即可，不需要其他設備", "智慧住宅與智慧校園沒有任何關聯"], "answer": 1, "explanation": "教材說明智慧住宅可用AI裝置把家裡打造成智慧環境，並用手機遠端遙控，達成節能與方便功能。", "subject": "社會科", "unit": "科技與生活", "concept": "智慧住宅與校園", "skill": "綜合評鑑", "difficulty": 4, "id": 29}, {"question": "老師要求學生分析智慧科技對青少年生活的影響，下列哪一項分析最全面？", "options": ["智慧科技只有好處，因為讓生活更方便", "智慧科技只有壞處，因為會讓人變懶惰", "智慧科技有利有弊，便利生活的同時也可能造成睡眠中斷、眼睛疲勞、注意力下降等問題，需謹慎使用", "智慧科技與青少年完全無關"], "answer": 2, "explanation": "教材以「雙面刃」形容科技，強調其既能帶來便利，也可能產生睡眠、健康與社交等負面影響，需全面看待。", "subject": "社會科", "unit": "科技與生活", "concept": "科技雙面刃", "skill": "綜合評鑑", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
