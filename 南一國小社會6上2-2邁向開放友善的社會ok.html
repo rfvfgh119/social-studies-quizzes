@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會6上2-2邁向開放友善的社會ok</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科（歷史）", "grade": "國中三年級", "unit": "近現代臺灣社會變遷", "topic": "邁向開放友善的臺灣社會：藝文、女性與族群權益", "filename": "南一國小社會6上2-2邁向開放友善的社會ok", "summary": "以遊戲比喻串聯臺灣近現代藝文、女性與族群權益的社會變遷歷程。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "教材中以什麼比喻來描述社會科學習的方式？", "options": ["玩大富翁遊戲", "玩線上遊戲的版本大更新", "閱讀冒險小說", "參加運動競賽"], "answer": 1, "explanation": "教材中將社會科比喻為「版本大更新」，強調掌握邏輯就能玩轉歷史。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "社會科學習方法", "skill": "概念辨識", "difficulty": 2, "id": 1}, {"question": "清帝國時期的藝文創作主要圍繞哪些主題？", "options": ["原住民族史詩", "民間信仰（廟宇與戲劇）", "殖民政府宣傳", "現代抽象藝術"], "answer": 1, "explanation": "教材指出清帝國時期的創作大多圍繞民間信仰，例如廟宇與戲劇。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "清帝國藝文創作", "skill": "時序定位", "difficulty": 2, "id": 2}, {"question": "日治時期日本殖民政府推行的文化政策名稱為何？", "options": ["漢化政策", "本土化政策", "皇民化政策", "去殖民化政策"], "answer": 2, "explanation": "教材提到日治時期官方推行「皇民化政策」，對臺灣本土創作產生限制。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "皇民化政策", "skill": "歷史分期", "difficulty": 2, "id": 3}, {"question": "《望春風》原本是什麼主題的歌曲？", "options": ["抗日英雄歌", "軍國主義號召曲", "少女戀愛曲", "原住民族祭儀歌"], "answer": 2, "explanation": "教材說明《望春風》本來是少女戀愛曲，後來被日治政府改編成軍歌。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "歌曲演變與政治管控", "skill": "史料解讀", "difficulty": 2, "id": 4}, {"question": "戒嚴時期，《望春風》被官方認定為何種性质的歌曲？", "options": ["愛國歌曲", "民間歌謠", "禁歌", "原住民古調"], "answer": 2, "explanation": "教材指出戒嚴時期官方公告《望春風》內容太開放，被列為禁歌。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "戒嚴時期文化審查", "skill": "現象辨識", "difficulty": 2, "id": 5}, {"question": "李梅樹的畫作《黃昏》在戒嚴時期被認為充滿了什麼氛圍？", "options": ["喜悅與希望", "不安", "繁榮與進步", "懷舊與鄉愁"], "answer": 1, "explanation": "教材提到李梅樹的《黃昏》充滿不安，反映了當時創作者的心境。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "戒嚴時期的隱喻創作", "skill": "史料解讀", "difficulty": 2, "id": 6}, {"question": "清帝國時期女性受到的主要限制之一是？", "options": ["無法接受教育", "纏足", "不能出門", "不能婚嫁"], "answer": 1, "explanation": "教材指出清帝國時期女性有如被綁定技能，例如纏足，這嚴重限制女性行動。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "清代女性處境", "skill": "歷史分期", "difficulty": 2, "id": 7}, {"question": "日治時期官方推動解放纏足的主要目的是什麼？", "options": ["提升女性社會地位", "實現性別平權", "提升勞動力", "響應國際人權潮流"], "answer": 2, "explanation": "教材說明日治時期官方推動解放纏足是為了提升勞動力，而非單純的人權考量。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "日治時期女性政策", "skill": "因果推論", "difficulty": 2, "id": 8}, {"question": "教材中提到的臺灣第一位女醫師是誰？", "options": ["林獻堂", "蔡阿信", "廖文毅", "蔣渭水"], "answer": 1, "explanation": "教材提到蔡阿信是臺灣第一位女醫師，被比喻為傳奇NPC。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "日治時期女性代表人物", "skill": "人物辨識", "difficulty": 2, "id": 9}, {"question": "魏德聖導演的電影《賽德克‧巴萊》主要講述什麼題材？", "options": ["清代開台故事", "日治時期日本皇族來臺", "原住民族反抗歷史", "戒嚴時期白色恐怖"], "answer": 2, "explanation": "教材指出《賽德克‧巴萊》講的是原住民族反抗的題材。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "解嚴後藝文創作", "skill": "內容辨識", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "日治時期皇民化政策對臺灣藝文創作的影響，最接近下列哪項描述？", "options": ["鼓勵本土創作自由發展", "全面禁止所有藝術形式", "限制創作內容並強制同化", "只針對原住民族藝文進行管控"], "answer": 2, "explanation": "皇民化政策對創作形成限制（Nerf），例如布袋戲被迫換上日式造型、口白改用日語，體現強制同化。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "皇民化政策的影響", "skill": "因果推論", "difficulty": 3, "id": 11}, {"question": "解嚴前後，臺灣藝文創作環境有何關鍵轉變？", "options": ["解嚴後創作題材完全不受限制", "解嚴前創作者全面沉默", "解嚴後藝術家紛紛創作，題材不再受限", "解嚴前後創作環境沒有明顯變化"], "answer": 2, "explanation": "教材以「伺服器大解放」比喻解嚴後，藝術家們紛紛跳出，創作題材不再受限。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "解嚴對藝文的影響", "skill": "比較分析", "difficulty": 3, "id": 12}, {"question": "戒嚴時期部分創作者如何表達對現實的不滿？", "options": ["公開抗議創作審查", "完全停止創作活動", "使用隱喻手法創作，如黃春明《大玩偶》", "全部轉往海外發表作品"], "answer": 2, "explanation": "教材提到黃春明的《大玩偶》隱喻生活困境，李梅樹《黃昏》充滿不安，反映戒嚴時期的隱喻批判創作。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "戒嚴時期的隱喻創作", "skill": "史料解讀", "difficulty": 3, "id": 13}, {"question": "日治時期《望春風》被改編成軍歌，這項改變反映什麼歷史脈絡？", "options": ["民間自發的文化交流", "殖民政府透過文化進行戰爭動員與同化", "歌曲作者主動配合日本政策", "臺灣民眾自願支持日本軍事擴張"], "answer": 1, "explanation": "《望春風》被強制改編成號召當兵的軍歌，體現皇民化政策透過文化手段進行戰爭動員與同化。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "皇民化政策的同化目的", "skill": "因果推論", "difficulty": 3, "id": 14}, {"question": "日治時期解放纏足的推動主體與目的為何？", "options": ["民間女權團體自發推動，追求性別平權", "女性教育團體倡議，提升女性素質", "官方推動，主要目的為提升勞動力", "國際組織要求，改善臺灣婦女處境"], "answer": 2, "explanation": "教材明確指出日治時期官方推動解放纏足是為了提升勞動力，而非基於人權或平權考量。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "纏足廢除的政策動機", "skill": "因果推論", "difficulty": 3, "id": 15}, {"question": "清帝國時期女性的處境與日治時期相比，最大的差異在於？", "options": ["日治時期女性完全無法受教育", "清帝國時期女性已享有平等就業權", "日治時期女性獲得部分教育機會且纏足被解放", "兩時期女性處境完全相同"], "answer": 3, "explanation": "清帝國女性受纏足限制，而日治時期官方推動解放纏足，部分女性也獲得教育機會（如蔡阿信）。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "女性地位演變比較", "skill": "現象比較", "difficulty": 3, "id": 16}, {"question": "原住民族在日治與國民政府時期，姓名權經歷了什麼情況？", "options": ["一直自由使用族名", "日治時期改用漢名，國民政府時期改用日文名", "日治時期強制使用日文名，國民政府時期強制改漢名", "兩個時期都尊重原住民族姓名權"], "answer": 2, "explanation": "教材指出日治時期要用日文名，國民政府來臺後又強制改漢名，嚴重影響原住民族的身分認同。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "原住民族姓名權的歷史變遷", "skill": "歷史分期", "difficulty": 3, "id": 17}, {"question": "當前政府保障原住民族姓名權的措施，主要體現什麼社會價值？", "options": ["文化同化", "經濟發展優先", "尊重多元與族群認同", "傳統漢文化的復興"], "answer": 2, "explanation": "政府修法保障原住民族姓名權，可用族語拼音與漢名並列，體現對多元族群與身分認同的尊重。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "原住民族權利保障", "skill": "價值判斷", "difficulty": 3, "id": 18}, {"question": "性別友善廁所、高齡者專用扶手、男廁尿布台等設施的出現，反映社會什麼轉變？", "options": ["政府財政預算增加", "建築技術進步的結果", "社會對多元族群需求的重視與照顧", "觀光產業發展的需求"], "answer": 2, "explanation": "這些設施設計考量不同族群需求（女性、高齡者、帶嬰幼兒的父亲），反映社會邁向多元包容。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "公共設施與社會價值", "skill": "現實連結", "difficulty": 3, "id": 19}, {"question": "從清帝國到解嚴後，臺灣社會在女性權益方面的演變，最恰當的描述是？", "options": ["女性權益問題從未改善", "女性權益改善完全由民間女性自發推動", "從纏足限制到性別平權，女性逐步獲得選擇自由", "日治時期已實現完全的女性平等"], "answer": 2, "explanation": "教材描述從清帝國纏足限制，經日治時期解放纏足與教育機會，到現今性別平權，女性逐步獲得自由選擇的權利。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "女性權益演變", "skill": "因果推論", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "綜合教材內容，推動臺灣社會從封閉走向開放友善的核心動力是什麼？", "options": ["外來勢力的強制改變", "人們對權益、平等與自由的追求", "經濟發展的必然結果", "國際政治壓力的影響"], "answer": 1, "explanation": "教材明確指出，社會變遷的驅動來自人們對「權益、平等與自由」的追求，這是核心概念。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "社會變遷的驅動力量", "skill": "概念抽象化", "difficulty": 4, "id": 21}, {"question": "從藝文創作、女性權益到族群權利，這三條脈絡的共同特質是什麼？", "options": ["都完全由官方主動推動", "都是從受限走向逐步開放與尊重多元的過程", "都只在解嚴後才開始改變", "都受到西方文化單向影響"], "answer": 1, "explanation": "教材展現三條脈絡都經歷從限制（清帝國纏足、日治皇民化、戒嚴審查、原住民族強制更名）到開放尊重多元的演進。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "社會變遷的普遍規律", "skill": "統合分析", "difficulty": 4, "id": 22}, {"question": "日治時期皇民化政策與解嚴後政府保障原住民族姓名權，兩者在對待文化認同的態度上有何本質差異？", "options": ["兩者都尊重文化多元", "皇民化政策強制同化，現代政策則保障多元認同", "兩者都是壓迫性的政策", "皇民化政策鼓勵文化多樣性"], "answer": 1, "explanation": "皇民化政策強制臺灣人改用日文名、改日式造型，是強制同化；現代政策允許族語拼音與漢名並列，則尊重多元認同。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "文化政策比較", "skill": "比較分析", "difficulty": 4, "id": 23}, {"question": "戒嚴時期創作者採用隱喻手法（如《大玩偶》《黃昏》），與解嚴後的創作自由相比，反映了什麼社會現象？", "options": ["創作者的才華在戒嚴時期更高", "政治管控影響創作表達方式，解除管控後創作更自由多元", "解嚴後創作品質下降", "隱喻創作是日治時期的傳統"], "answer": 1, "explanation": "戒嚴時期審查嚴格（Ban內容），創作者被迫以隱喻表達；解嚴後如伺服器解放，創作題材不再受限，反映政治環境對創作的深刻影響。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "政治體制與文化管控", "skill": "因果推論", "difficulty": 4, "id": 24}, {"question": "從纏足的廢除到性別友善廁所的設立，這些變遷背後體現了社會對「人」的什麼認知轉變？", "options": ["從將女性視為附屬品到承認每個人有平等尊嚴與多元需求", "從重視男性到完全忽視男性需求", "從傳統價值到完全否定傳統", "從政府主導到完全民間自發"], "answer": 0, "explanation": "纏足將女性身體受限，是性別歧視的體現；性別友善廁所與無障礙設施則承認不同族群（女性、高齡者、身障者）各有平等需求與尊嚴。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "性別平權與多元包容", "skill": "概念抽象化", "difficulty": 4, "id": 25}, {"question": "教材將社會變遷比喻為「遊戲版本更新」，這個比喻最貼切地說明了什麼？", "options": ["歷史只是虛構的娛樂", "社會變遷是隨機且無規律的", "社會變遷具有累積性與進步性，新版本修正舊問題並解鎖新功能", "歷史發展是由少數玩家（統治者）單方面決定的"], "answer": 2, "explanation": "教材以版本更新比喻社會變遷，強調舊伺服器（舊體制）有限制，新版本修正問題並解鎖新功能（如開放創作、性別平權），體現累積進步性。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "社會變遷的本質", "skill": "概念抽象化", "difficulty": 4, "id": 26}, {"question": "如果將原住民族姓名權的恢復視為一種「技能解鎖」，那麼這項解鎖對原住民族社會最有什麼深層意義？", "options": ["讓原住民族能更方便地使用漢語", "恢復身分認同與文化傳承的權利", "促進原住民族完全漢化", "減少原住民族與主流社會的差異"], "answer": 1, "explanation": "強制更名被比喻為「砍掉種族天賦」，姓名權恢復讓族人能用族語拼音，是對身分認同與文化傳承的重要保障。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "族群權利與認同", "skill": "價值判斷", "difficulty": 4, "id": 27}, {"question": "從清代到現今，臺灣社會在「多元包容」方面的演進，下列排序何者正確？", "options": ["清代最包容→日治時期→戒嚴時期→解嚴後最包容", "清代與日治時期都缺乏多元尊重→戒嚴時期文化審查→解嚴後逐步邁向開放友善", "日治時期最進步→清代次之→解嚴後退步", "戒嚴時期已有充分多元包容"], "answer": 1, "explanation": "清代纏足限制女性、日治皇民化同化、戒嚴時期審查創作，都缺乏多元尊重；解嚴後藝文解放、女性平權、原住民族權利保障，逐步邁向開放友善。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "社會變遷的時序演進", "skill": "歷史分期與比較", "difficulty": 4, "id": 28}, {"question": "網路時代影音創作平台的興起，對臺灣社會的「開放友善」有何貢獻？", "options": ["讓所有人都必須成為UP主", "只有專業藝術家能發布作品", "降低創作門檻，讓更多人能自由發布作品，促進多元聲音", "完全取代傳統藝文創作"], "answer": 2, "explanation": "教材提到網路發達後，影音平台讓大家都能在當UP主，自由發布作品，形成UGC（使用者產生內容）模式，體現社會更開放多元。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "科技發展與社會開放", "skill": "現實連結", "difficulty": 4, "id": 29}, {"question": "綜合全篇教材，若要用一個核心概念概括臺灣社會從封閉走向開放友善的歷程，最適當的是？", "options": ["武力征服", "經濟增長", "對權益、平等與自由的不懈追求", "文化同化"], "answer": 2, "explanation": "教材結尾總結：社會變遷的驅動來自人們對「權益、平等與自由」的追求，這貫穿藝文、女性、族群三條脈絡，是核心概念。", "subject": "歷史", "unit": "近現代臺灣社會變遷", "concept": "社會變遷的核心動力", "skill": "概念抽象化與統合", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
