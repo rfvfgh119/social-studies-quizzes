@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會｜6上1-1｜臺灣人民爭取民主自由的歷程為何？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "三年級", "unit": "臺灣戰後時期", "topic": "二二八事件、戒嚴與解嚴、民主化進程", "filename": "康軒社會｜6上1-1｜臺灣人民爭取民主自由的歷程為何？", "summary": "以遊戲比喻解說臺灣戰後時期從二二八事件、戒嚴到解嚴與民主化的政治發展歷程。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "中華民國接收臺灣是在民國幾年？", "options": ["民國三十四年", "民國三十六年", "民國三十八年", "民國四十三年"], "answer": 0, "explanation": "民國三十四年（1945年）日本戰敗投降後，中華民國接收臺灣。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "戰後政權轉移", "skill": "關鍵時間點記憶", "difficulty": 2, "id": 1}, {"question": "二二八事件發生在民國幾年？", "options": ["民國三十五年", "民國三十六年", "民國三十七年", "民國三十八年"], "answer": 1, "explanation": "二二八事件發生在民國三十六年（1947年）。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "二二八事件", "skill": "關鍵時間點記憶", "difficulty": 2, "id": 2}, {"question": "戒嚴令是在民國幾年開始實施？", "options": ["民國三十五年", "民國三十六年", "民國三十七年", "民國三十八年"], "answer": 3, "explanation": "民國三十八年（1949年），Admin在中國大陸戰線失利後頒布戒嚴令。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "戒嚴體制", "skill": "關鍵時間點記憶", "difficulty": 2, "id": 3}, {"question": "解除戒嚴是在民國幾年？", "options": ["民國六十八年", "民國七十六年", "民國八十年", "民國八十五年"], "answer": 1, "explanation": "民國七十六年（1987年），累積的壓力讓Admin決定解除戒嚴。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "解除戒嚴", "skill": "關鍵時間點記憶", "difficulty": 2, "id": 4}, {"question": "臺灣首次實施總統副總統直選是在民國幾年？", "options": ["民國七十六年", "民國八十年", "民國八十二年", "民國八十五年"], "answer": 3, "explanation": "民國八十五年（1996年）臺灣首次實施總統副總統直選。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "總統直選", "skill": "關鍵時間點記憶", "difficulty": 2, "id": 5}, {"question": "二二八事件的直接起因是什麼？", "options": ["學生示威遊行", "查緝私菸事件", "經濟大蕭條", "政黨成立遭禁"], "answer": 1, "explanation": "民國三十六年一個查緝私菸的小事件，觸發了二二八事件。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "二二八事件", "skill": "歷史事件排序與因果推論", "difficulty": 2, "id": 6}, {"question": "戒嚴令期間，人民的哪些自由被限制？", "options": ["言論與集會自由", "言論與財產自由", "教育與工作自由", "宗教與旅行自由"], "answer": 0, "explanation": "戒嚴令讓伺服器全面鎖定，玩家言論集會自由被Ban。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "戒嚴體制", "skill": "關鍵時間點記憶", "difficulty": 2, "id": 7}, {"question": "美麗島事件發生在民國幾年？", "options": ["民國六十六年", "民國六十八年", "民國七十年", "民國七十二年"], "answer": 1, "explanation": "民國六十八年（1979年）美麗島雜誌社舉辦遊行，爆發美麗島事件。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "美麗島事件", "skill": "關鍵時間點記憶", "difficulty": 2, "id": 8}, {"question": "戒嚴令實施的主要目的是什麼？", "options": ["促進經濟發展", "防止CCP陣營入侵", "推動教育改革", "加強文化交流"], "answer": 1, "explanation": "Admin在中國大陸戰線失利後，為防止CCP陣營入侵而頒布戒嚴令。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "戒嚴體制", "skill": "歷史事件排序與因果推論", "difficulty": 2, "id": 9}, {"question": "解除戒嚴後，各種新政黨、報社、電視臺紛紛成立，這代表什麼？", "options": ["經濟復甦", "政治民主化進程加速", "文化復古", "外交關係改善"], "answer": 1, "explanation": "解嚴後開啟新的科技樹，各種新政黨、報社、電視臺紛紛成立，加速政治民主化。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "解除戒嚴", "skill": "政治制度變遷理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "戰後初期臺灣面臨哪些困境？", "options": ["物資充足、失業率低", "物資缺乏、失業嚴重", "經濟繁榮、外商涌入", "政治開放、言論自由"], "answer": 1, "explanation": "開局就有全球Debuff，物資嚴重缺乏、失業問題超級嚴重。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "戰後政權轉移", "skill": "歷史事件排序與因果推論", "difficulty": 3, "id": 11}, {"question": "為什麼政府新來的NPC官員跟臺灣本地玩家會有溝通問題？", "options": ["他們使用不同貨幣", "語言文化不通", "宗教信仰不同", "法律制度一樣"], "answer": 1, "explanation": "來自中國的NPC官員跟臺灣本地玩家因語言文化不通，出現各種溝通Bug。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "戰後政權轉移", "skill": "理解應用題", "difficulty": 3, "id": 12}, {"question": "戒嚴前，總統是如何產生的？", "options": ["人民直接投票選出", "國民大會代表代為投票選出", "由日本天皇任命", "由地方縣長推選"], "answer": 1, "explanation": "戒嚴前總統由少數精英國民大會代表代為投票選出，一般玩家不能參與。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "國民大會", "skill": "政治制度變遷理解", "difficulty": 3, "id": 13}, {"question": "民國六十八年美麗島雜誌社舉辦遊行，造成了什麼結果？", "options": ["成功通過民主改革", "被Admin鎮壓，爆發美麗島事件", "促成戒嚴解除", "設立二二八紀念館"], "answer": 1, "explanation": "民國六十八年底美麗島雜誌社舉辦遊行，數萬玩家響應，結果被Admin鎮壓，爆發美麗島事件。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "美麗島事件", "skill": "歷史事件排序與因果推論", "difficulty": 3, "id": 14}, {"question": "解嚴後政府如何處理二二八事件？", "options": ["維持沉默不談", "追究相關人員刑責", "平反、公開道歉、設立紀念場館", "將二二八事件從歷史課本刪除"], "answer": 2, "explanation": "解嚴後玩家們要求政府檢視過往錯誤，二二八事件開始平反、公開道歉、設立紀念場館。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "解除戒嚴", "skill": "歷史事件排序與因果推論", "difficulty": 3, "id": 15}, {"question": "國民大會代表選舉與總統直選有什麼主要不同？", "options": ["國民大會代表選舉是全民直選", "總統直選由少數精英決定", "國民大會代表代為投票選總統，總統直選讓所有玩家參與", "兩者沒有差別"], "answer": 2, "explanation": "戒嚴前由國民大會代表代選總統，直選後讓所有玩家都能參與決定伺服器未來。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "國民大會", "skill": "比較與分析能力", "difficulty": 3, "id": 16}, {"question": "為什麼說二二八事件的後續影響了臺灣伺服器很久？", "options": ["因為事件讓臺灣經濟起飛", "事件造成大量傷亡，成為長期Debuff", "因為事件讓政府更開明", "因為事件讓臺灣獨立"], "answer": 1, "explanation": "Admin暴力鎮壓造成大量玩家傷亡，後續Debuff影響臺灣伺服器很久。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "二二八事件", "skill": "理解應用題", "difficulty": 3, "id": 17}, {"question": "美麗島事件與二二八事件有什麼相似之處？", "options": ["都發生在民國三十六年", "都是玩家上街抗議後遭Admin暴力鎮壓", "都導致戒嚴解除", "都由查緝私菸事件引發"], "answer": 1, "explanation": "兩個事件都是玩家上街抗議要求改革，卻遭Admin暴力鎮壓。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "二二八事件", "skill": "比較與分析能力", "difficulty": 3, "id": 18}, {"question": "為什麼說總統直選是遊戲的最終DLC？", "options": ["因為直選需要額外付費", "因為直選讓所有玩家能參與決定伺服器未來", "因為直選是遊戲最後一個版本", "因為直選讓遊戲更難玩"], "answer": 1, "explanation": "民國八十五年首次總統直選，讓所有玩家都能參與決定伺服器的未來走向。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "總統直選", "skill": "政治制度變遷理解", "difficulty": 3, "id": 19}, {"question": "解嚴被比喻為『大型伺服器維修』，這是因為什麼？", "options": ["伺服器硬體被維修", "累積的壓力與民意讓Admin決定改革，解除多項限制", "遊戲帳號被恢復", "伺服器被關閉"], "answer": 1, "explanation": "民國七十六年累積的壓力與民意，讓Admin決定進行大型伺服器維修，宣布解除戒嚴。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "解除戒嚴", "skill": "理解應用題", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "從二二八事件到總統直選，臺灣政治發展的整體脈絡為何？", "options": ["從開放到高壓再回到高壓", "從戰後接收、高壓統治到逐步民主化", "從民主自由到共產專制", "從獨立建國到回歸中國"], "answer": 1, "explanation": "從二二八事件、戒嚴高壓，到美麗島事件後壓力累積，最終解嚴與總統直選，是逐步民主化的歷程。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "民主化進程", "skill": "歷史事件排序與因果推論", "difficulty": 4, "id": 21}, {"question": "為什麼說臺灣的民主是無數前輩玩家犧牲爭取來的？", "options": ["因為前輩玩家送了許多遊戲道具", "因為前輩玩家不斷爭取權利，最終促成解嚴與直選", "因為前輩玩家買下了整個伺服器", "因為前輩玩家放棄了所有權利"], "answer": 1, "explanation": "從美麗島事件到解嚴，前輩玩家不斷努力爭取，他們的犧牲才讓臺灣從高壓版本進化成民主自由大作。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "民主化進程", "skill": "歷史意義評估", "difficulty": 4, "id": 22}, {"question": "比較二二八事件與美麗島事件，下列敘述何者正確？", "options": ["兩事件都發生在民國六十八年", "兩事件都是民間抗議遭鎮壓，但相隔三十多年", "二二八事件造成解嚴，美麗島事件未造成任何影響", "兩事件都由查緝私菸引發"], "answer": 1, "explanation": "二二八事件在民國三十六年，美麗島事件在民國六十八年，相隔三十多年，都是抗議遭鎮壓，但性質與時代背景不同。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "二二八事件", "skill": "比較與分析能力", "difficulty": 4, "id": 23}, {"question": "為什麼說解嚴是民主化進程的重要轉捩點？", "options": ["因為解嚴後臺灣立即獨立", "因為解嚴後新政黨、媒體成立，民眾才能自由爭取更多權利", "因為解嚴讓國民大會立即解散", "因為解嚴讓戒嚴令變得更嚴格"], "answer": 1, "explanation": "解嚴後開啟新科技樹，新政黨、報社、電視臺紛紛成立，加速民主化進程，讓後續平反與直選成為可能。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "解除戒嚴", "skill": "歷史意義評估", "difficulty": 4, "id": 24}, {"question": "從遊戲比喻角度看，國民大會制度相對於總統直選，最大的限制是什麼？", "options": ["國民大會代表是全民直選，限制很少", "只有少數精英代表能代為投票，一般玩家無法參與", "國民大會與直選完全一樣", "國民大會制度讓所有玩家都能直接選總統"], "answer": 1, "explanation": "國民大會制度下只有少數精英代表能代為投票選總統，一般玩家（人民）不能直接參與，直到直選才改變。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "國民大會", "skill": "比較與分析能力", "difficulty": 4, "id": 25}, {"question": "戒嚴體制對臺灣社會造成的長期影響，最符合教材敘述的是？", "options": ["戒嚴讓臺灣經濟完全停滯", "戒嚴期間言論集會自由被Ban，許多技能被禁用，影響深遠", "戒嚴讓臺灣迅速成為民主國家", "戒嚴期間沒有任何鎮壓事件"], "answer": 1, "explanation": "戒嚴令讓伺服器全面鎖定，言論集會自由被Ban，歌曲書籍被審查，觸犯禁忌可能被封號，影響臺灣伺服器很久。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "戒嚴體制", "skill": "歷史意義評估", "difficulty": 4, "id": 26}, {"question": "從因果關係分析，下列哪一事件最間接促成了總統直選的實施？", "options": ["日本戰敗投降", "二二八事件與戒嚴的形成", "美麗島事件累積民意壓力後解嚴，再經多年爭取實現直選", "中華民國接收臺灣"], "answer": 2, "explanation": "美麗島事件累積民意壓力促成解嚴，解嚴後民主化進程加速，最終在民國八十五年實現總統直選，是間接因果鏈。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "民主化進程", "skill": "歷史事件排序與因果推論", "difficulty": 4, "id": 27}, {"question": "綜合二二八事件、戒嚴、解嚴與直選，臺灣戰後時期最大的政治轉變是什麼？", "options": ["從經濟落後轉變為經濟強國", "從高壓統治轉變為民主自由", "從民主自由轉變為高壓統治", "從獨立國家轉變為中國一部分"], "answer": 1, "explanation": "臺灣伺服器從二二八事件後的高壓管理版本，經過解嚴與直選，最終進化成民主自由大作。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "民主化進程", "skill": "歷史意義評估", "difficulty": 4, "id": 28}, {"question": "如果沒有解除戒嚴，下列哪項變化最不可能發生？", "options": ["物資缺乏問題改善", "新政黨與媒體的成立與民主化進程", "國民大會制度自動消失", "日本戰敗投降"], "answer": 1, "explanation": "解嚴是民主化的關鍵轉捩點，若未解嚴，新政黨與媒體成立、民主化進程將受阻，最終DLC總統直選也更難實現。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "解除戒嚴", "skill": "歷史意義評估", "difficulty": 4, "id": 29}, {"question": "教材中將二二八事件的平反比喻為什麼？", "options": ["更新遊戲畫面", "修復遊戲Bug、重建玩家信任", "關閉伺服器", "新增更多收費內容"], "answer": 1, "explanation": "二二八事件平反、道歉、設立紀念場館，就像修復遊戲Bug、重建玩家信任。", "subject": "社會科", "unit": "臺灣戰後時期", "concept": "二二八事件", "skill": "理解應用題", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
