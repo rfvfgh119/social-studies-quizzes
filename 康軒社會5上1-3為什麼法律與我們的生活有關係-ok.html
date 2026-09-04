@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上1-3為什麼法律與我們的生活有關係？ok</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會", "grade": "國中", "unit": "法律與生活", "topic": "法治世界的遊戲引擎", "filename": "康軒社會5上1-3為什麼法律與我們的生活有關係？ok", "summary": "以遊戲比喻講解法律在生活中的功能，涵蓋兒少權益、網路安全、著作權與國家賠償等主題。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，法律被比喻為遊戲中的什麼？", "options": ["隱藏道具", "官方公告的遊戲規則", "玩家自訂設定", "隨機事件"], "answer": 1, "explanation": "教材中將法律比喻為遊戲的官方公告規則，每個玩家都需遵守。", "subject": "社會", "unit": "法律與生活", "concept": "法律的功能與目的", "skill": "理解法律概念", "difficulty": 2, "id": 1}, {"question": "法律被比喻為現實Online中的什麼功能？", "options": ["攻擊武器", "保護罩（Buff）", "隱藏地圖", "升級道具"], "answer": 1, "explanation": "教材中明確指出法律是保護罩，保障每個玩家的權利不被他人侵犯。", "subject": "社會", "unit": "法律與生活", "concept": "法律的功能與目的", "skill": "理解法律概念", "difficulty": 2, "id": 2}, {"question": "在遊戲比喻中，法律的限制功能類似於什麼？", "options": ["遊戲內的經濟系統", "違反規則會被GM處罰", "地圖自動導航功能", "角色的背景故事"], "answer": 1, "explanation": "教材提到不守規矩會被GM處罰，小則扣金幣（罰款），大則關禁閉（判刑）。", "subject": "社會", "unit": "法律與生活", "concept": "法律的功能與目的", "skill": "理解法律概念", "difficulty": 2, "id": 3}, {"question": "教材中提到哪個DLC是為了保障不同族群的語言權益？", "options": ["兒少福利保障法", "網路安全規範法", "國家語言發展法", "內容分級管理法"], "answer": 2, "explanation": "教材中明確指出國家語言發展法是保障不同族群語言權益的專屬DLC。", "subject": "社會", "unit": "法律與生活", "concept": "國家語言發展法", "skill": "理解法律概念", "difficulty": 2, "id": 4}, {"question": "臺灣手語課在遊戲比喻中相当于什麼？", "options": ["增加攻擊力", "解鎖新溝通技能", "解鎖隱藏地圖", "升級裝備"], "answer": 1, "explanation": "教材中將臺灣手語課比喻為解鎖新溝通技能，讓所有玩家都能交流，屬於溝通Buff。", "subject": "社會", "unit": "法律與生活", "concept": "國家語言發展法", "skill": "理解法律概念", "difficulty": 2, "id": 5}, {"question": "兒少福利保障法中，未滿幾歲不能喝酒？", "options": ["未滿15歲", "未滿16歲", "未滿17歲", "未滿18歲"], "answer": 3, "explanation": "教材中明確提到未滿十八歲不能喝酒，這是新人保護機制的體現。", "subject": "社會", "unit": "法律與生活", "concept": "兒少權益保障", "skill": "理解法律概念", "difficulty": 2, "id": 6}, {"question": "根據教材，國小課後照顧班被比喻為什麼？", "options": ["隱藏副本", "新手安全訓練營", "裝備商店", "任務通知系統"], "answer": 1, "explanation": "教材中將國小課後照顧班比喻為新手安全訓練營，保護未成年人的成長。", "subject": "社會", "unit": "法律與生活", "concept": "兒少權益保障", "skill": "理解法律概念", "difficulty": 2, "id": 7}, {"question": "兒少福利保障法對經濟困難家庭提供什麼補助？", "options": ["購物折價券", "生活補助金", "免費遊戲點數", "裝備升級券"], "answer": 1, "explanation": "教材中提到兒少福利保障法提供經濟困難家庭生活補助金，保護他們的成長值。", "subject": "社會", "unit": "法律與生活", "concept": "兒少權益保障", "skill": "理解法律概念", "difficulty": 2, "id": 8}, {"question": "內容分級制度在遊戲比喻中被稱為什麼？", "options": ["任務提示系統", "內容分級鎖", "成就解鎖機制", "裝備強度計"], "answer": 1, "explanation": "教材中將內容分級制度比喻為內容分級鎖，保護新手玩家不接觸不適合的內容。", "subject": "社會", "unit": "法律與生活", "concept": "內容分級制度", "skill": "理解法律概念", "difficulty": 2, "id": 9}, {"question": "根據教材，法律的主要目的是什麼？", "options": ["限制玩家自由", "提供免費裝備", "保護玩家權利不被侵犯", "增加遊戲難度"], "answer": 2, "explanation": "教材強調法律看似限制自由，但實際上是保護罩，保障每個玩家的權利不被他人侵犯。", "subject": "社會", "unit": "法律與生活", "concept": "法律的功能與目的", "skill": "理解法律概念", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "小雪在網路上引用同學的繪圖作品並加上註明出處，這個行為符合教材中的哪個概念？", "options": ["尊重原創作者的IP所有權", "免費取得遊戲裝備", "解鎖隱藏內容", "增加遊戲難度"], "answer": 0, "explanation": "教材中指出引用圖片要註明出處，這叫做尊重原創作者的IP所有權。", "subject": "社會", "unit": "法律與生活", "concept": "網路安全與著作權", "skill": "判斷法律合規性", "difficulty": 3, "id": 11}, {"question": "根據教材，如果在網路上隨意使用他人作品，可能會被怎樣處置？", "options": ["獲得額外經驗值", "被官方封號", "解鎖隱藏角色", "獲得特殊裝備"], "answer": 1, "explanation": "教材中明確指出隨意使用他人作品，可能會被官方封號。", "subject": "社會", "unit": "法律與生活", "concept": "網路安全與著作權", "skill": "判斷法律合規性", "difficulty": 3, "id": 12}, {"question": "小明在網路上看到超低價球鞋，並被要求先匯款才能購買，這符合教材中哪種詐騙手法？", "options": ["破解他人帳號", "低價誘惑陷阱", "免費贈送裝備", "隱藏任務獎勵"], "answer": 1, "explanation": "教材中明確提到超低價球鞋是詐騙陷阱，匯款後裝備（錢）就沒了。", "subject": "社會", "unit": "法律與生活", "concept": "網路安全與詐騙辨識", "skill": "辨識法律情境", "difficulty": 3, "id": 13}, {"question": "根據教材，未滿15歲者遇到徵才廣告要求入會費，最可能遭遇什麼情況？", "options": ["獲得合法打工機會", "被詐騙集團利用為人頭帳戶", "解鎖隱藏任務", "獲得遊戲裝備"], "answer": 1, "explanation": "教材中明確指出未滿15歲不能打工，且要求入會費的徵才廣告通常是詐騙集團要人去當人頭帳戶。", "subject": "社會", "unit": "法律與生活", "concept": "網路安全與詐騙辨識", "skill": "辨識法律情境", "difficulty": 3, "id": 14}, {"question": "網路交友對象一直要求提供私密照片或個人資料，教材比喻這種行為為什麼？", "options": ["獲得稀有NPC友誼", "高危險警示，可能被勒索", "解鎖隱藏任務", "獲得免費裝備"], "answer": 1, "explanation": "教材中將此行為比喻為高危險警示，可能被截圖勒索，這種玩家會被永久封號。", "subject": "社會", "unit": "法律與生活", "concept": "網路安全與詐騙辨識", "skill": "辨識法律情境", "difficulty": 3, "id": 15}, {"question": "關於網路安全，下列哪項行為符合教材所提倡的合規做法？", "options": ["隨意分享遊戲帳號密碼給網友", "在網路上散播不實謠言", "引用他人作品時註明出處", "點擊未知連結以獲得免費裝備"], "answer": 2, "explanation": "教材中強調網路世界需守法，引用圖片要註明出處，這是尊重著作權的正確做法。", "subject": "社會", "unit": "法律與生活", "concept": "網路安全與著作權", "skill": "判斷法律合規性", "difficulty": 3, "id": 16}, {"question": "政府維護公園設施不當，導致民眾受傷，此情況最符合教材中的哪個概念？", "options": ["民事損害賠償", "國家賠償", "內容分級制度", "著作權保護"], "answer": 1, "explanation": "教材中明確指出若GM（官方）維護失誤造成玩家損失，玩家可請求國家賠償。", "subject": "社會", "unit": "法律與生活", "concept": "國家賠償", "skill": "辨識法律情境", "difficulty": 3, "id": 17}, {"question": "根據教材，「依法行政」比喻為什麼？", "options": ["GM可以隨意處罰玩家", "即使官方GM本身也得遵守規矩", "遊戲規則可隨時更改", "只有高級玩家需守法"], "answer": 1, "explanation": "教材中明確指出，即使GM也得遵守規矩，這叫做依法行政。", "subject": "社會", "unit": "法律與生活", "concept": "依法行政", "skill": "理解法律概念", "difficulty": 3, "id": 18}, {"question": "下列關於國家賠償的敘述，何者符合教材內容？", "options": ["只有故意造成損失才需賠償", "GM失誤造成玩家損失時，玩家可請求賠償", "國家賠償僅限於財產損失", "玩家需先付費才能請求賠償"], "answer": 1, "explanation": "教材中明確指出，GM維護失誤造成玩家損失時，玩家可以請求賠償，官方還需補償金幣。", "subject": "社會", "unit": "法律與生活", "concept": "國家賠償", "skill": "理解法律概念", "difficulty": 3, "id": 19}, {"question": "根據教材，兒童接觸過於刺激的內容可能遭遇什麼後果？", "options": ["獲得额外遊戲裝備", "精神力Nerf狀態", "解鎖隱藏角色", "獲得特殊技能"], "answer": 1, "explanation": "教材中將不適合的內容比喻為會讓小朋友陷入精神力Nerf狀態，因此需要內容分級保護。", "subject": "社會", "unit": "法律與生活", "concept": "內容分級制度", "skill": "理解法律概念", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "根據教材的遊戲比喻，下列哪一選項最能說明「法律是保護罩」的核心意義？", "options": ["法律禁止所有玩家自由行動", "法律保障每個玩家權利不被他人隨意侵犯", "法律只保護特定族群的權益", "法律只對低等級玩家有保護作用"], "answer": 1, "explanation": "教材中明確指出法律看似限制自由，但實際上是保護罩，保障每個玩家的權利不被他人隨意侵犯，而非僅是限制。", "subject": "社會", "unit": "法律與生活", "concept": "法律的功能與目的", "skill": "應用法律解決問題", "difficulty": 4, "id": 21}, {"question": "教材中將法律比作遊戲引擎，這個比喻主要想傳達什麼訊息？", "options": ["法律只是死背的條文，毫無意義", "法律是一套精密系統，理解規則能讓我們更安全地生活", "法律只適用於網路世界", "法律是隨機產生的規則"], "answer": 1, "explanation": "教材結論指出法律是超級複雜又精密的遊戲系統，理解規則能在現實Online裡玩得更安全更盡興。", "subject": "社會", "unit": "法律與生活", "concept": "法律的功能與目的", "skill": "應用法律解決問題", "difficulty": 4, "id": 22}, {"question": "關於兒少福利保障法，下列哪種敘述最完整涵蓋教材中的保护措施？", "options": ["僅禁止未成年人喝酒", "僅提供課後照顧班", "包含禁止未成年人喝酒、提供生活補助金、課後照顧班等多項保護機制", "僅保障未成年人的語言權益"], "answer": 2, "explanation": "教材中兒少福利保障法涵蓋未滿18歲禁止喝酒、經濟困難家庭生活補助金、國小課後照顧班等多項保護與福利措施。", "subject": "社會", "unit": "法律與生活", "concept": "兒少權益保障", "skill": "應用法律解決問題", "difficulty": 4, "id": 23}, {"question": "小明在網路上製作報告時，直接使用他人照片但未註明出處，不久後收到官方警告。根據教材，最可能發生什麼後果？", "options": ["獲得額外遊戲裝備", "違反著作權，可能被官方封號", "解鎖隱藏任務", "獲得額外經驗值"], "answer": 1, "explanation": "教材中明確指出隨意使用他人作品屬於侵犯著作權，可能會被官方封號，且引用圖片要註明出處以尊重原創作者的IP所有權。", "subject": "社會", "unit": "法律與生活", "concept": "網路安全與著作權", "skill": "應用法律解決問題", "difficulty": 4, "id": 24}, {"question": "根據教材，下列哪項敘述最能說明「依法行政」的重要性？", "options": ["GM可以為所欲為，不需要遵守規則", "即使官方GM也要遵守法律，若失誤造成損失需負責賠償", "依法行政只適用於普通玩家", "GM有權隨意修改遊戲規則而不需負責"], "answer": 1, "explanation": "教材中明確指出即使GM也得守法，這就是依法行政；若GM維護失誤造成玩家損失，玩家可請求賠償。", "subject": "社會", "unit": "法律與生活", "concept": "依法行政", "skill": "理解法律概念", "difficulty": 4, "id": 25}, {"question": "小華發現公園設施維護不當導致摔傷，根據教材，下列哪種做法最正確？", "options": ["自認倒霉，不能請求任何賠償", "請求國家賠償，因為GM維護失誤造成損失", "只能尋求民事訴訟，無法請求國家賠償", "向GM舉報但不會獲得任何補償"], "answer": 1, "explanation": "教材中明確指出若GM維護失誤造成玩家損失，玩家可請求國家賠償，且官方要負責修理並補償金幣。", "subject": "社會", "unit": "法律與生活", "concept": "國家賠償", "skill": "應用法律解決問題", "difficulty": 4, "id": 26}, {"question": "根據教材的遊戲比喻，若某位玩家的行為可能對其他玩家造成嚴重危害，官方（政府）可采取什麼措施？", "options": ["完全不管，讓玩家自由發展", "對違規者進行處罰，例如扣金幣或關禁閉", "只保護高級玩家的權益", "讓所有玩家自行解決"], "answer": 1, "explanation": "教材中將法律比喻為規則系統，違規者會受到GM處罰，小則扣金幣，大則關禁閉，以維護遊戲秩序。", "subject": "社會", "unit": "法律與生活", "concept": "法律的功能與目的", "skill": "理解法律概念", "difficulty": 4, "id": 27}, {"question": "根據教材，國家語言發展法作為DLC的主要目的是什麼？", "options": ["增加遊戲難度", "保障不同族群的語言權益，避免溝通不良", "只照顧特定語言族群", "與遊戲規則無關的額外內容"], "answer": 1, "explanation": "教材中指出國家語言發展法是保障不同族群語言權益，讓他們不被溝通不良Debuff影響的專屬DLC。", "subject": "社會", "unit": "法律與生活", "concept": "國家語言發展法", "skill": "理解法律概念", "difficulty": 4, "id": 28}, {"question": "根據教材，內容分級制度最主要保護的是哪一群體？", "options": ["高級玩家", "新手玩家（兒童）", "GM（政府人員）", "所有平等玩家"], "answer": 1, "explanation": "教材中明確指出內容分級是為了保護新手玩家，避免他們接觸不適合的內容而被驚嚇或受到精神力Nerf狀態影響。", "subject": "社會", "unit": "法律與生活", "concept": "內容分級制度", "skill": "理解法律概念", "difficulty": 4, "id": 29}, {"question": "根據教材整體內容，下列哪項敘述最能綜合體現法律在現實生活中的重要性？", "options": ["法律只是限制自由的條文，毫無意義", "法律是精密的遊戲系統，理解規則能讓玩家在現實Online中更安全、更盡興地生活", "法律只保護成人，與兒童無關", "法律只適用於網路世界，與現實生活無關"], "answer": 1, "explanation": "教材結論總結：法律是超級複雜又精密的遊戲系統，理解規則能讓我們在現實Online中玩得更安全更盡興，是保護我們的強力Buff。", "subject": "社會", "unit": "法律與生活", "concept": "法律的功能與目的", "skill": "應用法律解決問題", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
