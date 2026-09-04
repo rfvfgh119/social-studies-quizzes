@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會｜6上1-2｜民主國家政府與人民的關係為何？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會", "grade": "七年級", "unit": "政府組織與運作", "topic": "政府職權與民主參與", "filename": "康軒社會｜6上1-2｜民主國家政府與人民的關係為何？", "summary": "以遊戲比喻解析政府組織運作，說明五院職權分工與公民參與政治的途徑。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，政府系統被比喻為什麼？", "options": ["大型經營模擬遊戲", "開放世界地圖", "伺服器維護系統", "玩家互動平台"], "answer": 0, "explanation": "教材明確指出：「政府系統其實是一款大型經營模擬遊戲」，以此比喻說明政府運作的機制。", "subject": "社會", "unit": "政府組織與運作", "concept": "政府比喻", "skill": "制度比對分析", "difficulty": 2, "id": 1}, {"question": "選票在遊戲比喻中，被形容為什麼？", "options": ["招募券", "Ban Hammer", "升級道具", "任務獎勵"], "answer": 1, "explanation": "教材提到：「選票還是你手上的Ban Hammer」，表示選票是人民監督並更換政府團隊的工具。", "subject": "社會", "unit": "政府組織與運作", "concept": "選票意義", "skill": "制度比對分析", "difficulty": 2, "id": 2}, {"question": "中央政府在遊戲比喻中相當於什麼？", "options": ["區域副本", "主伺服器", "公聽會", "壓力測試"], "answer": 1, "explanation": "教材說明：「中央政府就是主伺服器，負責全國性的核心任務」，負責制定全國規則與規劃發展方向。", "subject": "社會", "unit": "政府組織與運作", "concept": "中央與地方分權", "skill": "權責歸屬判斷", "difficulty": 2, "id": 3}, {"question": "地方政府在遊戲比喻中相當於什麼？", "options": ["開發組", "執行組", "區域GM團隊", "監督團"], "answer": 2, "explanation": "教材指出：「地方政府是各區域的專屬GM團隊，他們負責處理當地玩家的需求」，負責區域事務與玩家互動。", "subject": "社會", "unit": "政府組織與運作", "concept": "中央與地方分權", "skill": "權責歸屬判斷", "difficulty": 2, "id": 4}, {"question": "行政院在遊戲比喻中被比喻為什麼？", "options": ["開發組", "執行組", "監督團", "主伺服器"], "answer": 0, "explanation": "教材提到：「中央政府的行政院，就像是遊戲的開發組，他們會研究最新的防制策略，提出相關的政策更新」。", "subject": "社會", "unit": "政府組織與運作", "concept": "五院職責", "skill": "制度比對分析", "difficulty": 2, "id": 5}, {"question": "立法院的職責是什麼？", "options": ["執行策略", "制定或修改法律", "提供紓困方案", "舉辦區域活動"], "answer": 1, "explanation": "教材說明：「立法院負責制定或修改遊戲規則，也就是法律，確保遊戲公平性」。", "subject": "社會", "unit": "政府組織與運作", "concept": "五院職責", "skill": "制度比對分析", "difficulty": 2, "id": 6}, {"question": "司法院的職責是什麼？", "options": ["制定法律", "審判違反規則的玩家", "監督地方政府", "提出政策建議"], "answer": 1, "explanation": "教材指出：「司法院則是負責審判違反規則的玩家，確保外掛玩家會被懲罰」。", "subject": "社會", "unit": "政府組織與運作", "concept": "五院職責", "skill": "制度比對分析", "difficulty": 2, "id": 7}, {"question": "公聽會在全民參與比喻中，被比喻為什麼？", "options": ["壓力測試", "線上座談會", "版本更新", "伺服器維護"], "answer": 1, "explanation": "教材提到：「公聽會就像是線上座談會，讓玩家可以直接回報bug，提出改版建議」。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與途徑", "skill": "公民參與途徑辨識", "difficulty": 2, "id": 8}, {"question": "人民遊行在全民參與比喻中，被比喻為什麼？", "options": ["線上座談會", "壓力測試", "版本更新", "伺服器維護"], "answer": 1, "explanation": "教材說明：「那是玩家集體發動的壓力測試，如果官方的更新有問題，玩家可以發動遊行抗議」。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與途徑", "skill": "公民參與途徑辨識", "difficulty": 2, "id": 9}, {"question": "教材中以酒駕為例，說明政府需要處理什麼？", "options": ["高危險Debuff影響伺服器穩定", "地方政府執行力不足", "公民參與途徑缺乏", "五院分工不明確"], "answer": 0, "explanation": "教材指出：「酒駕會造成大量玩家生命值歸零，嚴重影響伺服器穩定」，以此比喻說明酒駕對社會的危害與政府防治必要性。", "subject": "社會", "unit": "政府組織與運作", "concept": "政府職權與公民安全", "skill": "政策影響推論", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "某縣市政府加強酒駕取締力道，這對應教材中的哪個比喻？", "options": ["行政院制定政策", "地方政府執行策略", "立法院修改法律", "司法院審判玩家"], "answer": 1, "explanation": "教材提到「縣市政府就是執行這些策略的，加強區域內部的取締力道」，因此地方政府負責執行中央政策。", "subject": "社會", "unit": "政府組織與運作", "concept": "中央與地方權責劃分", "skill": "權責歸屬判斷", "difficulty": 3, "id": 11}, {"question": "若立法院通過新法律，這在遊戲比喻中是什麼？", "options": ["版本更新", "制定遊戲規則", "壓力測試", "線上座談會"], "answer": 1, "explanation": "教材說明立法院職責為「制定或修改遊戲規則，也就是法律」，因此通過新法律屬於制定遊戲規則。", "subject": "社會", "unit": "政府組織與運作", "concept": "五院職責", "skill": "制度比對分析", "difficulty": 3, "id": 12}, {"question": "公民參加公聽會，舉報政府施政bug，這對應哪個比喻？", "options": ["壓力測試", "線上座談會", "版本更新", "伺服器維護"], "answer": 1, "explanation": "教材將公聽會比喻為「線上座談會」，讓玩家可以回報bug與提出建議，屬於公民參與的對話途徑。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與途徑", "skill": "公民參與途徑辨識", "difficulty": 3, "id": 13}, {"question": "根據教材，人民遊行要求官方調整政策，這被比喻為什麼？", "options": ["線上座談會", "壓力測試", "版本更新", "伺服器維護"], "answer": 1, "explanation": "教材指出遊行是「玩家集體發動的壓力測試」，用以表達對政策不滿並要求修改，屬於公民施壓途徑。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與途徑", "skill": "公民參與途徑辨識", "difficulty": 3, "id": 14}, {"question": "教材中提到的「還路於民大遊行」，玩家社群的主要訴求是？", "options": ["優化地圖設計並強化NPC禮讓行人AI", "降低酒駕罰則", "增加考試院職權", "減少監察院監督"], "answer": 0, "explanation": "教材明確說明該遊行的訴求為「要求官方優化地圖設計，並強化NPC的禮讓行人AI」，反映公民對公共空間與行人安全的關注。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與案例", "skill": "民主機制應用解釋", "difficulty": 3, "id": 15}, {"question": "根據教材，政策影響部分群體權益時，政府可提供什麼措施？", "options": ["更嚴格的罰則", "紓困方案或轉職培訓", "取消該政策", "增加該群體權限"], "answer": 1, "explanation": "教材提到：「官方會提供紓困方案，或是輔導他們進行轉職培訓，給予一定的補償，這就是所謂的救濟」，說明政府需平衡政策影響並提供補救。", "subject": "社會", "unit": "政府組織與運作", "concept": "政策救濟機制", "skill": "政策影響推論", "difficulty": 3, "id": 16}, {"question": "五院中負責審判違反規則的玩家的是？", "options": ["立法院", "司法院", "考試院", "監察院"], "answer": 1, "explanation": "教材明確指出司法院職責為「審判違反規則的玩家」，確保違規者受到懲罰，維護遊戲公平性。", "subject": "社會", "unit": "政府組織與運作", "concept": "五院職責", "skill": "制度比對分析", "difficulty": 3, "id": 17}, {"question": "地方議會在遊戲比喻中被比喻為什麼？", "options": ["開發組", "執行組", "監督團", "主伺服器"], "answer": 2, "explanation": "教材說明：「地方議會就像是地方公會的監督團，他們會監督縣市政府的施政狀況」，負責監督地方行政。", "subject": "社會", "unit": "政府組織與運作", "concept": "五院職責", "skill": "制度比對分析", "difficulty": 3, "id": 18}, {"question": "根據教材，中央政府與地方政府的主要差異是什麼？", "options": ["中央制定全國性規則，地方處理區域事務", "中央負責審判，地方負責執行", "中央由人民直接選舉，地方由中央任命", "中央沒有職權，地方擁有全權"], "answer": 0, "explanation": "教材指出中央政府負責「全國性的核心任務，如制定規則、規劃發展方向」，地方政府則負責「區域事務與玩家互動」，兩者分工合作。", "subject": "社會", "unit": "政府組織與運作", "concept": "中央與地方分權", "skill": "制度比對分析", "difficulty": 3, "id": 19}, {"question": "下列何者為教材中未提及的公民參與途徑？", "options": ["公聽會", "遊行", "罷免投票", "壓力測試"], "answer": 2, "explanation": "教材提及公聽會、遊行（壓力測試）等參與途徑，但未直接說明「罷免投票」為公民參與途徑，僅間接提到選票可踢掉NPC。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與途徑", "skill": "公民參與途徑辨識", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "根據教材，下列何者最能說明「人民是這個伺服器的最高GM」？", "options": ["人民可以招募政府團隊", "人民可以制定法律", "人民可以直接審判玩家", "人民可以管理伺服器硬體"], "answer": 0, "explanation": "教材強調「民主國家人民才是主人，政府就是你招募的服務團隊」，選票是招募券，人民透過投票決定政府團隊，體現最高權限。", "subject": "社會", "unit": "政府組織與運作", "concept": "人民主權", "skill": "民主機制應用解釋", "difficulty": 4, "id": 21}, {"question": "若發現政府政策有問題，根據教材，公民可採取哪些行動？", "options": ["參加公聽會或遊行", "直接修改法律", "任命新官員", "關閉伺服器"], "answer": 0, "explanation": "教材指出公民可透過公聽會（線上座談會）回報bug，或透過遊行（壓力測試）施壓，要求官方調整政策，這兩者皆為合法參與途徑。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與途徑", "skill": "民主機制應用解釋", "difficulty": 4, "id": 22}, {"question": "下列何者正確描述了中央與地方的關係？", "options": ["完全獨立運作", "分權負責且互相支援", "中央全面控制地方", "地方僅負責執行中央命令"], "answer": 1, "explanation": "教材說明：「他們分權負責同時也互相支援，目標都是提供玩家更好的遊戲體驗」，顯示中央與地方各有職權但需合作。", "subject": "社會", "unit": "政府組織與運作", "concept": "中央與地方分權", "skill": "制度比對分析", "difficulty": 4, "id": 23}, {"question": "根據教材，人民參與政治的最終目的是什麼？", "options": ["獲得遊戲獎勵", "讓遊戲走向更好方向", "取代政府團隊", "增加伺服器負擔"], "answer": 1, "explanation": "教材結論指出：「人民對政府的監督，就是讓這個遊戲不斷版本更新，走向更好的方向」，強調公民參與是為了促進社會進步。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與目的", "skill": "民主機制應用解釋", "difficulty": 4, "id": 24}, {"question": "若政府推出新政策，影響餐廳與旅遊業營運，根據教材，政府可能採取什麼補救措施？", "options": ["提高稅收", "提供紓困或轉職培訓", "禁止所有群聚活動", "增加酒駕取締"], "answer": 1, "explanation": "教材以疫情期間為例，說明政府會提供「紓困方案或是輔導他們進行轉職培訓」，以平衡政策對特定群體的衝擊，體現救濟機制。", "subject": "社會", "unit": "政府組織與運作", "concept": "政策影響與救濟", "skill": "政策影響推論", "difficulty": 4, "id": 25}, {"question": "根據教材，五院制度中，哪兩院分別負責「制定規則」與「審判違規」？", "options": ["行政與立法", "立法與司法", "考試與監察", "行政與司法"], "answer": 1, "explanation": "教材指出立法院負責「制定或修改遊戲規則」，司法院負責「審判違反規則的玩家」，兩者分工確保遊戲公平性。", "subject": "社會", "unit": "政府組織與運作", "concept": "五院職責", "skill": "制度比對分析", "difficulty": 4, "id": 26}, {"question": "公民參加公聽會與參加遊行的主要差異是什麼？", "options": ["公聽會是對話，遊行是施壓", "公聽會是制定法律，遊行是審判", "公聽會是執行組，遊行是監督團", "公聽會是主伺服器，遊行是區域副本"], "answer": 0, "explanation": "教材將公聽會比喻為「線上座談會」，側重於對話與建議；遊行則是「壓力測試」，側重於集體施壓要求修改，兩者性質不同。", "subject": "社會", "unit": "政府組織與運作", "concept": "公民參與途徑比較", "skill": "制度比對分析", "difficulty": 4, "id": 27}, {"question": "根據教材，下列何者不是五院的職責？", "options": ["制定法律", "審判玩家", "執行策略", "管理伺服器網路"], "answer": 3, "explanation": "教材說明五院職責包括立法、司法、行政執行等，但未提及「管理伺服器網路」，此為比喻中的虛構內容，非政府實際職權。", "subject": "社會", "unit": "政府組織與運作", "concept": "五院職責範圍", "skill": "制度比對分析", "difficulty": 4, "id": 28}, {"question": "教材中以「酒駕」為例，主要想說明政府職權的哪一面？", "options": ["政府需處理高風險行為以維持社會穩定", "政府只需制定法律無需執行", "公民參與完全無法影響政策", "地方政府無法處理區域性問題"], "answer": 0, "explanation": "教材指出酒駕是「高危險Debuff」，影響伺服器穩定，需要中央與地方合力解決，凸顯政府維護公共安全與秩序的職責。", "subject": "社會", "unit": "政府組織與運作", "concept": "政府職權與公共安全", "skill": "政策影響推論", "difficulty": 4, "id": 29}, {"question": "根據教材，人民如何透過選舉影響政府團隊？", "options": ["選票作為招募券，可選擇或踢掉NPC", "選票直接任命所有官員", "選票用於制定具體法律條文", "選票僅用於參加公聽會"], "answer": 0, "explanation": "教材比喻選票為「招募券」與「Ban Hammer」，表示人民可透過選舉招募政府團隊，若表現不佳也可在下次選舉中淘汰，實現民主監督。", "subject": "社會", "unit": "政府組織與運作", "concept": "選舉與民主監督", "skill": "民主機制應用解釋", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
