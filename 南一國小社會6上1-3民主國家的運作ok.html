@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會6上1-3民主國家的運作ok</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "公民", "grade": "國中三年級", "unit": "民主國家的運作", "topic": "憲法基本權利義務與五權分立", "filename": "南一國小社會6上1-3民主國家的運作ok", "summary": "以遊戲比喻講解憲法權利義務、五權分立與戒嚴解嚴歷程的公民教材。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "教材中以遊戲比喻來說明憲法，憲法在《Civics Online》中被比喻為什麼？", "options": ["玩家的初始裝備", "遊戲的規則書", "GM團隊的權限", "伺服器的資料庫"], "answer": 1, "explanation": "憲法是最高規範，教材中明確比喻為遊戲的規則書。", "subject": "公民", "unit": "民主國家的運作", "concept": "憲法最高規範性", "skill": "概念辨識", "difficulty": 2, "id": 1}, {"question": "下列何者屬於教材中所提「基本權利」的四種類型之一？", "options": ["競爭權", "平等權", "選擇權", "創新權"], "answer": 1, "explanation": "基本權利分為平等權、自由權、受益權、參政權四種。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本權利四類型", "skill": "概念辨識", "difficulty": 2, "id": 2}, {"question": "「無論種族性別陣營，所有玩家一律平等」描述的是哪一種基本權利？", "options": ["自由權", "受益權", "平等權", "參政權"], "answer": 2, "explanation": "平等權強調所有人在法律面前一律平等，不受種族、性別、陣營等因素影響。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本權利四類型", "skill": "概念辨識", "difficulty": 2, "id": 3}, {"question": "下列哪一項是教材中提到的「基本義務」？", "options": ["購買保險", "納稅", "註冊政黨", "參加公民課程"], "answer": 1, "explanation": "基本義務包含國民教育、納稅與服兵役，納稅被比喻為貢獻資源給伺服器。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本義務", "skill": "概念辨識", "difficulty": 2, "id": 4}, {"question": "負責「選拔人才、確保GM團隊素質」的五院是？", "options": ["行政院", "立法院", "考試院", "監察院"], "answer": 2, "explanation": "考試院負責選拔人才，教材比喻為GM選拔賽。", "subject": "公民", "unit": "民主國家的運作", "concept": "五權分立", "skill": "概念辨識", "difficulty": 2, "id": 5}, {"question": "教材中比喻「制定規則、更新遊戲法規」的五院是？", "options": ["行政院", "立法院", "司法院", "監察院"], "answer": 1, "explanation": "立法院負責制定規則，比喻為改版公告的發布單位。", "subject": "公民", "unit": "民主國家的運作", "concept": "五權分立", "skill": "概念辨識", "difficulty": 2, "id": 6}, {"question": "下列何者屬於「受益權」的範疇？", "options": ["投票選舉總統", "自由發表言論", "接受國民教育", "組隊結社"], "answer": 2, "explanation": "受益權包含請求國家提供服務，如保障生存、工作、財產及接受國民教育。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本權利四類型", "skill": "概念辨識", "difficulty": 2, "id": 7}, {"question": "負責「裁決糾紛、處理遊戲內外爭議」的是哪一院？", "options": ["考試院", "監察院", "司法院", "行政院"], "answer": 2, "explanation": "司法院負責裁決糾紛，比喻為處理遊戲內外的爭議。", "subject": "公民", "unit": "民主國家的運作", "concept": "五權分立", "skill": "概念辨識", "difficulty": 2, "id": 8}, {"question": "教材中「服兵役」被比喻為什麼？", "options": ["每日任務", "PVP模式", "GM選拔賽", "伺服器維護"], "answer": 1, "explanation": "服兵役保衛伺服器安全，教材中比喻為PVP模式。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本義務", "skill": "概念辨識", "difficulty": 2, "id": 9}, {"question": "監察院在教材中被比喻為什麼功能？", "options": ["制定改版公告", "選拔GM人才", "防止GM作弊或怠惰", "裁決遊戲爭議"], "answer": 2, "explanation": "監察院負責監督糾察，防止GM作弊或怠惰。", "subject": "公民", "unit": "民主國家的運作", "concept": "五權分立", "skill": "概念辨識", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "教材中將「享有權利」與「履行義務」並列，最主要想說明的關係是什麼？", "options": ["權利可以替代義務", "權利與義務互為前提且並存", "義務優先於權利", "權利僅限成年人享有"], "answer": 1, "explanation": "享有權利同時也要履行基本義務，二者並存且相對。", "subject": "公民", "unit": "民主國家的運作", "concept": "權利與義務並存", "skill": "比較分析", "difficulty": 3, "id": 11}, {"question": "關於「自由權」，下列敘何者最符合教材內容？", "options": ["僅限於言論自由", "包含言論、組隊結社、遷徙、信仰等自由", "完全不受任何限制", "可由GM隨時收回"], "answer": 1, "explanation": "自由權包括發表言論、組隊結社、遷徙、信仰等多項自由。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本權利四類型", "skill": "比較分析", "difficulty": 3, "id": 12}, {"question": "教材提到「五權分立、各司其職又相互制衡」，其設計目的為何？", "options": ["讓GM團隊互相牽制以防濫權", "提高政府運作效率", "減少玩家的權利", "讓總統擁有最大權力"], "answer": 0, "explanation": "五權分立旨在防止GM濫權，確保公平公正。", "subject": "公民", "unit": "民主國家的運作", "concept": "五權分立與相互制衡", "skill": "比較分析", "difficulty": 3, "id": 13}, {"question": "戒嚴時期玩家的「自由權」被大幅Nerf，下列何者不是當時的限制？", "options": ["言論自由被鎖", "書籍歌曲被列為禁品", "無法自由發表意見", "納稅義務被免除"], "answer": 3, "explanation": "戒嚴時期自由權受限，但納稅義務並未免除。", "subject": "公民", "unit": "民主國家的運作", "concept": "戒嚴與解嚴歷程", "skill": "比較分析", "difficulty": 3, "id": 14}, {"question": "1987年「解嚴」在教材中被比喻為什麼？", "options": ["伺服器重新登入", "玩家權利逐漸恢復", "新版本的推出", "GM團隊全面換血"], "answer": 1, "explanation": "解嚴後玩家的權利才逐漸恢復，是前人努力的成果。", "subject": "公民", "unit": "民主國家的運作", "concept": "戒嚴與解嚴歷程", "skill": "歷史脈絡理解", "difficulty": 3, "id": 15}, {"question": "教材中將「內容分級制度」比喻為什麼？", "options": ["封號處罰", "遊戲內容分級，保護未成年玩家", "GM選拔賽", "新版本的更新公告"], "answer": 1, "explanation": "內容分級如同限制級遊戲的分級制度，目的是保護未成年玩家。", "subject": "公民", "unit": "民主國家的運作", "concept": "內容分級制度", "skill": "比較分析", "difficulty": 3, "id": 16}, {"question": "關於「參政權」，下列何者最符合教材描述？", "options": ["可以自由發表言論", "投票發起公投，決定伺服器未來方向", "請求國家提供福利服務", "保衛伺服器安全"], "answer": 1, "explanation": "參政權包含投票與發起公投，決定伺服器（國家）未來方向。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本權利四類型", "skill": "比較分析", "difficulty": 3, "id": 17}, {"question": "行政院在教材中被比喻為什麼？", "options": ["遊戲規則制定者", "遊戲營運團隊", "遊戲爭議裁決者", "遊戲內容分級單位"], "answer": 1, "explanation": "行政院負責實施政策，比喻為遊戲營運團隊。", "subject": "公民", "unit": "民主國家的運作", "concept": "五權分立", "skill": "概念辨識", "difficulty": 3, "id": 18}, {"question": "教材指出戒嚴時期的審查與現在的內容分級，二者有何根本不同？", "options": ["審查更嚴格", "分級目的在保護而非封鎖", "沒有不同", "審查只針對成年人"], "answer": 1, "explanation": "內容分級是保護未成年玩家，而非像戒嚴時期隨意封鎖審查。", "subject": "公民", "unit": "民主國家的運作", "concept": "內容分級制度", "skill": "比較分析", "difficulty": 3, "id": 19}, {"question": "「國民教育」在教材中被比喻為每日任務，其主要目的為何？", "options": ["讓玩家消耗時間", "提升等級經驗值與學習攻略技巧", "增加玩家的經濟負擔", "限制玩家的自由"], "answer": 1, "explanation": "國民教育是基本義務，目的是讓玩家提升等級、學習更多攻略技巧。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本義務", "skill": "概念辨識", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "若某位玩家主張「我只享受權利，不想履行義務」，以教材觀點應如何評析？", "options": ["合理，因為權利是自動解鎖的", "正確，義務是額外負擔", "錯誤，權利與義務並存，享有權利需同時履行義務", "視個人選擇而定"], "answer": 2, "explanation": "教材強調享有權利同時也要履行基本義務，二者並存且相對。", "subject": "公民", "unit": "民主國家的運作", "concept": "權利與義務並存", "skill": "價值評析與情境應用", "difficulty": 4, "id": 21}, {"question": "教材提到「五權分立」能防止GM濫權，若現在某個院缺乏制衡，可能產生什麼後果？", "options": ["遊戲運作更順暢", "公平正義可能受損", "玩家權利自動增加", "伺服器效能提升"], "answer": 1, "explanation": "五權分立的核心在於制衡，缺少制衡可能導致濫權，損害公平正義。", "subject": "公民", "unit": "民主國家的運作", "concept": "五權分立與相互制衡", "skill": "綜合應用與評析", "difficulty": 4, "id": 22}, {"question": "教材說「珍惜得來不易的民主成果」，這段話的深層意涵最接近下列何者？", "options": ["民主是別人給的，不需要珍惜", "解嚴是偶然發生的事件", "民主人權成果是前人犧牲爭取而來，應善用並監督政府", "現在的玩家已經不需要努力"], "answer": 2, "explanation": "解嚴是前人犧牲抗爭換來的，應珍惜並善用玩家權限，同時監督GM團隊。", "subject": "公民", "unit": "民主國家的運作", "concept": "戒嚴與解嚴歷程", "skill": "價值評析與情境應用", "difficulty": 4, "id": 23}, {"question": "若某遊戲公司規定「所有玩家皆可自由發言，但不得評論遊戲公司」，此舉最可能侵犯玩家的哪種權利？", "options": ["受益權", "平等權", "自由權中的言論自由", "參政權"], "answer": 2, "explanation": "自由權包含自由發表言論，限制評論遊戲公司即限制言論自由。", "subject": "公民", "unit": "民主國家的運作", "concept": "基本權利四類型", "skill": "綜合應用與評析", "difficulty": 4, "id": 24}, {"question": "教材中提到「地方政府就像各地分部，處理區域性事務」，此比喻說明了什麼道理？", "options": ["中央政府不必管任何事情", "地方事務應完全由中央政府決定", "中央與地方權限有劃分，地方處理區域性事務", "地方沒有實際功能"], "answer": 2, "explanation": "中央與地方權限劃分，地方政府負責區域性事務與在地服務。", "subject": "公民", "unit": "民主國家的運作", "concept": "中央與地方權限劃分", "skill": "綜合應用與評析", "difficulty": 4, "id": 25}, {"question": "若某玩家發現GM有作弊行為，應向哪個機關申訴？", "options": ["行政院", "立法院", "司法院", "監察院"], "answer": 3, "explanation": "監察院負責監督糾察，防止GM作弊或怠惰，是申訴管道。", "subject": "公民", "unit": "民主國家的運作", "concept": "五權分立", "skill": "綜合應用與評析", "difficulty": 4, "id": 26}, {"question": "比較戒嚴時期與解嚴後的言論自由，下列敘述何者最恰當？", "options": ["解嚴後言論完全不受限制", "戒嚴時期自由權被大幅限制，解嚴後逐漸恢復", "解嚴後沒有任何審查機制", "戒嚴與解嚴時期沒有差異"], "answer": 1, "explanation": "戒嚴時期自由權被大幅Nerf，解嚴後逐漸恢復，但仍有內容分級等保護機制。", "subject": "公民", "unit": "民主國家的運作", "concept": "戒嚴與解嚴歷程", "skill": "比較分析", "difficulty": 4, "id": 27}, {"question": "教材中將「憲法」比喻為規則書，將「基本權利」比喻為初始Buff，這兩種比喻的共同意涵是什麼？", "options": ["遊戲設定可以隨意更改", "憲法與權利是遊戲的基礎與保障", "憲法是可有可無的設定", "Buff只對高等級玩家有效"], "answer": 1, "explanation": "憲法是最高規範，基本權利是玩家與生俱來的保障，二者共同構成遊戲（國家）的基礎。", "subject": "公民", "unit": "民主國家的運作", "concept": "憲法最高規範性", "skill": "綜合應用與評析", "difficulty": 4, "id": 28}, {"question": "教材中提到「content分級制度」與「戒嚴時期的審查」目的不同，以下何者最能區分二者？", "options": ["分級是事前審查，審查也是事前審查", "分級是為了保護未成年，審查是為了限制表達", "分級是Ban帳號，審查是Debuff", "二者完全相同"], "answer": 1, "explanation": "內容分級目的是保護未成年玩家，避免過早接觸不適內容；戒嚴審查則是限制表達自由。", "subject": "公民", "unit": "民主國家的運作", "concept": "內容分級制度", "skill": "比較分析", "difficulty": 4, "id": 29}, {"question": "以教材觀點，下列何種行為最能體現「善用玩家權限並監督GM團隊」的精神？", "options": ["只享受權利不履行義務", "積極投票並對政府運作提出建設性意見", "拒絕納稅以抗議政府", "完全相信GM不做任何質疑"], "answer": 1, "explanation": "參政權包含投票與公投，監督GM是公民應有的責任，二者結合才符合教材核心精神。", "subject": "公民", "unit": "民主國家的運作", "concept": "權利與義務並存", "skill": "價值評析與情境應用", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
