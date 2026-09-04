@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會5上2-1島嶼上的子民</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科／歷史", "grade": "國中", "unit": "台灣原住民族與漢人移民", "topic": "原住民族與漢人文化比較：信仰、社會制度與傳統領域", "filename": "南一國小社會5上2-1島嶼上的子民", "summary": "以遊戲比喻講解台灣原住民族與漢人移民在信仰、社會制度與土地權上的文化比較。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，原住民族陣營主要的宗教信仰特色是什麼？", "options": ["信仰單一造物神", "相信萬物有靈的泛靈信仰", "崇拜漢人帶來的關聖帝君", "不重視任何祭祀活動"], "answer": 1, "explanation": "教材指出原住民族陣營相信萬物有靈，屬於泛靈信仰。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "泛靈信仰", "skill": "基礎辨識", "difficulty": 2, "id": 1}, {"question": "以下哪項是漢人移民陣營帶來的信仰神明？", "options": ["祖靈", "三山國王", "大地之神", "部落守護靈"], "answer": 1, "explanation": "教材提到漢人將家鄉神明請來台灣，例如三山國王、開漳聖王、媽祖和土地公。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "漢人神明崇拜", "skill": "基礎辨識", "difficulty": 2, "id": 2}, {"question": "阿美族和卑南族在社會制度上屬於哪種類型？", "options": ["階級社會", "父系社會", "母系社會", "無社會結構"], "answer": 2, "explanation": "教材明確指出阿美族和卑南族是母系社會，女性掌握家族大權，財產由女兒繼承。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "母系社會", "skill": "基礎辨識", "difficulty": 2, "id": 3}, {"question": "魯凱族和排灣族的社會制度特點是什麼？", "options": ["母系社會", "階級社會", "平等社會", "民主社會"], "answer": 1, "explanation": "教材說明魯凱族和排灣族是階級社會，分為頭目、貴族、勇士、平民。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "階級社會", "skill": "基礎辨識", "difficulty": 2, "id": 4}, {"question": "鄒族的庫巴是什麼？", "options": ["女子集會所", "男子集會所", "祭祀場所", "商業市場"], "answer": 1, "explanation": "教材指出庫巴是鄒族的男子集會所，限定男性進入，討論部落事務並學習傳統技能。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "庫巴", "skill": "基礎辨識", "difficulty": 2, "id": 5}, {"question": "漢人移民陣營發展出的社會組織是什麼？", "options": ["部落聯盟", "宗族組織", "階級制度", "母系家族"], "answer": 1, "explanation": "教材提到漢人發展出宗族組織，同姓族群聚居，透過祭祖凝聚向心力。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "宗族組織", "skill": "基礎辨識", "difficulty": 2, "id": 6}, {"question": "傳統領域不包含以下哪一項？", "options": ["部落所在地", "農耕地和獵場", "現代都市區", "聖地湖泊河流"], "answer": 2, "explanation": "教材說明傳統領域包含部落所在地、農耕地、獵場、漁場及聖地湖泊河流，未提及現代都市區。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "傳統領域", "skill": "基礎辨識", "difficulty": 2, "id": 7}, {"question": "原住民族發起的「還我土地運動」大約在什麼時候開始？", "options": ["民國50年代", "民國70年代後", "民國90年代", "二戰期間"], "answer": 1, "explanation": "教材明確指出民國70年代後，原住民族發起了還我土地運動。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "還我土地運動", "skill": "基礎辨識", "difficulty": 2, "id": 8}, {"question": "平埔族群為什麼較早與漢人接觸並產生漢化現象？", "options": ["因為他們喜歡漢人文化", "因地理位置在西部海岸平原", "因為他們沒有自己的信仰", "因為他們被強制漢化"], "answer": 1, "explanation": "教材說明平埔族群最早在西部海岸平原，因地理位置關係最早與漢人接觸，文化上疊了不少漢化Buff。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "文化接觸與漢化", "skill": "基礎辨識", "difficulty": 2, "id": 9}, {"question": "漢人移民帶來的媽祖信仰主要提供什麼功能？", "options": ["戰鬥攻擊", "高額團結Buff", "醫療治療", "經濟交易"], "answer": 1, "explanation": "教材將媽祖比喻為能提供高額團結Buff的傳說級神明NPC，屬於信仰與社交功能。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "漢人神明崇拜", "skill": "基礎辨識", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "比較原住民族與漢人移民的宗教信仰，下列敘述何者正確？", "options": ["原住民族信仰單一神，漢人信仰多神", "原住民族相信萬物有靈，漢人帶來家鄉神明", "兩者都只崇拜祖靈", "漢人信仰沒有組織性"], "answer": 1, "explanation": "教材指出原住民族相信萬物有靈的泛靈信仰，而漢人移民則將家鄉神明如三山國王、媽祖等帶來台灣。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "宗教信仰差異", "skill": "比較分析", "difficulty": 3, "id": 11}, {"question": "關於阿美族母系社會的特徵，下列何者最符合教材說明？", "options": ["男性掌握財產繼承權", "女性掌握家族大權，財產由女兒繼承", "社會完全平等無階級", "男性需搬離原生家庭"], "answer": 1, "explanation": "教材說明阿美族和卑南族是母系社會，女性NPC掌握家族大權，財產由女兒繼承，男方還要隨妻居住。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "母系社會", "skill": "概念應用", "difficulty": 3, "id": 12}, {"question": "鄒族的庫巴在社會中具有哪些功能？", "options": ["僅用於宗教祭祀", "政治、經濟與宗教的象徵中心", "主要是商業交易場所", "女性專屬的聚會空間"], "answer": 1, "explanation": "教材指出庫巴是鄒族男子集會所，是政治、經濟與宗教的象徵中心，限定男性進入討論部落事務。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "庫巴功能", "skill": "比較分析", "difficulty": 3, "id": 13}, {"question": "漢人宗族組織的主要作用是什麼？", "options": ["軍事防禦", "祭祖凝聚向心力並維護宗族利益", "對外擴張領土", "宗教儀式專用"], "answer": 1, "explanation": "教材說明漢人發展宗族組織，同姓族群聚居，透過祭祖凝聚向心力，並維護宗族利益和維持地方秩序。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "宗族組織功能", "skill": "比較分析", "difficulty": 3, "id": 14}, {"question": "傳統領域對原住民族的重要性為何？", "options": ["僅是旅遊景點", "世代經營的資源點與聖地，失去後影響生存", "用於現代工業開發", "沒有實際經濟價值"], "answer": 1, "explanation": "教材將傳統領域比喻為原住民族世代經營的資源點與聖地，包含部落、農耕地、獵場等，控制權被奪走會導致Buff來源流失。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "傳統領域意義", "skill": "歷史理解", "difficulty": 3, "id": 15}, {"question": "還我土地運動的背景原因主要為何？", "options": ["原住民族想擴展領土", "傳統領域控制權被奪走，影響生存資源", "漢人政府強制遷村", "國際社會壓迫"], "answer": 1, "explanation": "教材指出隨著外來勢力入侵，傳統領域控制權被奪走，導致原住民族失去資源點，因而發起還我土地運動爭取權益。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "還我土地運動背景", "skill": "歷史理解", "difficulty": 3, "id": 16}, {"question": "平埔族群與山地東部族群在文化保存上有何差異？", "options": ["平埔族群保留更多原始文化", "山地東部族群因偏遠保留更多原始文化", "兩者文化完全相同", "平埔族群沒有漢化現象"], "answer": 1, "explanation": "教材說明平埔族群最早與漢人接觸並漢化，而山地東部族群因地圖偏遠，保留了更多原始文化技能樹。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "文化接觸差異", "skill": "比較分析", "difficulty": 3, "id": 17}, {"question": "漢人移民帶來的保生大帝信仰主要功能是什麼？", "options": ["戰鬥輔助", "治療系課長，專門解Debuff", "經濟投資", "政治決策"], "answer": 1, "explanation": "教材將保生大帝比喻為治療系課長，專門幫玩家解Debuff，體現其醫療救護的信仰功能。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "漢人神明功能", "skill": "概念應用", "difficulty": 3, "id": 18}, {"question": "魯凱族和排灣族的階級社會與漢人宗族組織有何不同？", "options": ["兩者都是平等社會", "階級社會以頭目貴族為主，宗族組織以同姓血緣為基礎", "階級社會沒有領袖", "宗族組織僅限於部落內"], "answer": 1, "explanation": "教材說明魯凱族和排灣族是階級社會，分為頭目、貴族、勇士、平民；而漢人宗族組織是同姓聚居，透過祭祖凝聚向心力。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "社會制度比較", "skill": "比較分析", "difficulty": 3, "id": 19}, {"question": "原住民族的祭師（薩滿）在信仰中具有什麼角色？", "options": ["僅是部落領袖", "能與祖靈溝通，施放治療與祝福技能", "負責農業生產", "沒有特殊功能"], "answer": 1, "explanation": "教材指出原住民族的祭師NPC能與祖靈溝通，施放治療和祝福技能，類似薩滿或牧師的角色。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "祭師功能", "skill": "概念應用", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "從傳統領域到還我土地運動，反映原住民族什麼核心訴求？", "options": ["追求經濟發展", "爭取資源點所有權與文化生存權", "擴展政治影響力", "學習漢人技術"], "answer": 1, "explanation": "教材說明傳統領域是原住民族世代經營的資源點與聖地，控制權被奪走引發還我土地運動，旨在爭取資源點所有權，反映文化生存權的訴求。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "土地權與文化權", "skill": "批判思考", "difficulty": 4, "id": 21}, {"question": "若將社會制度視為遊戲規則，母系社會與宗族組織各有何利弊？", "options": ["母系社會不利於凝聚，宗族組織過於僵化", "母系社會保障女性權益但可能限制男性流動，宗族組織強化向心力但可能排斥外姓", "兩者都沒有明顯優缺點", "宗族組織更公平但母系社會更自由"], "answer": 1, "explanation": "教材提到母系社會女性掌握大權、財產由女兒繼承，男方隨妻居住；宗族組織透過同姓聚居祭祖凝聚向心力。可推論前者保障女性但可能影響男性角色，後者強化內部凝聚力但可能對外排斥。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "社會制度利弊分析", "skill": "批判思考", "difficulty": 4, "id": 22}, {"question": "漢人移民將神明信仰帶來台灣，對原住民族可能產生什麼深遠影響？", "options": ["完全取代原住民族信仰", "促進文化融合與碰撞，可能導致部分漢化", "對原住民族沒有影響", "立即引發宗教戰爭"], "answer": 1, "explanation": "教材以遊戲比喻說明漢人帶來神明NPC提供Buff，平埔族群因接觸早而疊漢化Buff，顯示信仰交流可能促進融合與碰撞，並導致文化調整。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "文化接觸後果", "skill": "批判思考", "difficulty": 4, "id": 23}, {"question": "還我土地運動後法規增修，如同遊戲規則更新，這體現什麼歷史觀念？", "options": ["歷史不變，規則無法改變", "社會運動可促使制度調整，保障權益", "法規更新對原住民無實質幫助", "運動僅是短暫抗議"], "answer": 1, "explanation": "教材指出隨著相關法規增修，逐漸保障原住民族權益，如同官方更新遊戲規則讓玩家有機會拿回傳統領域，顯示運動能推動制度變革。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "社會變遷與制度調整", "skill": "歷史理解", "difficulty": 4, "id": 24}, {"question": "比較庫巴與宗祠家廟，兩者在社會功能上有何異同？", "options": ["兩者都是宗教場所，但庫巴僅限男性，宗祠家廟面向家族全體", "兩者功能完全相同", "庫巴用於商業，宗祠用於政治", "宗祠家廟僅限男性進入"], "answer": 1, "explanation": "教材說明庫巴是鄒族男子集會所，具政治經濟宗教功能且限定男性；宗祠家廟是漢人宗族公會會所，提供成員Buff並凝聚向心力，未限制性別。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "社會空間功能比較", "skill": "比較分析", "difficulty": 4, "id": 25}, {"question": "從傳統領域的定義，如何理解現代土地制度與原住民族權益的衝突？", "options": ["兩者完全一致無衝突", "傳統領域是世代經營的資源點，現代國有土地概念可能奪走其控制權", "現代土地制度更先進，應全面取代傳統領域", "傳統領域僅具象徵意義，無實際資源價值"], "answer": 1, "explanation": "教材將傳統領域比喻為資源點與聖地，指出控制權被奪走導致Buff來源流失；現代國有土地制度可能與此產生衝突，影響原住民族生存基礎。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "傳統領域與現代法律衝突", "skill": "批判思考", "difficulty": 4, "id": 26}, {"question": "若原住民族祭師能與祖靈溝通並提供治療祝福，這反映其信仰體系有何特點？", "options": ["信仰僅用於宗教儀式", "信仰與日常生活緊密結合，具實用功能", "信仰完全依賴漢人神明", "信仰沒有社會功能"], "answer": 1, "explanation": "教材指出祭師NPC能施放治療和祝福技能，顯示泛靈信仰中神靈溝通與現實生活需求（如健康、部落安危）相連結，具有實用性。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "信仰的實用功能", "skill": "概念應用", "difficulty": 4, "id": 27}, {"question": "分析漢人宗族組織的「公會系統」比喻，其核心優勢是什麼？", "options": ["軍事擴張能力強", "透過同姓血緣與祭祖強化內部凝聚力，維護共同利益", "僅限於經濟交易", "沒有對外防禦功能"], "answer": 1, "explanation": "教材將宗族組織比喻為公會系統，宗祠家廟是公會會所，提供成員Buff；同姓聚居與祭祖能凝聚向心力，並維護宗族利益與地方秩序。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "宗族組織優勢", "skill": "比較分析", "difficulty": 4, "id": 28}, {"question": "從還我土地運動到法規增修，顯示原住民族權益爭取的什麼趨勢？", "options": ["運動已完全解決問題", "透過持續倡議推動制度調整，逐步保障權益", "法規更新無關緊要", "原住民族已放棄爭取"], "answer": 1, "explanation": "教材指出還我土地運動後相關法規增修，逐漸保障原住民族權益，如同遊戲規則更新讓玩家有機會拿回傳統領域，反映權益爭取是持續推動制度調整的過程。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "權益爭取趨勢", "skill": "歷史理解", "difficulty": 4, "id": 29}, {"question": "綜合教材，原住民族與漢人文化比較的核心重點為何？", "options": ["兩者文化完全相同無差異", "在信仰、社會制度與土地觀念上各有特色，並有接觸融合現象", "漢人文化優越於原住民族", "原住民族已完全漢化"], "answer": 1, "explanation": "教材以遊戲比喻比較兩大陣營在信仰（泛靈 vs 神明崇拜）、社會制度（母系/階級 vs 宗族）與傳統領域上的差異，並說明平埔族群的漢化現象，顯示文化各有特色且有互動融合。", "subject": "社會科／歷史", "unit": "台灣原住民族與漢人移民", "concept": "文化比較總結", "skill": "批判思考", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
