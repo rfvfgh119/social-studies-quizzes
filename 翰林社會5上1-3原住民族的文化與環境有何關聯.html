@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林社會5上1-3原住民族的文化與環境有何關聯？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "國中二年級", "unit": "原住民族群與史前文化", "topic": "達悟族飛魚文化、泰雅族山林適應與卑南遺址玉器貿易", "filename": "翰林社會5上1-3原住民族的文化與環境有何關聯？", "summary": "以遊戲比喻講解達悟族飛魚文化、泰雅族山林智慧與卑南玉器貿易。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "達悟族（雅美族）捕飛魚的季節限制為何？", "options": ["每年1月到12月皆可捕魚", "每年3月到10月才能捕飛魚", "僅限冬季捕魚", "全年禁漁"], "answer": 1, "explanation": "教材明確指出達悟族規定每年3月到10月才能捕飛魚食用，以維持資源永續。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "達悟族飛魚文化", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 1}, {"question": "泰雅族狩獵的禁獵期為何？", "options": ["3月到10月為禁獵期", "11月到4月為禁獵期", "全年皆可狩獵", "僅夏季開放狩獵"], "answer": 0, "explanation": "教材提到泰雅族狩獵時間為11月到4月，其餘時間為禁獵期，以確保動物有充足繁衍時間。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "泰雅族狩獵禁忌", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 2}, {"question": "卑南遺址中最著名的國寶級玉器為何？", "options": ["喇叭玉環", "人獸形耳飾", "玉管", "耳飾"], "answer": 1, "explanation": "教材強調卑南遺址出土的「人獸形耳飾」為國寶級裝備，雕刻兩人頂著動物，象徵合作與資源豐饒。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "卑南遺址玉器", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 3}, {"question": "達悟族飛魚祭的信仰背景為何？", "options": ["飛魚是普通食物，無特殊祭儀", "飛魚之神託夢教導正確食用法與祭儀", "飛魚祭僅為娛樂活動", "飛魚文化源自其他族群"], "answer": 1, "explanation": "教材指出飛魚是神聖物品，飛魚之神託夢教導達悟族正確食用法與祭儀，体现信仰與規範。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "達悟族飛魚文化", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 4}, {"question": "泰雅族的「共享互助」制度包含哪些內容？", "options": ["共食團體分享獵物，共勞團體互相蓋房", "單獨狩獵，各自分配資源", "與外族競爭資源", "僅有經濟互助，無文化分享"], "answer": 0, "explanation": "教材明確說明泰雅族有共食團體（分享獵物）與共勞團體（互相蓋房），體現部落凝聚力量。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "部落互助制度", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 5}, {"question": "卑南遺址被稱為太平洋最大史前墓葬群，主要特徵為何？", "options": ["石板棺與數萬件文物", "陶器與青銅器", "木乃伊與黃金陪葬品", "無固定墓葬形式"], "answer": 0, "explanation": "教材指出卑南遺址發現兩千座石板棺與數萬件文物，是太平洋最大史前墓葬群遺址。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "卑南遺址考古特徵", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 6}, {"question": "達悟族捕魚季節限制的生態意義為何？", "options": ["避免過度捕食，維持生態平衡", "限制經濟收入", "增加漁獲種類", "單純遵守神話傳說"], "answer": 0, "explanation": "教材解釋限制捕魚季節是避免Nerf（資源枯竭），破壞生態平衡，體現永續經營觀念。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "永續經營", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 7}, {"question": "泰雅族不獵殺幼小動物的禁忌，主要目的為何？", "options": ["保持生態平衡，讓動物有充足生長時間", "增加獵物數量", "單純宗教儀式", "避免與其他族群衝突"], "answer": 0, "explanation": "教材指出不獵殺幼小動物是為保持生態平衡，避免資源枯竭，實現永續經營。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "生態平衡", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 8}, {"question": "臺灣玉在卑南遺址出土後，流通範圍為何？", "options": ["僅限蘭嶼本地使用", "流通至臺北、宜蘭、花蓮等地", "僅用於祭祀，不流通", "從未離開卑南遺址"], "answer": 1, "explanation": "教材提到卑南遺址玉器在臺北、宜蘭、花蓮等地均有發現，顯示跨區貿易網絡存在。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "史前貿易網絡", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 9}, {"question": "達悟族與雅美族是同一族群的不同稱呼，對嗎？", "options": ["對，兩者為同一族群", "錯，兩者為不同族群", "僅是別名，但歷史不同", "教材未提及兩者關係"], "answer": 0, "explanation": "教材開頭即說明「達悟族（雅美族）」，並標註為同一族群，此為易混淆概念之釐清。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "達悟族與雅美族", "skill": "史料與文化特徵辨識", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "達悟族飛魚祭儀與捕魚季節限制，如何體現永續經營觀念？", "options": ["僅為宗教儀式，無實際生态意義", "透過規範避免資源枯竭，讓飛魚持續繁衍", "限制捕魚是為了增加漁獲價格", "與生態平衡無關，僅是傳統習俗"], "answer": 1, "explanation": "教材指出限制捕魚季節可避免Nerf（過度捕食），讓飛魚有時間繁衍，是頂級的生態保育智慧。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "永續經營", "skill": "因果分析與概念歸納", "difficulty": 3, "id": 11}, {"question": "泰雅族的山林適應策略，如何反映文化適應？", "options": ["完全依賴外來資源", "依山林環境發展竹材利用與狩獵規範", " ignore 環境限制，任意開發", "僅用於軍事目的"], "answer": 1, "explanation": "教材說明泰雅族順應自然環境，利用竹子建造、取水，並制定狩獵禁忌，體現文化適應智慧。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "文化適應", "skill": "因果分析與概念歸納", "difficulty": 3, "id": 12}, {"question": "卑南遺址玉器流通至海外，如何證明史前臺灣的跨海交流能力？", "options": ["玉器僅在本島使用，無貿易", "臺灣玉發現於菲律賓、越南等地，顯示航海貿易網絡", "玉器是後來移民帶來", "僅為偶然貿易，無系統性交流"], "answer": 1, "explanation": "教材指出臺灣玉傳至東南亞，甚至可能由移民佩戴或貿易，反映古代人航海進行跨島貿易。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "史前貿易網絡", "skill": "考古遺物推論", "difficulty": 3, "id": 13}, {"question": "達悟族與泰雅族的生存智慧，有何共同點？", "options": ["皆依賴單一資源", "皆強調生態平衡與永續經營", "皆無環境規範", "僅關注經濟利益"], "answer": 1, "explanation": "教材中達悟族限制捕魚季節、泰雅族不獵幼獸，皆體現對生態平衡的重視，顯示原住民共同的永續觀念。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "生態平衡", "skill": "跨文化比較", "difficulty": 3, "id": 14}, {"question": "泰雅族的共食與共勞制度，對部落有何影響？", "options": ["導致資源分配不均", "穩定部落凝聚力，形成聯盟系統", "僅限於特定階層", "與生態無關"], "answer": 1, "explanation": "教材比喻此為「公會制度核心」，共享互助能穩定部落、凝聚力量，根本是聯盟系統。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "部落互助制度", "skill": "因果分析與概念歸納", "difficulty": 3, "id": 15}, {"question": "卑南遺址的玉器材質（臺灣玉）與其他地區玉器有何不同？", "options": ["材質相同，僅產地不同", "臺灣玉為本土資源，顯示本地工藝與貿易能力", "全為進口玉石", "無明顯差異"], "answer": 1, "explanation": "教材強調臺灣玉是本地資源，並透過貿易流通，反映史前臺灣人的工藝技術與跨海交流能力。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "史前貿易網絡", "skill": "考古遺物推論", "difficulty": 3, "id": 16}, {"question": "達悟族飛魚祭中的「永續經營」觀念，如何應用於現代生態保育？", "options": ["完全不合時宜", "提供傳統智慧，啟發資源管理策略", "僅為歷史遺跡，無參考價值", "與現代科學衝突"], "answer": 1, "explanation": "教材將祖先智慧比喻為「頂級的生態保育」，顯示其觀念對現代永續發展具啟示意義。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "永續經營", "skill": "永續發展觀念應用", "difficulty": 3, "id": 17}, {"question": "泰雅族狩獵時間限制（11月至4月）的生態原因為何？", "options": ["單純配合季節氣候", "避免其他季節干擾動物繁殖", "僅為宗教儀式需求", "無明確生態考量"], "answer": 1, "explanation": "教材指出禁獵期（5月至10月）讓動物有充足生長時間，避免資源枯竭，反映生態平衡意識。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "生態平衡", "skill": "因果分析與概念歸納", "difficulty": 3, "id": 18}, {"question": "卑南遺址玉器造型（如人獸形耳飾）的象徵意義為何？", "options": ["僅為裝飾品", "代表合作與資源豐饒，具社會文化意涵", "反映迷信思想", "無特定意義"], "answer": 1, "explanation": "教材說明人獸形耳飾雕刻兩人頂著動物，代表合作與資源豐饒，是史詩級裝備的文化象徵。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "卑南遺址玉器", "skill": "考古遺物推論", "difficulty": 3, "id": 19}, {"question": "達悟族與卑南遺址的文化，如何反映臺灣的南島文化特質？", "options": ["僅屬區域性文化", "展現海洋適應與貿易網絡，是南島文化一部分", "與南島文化無關", "僅為單一族群特色"], "answer": 1, "explanation": "教材指出臺灣玉流通至東南亞，並提到「環南海地區」受喜愛，顯示臺灣史前文化與南島網絡的關聯。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "史前貿易網絡", "skill": "跨文化比較", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "根據教材，卑南遺址的貿易網絡如何挑戰傳統對史前臺灣的認知？", "options": ["證明臺灣自古孤立", "顯示臺灣是南島文化重要樞紐，具有高度交流能力", "僅為本地貿易", "無證據支持跨海交流"], "answer": 1, "explanation": "教材指出臺灣玉傳至菲律賓、越南等地，甚至可能由移民佩戴，反映史前臺灣已參與跨海貿易網絡。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "史前貿易網絡", "skill": "綜合評鑑", "difficulty": 4, "id": 21}, {"question": "達悟族與泰雅族的生態智慧，對現代永續發展有何啟示？", "options": ["僅為歷史遺跡", "提供資源管理與生態平衡的傳統範例，啟發現代政策", "與現代科學無關", "僅適合原住民社區"], "answer": 1, "explanation": "教材強調祖先智慧是「頂級的生態保育」，並比喻為「永續經營大師」，顯示其對現代永續發展的參考價值。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "永續經營", "skill": "永續發展觀念應用", "difficulty": 4, "id": 22}, {"question": "卑南遺址玉器作為「傳說級裝備」，如何反映史前社會的價值觀？", "options": ["僅為普通飾品", "象徵社會地位、合作精神與資源控制，具文化意義", "無社會意涵", "僅用於祭祀"], "answer": 1, "explanation": "教材將玉器比喻為「史詩級裝備」與「造型裝備」，並說明人獸形耳飾代表合作與資源豐饒，顯示其社會價值。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "卑南遺址玉器", "skill": "考古遺物推論", "difficulty": 4, "id": 23}, {"question": "達悟族的飛魚祭儀如何結合信仰與生態保育？", "options": ["信仰僅為形式，無實際規範", "透過神話傳說與祭儀，強化資源永續的社會共識", "與生態無關", "僅為娛樂活動"], "answer": 1, "explanation": "教材指出飛魚之神託夢教導正確食用法與祭儀，將信仰與規範結合，體現文化對生態保育的推動。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "達悟族飛魚文化", "skill": "綜合評鑑", "difficulty": 4, "id": 24}, {"question": "泰雅族的山林適應與達悟族的海洋適應，有何異同？", "options": ["完全相同", "皆強調生態平衡，但資源獲取方式不同（山林vs.海洋）", "達悟族更注重信仰，泰雅族更注重經濟", "無明顯差異"], "answer": 1, "explanation": "教材顯示兩族皆重視永續經營，但達悟族關注飛魚資源，泰雅族關注山林動物，反映環境適應的差異。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "文化適應", "skill": "跨文化比較", "difficulty": 4, "id": 25}, {"question": "卑南遺址的考古發現如何佐證臺灣在史前時期的南島文化地位？", "options": ["僅為區域性遺址", "玉器貿易網絡延伸至東南亞，顯示臺灣是南島文化樞紐", "無證據支持", "僅為孤立文化"], "answer": 1, "explanation": "教材指出臺灣玉傳至環南海地區，並提到菲律賓、越南等地發現蹤跡，反映臺灣與南島文化的廣泛聯繫。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "史前貿易網絡", "skill": "綜合評鑑", "difficulty": 4, "id": 26}, {"question": "達悟族與泰雅族的規範如何體現「遊戲化」的生態智慧？", "options": ["僅為遊戲比喻，無實際意義", "透過模擬規則（如季節限制）達成生態平衡，類比現代永續策略", "與遊戲無關", "僅為娛樂"], "answer": 1, "explanation": "教材以遊戲比喻（如「Nerf」「Buff」）解釋傳統規範，顯示祖先智慧如頂級玩家，懂得維持生態穩定。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "永續經營", "skill": "永續發展觀念應用", "difficulty": 4, "id": 27}, {"question": "卑南遺址玉器的工藝技術如何反映史前社會的專業分工？", "options": ["僅為普通手工藝", "精美玉器顯示專業工匠存在，並透過貿易擴散", "無技術含量", "僅用於本地"], "answer": 1, "explanation": "教材提到玉器展現「驚人工藝技術」，並透過貿易流通至其他地區，反映史前社會已具專業分工與跨區交流。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "卑南遺址玉器", "skill": "考古遺物推論", "difficulty": 4, "id": 28}, {"question": "達悟族的飛魚文化如何影響現代海洋資源管理？", "options": ["完全無影響", "提供傳統知識基礎，啟發生態保育政策", "僅為歷史故事", "與現代科學衝突"], "answer": 1, "explanation": "教材強調達悟族的捕魚季節限制是「頂級的生態保育」，其永續觀念可應用於現代資源管理。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "達悟族飛魚文化", "skill": "永續發展觀念應用", "difficulty": 4, "id": 29}, {"question": "綜合教材，原住民族的生態智慧對當代社會有何深層啟示？", "options": ["僅適合研究歷史", "提醒人類應順應自然、永續經營，避免資源枯竭", "與當代議題無關", "僅為文化遺產"], "answer": 1, "explanation": "教材總結祖先智慧是「滿等科技樹玩家」，並比喻為永續經營大師，啟發當代社會重視生態平衡與資源管理。", "subject": "社會科", "unit": "原住民族群與史前文化", "concept": "永續經營", "skill": "綜合評鑑", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
