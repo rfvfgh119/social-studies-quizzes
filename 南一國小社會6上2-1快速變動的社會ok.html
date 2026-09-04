@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會6上2-1快速變動的社會ok</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "國中", "unit": "日治時期的社會變遷", "topic": "台灣日治時期現代化改革的社會變遷分析", "filename": "南一國小社會6上2-1快速變動的社會ok", "summary": "以遊戲版本更新為比喻，解析日治時期台灣在器物、制度、價值觀三大系統的現代化變遷。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "教材中將日治時期的社會變遷比喻為什麼？", "options": ["地圖擴充", "遊戲版本更新", "新角色加入", "任務系統改版"], "answer": 1, "explanation": "教材以遊戲版本更新為比喻，說明日治時期總督府對台灣社會進行大改版。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷", "skill": "歷史脈絡理解", "difficulty": 2, "id": 1}, {"question": "教材指出社會變遷包含哪三大核心系統？", "options": ["經濟、政治、文化", "器物、制度、價值觀", "教育、醫療、交通", "器物、法律、宗教"], "answer": 1, "explanation": "教材明確指出社會變遷的三大核心系統為器物系統、制度系統、價值觀系統，三者環環相扣互相影響。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷三面向", "skill": "歷史脈絡理解", "difficulty": 2, "id": 2}, {"question": "下列何者屬於「器物系統」的變遷？", "options": ["設立法院與聘請專業法官", "導入星期制與標準時間", "鋪設上水道與下水道", "灌輸法律知識於學校教育"], "answer": 2, "explanation": "水道設施（淨水廠、上水道、下水道）屬於物質設備，是器物系統的變遷；法院與警察是制度，時間觀念與法律教育屬於價值觀。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "器物系統", "skill": "概念辨析", "difficulty": 2, "id": 3}, {"question": "清帝國時期台灣社會主要依靠哪些力量來維護秩序？", "options": ["警察與法院", "宗族、公會與地方仕紳", "學校與媒體", "政府機關與法律"], "answer": 1, "explanation": "教材指出清帝國時期台灣社會秩序維護主要靠宗族、公會與地方仕紳，類似社區長老的裁決方式。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "傳統社會制度", "skill": "比較對照", "difficulty": 2, "id": 4}, {"question": "總督府為了改善公共衛生，引入了哪種市場規劃方式？", "options": ["流動攤販自由聚集區", "採光通風的公設市場", "完全私有化的商城", "露天市集免稅區"], "answer": 1, "explanation": "總督府導入市場規劃，建立採光通風的公設市場，取代早期流動攤販聚集造成的髒亂環境。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "公共衛生改革", "skill": "歷史脈絡理解", "difficulty": 2, "id": 5}, {"question": "清帝國時期台灣使用的時間單位，教材用什麼來比喻？", "options": ["沒有精準讀秒的早期遊戲", "需要課金解鎖的功能", "隨機掉落的不定時系統", "玩家自由設定的個人時鐘"], "answer": 0, "explanation": "教材以早期遊戲沒有精準讀秒來比喻清帝國時期時辰、一刻鐘等模糊的時間單位。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "時間觀念變遷", "skill": "歷史脈絡理解", "difficulty": 2, "id": 6}, {"question": "總督府針對捕鼠政策採取了什麼強制手段？", "options": ["鼓勵民眾自願捕鼠並給予獎勵", "成立民間捕鼠協會", "不交老鼠會被罰錢或拘役", "請外國專家來協助捕鼠"], "answer": 2, "explanation": "總督府實施強制捕鼠，不配合者會被罰錢甚至拘役，藉此提升全民衛生意識。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "公共衛生政策", "skill": "歷史脈絡理解", "difficulty": 2, "id": 7}, {"question": "日治時期引入的標準時間制度，包含哪些時間單位？", "options": ["時辰、刻鐘、日子", "年、月、日、季", "秒、分、時、週", "清晨、午後、黃昏、夜晚"], "answer": 2, "explanation": "總督府引入星期制與標準時間，將秒、分、時、週等精準單位帶入台灣社會。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "時間觀念變遷", "skill": "歷史脈絡理解", "difficulty": 2, "id": 8}, {"question": "教材中，日治時期建立的警察體系結合了哪些原有基層組織？", "options": ["宗族與公會", "保正與甲長", "仕紳與長老", "學校與教會"], "answer": 1, "explanation": "總督府將警察與原有的保正、甲長結合，建立綿密的社會控制網路。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "法治制度", "skill": "歷史脈絡理解", "difficulty": 2, "id": 9}, {"question": "下列何者屬於「價值觀系統」的變遷？", "options": ["鋪設下水道與淨水廠", "建立公設市場", "從講人情轉向講法條的法律觀念", "設置警察與法院"], "answer": 2, "explanation": "從講人情到講法條的觀念轉變屬於價值觀系統的變遷；水道、市場屬於器物，警察與法院屬於制度。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "價值觀系統", "skill": "概念辨析", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "清帝國時期台灣傳染病多發的主要原因為何？", "options": ["日本人帶來新疾病", "台灣氣候濕熱加上衛生條件差", "缺乏醫療從業者", "政府不重視醫療問題"], "answer": 1, "explanation": "教材指出清帝國時期台灣濕熱，且衛生條件差（鑿井取水易被污染），導致霍亂、鼠疫等傳染病流行。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "公共衛生改革背景", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "總督府推動水道設施改革，主要是為了改善哪一問題？", "options": ["方便商人運輸貨物", "解決傳統鑿井取水易被污染的衛生問題", "提供灌溉農業用水", "發展觀光旅遊事業"], "answer": 1, "explanation": "傳統鑿井取水容易被污染，總督府蓋起淨水廠並鋪設上水道與下水道，以提升居民健康。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "公共衛生改革", "skill": "因果分析", "difficulty": 3, "id": 12}, {"question": "總督府導入現代法治制度的過程中，學校教育扮演了什麼角色？", "options": ["培養司法官員", "灌輸法律知識以提升全民法治觀念", "取代傳統的宗族裁決方式", "教導學生學習西方語言"], "answer": 1, "explanation": "總督府透過學校教育灌輸法律知識，等同對全民進行法治觀念的強化，促進價值觀轉變。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "法治制度", "skill": "因果分析", "difficulty": 3, "id": 13}, {"question": "時間觀念的改變如何影響台灣社會的運作？", "options": ["讓休閒活動更加隨性自由", "提升了社會效率，使作息更加規律", "導致傳統節慶逐漸消失", "使農業生產方式完全改變"], "answer": 1, "explanation": "引入標準時間後，學校與工廠作息規律，整體社會效率提升，生活態度也隨之改變。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "時間觀念變遷", "skill": "因果分析", "difficulty": 3, "id": 14}, {"question": "教材中提到休閒風氣的發展與哪一項變遷最有直接關聯？", "options": ["水道設施的建設", "強制捕鼠政策", "標準時間制度的引入", "法院體系的建立"], "answer": 2, "explanation": "引入標準時間後，棒球賽、電影院等休閒活動需照時刻表進行，進而帶動休閒風氣的興起。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "價值觀與生活型態變遷", "skill": "因果分析", "difficulty": 3, "id": 15}, {"question": "清帝國時期的衙門裁決與日治時期的法院制度，最主要的差異為何？", "options": ["清帝國沒有法庭建築", "清帝國裁決充滿人情味，日治時期導入專業法官與法條", "日治時期仍然由仕紳裁決", "清帝國時期已有現代法律条文"], "answer": 1, "explanation": "清帝國衙門裁決靠人情與義氣，總督府則引入西方現代法律制度和專業法官，實現從講人情到講法條的轉變。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "法治制度變遷", "skill": "比較對照", "difficulty": 3, "id": 16}, {"question": "總督府的社會控制網路之所以綿密，主要係因為：", "options": ["僅依靠警察系統單獨運作", "結合警察與保正、甲長等基層組織", "完全依賴宗族與公會的力量", "透過學校教育取代家庭功能"], "answer": 1, "explanation": "總督府將警察與原有的保正、甲長結合，形成綿密的社會控制網路，有效達成社會控制目的。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "制度系統", "skill": "因果分析", "difficulty": 3, "id": 17}, {"question": "市場從流動攤販改為公設市場，最主要的變革意義為何？", "options": ["增加攤販的營業收入", "集中管理並改善衛生環境，減少疾病傳播風險", "鼓勵民間自由競爭", "方便外國商人進行貿易"], "answer": 1, "explanation": "早期流動攤販聚集造成環境髒亂，是疾病溫床；公設市場透過採光通風的設計集中管理，減少感染風險。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "公共衛生改革", "skill": "因果分析", "difficulty": 3, "id": 18}, {"question": "星期日訂為例假日，對台灣社會產生了什麼影響？", "options": ["使宗教活動完全取代傳統節慶", "讓學校與工廠的作息開始規律化", "導致商業活動完全停擺", "恢復了清帝國時期的休假制度"], "answer": 1, "explanation": "星期日定為例假日，配合標準時間的引入，使學校與工廠的作息更加規律，同時也帶動了休閒風氣。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "時間觀念變遷", "skill": "因果分析", "difficulty": 3, "id": 19}, {"question": "教材將總督府的改革比喻為「大改版」，下列何項最能說明此比喻的意涵？", "options": ["改革完全繼承了清帝國時期的制度", "新舊制度並存，各自發揮功能", "總督府全面引入現代化系統，使傳統機制受到衝擊", "改革僅限於經濟領域，社會文化未受影響"], "answer": 2, "explanation": "「大改版」比喻總督府全面導入現代化系統，許多傳統機制（如宗族裁決、模糊時間觀）受到衝擊與取代。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷三面向", "skill": "歷史脈絡理解", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "教材提到日治時期的改革「雖然有些是強制安裝」，這句話暗示了什麼？", "options": ["所有改革都受到台灣民眾熱烈歡迎", "改革完全是出於為台灣人民謀福利", "改革帶有殖民統治的強制性，但客觀上奠定現代化基石", "改革完全沒有對台灣社會造成任何負面影響"], "answer": 2, "explanation": "教材指出總督府的改革雖有強制性（如捕鼠罰則、社會控制網路），但客觀上奠定了台灣現代化的基石，呈現雙面評價。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷的雙重評價", "skill": "多面向評估", "difficulty": 4, "id": 21}, {"question": "若想證明「器物、制度、價值觀三者環環相扣」，下列哪一組例子最能support此論點？", "options": ["水道設施→公設市場→棒球賽", "標準時間引入→作息規律化→休閒風氣興起", "法院設立→警察體系→宗族裁決", "捕鼠政策→地下水道→時辰制度"], "answer": 1, "explanation": "標準時間（制度）使作息規律（價值觀），進而帶動休閒活動按時刻表進行（器物/生活型態），三者形成因果鏈。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷三面向互動", "skill": "因果分析", "difficulty": 4, "id": 22}, {"question": "從教材觀點來看，總督府推動公共衛生改革的根本目的為何？", "options": ["純粹出於人道關懷", "為了發展台灣觀光事業", "改善日本人健康同時控制台灣社會", "回應台灣民眾的長期抗爭要求"], "answer": 2, "explanation": "總督府投入大量資源推動衛生改革，既是因為日本人來台後健康受到威脅，也藉此強化對台灣社會的控制與管理。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "總督府政策", "skill": "因果分析", "difficulty": 4, "id": 23}, {"question": "民主化運動興起後，對日治時期台灣法治觀念產生了什麼影響？", "options": ["使人權法治觀念產生倒退", "與法治建設無關，兩者各自獨立發展", "成為史詩級強化，持續提升台灣的人權法治觀念", "使日本總督府取消了所有法律改革"], "answer": 2, "explanation": "教材指出後來民主化運動興起，人權思潮成為史詩級強化，使台灣的人權法治觀念持續提升。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "法治制度變遷", "skill": "因果分析", "difficulty": 4, "id": 24}, {"question": "若將日治時期的時間改革與當代社會的時間管理現象對照，最適當的聯想為何？", "options": ["現代人已經不需要時間觀念，可以自由安排", "標準時間的引入完全抹除了台灣的傳統文化", "時間精確化提升了社會運作效率，與當代重視時間管理的概念相呼應", "時間改革只影響了日本移民，與台灣本地人無關"], "answer": 2, "explanation": "教材強調時間觀念改變提升了社會效率值，讓系統運作更流暢，這與當代社會重視時間管理的理念相呼應。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "時間觀念變遷", "skill": "多面向評估", "difficulty": 4, "id": 25}, {"question": "關於「強制捕鼠」與「休閒風氣興起」的關係，下列敘述何者正確？", "options": ["兩者毫無關聯，分屬不同政策領域", "強制捕鼠直接導致休閒風氣興起", "強制捕鼠提升公共衛生，休閒風氣是時間觀念變遷所帶動的衍生影響", "休閒風氣興起導致了捕鼠政策的實施"], "answer": 2, "explanation": "捕鼠是公共衛生的強制措施，而休閒風氣興起主要是標準時間與例假日制度帶來的衍生影響，兩者屬不同面向但同屬社會變遷的一部分。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷三面向", "skill": "因果分析", "difficulty": 4, "id": 26}, {"question": "下列哪一項最能說明「制度變遷」與「價值觀變遷」之間的互動關係？", "options": ["警察體系的建立使民眾逐漸接受講法條而非講人情的價值觀", "宗族公會的勢力擴張導致法院制度的建立", "學校教育直接改變了水道設施的建設方向", "標準時間的引入使保正與甲長制度重新恢復"], "answer": 0, "explanation": "法院、警察等制度建立後，配合學校法治教育，逐步改變民眾從講人情到講法條的價值觀，體現制度影響價值觀的互動。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "制度與價值觀互動", "skill": "因果分析", "difficulty": 4, "id": 27}, {"question": "教材將日治時期比喻為「Patch 2.0全面更新」，此比喻暗示了什麼關於社會變遷的特性？", "options": ["社會變遷是一次性的，完成後就不會再有改變", "社會變遷如同軟體更新，是連續且有累積性的過程", "總督府的改革完全無視原有文化傳統", "日治時期的變遷與清帝國時期毫無關聯"], "answer": 1, "explanation": "「版本更新」比喻暗示社會變遷是連續累積的過程，新版本建立在舊版本基礎上，並非完全斷裂。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷", "skill": "歷史脈絡理解", "difficulty": 4, "id": 28}, {"question": "若以「器物—制度—價值觀」框架分析公設市場的建立，下列排序最恰當的是？", "options": ["價值觀→器物→制度", "制度→器物→價值觀", "器物（市場建築）→制度（市場管理規則）→價值觀（衛生意識提升）", "器物（市場建築）→價值觀（衛生意識）→制度（管理規則）"], "answer": 2, "explanation": "公設市場的建立體現了器物（硬體建設）、制度（管理規則）、價值觀（衛生意識提升）三層次的遞進與互動關係。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷三面向互動", "skill": "多面向評估", "difficulty": 4, "id": 29}, {"question": "綜合教材內容，日治時期台灣社會變遷最核心的特徵為何？", "options": ["總督府完全廢除台灣所有傳統文化", "以現代化為方向的系統性全面改革，帶有殖民強制性但也奠定現代化基石", "僅在器物層面進行改變，制度與價值觀完全未變", "台灣社會自主推動的現代化運動"], "answer": 1, "explanation": "教材總結總督府導入了現代化改革，雖有強制性，但客觀上奠定了台灣現代化的基石，呈現變遷的複雜性與雙面性。", "subject": "社會科", "unit": "日治時期的社會變遷", "concept": "社會變遷綜合評估", "skill": "多面向評估", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
