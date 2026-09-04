@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會5上2-2島上居民的生活</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會", "grade": "國中", "unit": "社會規範與法律", "topic": "生活規範的類型、演變與現代衝突", "filename": "南一國小社會5上2-2島上居民的生活", "summary": "以遊戲比喻講解四種社會規範、現代演變及法律衝突案例。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "教材中將四種基礎規範比喻為社會運作的「核心程式碼」，下列何者屬於「風俗習慣」？", "options": ["孝順父母、友愛手足", "過年放假掃墓等節慶活動", "清真認證的食品標準", "未成年人保護法的規定"], "answer": 1, "explanation": "風俗習慣是受自然和文化影響，長期累積的生活模式，如教材提到的華人伺服器節慶Buff。", "subject": "社會", "unit": "社會規範與法律", "concept": "風俗習慣", "skill": "辨識規範類型", "difficulty": 2, "id": 1}, {"question": "教材提到「倫理道德」是玩家間的互動準則，判斷是非的標準。下列何項最符合此定義？", "options": ["泰雅族的Gaga準則", "孝順父母友愛手足的長輩圖教導", "清真認證的飲食規定", "博愛座優先讓給有需要者"], "answer": 1, "explanation": "倫理道德是華人文化特有的互動準則與隱藏屬性加成，如孝順父母。", "subject": "社會", "unit": "社會規範與法律", "concept": "倫理道德", "skill": "辨識規範類型", "difficulty": 2, "id": 2}, {"question": "教材將「宗教信仰」比喻為影響信徒言行的指引，下列何者為宗教信仰的例子？", "options": ["過年掃墓的節慶習俗", "清真認證的嚴格標準", "長幼有序的互動準則", "交通規則的法律規定"], "answer": 1, "explanation": "清真認證是符合特定宗教信仰的嚴格標準，如同陣營限定裝備。", "subject": "社會", "unit": "社會規範與法律", "concept": "宗教信仰", "skill": "辨識規範類型", "difficulty": 2, "id": 3}, {"question": "教材中將「法律」比喻為何種遊戲機制？", "options": ["伺服器地圖特色", "玩家互動準則", "陣營限定裝備", "官方的強制規範與Ban ID機制"], "answer": 3, "explanation": "法律是官方的強制規範，明定違法行為與處罰，如同遊戲的Ban ID機制。", "subject": "社會", "unit": "社會規範與法律", "concept": "法律", "skill": "辨識規範類型", "difficulty": 2, "id": 4}, {"question": "關於泰雅族的「Gaga」，教材如何描述其性質？", "options": ["屬於風俗習慣的節慶活動", "是原住民的倫理道德準則", "被比喻為傳奇級的設定，包含儀式禁忌等", "是現代法律的一種"], "answer": 2, "explanation": "Gaga是泰雅族祖先流傳下來的準則，包含規範、儀式、禁忌，被比喻為傳奇級設定。", "subject": "社會", "unit": "社會規範與法律", "concept": "宗教信仰／原住民規範", "skill": "辨識規範類型", "difficulty": 2, "id": 5}, {"question": "教材提到「偽造簽名、網路誹謗」等行為，比喻為何種情況？", "options": ["伺服器版本的正常更新", "玩家嘗試用外掛被系統抓包", "遊戲中的合法任務", "玩家間的道德討論"], "answer": 1, "explanation": "這些行為被比喻為玩家嘗試用外掛，結果被官方系統抓包並處罰。", "subject": "社會", "unit": "社會規範與法律", "concept": "法律強制力", "skill": "辨識規範類型", "difficulty": 2, "id": 6}, {"question": "教材指出「兒童及少年福利與權益保障法」是為了保護哪一群玩家？", "options": ["所有成年玩家", "身心發展尚未成熟的未成年玩家", "具有法政軍警背景的玩家", "原住民特權玩家"], "answer": 1, "explanation": "該法律專門保護未成年玩家，因為他們身心發展尚未成熟，容易受到侵害。", "subject": "社會", "unit": "社會規範與法律", "concept": "法律保護對象", "skill": "辨識規範類型", "difficulty": 2, "id": 7}, {"question": "教材將「博愛座」的規範演變比喻為何種遊戲概念？", "options": ["伺服器地圖重新設計", "Patch 2.0版本更新", "新陣營裝備解鎖", "遊戲難度調整"], "answer": 1, "explanation": "博愛座修法被比喻為遊戲的Patch 2.0更新，以適應新版本社會需求。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範現代演變", "skill": "辨識規範演變", "difficulty": 2, "id": 8}, {"question": "教材提到父母決定子女姓氏的規定調整，反映了何種意識的Patch更新？", "options": ["經濟成長意識", "性別平權意識", "原住民文化保存意識", "環境保育意識"], "answer": 1, "explanation": "從從父姓改為可以協商，是性別平權意識提升的法律調整。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範現代演變", "skill": "辨識規範演變", "difficulty": 2, "id": 9}, {"question": "下列何者不是教材中提到的社會規範類型？", "options": ["風俗習慣", "倫理道德", "經濟法則", "宗教信仰"], "answer": 2, "explanation": "教材明確指出四種基礎規範為風俗習慣、倫理道德、宗教信仰和法律，未提及經濟法則。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範類型", "skill": "辨識規範類型", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "教材以博愛座修法為例，說明規範會隨社會環境更新而調整。下列何項最能解釋修法原因？", "options": ["為了增加遊戲難度", "因為老弱婦孺已不再需要優先權", "為了適應新版本社會需求，擴大優先對象範圍", "因為原住民族文化需要特別保護"], "answer": 2, "explanation": "修法將「老弱婦孺」改為「有其他實際需求者」，是為了適應社會變遷，讓規範更符合現代需求。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範現代演變", "skill": "分析社會變遷", "difficulty": 3, "id": 11}, {"question": "教材提到「傳統文化與現代法律」的衝突，下列何者為具體案例？", "options": ["過年掃墓與環保法規的衝突", "原住民狩獵權與野生動物保育法的衝突", "博愛座使用與交通規則的衝突", "清真認證與食品安全法的衝突"], "answer": 1, "explanation": "王光祿案是原住民狩獵文化與現代保育法衝突的典型例子。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範衝突案例", "skill": "分析社會變遷", "difficulty": 3, "id": 12}, {"question": "針對原住民狩獵權與保育法的衝突，教材指出最高法院的最終判決為何？", "options": ["維持有罪判決，強調法律優先", "改判無罪，承認其特殊文化背景", "要求原住民完全放棄狩獵傳統", "將案件發回地方法院重新審理"], "answer": 1, "explanation": "最高法院改判無罪，顯示社會系統具有彈性，能承認文化差異並調整適用。", "subject": "社會", "unit": "社會規範與法律", "concept": "法律與文化衝突的解決", "skill": "理解法律與文化衝突", "difficulty": 3, "id": 13}, {"question": "教材比喻「法律」與「風俗習慣、倫理道德」的主要差異為何？", "options": ["法律更具彈性，可隨個人意願調整", "法律具有強制力與懲罰機制", "法律只規範商業行為", "法律與道德完全無關"], "answer": 1, "explanation": "法律是官方的強制規範，有明定的違法行為與處罰，其他規範則較依賴社會壓力或內心信念。", "subject": "社會", "unit": "社會規範與法律", "concept": "法律與其他規範的區別", "skill": "比較規範差異", "difficulty": 3, "id": 14}, {"question": "教材提到「Gaga」對泰雅族的重要性，下列敘述何者正確？", "options": ["Gaga是現代法律的一部分", "Gaga僅是狩獵規矩，不涉及宗教儀式", "Gaga是祖先流傳的準則，規範族人與自然和諧共存", "Gaga可被政府法律完全取代"], "answer": 2, "explanation": "Gaga是泰雅族重要的文化準則，包含儀式、禁忌與狩獵規矩，反映與自然和諧共存的價值。", "subject": "社會", "unit": "社會規範與法律", "concept": "原住民規範", "skill": "比較規範差異", "difficulty": 3, "id": 15}, {"question": "關於「宗教規範」與「法律規範」的比較，下列何者符合教材觀點？", "options": ["宗教規範具有強制力，法律規範僅是建議", "兩者都是社會規範，但法律具國家強制力", "宗教規範只適用於特定地區，法律規範全球通用", "宗教規範與法律規範完全相同"], "answer": 1, "explanation": "宗教規範影響信徒言行，但法律是由國家制定並強制執行的規範。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範層級差異", "skill": "比較規範差異", "difficulty": 3, "id": 16}, {"question": "教材指出「父母決定子女姓氏」從從父姓改為可協商，反映了何種社會變遷？", "options": ["經濟發展導致家庭結構改變", "性別平權意識提升，強調家庭成員自主權", "原住民文化復興運動的影響", "國際教育標準的統一要求"], "answer": 1, "explanation": "此修法體現性別平權意識，讓父母可協商子女姓氏，增加自主權。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範現代演變", "skill": "分析社會變遷", "difficulty": 3, "id": 17}, {"question": "教材以「博愛座」為例說明規範演變，下列何者不是此例想要說明的重點？", "options": ["社會環境會不斷更新，舊規則可能不適用", "規範需要隨著時代調整以維持適用性", "傳統規範應該完全被淘汰", "政府會推動修法來適應新版本"], "answer": 2, "explanation": "教材強調規範需要調整適應，而非完全淘汰傳統，顯示系統的彈性。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範現代演變", "skill": "分析社會變遷", "difficulty": 3, "id": 18}, {"question": "關於「兒童及少年福利與權益保障法」，教材指出其立法目的為何？", "options": ["為了懲罰未成年人的違法行為", "因為未成年玩家身心發展未成熟，需提供額外保護", "為了限制未成年人的遊戲時間", "為了統一教育標準"], "answer": 1, "explanation": "該法律專門保護未成年人，因其身心發展尚未成熟，容易受到侵害。", "subject": "社會", "unit": "社會規範與法律", "concept": "法律保護對象", "skill": "分析社會變遷", "difficulty": 3, "id": 19}, {"question": "教材將社會規範比喻為遊戲設定檔，下列何者最能說明此比喻的意涵？", "options": ["規範像遊戲外掛，可被輕易破解", "規範確保玩家和諧互動，維持社會秩序", "規範只限制特定族群的行為", "規範與遊戲無關，是獨立存在的"], "answer": 1, "explanation": "規範就像遊戲設定檔，確保玩家能和諧互動，維持社會秩序。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範功能", "skill": "理解規範意義", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "教材提到「國民法官制度」比喻為公開Beta測試，其主要設計目的為何？", "options": ["讓司法系統更透明，提升國民信任度", "為了降低司法成本", "讓所有玩家都能參與任何案件審判", "取代專業法官的職位"], "answer": 0, "explanation": "國民法官制度讓一般公民參與司法決策，目的是提升司法透明度和國民信任。", "subject": "社會", "unit": "社會規範與法律", "concept": "國民法官制度", "skill": "理解制度理念", "difficulty": 4, "id": 21}, {"question": "關於國民法官制度的資格限制，下列何者符合教材說明？", "options": ["所有成年國民均可擔任", "法政軍警背景者或案件利害關係人會被排除", "僅限具有法律背景者", "未成年玩家也可參與"], "answer": 1, "explanation": "具有法政軍警背景者或案件利害關係人會被排除，以避免判決出現平衡性問題。", "subject": "社會", "unit": "社會規範與法律", "concept": "國民法官制度", "skill": "理解制度理念", "difficulty": 4, "id": 22}, {"question": "教材指出原住民狩獵權與保育法的衝突，最終透過最高法院改判無罪來解決。此案例顯示何種社會機制？", "options": ["法律永遠優先於傳統文化", "社會系統具有彈性與調整能力", "传统文化必须完全服从现代法律", "司法系統無法處理文化衝突"], "answer": 1, "explanation": "最高法院承認原住民特殊文化背景，顯示法律系統具有彈性，能調整以適應文化差異。", "subject": "社會", "unit": "社會規範與法律", "concept": "法律與文化衝突的解決", "skill": "理解法律與文化衝突", "difficulty": 4, "id": 23}, {"question": "教材以「博愛座修法」和「姓氏協商」為例說明規範演變。下列何者最能概括這兩案例的共同特徵？", "options": ["都是為了配合國際標準而修改", "都反映社會價值觀變遷，規範隨之調整", "都是原住民族文化復興的結果", "都是為了增加政府罰則"], "answer": 1, "explanation": "兩案例都顯示社會環境更新後，規範會調整以適應新的價值觀與需求。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範現代演變", "skill": "分析社會變遷", "difficulty": 4, "id": 24}, {"question": "教材提到「宗教規範」如清真認證，比喻為陣營限定裝備。若以此比喻延伸，下列何種情境最可能發生宗教規範與法律規範的衝突？", "options": ["清真認證食品在一般超市銷售", "宗教團體要求豁免遵守某些公共衛生法規", "宗教節慶期間商店營業時間調整", "宗教服飾在學校的穿著規定"], "answer": 1, "explanation": "宗教規範與法律規範的衝突常發生在宗教實踐與公共法規要求相抵觸時。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範衝突案例", "skill": "理解法律與文化衝突", "difficulty": 4, "id": 25}, {"question": "教材將「Gaga」比喻為傳奇級設定，強調其對泰雅族的重要性。若從社會規範角度分析，Gaga與現代法律的主要差異為何？", "options": ["Gaga具有國家強制力，法律僅是建議", "Gaga依賴部落內部認同與傳承，法律具國家強制力", "Gaga只規範狩獵行為，法律規範所有行為", "Gaga是現代法律的一部分"], "answer": 1, "explanation": "Gaga是部落內部流傳的準則，依賴文化認同；法律則是國家制定的強制規範。", "subject": "社會", "unit": "社會規範與法律", "concept": "原住民規範與法律差異", "skill": "比較規範差異", "difficulty": 4, "id": 26}, {"question": "教材提到國民法官制度讓一般 citizen 參與司法審判，這反映了何種民主理念？", "options": ["精英統治理念", "司法專業主義", "人民參與與司法透明", "行政權擴張"], "answer": 2, "explanation": "國民法官制度體現人民參與司法，提升透明度和信任度。", "subject": "社會", "unit": "社會規範與法律", "concept": "國民法官制度", "skill": "理解制度理念", "difficulty": 4, "id": 27}, {"question": "關於教材中提到的「傳統文化與現代法律衝突」，下列何種解決途徑最符合教材所描述的案例？", "options": ["完全放棄傳統文化以符合現代法律", "透過司法調整，承認文化差異並尋求平衡", "強制執行現代法律，不考慮文化因素", "由部落自行決定是否遵守法律"], "answer": 1, "explanation": "最高法院改判無罪的案例顯示，透過司法系統可以調整以承認文化差異，達成平衡。", "subject": "社會", "unit": "社會規範與法律", "concept": "法律與文化衝突的解決", "skill": "理解法律與文化衝突", "difficulty": 4, "id": 28}, {"question": "教材將社會規範比喻為遊戲設定檔，確保玩家和諧互動。若以此比喻思考，下列何種情況最能說明規範失效的後果？", "options": ["遊戲畫面更美觀", "伺服器變成地獄級大亂鬥，秩序崩壞", "玩家數量增加", "遊戲難度降低"], "answer": 1, "explanation": "沒有規範就像沒有遊戲規則，社會將陷入混亂，如同地獄級伺服器。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範功能", "skill": "分析社會變遷", "difficulty": 4, "id": 29}, {"question": "教材最後強調「社會生存法則」的硬核性。若結合四種規範與現代演變，下列何者最能綜合說明規範在社會中的作用？", "options": ["規範僅是限制自由的工具", "規範提供秩序框架，並能隨社會變遷調整以維持適用性", "規範永遠不變，確保社會穩定", "規範只影響少數特定族群"], "answer": 1, "explanation": "規範既提供社會運作的基礎框架，又能透過修法或司法調整適應新環境，維持社會和諧。", "subject": "社會", "unit": "社會規範與法律", "concept": "規範總體功能", "skill": "综合分析", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
