@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林社會5上2-2臺灣為什麼在大航海時代崛起？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "七年級", "unit": "臺灣史：大航海時代的臺灣", "topic": "荷西時期與鄭氏政權對臺灣的開發與影響", "filename": "翰林社會5上2-2臺灣為什麼在大航海時代崛起？", "summary": "以遊戲比喻介紹大航海時代荷蘭、西班牙與鄭氏政權在臺灣的殖民開發、動植物引進、文教建設與文化影響。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "大航海時代最早進入臺灣的歐洲勢力是哪些國家？", "options": ["荷蘭與西班牙", "英國與法國", "荷蘭與英國", "西班牙與葡萄牙"], "answer": 0, "explanation": "教材中指出，大航海時代首先登場的是荷蘭人與西班牙人，他們是最早在臺灣活動的歐洲殖民勢力。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "荷西時期", "skill": "時間順序辨析", "difficulty": 2, "id": 1}, {"question": "荷蘭人為了讓原住民理解教義，採取了什麼方式？", "options": ["用羅馬字母拼寫原住民語言", "翻譯成文言文傳授", "使用拉丁文作為教學語言", "完全不用文字只靠口傳"], "answer": 0, "explanation": "教材指出荷蘭傳教士為了讓原住民順利理解教義，學習原住民語言，並用羅馬字母拼寫，這個做法持續了一百多年。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "荷人文教政策", "skill": "資料解讀與歸納", "difficulty": 2, "id": 2}, {"question": "荷蘭人引進臺灣的動物是以下哪一種？", "options": ["黃牛", "馬匹", "山羊", "水牛"], "answer": 0, "explanation": "教材明確提到荷蘭人引入了黃牛，這是耕種科技樹的關鍵，屬於動植物引進的重要內容。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "動植物引進", "skill": "歷史概念對應", "difficulty": 2, "id": 3}, {"question": "西班牙人在臺灣的活動主要集中於哪一地區？", "options": ["基隆和平島", "臺南安平", "高雄旗津", "臺中港"], "answer": 0, "explanation": "教材指出西班牙人在基隆和平島蓋了天主教堂，這是西班牙人在臺的主要活動地點。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "西班牙殖民活動", "skill": "歷史概念對應", "difficulty": 2, "id": 4}, {"question": "「三貂角」這個地名是由哪個西班牙地名演變而來？", "options": ["聖地牙哥", "馬德里", "巴塞隆那", "塞維亞"], "answer": 0, "explanation": "教材中提到「三貂角」是聖地牙哥的諧音，是西班牙統治留下的地名彩蛋。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "地名由來", "skill": "歷史概念對應", "difficulty": 2, "id": 5}, {"question": "鄭氏政權在臺灣的重要內政人物是下列哪一位？", "options": ["陳永華", "鄭成功", "鄭經", "施琅"], "answer": 0, "explanation": "教材將陳永華比喻為鄭氏政權的內政GM，他規劃孔廟、設立學校，對臺灣文教貢獻極大。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "鄭氏政權文教", "skill": "歷史概念對應", "difficulty": 2, "id": 6}, {"question": "臺灣第一座孔廟是由誰規劃建立的？", "options": ["陳永華", "鄭成功", "荷蘭東印度公司", "西班牙傳教士"], "answer": 0, "explanation": "教材明確指出陳永華規劃了臺灣第一座孔廟，並將漢人傳統文化與教育移植到臺灣。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "鄭氏政權文教", "skill": "歷史概念對應", "difficulty": 2, "id": 7}, {"question": "劍獅的起源與下列哪一項有關？", "options": ["鄭氏軍隊盾牌上的圖騰", "荷蘭商船的裝飾", "原住民的傳統图腾", "西班牙教堂的雕刻"], "answer": 0, "explanation": "教材指出劍獅是鄭氏軍隊盾牌上的圖案，後來轉變為民間信仰的守護符號，是裝備彩蛋的例子。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "文化遺跡", "skill": "歷史概念對應", "difficulty": 2, "id": 8}, {"question": "下列哪些動植物是荷蘭人引進臺灣的？", "options": ["荷蘭豆與土芒果", "香蕉與鳳梨", "水稻與甘蔗", "蘋果與葡萄"], "answer": 0, "explanation": "教材提到荷蘭人引進了黃牛、荷蘭豆和土芒果，這些都是荷蘭人在臺發展農業的重要資源。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "動植物引進", "skill": "資料解讀與歸納", "difficulty": 2, "id": 9}, {"question": "鄭氏政權在臺灣留下的地名中，哪些與軍事營地有關？", "options": ["新營、林鳳營、左營、前鎮", "淡水、基隆、艋舺、大稻埕", "鹿港、臺中、新竹、宜蘭", "高雄、屏東、臺南、花蓮"], "answer": 0, "explanation": "教材指出新營、林鳳營、左營、前鎮等地名都是鄭氏軍隊屯墾時留下的營地名稱，是歷史的足跡。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "鄭氏政權屯墾", "skill": "歷史概念對應", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "荷蘭人與西班牙人在臺灣的主要活動目的為何？", "options": ["商業利益與傳教", "開拓領土與移民", "科學研究與探險", "軍事防禦與同盟"], "answer": 0, "explanation": "教材說明荷蘭人與西班牙人不像來PVP，主要是來刷錢和刷聲望，也就是追求商業利益，並透過傳教來擴展影響力。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "殖民動機", "skill": "因果關係推理", "difficulty": 3, "id": 11}, {"question": "鄭氏政權與清帝國的對抗對臺灣造成什麼影響？", "options": ["只能透過走私貿易獲取資源", "獲得清帝國的大量援助", "與清帝國建立和平通商關係", "促使臺灣全面軍事化"], "answer": 0, "explanation": "教材指出鄭氏政權上線後面臨與清帝國的PVP對戰，導致他們只能透過走私貿易來獲取資源，處於困難模式。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "鄭氏政權困境", "skill": "因果關係推理", "difficulty": 3, "id": 12}, {"question": "荷蘭人設立學校並用羅馬字母拼寫原住民語言，此舉有何影響？", "options": ["促進原住民文化記錄與教育發展", "導致原住民語言完全消失", "使荷蘭語成為臺灣主流語言", "阻礙漢人移民的入臺"], "answer": 0, "explanation": "教材強調荷蘭人用羅馬字母拼寫原住民語言，且這個做法持續一百多年，原住民簽契約都用羅馬字，顯示其對文化記錄的深遠影響。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "荷人文教政策", "skill": "因果關係推理", "difficulty": 3, "id": 13}, {"question": "陳永華對臺灣文教發展的主要貢獻為何？", "options": ["規劃孔廟、設立學校、選拔人才", "引進荷蘭農業技術、發展貿易", "建立天主教堂、傳播基督教", "訓練軍隊、強化軍事防禦"], "answer": 0, "explanation": "教材中陳永華被描述為全能NPC，他規劃臺灣第一座孔廟、設立學校選拔人才，把漢人傳統文化與教育成功移植到臺灣。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "鄭氏政權文教", "skill": "資料解讀與歸納", "difficulty": 3, "id": 14}, {"question": "漢人移民大量來臺對臺灣人口產生什麼影響？", "options": ["使臺灣人口數量大幅增長", "使原住民人口增加", "人口數量維持不變", "導致人口外移"], "answer": 0, "explanation": "教材指出鄭氏政權引入大量漢人移民，使臺灣人口迎來一波大增長，這被比喻為人口紅利Buff。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "漢人移民", "skill": "因果關係推理", "difficulty": 3, "id": 15}, {"question": "鄭氏政權推行的屯墾政策有何意義？", "options": ["開拓新土地並留下地名足跡", "主要為了與原住民作戰", "阻止漢人移民進入臺灣", "專門從事海上貿易活動"], "answer": 0, "explanation": "教材說明鄭氏政權派出軍隊去屯墾，這被比喻為解鎖新地圖，並在臺灣留下許多地名如新營、左營等，是開發臺灣的重要方式。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "鄭氏政權屯墾", "skill": "因果關係推理", "difficulty": 3, "id": 16}, {"question": "媽祖與玄天上帝信仰在臺灣的傳播，與下列何者有關？", "options": ["漢人移民帶來的信仰系統", "荷蘭傳教士推廣的基督教", "西班牙人建立的天主教堂", "原住民的傳統信仰"], "answer": 0, "explanation": "教材指出漢人移民帶來故鄉的習俗與信仰，各地建立媽祖與玄天上帝廟宇，這些信仰如同遊戲中的信仰點或傳送點。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "漢人信仰傳播", "skill": "因果關係推理", "difficulty": 3, "id": 17}, {"question": "荷蘭人引進黃牛對臺灣社會的主要影響為何？", "options": ["促進農業耕種技術的提升", "成為主要的交通工具", "取代原住民的狩獵活動", "用於軍事戰鬥的目的"], "answer": 0, "explanation": "教材將黃牛比喻為耕種科技樹的關鍵，顯示其對農業發展的重要貢獻，有助於提升臺灣的耕作效率。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "動植物引進", "skill": "因果關係推理", "difficulty": 3, "id": 18}, {"question": "鄭氏政權與荷西殖民勢力在臺灣的統治性質有何不同？", "options": ["鄭氏重視政權建設，荷西偏向商業利益", "鄭氏只從事貿易，荷西則建立政府", "三者都是純宗教傳教活動", "三者都沒有對臺灣造成實質影響"], "answer": 0, "explanation": "教材指出荷西主要是來刷錢和傳教，追求商業利益；而鄭氏政權則是進行屯墾、貿易、文教等全面的政權建設，兩者性質不同。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "殖民與統治比較", "skill": "比較分析", "difficulty": 3, "id": 19}, {"question": "劍獅從軍事裝備轉變為民間守護符號，這個現象說明了什麼？", "options": ["文化符號在不同脈絡中產生新意義", "鄭氏軍隊武器供應不足", "荷蘭人模仿劍獅作為裝飾", "原住民信仰取代了漢人信仰"], "answer": 0, "explanation": "教材將劍獅比喻為裝備彩蛋，從鄭氏軍隊盾牌上的圖案轉變為民間信仰的守護符號，顯示文化符號隨著時代演變產生新的意義。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "文化變遷", "skill": "因果關係推理", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "若比較荷蘭人與鄭氏政權在臺灣的文教政策，下列敘述何者正確？", "options": ["荷蘭用羅馬字母記錄原住民語言，鄭氏移植漢人儒家教育", "兩者都同樣推廣漢人教育", "荷蘭建立孔廟，鄭氏設立學校", "兩者都沒有進行任何文教活動"], "answer": 0, "explanation": "教材指出荷蘭人用羅馬字母拼寫原住民語言設立學校，而鄭氏政權陳永華規劃孔廟設立學校，兩者教育對象與內容截然不同，反映不同的文化策略。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "文教政策比較", "skill": "比較分析", "difficulty": 4, "id": 21}, {"question": "從臺灣現有的地名與文化痕跡，如何推斷大航海時代的歷史發展？", "options": ["三貂角反映西班牙統治，劍獅反映鄭氏軍事，孔廟反映漢人文教", "所有地名都源自荷蘭統治時期", "地名與文化與歷史時期無關", "三貂角是鄭氏政權所留，劍獅是西班牙人所創"], "answer": 0, "explanation": "教材中三貂角源自西班牙地名聖地牙哥，劍獅源自鄭氏軍隊盾牌，孔廟是陳永華規劃，這些地名與文化痕跡可作為推斷歷史發展脈絡的重要線索。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "歷史痕跡解讀", "skill": "資料解讀與歸納", "difficulty": 4, "id": 22}, {"question": "大航海時代對臺灣的長期影響，不包括下列何項？", "options": ["使臺灣成為亞洲主要的國際貿易港口", "引進新的動植物資源", "引入新的語言書寫系統", "奠定漢人社會發展基礎"], "answer": 0, "explanation": "教材提及動植物引進、羅馬字母語言系統、漢人文化教育奠定了臺灣社會基礎，但並未提及臺灣成為亞洲主要國際貿易港口，此為超出教材範圍的選項。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "歷史影響分析", "skill": "資料解讀與歸納", "difficulty": 4, "id": 23}, {"question": "若以「科技樹升級」來比喻，荷蘭人與鄭氏政權對臺灣的貢獻分別為何？", "options": ["荷蘭：動植物與語言系統；鄭氏：文化與教育系統", "荷蘭：軍事防禦系統；鄭氏：宗教傳教系統", "荷蘭：經濟貿易系統；鄭氏：對外戰爭系統", "荷蘭：文化教育系统；鄭氏：動植物引進系統"], "answer": 0, "explanation": "教材將荷蘭人引入的黃牛、荷蘭豆、土芒果及羅馬字母語言比喻為科技樹升級，而陳永華規劃孔廟、設立學校被比喻為文化科技樹的建構。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "歷史影響分析", "skill": "比較分析", "difficulty": 4, "id": 24}, {"question": "荷蘭人與西班牙人在臺灣的傳教活動有何相同點？", "options": ["都透過宗教傳播來建立影響力", "都使用羅馬字母拼寫當地語言", "都在同一地區建立教堂", "都成功使原住民全面改信基督教"], "answer": 0, "explanation": "教材指出荷蘭人設立教堂傳教，西班牙人也在基隆和平島蓋天主教堂，兩者的共同點是透過宗教信仰來擴展在臺的影響力。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "傳教活動比較", "skill": "比較分析", "difficulty": 4, "id": 25}, {"question": "陳永華被比喻為「全能NPC」，其原因不包括下列何項？", "options": ["他親自率領軍隊與清帝國作戰", "貿易搞得有聲有色", "規劃臺灣第一座孔廟", "設立學校選拔人才"], "answer": 0, "explanation": "教材中陳永華的全能體現在貿易、孔廟、學校等方面，但並未提及他親自率軍作戰，此為教材中未出現的內容。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "鄭氏政權人物", "skill": "資料解讀與歸納", "difficulty": 4, "id": 26}, {"question": "臺灣地名新營、左營、前鎮等，反映了鄭氏政權的哪種治理方式？", "options": ["軍事屯墾的治理模式", "純粹商業貿易的治理模式", "宗教傳教的治理模式", "原住民自治的治理模式"], "answer": 0, "explanation": "教材指出這些地名都是軍隊營地，反映鄭氏政權透過軍事屯墾來開拓臺灣，這是其治理與開發的重要方式。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "鄭氏政權屯墾", "skill": "因果關係推理", "difficulty": 4, "id": 27}, {"question": "從教材中可知，大航海時代對臺灣的整體影響最接近下列何種描述？", "options": [" bring多層次的文化與經濟變遷", "僅帶來宗教信仰的改變", "完全沒有對臺灣造成任何影響", "只影響了原住民社會"], "answer": 0, "explanation": "教材總結大航海時代為臺灣帶來動植物引進、語言系統、信仰地圖等多重變遷，鄭氏政權更進行屯墾貿易文教等大規模開發，顯示整體影響是多層次且深遠的。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "歷史影響總評", "skill": "資料解讀與歸納", "difficulty": 4, "id": 28}, {"question": "若有人誤以為黃牛是鄭氏政權引進的，下列何者是最有力的糾正依據？", "options": ["教材明確指出黃牛是荷蘭人引進的耕種科技關鍵", "鄭氏政權主要從事軍事活動", "黃牛原是臺灣原生動物", "鄭氏政權時期才開始農業發展"], "answer": 0, "explanation": "教材明確區分：黃牛是荷蘭人引進的，而鄭氏政權主要貢獻在於屯墾、文教與漢人移民的引入，兩者不可混淆。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "荷鄭貢獻辨析", "skill": "因果關係推理", "difficulty": 4, "id": 29}, {"question": "綜合教材內容，大航海時代臺灣歷史發展的正確時間順序為何？", "options": ["荷蘭與西班牙殖民→鄭氏政權統治", "鄭氏政權統治→荷蘭與西班牙殖民", "荷蘭殖民→鄭氏政權→西班牙殖民", "西班牙殖民→鄭氏政權→荷蘭殖民"], "answer": 0, "explanation": "教材先介紹荷蘭與西班牙為第一批登入的殖民者，之後才迎接大版本更新——鄭氏政權登場，這符合歷史發展的時間順序。", "subject": "社會科", "unit": "臺灣史：大航海時代的臺灣", "concept": "時間順序辨析", "skill": "時間順序辨析", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
