@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上2-2氣候如何影響我們</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "地理", "grade": "國一～國三", "unit": "臺灣的氣候與環境適應", "topic": "臺灣氣候特徵、自然災害與人地互動", "filename": "康軒社會5上2-2氣候如何影響我們", "summary": "以遊戲化比喻講解臺灣氣候、自然災害與人類環境適應的智慧。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "臺灣的颱風主要在哪個季節出現？", "options": ["春冬兩季", "夏秋兩季", "秋冬兩季", "春夏兩季"], "answer": 1, "explanation": "颱風固定在夏秋兩季出沒，是臺灣地圖上的世界級BOSS。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "颱風季節", "skill": "判讀氣候資料與分佈", "difficulty": 2, "id": 1}, {"question": "冬季東北季風來襲時，臺灣哪一地區會變得濕冷多雨？", "options": ["南部", "中南部", "北部", "澎湖"], "answer": 2, "explanation": "冬季東北季風影響下，北部地區濕冷又多雨，被稱為濕冷Debuff區。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "季風氣候", "skill": "判讀氣候資料與分佈", "difficulty": 2, "id": 2}, {"question": "夏季西南季風登場時，臺灣哪一區域會變得濕熱多雨？", "options": ["北部", "東部", "中南部", "澎湖"], "answer": 2, "explanation": "夏天西南季風登場，中南部變成濕熱多雨，南北氣候差異明顯。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "季風氣候", "skill": "比較區域差異", "difficulty": 2, "id": 3}, {"question": "颱風帶來的強風豪雨對農作物來說是什麼？對水庫蓄水來說是什麼？", "options": ["都是Buff", "都是Debuff", "對農作物是Buff，對水庫是Debuff", "對農作物是Debuff，對水庫是Buff"], "answer": 3, "explanation": "強風豪雨是農作物的Debuff（破防損血），但豐沛水量能補滿水庫能量條，是Buff。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "颱風的雙面影響", "skill": "分析自然災害的成因與對策", "difficulty": 2, "id": 4}, {"question": "臺灣冬季南部地區相對於北部，氣候特徵為何？", "options": ["濕冷多雨", "乾燥", "濕熱", "颱風頻繁"], "answer": 1, "explanation": "冬天東北季風來襲，北部濕冷多雨，南部反而比較乾燥，是乾燥Buff區。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "季風氣候", "skill": "比較區域差異", "difficulty": 2, "id": 5}, {"question": "斜屋頂（瓦片斜屋頂）在臺灣建築中的主要功能為何？", "options": ["防禦強風", "導流雨水避免基地滲水", "收集雨水", "美觀裝飾"], "answer": 1, "explanation": "瓦片斜屋頂是基礎防禦，把雨水導流出去，避免基地滲水Debuff。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 2, "id": 6}, {"question": "騎樓和遮雨棚在臺灣建築中屬於什麼層級的升級？", "options": ["基礎防禦", "防護強化", "QoL升級設施", "多功能模組"], "answer": 2, "explanation": "騎樓和遮雨棚是QoL升級設施，讓行人有遮雨便道。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 2, "id": 7}, {"question": "埔里適合種植什麼作物？", "options": ["蘋果", "百香果", "稻米", "小麥"], "answer": 1, "explanation": "埔里地勢低、氣候溫暖，適合種百香果資源。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "海拔對農業的影響", "skill": "分析人地互動關係", "difficulty": 2, "id": 8}, {"question": "仁愛地區因為地勢高、氣候寒冷，適合種植什麼高價作物？", "options": ["百香果", "稻米", "蘋果", "香蕉"], "answer": 2, "explanation": "仁愛地勢高、氣候寒冷，適合種蘋果高價作物。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "海拔對農業的影響", "skill": "分析人地互動關係", "difficulty": 2, "id": 9}, {"question": "風力發電機會自動轉向迎風面，這反映了什麼概念？", "options": ["人定勝天", "對抗自然", "環境適應科技", "放棄利用自然"], "answer": 2, "explanation": "風力發電機自動轉向迎風面，是人類玩家的環境適應科技，生存智慧。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "臺灣的旱災通常發生在什麼時候？", "options": ["5月到8月", "9月到11月", "11月到次年4月", "6月到10月"], "answer": 2, "explanation": "旱災發生在十一到四月，會影響民生用水供應。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "自然災害", "skill": "分析自然災害的成因與對策", "difficulty": 3, "id": 11}, {"question": "旱災發生時，農民可能採取哪種策略來應對？", "options": ["增加灌溉水量", "休耕或轉作需水少的雜糧", "改種需水量高的稻米", "擴大農地面積"], "answer": 1, "explanation": "旱災時農田被迫休耕或轉作模式，換種需水少的雜糧。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "自然災害", "skill": "分析自然災害的成因與對策", "difficulty": 3, "id": 12}, {"question": "寒害通常發生在什麼時間，氣溫低於多少度會發動？", "options": ["5月到8月，低於20度", "12月到2月，低於10度", "9月到11月，低於15度", "11月到4月，低於5度"], "answer": 1, "explanation": "寒害在十二到二月，氣溫低於十度會發動，農產漁產都會GG。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "自然災害", "skill": "分析自然災害的成因與對策", "difficulty": 3, "id": 13}, {"question": "下列哪組氣候現象最容易引發水災和土石流？", "options": ["東北季風與晴天", "梅雨、西南季風與颱風引發的超大豪雨", "夏季午後雷陣雨", "冬季乾燥氣候"], "answer": 1, "explanation": "梅雨、西南季風、颱風常常引發超大豪雨，低窪地區淹水，山區觸發土石流。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "自然災害", "skill": "理解自然災害的成因與對策", "difficulty": 3, "id": 14}, {"question": "曾文溪地區的特色是什麼？", "options": ["河道固定不變", "河道會隨機改道，每次豪雨都會淹水", "從未淹水", "只有旱災沒有水災"], "answer": 1, "explanation": "曾文溪河道會隨機改道，每次豪雨都會淹水。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "自然災害", "skill": "分析人地互動關係", "difficulty": 3, "id": 15}, {"question": "日曬鹽田在南部沿海最適合在哪個季節運作？", "options": ["夏季", "春季", "秋季", "冬季"], "answer": 3, "explanation": "冬季乾燥Buff區，日照充足加上強風，完美達成曬鹽成就。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "分析人地互動關係", "difficulty": 3, "id": 16}, {"question": "寒害會同時影響哪兩個產業？", "options": ["農業與工業", "漁業與觀光業", "農產與漁產", "觀光業與科技業"], "answer": 2, "explanation": "寒害發生時，氣溫低於十度，農產和漁產都會GG。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "自然災害", "skill": "分析自然災害的成因與對策", "difficulty": 3, "id": 17}, {"question": "臺灣南部沿海的鹽田目前已轉型為什麼？", "options": ["工業區", "住宅區", "體驗曬鹽的觀光服務業", "自然保護區"], "answer": 2, "explanation": "現在生產成本太高，轉型觀光服務業，變成體驗曬鹽的活動區。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "分析人地互動關係", "difficulty": 3, "id": 18}, {"question": "低窪地區在大豪雨後最容易出現什麼問題？", "options": ["土石流", "旱災", "淹水", "寒害"], "answer": 2, "explanation": "超大豪雨後，低窪地區就會淹水Debuff。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "自然災害", "skill": "理解自然災害的成因與對策", "difficulty": 3, "id": 19}, {"question": "山區在大豪雨後最容易觸發什麼機制？", "options": ["淹水", "旱災", "土石流", "寒害"], "answer": 2, "explanation": "山區則觸發土石流機制，會造成生命財產損失。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "自然災害", "skill": "理解自然災害的成因與對策", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "澎湖地區的「菜宅」是用什麼材料堆砌而成的？", "options": ["磚塊", "竹子", "珊瑚礁石", "混凝土"], "answer": 2, "explanation": "菜宅用珊瑚礁石堆砌而成，有效抵擋強勁季風。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 4, "id": 21}, {"question": "菜宅的主要功能是什麼？", "options": ["防洪", "防風", "防寒", "防旱"], "answer": 1, "explanation": "澎湖地區強風Buff超高，菜宅用防風牆有效抵擋強勁季風。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 4, "id": 22}, {"question": "「竹籠茨」是一種什麼類型的基地？", "options": ["固定式基地", "永久性建築", "移動式基地", "地下基地"], "answer": 2, "explanation": "竹籠茨是一種移動式基地，重量輕巧可多人搬運。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 4, "id": 23}, {"question": "竹籠茨讓先民在面對什麼災害時可以啟動遷村避難模式？", "options": ["寒害", "旱災", "水災", "土石流"], "answer": 2, "explanation": "當曾文溪水災來襲時，竹籠茨可啟動遷村避難模式。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "分析人地互動關係", "difficulty": 4, "id": 24}, {"question": "現代建築的「綠屋頂」有什麼功能？", "options": ["僅美觀", "吸收雨水、隔熱又美觀", "僅隔熱", "僅收集雨水"], "answer": 1, "explanation": "綠屋頂是多功能模組，吸收雨水、隔熱又美觀。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 4, "id": 25}, {"question": "防水塗料相對於一般建築材料，屬於什麼層級的升級？", "options": ["基礎防禦", "防護強化", "QoL升級", "多功能模組"], "answer": 1, "explanation": "防水塗料是防護強化，現代建築的升級選項。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 4, "id": 26}, {"question": "埔里和仁愛兩地同在南投，但氣候與作物差異的主要原因是？", "options": ["經度差異", "海拔地形修正", "距海遠近", "植被覆蓋不同"], "answer": 1, "explanation": "南投地圖有海拔地形修正：埔里地勢低氣候溫暖種百香果，仁愛地勢高氣候寒冷種蘋果。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "海拔對農業的影響", "skill": "分析人地互動關係", "difficulty": 4, "id": 27}, {"question": "根據全文，臺灣先民的環境適應智慧主要體現在哪些面向？", "options": ["僅建築方面", "僅農業方面", "建築、農業與遷徙策略等多面向", "僅防禦颱風"], "answer": 2, "explanation": "先民發展斜屋頂、竹籠茨、菜宅等建築與設施，並透過休耕、轉作適應氣候，展現多方面智慧。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人地互動", "skill": "分析人地互動關係", "difficulty": 4, "id": 28}, {"question": "作者說「氣候不是死背資料，它是個動態的遊戲系統」，這句話的深意為何？", "options": ["地理不需要記憶", "掌握氣候的動態變化與Buff/Debuff機制，才能理解人地互動", "氣象預測不準確", "臺灣氣候沒有規律"], "answer": 1, "explanation": "氣候是動態系統，掌握Buff與Debuff機制，才能理解人類如何在變化的環境中發展適應策略。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人地互動", "skill": "分析人地互動關係", "difficulty": 4, "id": 29}, {"question": "下列有關臺灣建築與環境適應的敘述，何者正確？", "options": ["斜屋頂用於收集雨水", "騎樓和遮雨棚是基礎防禦設施", "菜宅用珊瑚礁石堆砌以防強風", "竹籠茨是用於防旱的固定式建築"], "answer": 2, "explanation": "菜宅用珊瑚礁石堆砌防風牆抵擋強勁季風。斜屋頂導流雨水，騎樓遮雨棚是QoL升級，竹籠茨是移動式基地防洪。", "subject": "地理", "unit": "臺灣的氣候與環境適應", "concept": "人類對環境的適應", "skill": "解讀傳統生活智慧與環境的關聯", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
