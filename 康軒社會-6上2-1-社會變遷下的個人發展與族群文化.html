@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會｜6上2-1｜社會變遷下的個人發展與族群文化</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "國中二年級", "unit": "社會變遷與發展", "topic": "台灣社會的變遷：教育、家庭、性別與族群文化", "filename": "康軒社會｜6上2-1｜社會變遷下的個人發展與族群文化", "summary": "以遊戲化比喻講解台灣社會變遷，涵蓋教育普及、家庭轉型、性別平等與多元文化四個面向。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "日治時期，台灣人的教育機會受到哪些限制？", "options": ["人人都可以自由選擇學校", "台灣人與日本人讀不同的學校，師資設備有差異", "女性完全沒有受教育的權利", "教育資源平均分配給所有人"], "answer": 1, "explanation": "日治時期存在「伺服器分流」，台灣人和日本人讀的學校不同，師資設備都有差異。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "教育資源分配", "skill": "歷史脈絡理解", "difficulty": 2, "id": 1}, {"question": "中華民國遷台初期實施的國民教育，被比喻為什麼？", "options": ["Nerf（負面狀態）", "新的伺服器分流", "教育普及的Buff", "客製化練功模式"], "answer": 2, "explanation": "國民教育上線後人人都可上學，算是教育普及的Buff（正面影響）。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "教育普及化", "skill": "基礎理解", "difficulty": 2, "id": 2}, {"question": "中華民國遷台初期的教育有哪些Nerf（負面影響）？", "options": ["只有日本人可以上學", "沒有國民教育，大家都失學", "服儀言行規定嚴格、偏重考試升學，侷限個人發展", "學校完全沒有制服規定"], "answer": 2, "explanation": "雖然教育普及了，但學校對服儀言行規定嚴格，還強制穿制服，且偏重考試升學，侷限了個人發展。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "教育政策的雙面影響", "skill": "基礎理解", "difficulty": 2, "id": 3}, {"question": "現在的教育系統被比喻為什麼樣的更新？", "options": ["服儀系統被鎖定", "伺服器分流加劇", "解鎖個人天賦樹的多種分支", "只能走考試升學一條路"], "answer": 3, "explanation": "現代教育鼓勵學生表達想法、參與多元學習、探索個人興趣，等於解鎖了個人天賦樹的多種分支。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "現代教育理念", "skill": "基礎理解", "difficulty": 2, "id": 4}, {"question": "家長能為孩子選擇實驗學校或機構，被比喻為什麼？", "options": ["伺服器分流", "客製化練功模式", "性別友善廁所", "族群文化DLC包"], "answer": 1, "explanation": "家長可為孩子選擇實驗學校或機構，如同遊戲中的客製化練功模式。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "教育選擇多元", "skill": "基礎理解", "difficulty": 2, "id": 5}, {"question": "早期農業社會的家庭觀念被比喻為什麼？", "options": ["隊伍配置彈性化", "玩家選擇AFK", "公會擴張與人口Buff", "伺服器分流"], "answer": 2, "explanation": "農業社會強調多子多福、子承父業，被比喻為公會擴張和人口Buff。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "傳統家庭觀念", "skill": "基礎理解", "difficulty": 2, "id": 6}, {"question": "現在工商社會的家庭結構有什麼變化？", "options": ["家庭成員越多越好", "必須子承父業", "單人夫妻家庭比率提高，隊伍配置彈性化", "不允許結婚生子"], "answer": 2, "explanation": "工商社會家庭生育數減少、單人夫妻家庭比率提高，代表隊伍配置的彈性化。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "家庭結構轉型", "skill": "基礎理解", "difficulty": 2, "id": 7}, {"question": "「啃老族」在遊戲化比喻中是什麼意思？", "options": ["玩家選擇AFK，讓隊友carry整場", "努力打工賺錢的玩樂", "積極參與家庭事務", "獨立完成所有任務"], "answer": 0, "explanation": "啃老族比喻為玩家選擇AFK（離開遊戲），讓隊友carry整場，是負面現象。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "家庭角色變遷", "skill": "基礎理解", "difficulty": 2, "id": 8}, {"question": "早期社會的性別刻板印象，如「男主外女主內」，被比喻為什麼？", "options": ["強力Buff", "嚴重Nerf", "遊戲規則更新", "客製化練功模式"], "answer": 1, "explanation": "重男輕女、男主外女主內的性別刻板印象，讓女性承擔更多家務育兒責任且在財產自主權上被犧牲，是嚴重Nerf。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "性別不平等", "skill": "基礎理解", "difficulty": 2, "id": 9}, {"question": "政府推動性別平等、制定法律和改善設施，被比喻為什麼？", "options": ["伺服器分流", "遊戲規則更新與環境優化", "人口Buff", "玩家AFK"], "answer": 1, "explanation": "政府推動性別平等、制定法律、改善設施（如性別友善廁所），被比喻為遊戲規則更新與環境優化。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "性別平等政策", "skill": "基礎理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "下列哪一項是中華民國遷台初期教育的「Buff」（正面影響）？", "options": ["服儀規定嚴格", "偏重考試升學", "國民教育上線，人人都可上學", "侷限個人發展"], "answer": 2, "explanation": "國民教育上線讓人人都有受教育機會，是教育普及的Buff；其餘選項皆為Nerf。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "Buff與Nerf的區分", "skill": "社會分析能力", "difficulty": 3, "id": 11}, {"question": "「巧妻保溫鍋」廣告將女性綁定在家務角色，這反映了什麼社會現象？", "options": ["女性地位已經完全提升", "傳統性別刻板印象，將女性綁定為家務NPC", "現代平等觀念的體現", "雙薪家庭普遍化"], "answer": 1, "explanation": "巧妻保溫鍋廣告滿足全家口福是主婦驕傲，將女性綁定在家務角色，是傳統性別刻板印象的體現。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "性別刻板印象", "skill": "社會分析能力", "difficulty": 3, "id": 12}, {"question": "現代社會雙薪家庭比率提高，代表什麼社會變遷？", "options": ["女性地位下降", "傳統性別分工完全消失", "性別平等觀念普及，配偶共同分擔家務育兒", "家庭結構回到農業社會模式"], "answer": 2, "explanation": "雙薪家庭增加、配偶共同分擔家務育兒，反映性別平等觀念普及，是女性角色的強力Buff。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "性別平等與家庭角色", "skill": "社會分析能力", "difficulty": 3, "id": 13}, {"question": "下列哪一項是台灣多元族群文化的具體表現？", "options": ["只有閩南人的傳統節慶", "金門移民節、美濃送聖蹟文化節、花蓮豐年節、眷村文化節等限定活動", "全台只有一個統一的文化節慶", "原住民文化已完全消失"], "answer": 1, "explanation": "台灣多元文化來自不同時期來台的各族群，如金門移民節、美濃送聖蹟文化節、花蓮豐年節、眷村文化節等。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "多元文化DLC包", "skill": "社會分析能力", "difficulty": 3, "id": 14}, {"question": "美濃送聖蹟文化節屬於哪個族群文化的表現？", "options": ["原住民文化", "眷村文化", "客家文化", "閩南文化"], "answer": 2, "explanation": "高雄美濃送聖蹟文化節是客家文化的代表性活動，屬於台灣多元文化DLC包之一。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "族群文化辨識", "skill": "社會分析能力", "difficulty": 3, "id": 15}, {"question": "「俗女養成記」這部作品呈現了什麼社會議題？", "options": ["現代遊戲文化的發展", "傳統性別觀念對女性成長的影響", "經濟繁榮的商業廣告", "原住民豐年節的慶祝方式"], "answer": 1, "explanation": "《俗女養成記》呈現了傳統性別觀念對女性成長的影響，反映性別平等的社會議題。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "性別觀念轉變", "skill": "社會分析能力", "difficulty": 3, "id": 16}, {"question": "從農業社會到工商社會，家庭結構的變化主要驅動力是什麼？", "options": ["遊戲規則的改變", "社會經濟型態的轉變", "族群文化的融合", "性別觀念的復古"], "answer": 1, "explanation": "農業社會多子多福、家族事業傳承，工商社會家庭成員減少、結構彈性化，是社會經濟型態轉變所驅動。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "社會變遷的原因", "skill": "社會分析能力", "difficulty": 3, "id": 17}, {"question": "性別友善廁所的設置，代表政府對性別平等的什麼作為？", "options": ["只是一時的流行趨勢", "環境優化更新，確保所有玩家都能平等對待", "增加公共設施成本的浪費", "只照顧女性玩家的權益"], "answer": 1, "explanation": "性別友善廁所是政府推動性別平等的環境優化更新，確保所有玩家（民众）都能平等對待。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "性別平等設施", "skill": "社會分析能力", "difficulty": 3, "id": 18}, {"question": "原住民豐年節是台灣多元文化中的什麼？", "options": ["限定的族群文化DLC包活動", "只有單一族群參與的活動", "與性別平等無關的活動", "已經消失的傳統節慶"], "answer": 0, "explanation": "花蓮原住民族豐年節是台灣多元文化DLC包中的限定活動，展現原住民獨特的文化傳統。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "多元文化與族群", "skill": "社會分析能力", "difficulty": 3, "id": 19}, {"question": "現代教育鼓勵學生探索個人興趣，這反映了教育理念的什麼轉變？", "options": ["從考試導向轉向多元發展", "從多元發展轉向嚴格管制", "從平民教育轉向精英教育", "從女性教育轉向男性教育"], "answer": 0, "explanation": "現代教育從過去偏重考試升學，轉向鼓勵表達想法、參與多元學習、探索個人興趣，是教育理念的轉變。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "教育理念演進", "skill": "社會分析能力", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "若要區分社會變遷中的Buff與Nerf，下列哪組配對完全正確？", "options": ["教育普及（Buff）／服儀規定嚴格（Buff）", "家庭彈性化（Nerf）／雙薪家庭（Nerf）", "性別平等觀念普及（Buff）／傳統性別分工（Nerf）", "多元文化（Nerf）／偏見歧視（Buff）"], "answer": 2, "explanation": "性別平等觀念普及提升女性地位，是Buff；傳統性別分工限制女性發展，是Nerf。其他選項配對錯誤。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "Buff與Nerf的判斷", "skill": "批判性思考", "difficulty": 4, "id": 21}, {"question": "關於台灣教育政策的演變，下列敘述何者正確？", "options": ["日治時期台灣人與日本人享有平等的教育資源", "遷台初期國民教育只開放部分族群接受", "現代教育已完全消除所有考試競爭壓力", "從日治到現代，教育資源從不均走向普及再走向多元"], "answer": 3, "explanation": "日治時期資源不均（伺服器分流），遷台初期普及但仍有Nerf，現代走向多元發展，整體趨勢是從不均走向普及再走向多元。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "教育政策演進", "skill": "歷史脈絡理解", "difficulty": 4, "id": 22}, {"question": "「價值判斷」能力在分析社會變遷時的重要性為何？", "options": ["價值判斷不重要，只需要記憶事實", "價值判斷幫助我們區分社會變遷的Buff與Nerf，做出合理的評價", "價值判斷只適用於性別議題，其他議題不需要", "價值判斷會干擾客觀分析，應該完全避免"], "answer": 1, "explanation": "價值判斷能幫助我們區分社會變遷中的正面（Buff）與負面（Nerf）影響，對政策與文化現象做出合理評價。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "價值判斷能力", "skill": "價值判斷", "difficulty": 4, "id": 23}, {"question": "關於台灣多元族群文化，下列哪一項推論最恰當？", "options": ["多元文化DLC包只會造成社會分歧，應加以消除", "不同族群的文化DLC包豐富了台灣社會，應尊重與理解", "族群文化只屬於特定族群，與其他族群無關", "多元文化已經消失，不需要特別保護"], "answer": 1, "explanation": "台灣多元文化來自不同時期來台的各族群，應避免偏見、學會尊重與理解，這能為角色增加聲望。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "多元文化尊重", "skill": "社會分析能力", "difficulty": 4, "id": 24}, {"question": "比較農業社會與工商社會的家庭結構，下列哪一項敘述最為正確？", "options": ["農業社會與工商社會的家庭結構完全相同", "農業社會強調子承父業與多子多福，工商社會家庭彈性化且生育數減少", "工商社會的家庭結構比農業社會更不穩定，是纯粹的Nerf", "家庭結構沒有隨著社會經濟型態改變而變化"], "answer": 1, "explanation": "農業社會多子多福、子承父業；工商社會生育數減少、家庭配置彈性化，反映社會經濟型態轉變帶來的家庭結構變遷。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "家庭結構變遷", "skill": "歷史脈絡理解", "difficulty": 4, "id": 25}, {"question": "性別平等觀念普及對台灣社會的深遠影響為何？", "options": ["僅影響女性，與男性無關", "提升女性地位，使職涯規劃不受性別限制，雙薪家庭增加，家庭合作模式更平等", "導致家庭結構完全瓦解", "與傳統觀念相比毫無變化"], "answer": 1, "explanation": "性別平等觀念普及提升女性地位，使職涯規劃不再受性別限制，雙薪家庭增加，配偶共同分擔家務育兒，是整體社會的Buff。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "性別平等的社會影響", "skill": "社會分析能力", "difficulty": 4, "id": 26}, {"question": "若將社會變遷視為「遊戲Patch更新」，下列哪一項最符合「全面改版」的意涵？", "options": ["只改變單一族群的文化活動", "同時涵蓋教育、家庭、性別、族群等多個系統的整體更新", "只有負面影響的更新", "完全不影響玩家體驗的更新"], "answer": 1, "explanation": "社會的Patch更新涵蓋教育系統、家庭觀念、性別平等、族群文化等多個面向，是整體性的系統更新。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "社會變遷的整體性", "skill": "批判性思考", "difficulty": 4, "id": 27}, {"question": "關於「客製化練功模式」在教育中的應用，下列哪一項是合理的推論？", "options": ["所有學生必須走相同的升學道路", "家長可為孩子選擇實驗學校或機構，讓學習更具彈性與個人化", "客製化練功模式只適用於經濟弱勢家庭", "教育系統不再有任何統一標準"], "answer": 1, "explanation": "現代教育鼓勵多元發展，家長可為孩子選擇實驗學校或機構，如同遊戲中的客製化練功模式，讓學習更具彈性。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "教育選擇與個人發展", "skill": "批判性思考", "difficulty": 4, "id": 28}, {"question": "為什麼理解「Buff與Nerf」的區分對學習社會科重要？", "options": ["因為社會變遷只有正面影響，沒有負面影響", "因為這能幫助我們批判性分析社會變遷的多面性，而非盲目接受", "因為遊戲比喻完全等同於真實社會", "因為這只是娛樂性質，對考試沒有幫助"], "answer": 1, "explanation": "區分Buff與Nerf能幫助我們全面看待社會變遷，理解其正面與負面影響，培養批判性思考能力。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "批判性思考方法", "skill": "批判性思考", "difficulty": 4, "id": 29}, {"question": "綜合檢視台灣社會變遷，下列哪一項結論最為全面？", "options": ["台灣社會變遷只有單一面向，沒有多元性", "台灣社會在教育、家庭、性別、族群文化等面向持續變遷，整體朝向更平等多元的方向發展，但仍需持續努力", "社會變遷已經完全解決所有問題，不需要再改進", "社會變遷完全是負面影響，應該回到傳統"], "answer": 1, "explanation": "台灣社會在教育、家庭、性別、族群文化等面向持續變遷，整體朝向更平等多元發展，但仍需持續努力避免偏見與歧視。", "subject": "社會科", "unit": "社會變遷與發展", "concept": "社會變遷的綜合理解", "skill": "社會分析能力", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
