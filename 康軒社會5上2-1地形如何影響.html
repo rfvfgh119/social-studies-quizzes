@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上2-1地形如何影響</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "地理", "grade": "國一", "unit": "臺灣的自然環境", "topic": "臺灣島地形、河川、氣候與土地利用", "filename": "康軒社會5上2-1地形如何影響", "summary": "以遊戲比喻說明臺灣地形、河川、海岸特徵如何影響產業發展與土地利用。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "臺灣島是由哪兩個板塊推擠而隆起形成的？", "options": ["歐亞板塊與太平洋板塊", "歐亞板塊與菲律賓海板塊", "印度板塊與歐亞板塊", "菲律賓海板塊與太平洋板塊"], "answer": 1, "explanation": "臺灣位於歐亞板塊與菲律賓海板塊交界，兩板塊持續推擠使臺灣島隆起形成。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "板塊交界與地形隆起", "skill": "基礎概念辨識", "difficulty": 2, "id": 1}, {"question": "臺灣島的地形特徵為何？", "options": ["東西長、南北窄", "南北長、東西窄", "正圓形", "東西與南北等長"], "answer": 1, "explanation": "板塊長期推擠使臺灣島變成長條狀，南北長、東西窄。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "臺灣地形分區", "skill": "基礎概念辨識", "difficulty": 2, "id": 2}, {"question": "臺灣的山脈主要走向為何？", "options": ["東西走向", "東北—西南走向", "南北走向", "環狀走向"], "answer": 2, "explanation": "受板塊推擠影響，臺灣的山脈大多呈南北走向。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "臺灣地形分區", "skill": "基礎概念辨識", "difficulty": 2, "id": 3}, {"question": "臺灣河川的主要特徵為何？", "options": ["河川長、水流緩慢", "河川短、坡度陡、水流急", "河川長、坡度陡", "河川短、水流平緩"], "answer": 1, "explanation": "臺灣島東西窄，河川大多從山地發源，流經短且坡度陡，水流急。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "河川特性與水資源利用", "skill": "基礎概念辨識", "difficulty": 2, "id": 4}, {"question": "臺灣西部海岸的主要特徵為何？", "options": ["多斷崖峭壁", "多珊瑚礁", "多沙灘", "多岬角與海灣"], "answer": 2, "explanation": "臺灣西部海岸多沙灘，早期發展漁業與晒鹽，現在養殖興盛。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "海岸地形差異與人類活動", "skill": "基礎概念辨識", "difficulty": 2, "id": 5}, {"question": "臺灣北部海岸地形有何特色？", "options": ["平直寬廣", "曲折多岬角與海灣", "多珊瑚礁", "多沙灘與潟湖"], "answer": 1, "explanation": "北部海岸地形曲折，有岬角和海灣，適合建設港口，如基隆港。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "海岸地形差異與人類活動", "skill": "基礎概念辨識", "difficulty": 2, "id": 6}, {"question": "臺灣东部海岸的主要特徵為何？", "options": ["沙灘廣闊", "多珊瑚礁", "陡峭多斷崖峭壁", "多岬角與海灣"], "answer": 2, "explanation": "東部海岸陡峭，多斷崖峭壁，山脈阻擋使與西部互動較不便。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "海岸地形差異與人類活動", "skill": "基礎概念辨識", "difficulty": 2, "id": 7}, {"question": "臺灣南部海岸以什麼特色聞名？", "options": ["沙灘廣闊", "多斷崖峭壁", "珊瑚礁發達", "多岬角與海灣"], "answer": 2, "explanation": "南部海岸海水清澈、陽光充足，適合珊瑚生長，以珊瑚礁聞名。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "海岸地形差異與人類活動", "skill": "基礎概念辨識", "difficulty": 2, "id": 8}, {"question": "桃園台地早期居民如何解决灌溉用水問題？", "options": ["開鑿水井", "修建水圳", "挖掘埤塘儲雨水", "引進外地水源"], "answer": 2, "explanation": "桃園台地地勢高，早期居民挖埤塘儲雨水，用於灌溉農田。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "臺灣地形分區", "skill": "基礎概念辨識", "difficulty": 2, "id": 9}, {"question": "臺灣人口與都市主要集中於何處？", "options": ["东部海岸", "山地地區", "西部平原與盆地", "丘陵山坡"], "answer": 2, "explanation": "西部平原與盆地地形平坦，適合農業與都市發展，人口集中於此。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "臺灣地形分區", "skill": "基礎概念辨識", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "為何臺灣河川的水大多流入海中，難以留住利用？", "options": ["因為降雨量不足", "因為河川長、流速慢", "因為島嶼東西窄、河川短急", "因為地下水位太高"], "answer": 2, "explanation": "臺灣島東西窄，河川短且坡度陡、水流急，雨量豐沛但水迅速流入海，難以留存。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "河川特性與水資源利用", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "政府為解決缺水問題，主要採取何種措施？", "options": ["引進海水淡化技術", "跨流域引水", "興建水庫儲水", "鼓勵民眾減少用水"], "answer": 2, "explanation": "政府興建水庫（如翡翠水庫）儲存雨水，用於灌溉與發電，以解決缺水問題。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "河川特性與水資源利用", "skill": "綜合分析", "difficulty": 3, "id": 12}, {"question": "桃園台地的埤塘現在有何轉變？", "options": ["全部改為工業區", "全部填平蓋大樓", "部分填平，部分轉為生態公園", "改為水庫供水"], "answer": 2, "explanation": "隨著都市發展與工商業興盛，部分埤塘被填平，有些轉型為生態公園提供休閒功能。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "綜合分析", "difficulty": 3, "id": 13}, {"question": "竹東丘陵從早期的土地利用轉變為現代用途，主要原因為何？", "options": ["政府強制征收", "交通建設與科技進步，加上政府政策引導", "氣候變遷使農作無法生長", "人口大量遷出"], "answer": 1, "explanation": "交通建設升級、科技進步與政府政策，使竹東丘陵從早期伐木轉型為高科技都市。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "因果分析", "difficulty": 3, "id": 14}, {"question": "臺灣山地現在主要發展為何種用途？", "options": ["大面積農業開墾", "高密度都市建設", "生態保護與休閒觀光", "工業區開發"], "answer": 2, "explanation": "現代山地多保護自然生態資源，部分轉型為遊樂區，發展森林教育與休閒觀光。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "綜合分析", "difficulty": 3, "id": 15}, {"question": "北部海岸為何適合建設港口？", "options": ["海水深邃且平直", "地形曲折有岬角與海灣，提供良好停泊條件", "沙灘廣闊利於造船", "水流平緩不易淤積"], "answer": 1, "explanation": "北部海岸地形曲折，有岬角和海灣，提供良好的天然港灣條件，如基隆港。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "海岸地形差異與人類活動", "skill": "因果分析", "difficulty": 3, "id": 16}, {"question": "早期居民在丘陵地帶主要選擇何種農業活動？", "options": ["水稻種植", "在緩坡種植茶樹或果樹", "放牧牛羊", "養殖魚塭"], "answer": 1, "explanation": "丘陵地起伏較大，早期居民在緩坡種植茶樹或果樹，形成鄉村聚落。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "臺灣地形分區", "skill": "綜合分析", "difficulty": 3, "id": 17}, {"question": "臺灣河川下游的土地利用有何特點？", "options": ["以山地森林為主", "以珊瑚礁觀光為主", "河道寬廣地勢平坦，農田、魚塭、工廠與公共設施多種利用", "主要發展高科技產業區"], "answer": 2, "explanation": "河川下游河道寬廣、地勢平坦，人們聚集生活，土地利用多樣，包括農田、魚塭、工廠與公共設施。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "河川特性與水資源利用", "skill": "綜合分析", "difficulty": 3, "id": 18}, {"question": "东部海岸過去人煙較少的主要原因為何？", "options": ["氣候過於炎熱", "地形陡峭且山脈阻擋，與西部互動不便", "缺乏自然資源", "政府禁令限制開發"], "answer": 1, "explanation": "東部海岸陡峭多斷崖，山脈阻擋使東西部互動不便，過去開發較慢。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "海岸地形差異與人類活動", "skill": "因果分析", "difficulty": 3, "id": 19}, {"question": "西部海岸的養殖業結合了哪些新興功能？", "options": ["工業生產與運輸", "觀光與教育體驗", "生態保護與科研", "水電發電與灌溉"], "answer": 1, "explanation": "西部海岸養殖興盛，並結合觀光與教育，例如剝蚵體驗等活動。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "海岸地形差異與人類活動", "skill": "綜合分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "興建水庫雖然能解決缺水問題，但可能帶來什麼環境議題？", "options": ["增加地震頻率", "破壞原有生態環境", "導致板塊移動加速", "使河川變得更長"], "answer": 1, "explanation": "興建水庫會改變原有河川生態，影響生物棲息環境，是水資源利用與生態保護之間的兩難選擇。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "環境評估與解決方案構想", "difficulty": 4, "id": 21}, {"question": "關於臺灣土地利用的變遷，下列敘述何者最為恰當？", "options": ["所有農田都已經轉為工業區", "土地利用完全不受地形影響", "土地利用隨交通、科技與政策而多元轉型", "山地已完全停止一切人類活動"], "answer": 2, "explanation": "隨著交通建設、科技進步與政府政策，臺灣的土地利用從農業轉型為多元型態，如生態公園、高科技都市與觀光區。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "環境評估與解決方案構想", "difficulty": 4, "id": 22}, {"question": "若要在臺灣下游地區兼顧工商業發展與環保，最適當的作法為何？", "options": ["大規模填平濕地擴建工業區", "禁止所有人類活動", "在開發時納入環境影響評估，保留生態空間", "將所有農田改為水泥路面"], "answer": 2, "explanation": "河川下游土地利用多樣，發展工商業時應進行環境影響評估，兼顧經濟與生態保護。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "環境評估與解決方案構想", "difficulty": 4, "id": 23}, {"question": "關於臺灣各海岸發展特色的比較，下列何者最為恰當？", "options": ["四處海岸發展類型完全相同", "只有西部海岸有人類活動", "不同海岸地形影響當地產業與觀光發展方向各異", "东部海岸因地形陡峭已完全無人居住"], "answer": 2, "explanation": "臺灣四面環海，各海岸地形各具特色，西部沙灘發展養殖與觀光，北部岬灣適合港口，东部陡崖發展觀光，南部珊瑚礁吸引浮潛遊客。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "海岸地形差異與人類活動", "skill": "環境評估與解決方案構想", "difficulty": 4, "id": 24}, {"question": "八仙山從早期伐木區轉型為森林教育與觀光區，此變遷反映了什麼觀念？", "options": ["山地已無任何利用價值", "過度開發後應犧牲生態以發展經濟", "生態保護與經濟發展可以平衡共存", "政府禁止一切山地活動"], "answer": 2, "explanation": "八仙山的轉型體現了從過度開發轉向生態保護與休閒觀光的永續發展觀念，兼顧環境與經濟。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "環境評估與解決方案構想", "difficulty": 4, "id": 25}, {"question": "為什麼臺灣地震頻繁？其與地形形成有何關聯？", "options": ["位於板塊內部，地質穩定", "板塊交界處持續推擠，既是地震成因，也是島嶼隆起的原因", "地震與地形形成無關", "因為降雨量大導致地層滑動"], "answer": 1, "explanation": "臺灣位於歐亞板塊與菲律賓海板塊交界，板塊持續推擠造成地震頻繁，同時也使島嶼不斷隆起形成今日地形。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "板塊交界與地形隆起", "skill": "因果分析", "difficulty": 4, "id": 26}, {"question": "若某地區地勢高且缺乏穩定水源，最可能位於臺灣何地？適合發展何種活動？", "options": ["西部平原——水稻種植", "桃園台地——挖掘埤塘儲水發展農業", "东部海岸——發展港口貿易", "山地——大面積開墾農田"], "answer": 1, "explanation": "桃園台地地勢高且水源不穩定，早期居民挖埤塘儲雨水發展農業，體現因地制宜的利用方式。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "臺灣地形分區", "skill": "資料解讀", "difficulty": 4, "id": 27}, {"question": "珊瑚礁在早期被用於蓋房子，現在卻成為觀光資源，這反映了什麼現象？", "options": ["珊瑚礁數量減少導致用途改變", "人類對自然資源的利用方式隨時代需求而轉變", "政府強制禁止採伐珊瑚", "珊瑚礁價值降低"], "answer": 1, "explanation": "南部珊瑚礁從早期建材轉型為觀光資源，反映人類利用自然資源的方式隨社會經濟需求而演變。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "環境評估與解決方案構想", "difficulty": 4, "id": 28}, {"question": "為什麼臺灣河川不适合長距離舟船運輸？", "options": ["河川太寬無法渡河", "河川太長水流太慢", "河川短急、水量季節變化大，不利航運", "河川污染嚴重禁止航行"], "answer": 2, "explanation": "臺灣河川短、坡度陡、水流急，且水量季節變化大，枯水期水位低，不適合長距離舟船運輸。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "河川特性與水資源利用", "skill": "因果分析", "difficulty": 4, "id": 29}, {"question": "綜合臺灣地形、河川與海岸特徵，下列何者是推動永續發展的關鍵策略？", "options": ["全面填平埤塘開發房地產", "忽略生態僅追求經濟成長", "因地制宜發展產業，兼顧生態保護與資源永续利用", "禁止所有山地與海岸開發"], "answer": 2, "explanation": "臺灣地形多樣，應因地制宜發展農業、觀光與都市功能，同時保護生態，才能實現永續發展。", "subject": "地理", "unit": "臺灣的自然環境", "concept": "土地利用與環境永續", "skill": "環境評估與解決方案構想", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
