@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會6上2-2族群交流如何影響臺灣社會？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "七年級", "unit": "臺灣的族群與文化", "topic": "臺灣的文化融合與多元社會", "filename": "康軒社會6上2-2族群交流如何影響臺灣社會？", "summary": "以遊戲隱喻介紹臺灣族群遷徙、宗教建築融合、文化資產爭議與多元社會形成。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "臺灣最早在土地上建立基地的族群是誰？", "options": ["漢人移民", "原住民族群", "西方傳教士", "新住民"], "answer": 1, "explanation": "教材指出原住民族群是臺灣最早登入的玩家，他們是這塊土地的第一批居民，各自發展出獨特的文化。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "歷代族群遷徙", "skill": "史料解讀", "difficulty": 2, "id": 1}, {"question": "哪位牧師為了融入鹽水小鎮，讓天主堂建築加入漢文化元素？", "options": ["德國神父胡國臨", "日本神父田村", "英國牧師戴德生", "美國傳教士馬偕"], "answer": 0, "explanation": "教材明確指出德國神父胡國臨為了融入鹽水小鎮，苦學閩南語並讓教堂建築加入石獅子與中式屋頂等漢文化元素。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "宗教在地化", "skill": "史料解讀", "difficulty": 2, "id": 2}, {"question": "清帝國時期大量漢人移民來臺，這被教材比喻為什麼？", "options": ["版本大更新", "人口遷移Buff", "跨文化MOD", "文化競技場"], "answer": 1, "explanation": "教材將清帝國時期漢人移民來臺的現象比喻為一次大規模的「人口遷移Buff」。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "歷代族群遷徙", "skill": "史料解讀", "difficulty": 2, "id": 3}, {"question": "鹽水天主堂加入石獅子與中式屋頂，主要目的是什麼？", "options": ["模仿日本神社建築", "拉近與在地居民的距離", "遵循荷蘭建築風格", "符合清國官方規定"], "answer": 1, "explanation": "教材說明這是一種「在地化策略」，目的是拉近與在地玩家的距離，讓信仰不再是排他性的存在。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "宗教在地化", "skill": "史料解讀", "difficulty": 2, "id": 4}, {"question": "下列哪一項是清帝國時期漢人移民帶來的信仰？", "options": ["伊斯蘭教", "印度教", "媽祖與王爺信仰", "神道教"], "answer": 2, "explanation": "教材指出漢人移民把家鄉的媽祖、王爺、佛教、道教都帶了過來，讓臺灣宗教地圖豐富起來。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "宗教多元", "skill": "史料解讀", "difficulty": 2, "id": 5}, {"question": "四四南村屬於哪一時期的建築產物？", "options": ["日治時期", "荷西時期", "清帝國時期", "戰後時期"], "answer": 3, "explanation": "教材明確指出四四南村是戰後由軍民建立的眷村，屬於戰後時期的建築。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化資產", "skill": "史料解讀", "difficulty": 2, "id": 6}, {"question": "從越南來臺的嚴沛瀅，後來擔任什麼職位？", "options": ["神父", "道士", "移民官", "原住民部落頭目"], "answer": 2, "explanation": "教材提到來自越南的嚴沛瀅從翻譯志工到成為移民官，是多元文化社會中最好的文化大使之一。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "新住民文化", "skill": "史料解讀", "difficulty": 2, "id": 7}, {"question": "大航海時代來臺的歐洲國家是哪兩組？", "options": ["西班牙與葡萄牙", "荷蘭與西班牙", "英國與法國", "荷蘭與英國"], "answer": 1, "explanation": "教材指出大航海時代中，荷蘭人與西班牙人帶著歐洲文化空降臺灣，開啟了國際貿易副本。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "歷代族群遷徙", "skill": "史料解讀", "difficulty": 2, "id": 8}, {"question": "桃園忠烈祠是由什麼建築改建而來？", "options": ["日式神社", "荷蘭城堡", "清朝府城", "原住民祭壇"], "answer": 0, "explanation": "教材明確提到桃園忠烈祠是由神社改建而來，是文化資產保存爭議的具體案例之一。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化資產", "skill": "史料解讀", "difficulty": 2, "id": 9}, {"question": "法國來的吉雷米除了會中文與閩南語，還推廣了哪一種語言？", "options": ["客家語", "阿美族語", "布農族語", "排灣族語"], "answer": 2, "explanation": "教材指出來自法國的吉雷米不只會中文與閩南語，還推廣布農族語，被比喻為解鎖多語系Buff的傳奇NPC。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "新住民文化", "skill": "史料解讀", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "鹽水天主堂的建築融合現象，主要說明了臺灣文化的什麼特徵？", "options": ["文化同化", "文化融合", "文化隔離", "文化斷層"], "answer": 1, "explanation": "鹽水天主堂加入石獅子與中式屋頂，說明不同文化在臺灣並非單純衝突對抗，而是互相融合、開發出新面貌。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "比較分析", "difficulty": 3, "id": 11}, {"question": "胡國臨神父選擇融入在地文化而非堅持原貌，這個行為主要產生什麼效果？", "options": ["造成族群衝突", "增加宗教競爭", "拉近與在地居民的親和力", "引發文化資產保存爭議"], "answer": 2, "explanation": "教材說明胡國臨神父的苦學閩南語與建築在地化，是「親和力Buff」，讓信仰拉近與在地玩家的距離，而非排他。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "宗教在地化", "skill": "因果推論", "difficulty": 3, "id": 12}, {"question": "關於文化資產保存的兩難，下列敘述何者正確？", "options": ["所有殖民遺跡都應該拆除重建", "所有舊建築都應該原封不動保留", "不同時空背景下各有不同的協商結果", "只保留漢人建築就夠了"], "answer": 2, "explanation": "教材指出文化資產保存的爭議中，有人視為殖民遺跡應清除，有人視為歷史見證應典藏，都是不同時空背景下的協商結果。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化資產保存", "skill": "比較分析", "difficulty": 3, "id": 13}, {"question": "原住民族群與漢人移民在臺灣居住空間的差異，主要反映出什麼因素？", "options": ["宗教信仰的不同", "就地取材與定居農業的不同需求", "氣候條件完全相同", "來自同一文化圈"], "answer": 1, "explanation": "原住民族群就地取材建造傳統住屋，漢人則帶來三合院建築形式，兩者反映不同生活方式與文化背景對居住空間的需求。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "比較分析", "difficulty": 3, "id": 14}, {"question": "新住民嚴沛瀅與吉雷米的例子，說明臺灣社會正在經歷什麼變化？", "options": ["文化趨於單一", "文化多樣性持續增加", "族群衝突日益激烈", "傳統文化完全消失"], "answer": 1, "explanation": "嚴沛瀅與吉雷米來自不同國家，各自帶來不同文化技能，說明臺灣社會多元性持續增加，形成更豐富的文化面貌。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "新住民文化", "skill": "因果推論", "difficulty": 3, "id": 15}, {"question": "日治時期的日式與西式建築至今仍是臺灣文化資產的一部分，這說明臺灣文化融合具有什麼特性？", "options": ["只接受漢文化", "不同時期持續累積", "排斥外來文化", "完全保留原貌不改變"], "answer": 1, "explanation": "教材將不同時期的建築比喻為遊戲中的建築外觀包，顯示臺灣文化融合是持續累積、不同時期層層疊加的特性。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "比較分析", "difficulty": 3, "id": 16}, {"question": "移民節作為政府推動多元文化的活動，其主要功能是什麼？", "options": ["淘汰少数文化", "促進不同文化間的認識與交流", "只保留漢人傳統", "限制新住民的文化表達"], "answer": 1, "explanation": "教材將移民節比喻為多元文化嘉年華，透過美食、表演、文化體驗讓大眾享受文化饗宴，促進不同族群間的認識。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "新住民文化", "skill": "因果推論", "difficulty": 3, "id": 17}, {"question": "宗教在地化與文化同化最大的不同為何？", "options": ["宗教在地化是強制改變，同化是自願接受", "宗教在地化是保留特色並融入當地，同化是抹除原有文化", "兩者沒有區別", "宗教在地化只發生在建築上"], "answer": 1, "explanation": "教材將鹽水天主堂的做法稱為在地化策略，是保留信仰核心同時融入漢文化元素；同化則是完全抹除原有文化特質，兩者本質不同。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "比較分析", "difficulty": 3, "id": 18}, {"question": "荷蘭、西班牙、漢人、西方傳教士、戰後軍民等不同群體來臺，對臺灣宗教產生什麼共同影響？", "options": ["使宗教變得單一等質", "形成多神共存的宗教競技場", "導致所有原有信仰消失", "使宗教完全被政治控制"], "answer": 1, "explanation": "教材指出不同群體帶來不同信仰，形成超多神的宗教競技場，這是臺灣宗教多元性的核心特徵。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "宗教多元", "skill": "比較分析", "difficulty": 3, "id": 19}, {"question": "從原住民族群到現代新住民，臺灣歷代族群遷徙共同說明了什麼道理？", "options": ["臺灣只有單一族群", "臺灣是持續累積多元文化的社會", "不同族群之間只有衝突沒有融合", "後來的族群會完全取代前來的族群"], "answer": 1, "explanation": "教材以遊戲伺服器隱喻，說明臺灣歷史上不同族群層層加入，各自帶來文化元素並與原有文化融合，形成多元社會。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "因果推論", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "若你身為政府決策者，面對四四南村的去留問題，最合理的評估角度為何？", "options": ["僅以經濟利益為唯一考量", "綜合歷史價值、文化意義與居民需求進行協商", "完全依民意投票決定，不需專業評估", "照搬其他國家的處理方式即可"], "answer": 1, "explanation": "教材指出文化資產保存是不同時空背景下官方與玩家的協商結果，需綜合歷史價值、文化意義與實際需求多元考量。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化資產保存", "skill": "價值判斷與論證", "difficulty": 4, "id": 21}, {"question": "鹽水天主堂的石獅子與中式屋頂，最能支持下列哪一項關於臺灣文化的論述？", "options": ["臺灣文化完全照搬中國文化", "臺灣文化從不與外來文化互動", "臺灣文化能吸收外來元素並與本地特色融合", "臺灣文化沒有自己的特色"], "answer": 2, "explanation": "天主堂在保留宗教核心的同時融入漢文化建築元素，正是文化融合的典型例證，說明臺灣文化具有強大的包容與創造能力。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "跨文化理解", "difficulty": 4, "id": 22}, {"question": "從原住民族群、荷西時期、清帝國漢人移民、日治時期、戰後新住民到當代新住民，臺灣文化融合的關鍵動力是什麼？", "options": ["單一族群的強制同化政策", "不同族群帶來的文化元素持續疊加與互動", "地理環境的自然選擇", "外來勢力的全面支配"], "answer": 1, "explanation": "教材以遊戲版本更新隱喻，說明臺灣文化融合是歷代不同族群不斷帶來新文化元素，並在互動中層層累積的結果。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "因果推論", "difficulty": 4, "id": 23}, {"question": "若將「文化資產保存」視為一種價值判斷，下列哪種觀點最能體現教材中所強調的文化融合精神？", "options": ["所有舊建築都應視為殖民遺跡加以清除", "文化資產應僅保留漢人建築形式", "歷史建築是不同時代文化疊加的見證，應保留其多元價值", "文化資產保存會阻礙現代化發展"], "answer": 2, "explanation": "教材指出文化資產保存是歷史見證與殖民遺跡之間的協商，保留不同時代建築正是多元文化疊加價值的體現。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化資產保存", "skill": "價值判斷與論證", "difficulty": 4, "id": 24}, {"question": "新住民嚴沛瀅從翻譯志工到移民官、吉雷米推廣布農族語，這些例子最能支持關於臺灣多元社會的哪項論述？", "options": ["新住民只帶來美食文化", "多元社會的形成需要不同文化背景者的積極參與與貢獻", "新住民完全無法融入臺灣社會", "政府不需要推動任何多元文化活動"], "answer": 1, "explanation": "嚴沛瀅與吉雷米的經歷說明多元社會需要不同文化背景者以各種方式積極參與，他們 themselves 就是文化大使的具體體現。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "新住民文化", "skill": "因果推論", "difficulty": 4, "id": 25}, {"question": "宗教在地化策略（如鹽水天主堂）對臺灣族群關係可能產生的深遠影響，下列何者最適當？", "options": ["加深族群之間的隔閡與對立", "促進不同族群間的相互理解與親和", "導致宗教信仰完全消失", "使所有宗教都變成同一形式"], "answer": 1, "explanation": "宗教在地化讓不同信仰以在地可接受的形式呈現，降低排他性，有助於促進族群間的相互理解與和諧共處。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "宗教在地化", "skill": "因果推論", "difficulty": 4, "id": 26}, {"question": "臺灣從過去的族群衝突到今天的多元包容，這個轉變過程最能說明什麼道理？", "options": ["文化衝突無可避免且無法解決", "族群關係可以透過理解與協商轉化為多元共榮", "只有單一文化才能維持社會穩定", "政府強制統一就能解決所有問題"], "answer": 1, "explanation": "教材以遊戲隱喻說明臺灣從衝突Debuff轉化為多元包容Buff，顯示族群關係可以透過持續的理解、協商與融合來改善。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "價值判斷與論證", "difficulty": 4, "id": 27}, {"question": "若以文化融合的觀點評析臺灣各時期的建築演變，下列敘述何者最恰當？", "options": ["每個時期的建築都是前一個時期的完全替代", "建築演變反映不同時期文化元素的層層累積與融合", "只有漢人建築才是臺灣真正的文化資產", "日治時期的建築對臺灣文化沒有任何貢獻"], "answer": 1, "explanation": "從原住民住屋、三合院、日式西式建築到眷村，每個時期建築都是當時文化元素與本地條件融合的產物，層層累積形成今日面貌。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "比較分析", "difficulty": 4, "id": 28}, {"question": "面對文化資產保存爭議，教材中提到的「協商結果」概念，對民主社會有什麼啟示？", "options": ["民主社會不需要任何協商", "不同價值觀可在民主程序中找到平衡點", "弱勢族群的聲音不應該被聽取", "只有一種正確答案不需要討論"], "answer": 1, "explanation": "教材將文化資產保存比喻為官方與玩家的協商結果，說明民主社會中不同價值觀可以透過對話與協商達成平衡。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化資產保存", "skill": "價值判斷與論證", "difficulty": 4, "id": 29}, {"question": "綜合教材內容，臺灣「多元包容Buff」的形成，最核心的關鍵因素是什麼？", "options": ["地理環境的孤立", "歷代不同族群的持續移入與文化融合互動", "政府的強制同化政策", "完全拒絕外來文化"], "answer": 1, "explanation": "教材以遊戲隱喻說明臺灣歷經歷代族群持續加入、各自帶來文化元素並與本地融合，這個持續的融合互動過程才是多元包容社會形成的核心。", "subject": "社會科", "unit": "臺灣的族群與文化", "concept": "文化融合", "skill": "跨文化理解", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
