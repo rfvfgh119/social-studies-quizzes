@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會5上1-2海中誕生的家園</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科（地理）", "grade": "國中二年級", "unit": "臺灣的自然環境", "topic": "臺灣島的板塊成因、地形演變與海岸類型", "filename": "南一國小社會5上1-2海中誕生的家園", "summary": "以遊戲比喻解說臺灣板塊成因、地形演變與四種海岸特色及其人地關係。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "臺灣島是由哪兩個板塊互相擠壓碰撞而形成的？", "options": ["歐亞板塊與非洲板塊", "歐亞板塊與菲律賓海板塊", "菲律賓海板塊與太平洋板塊", "印澳板塊與歐亞板塊"], "answer": 1, "explanation": "教材明確指出，大約六百萬年前，歐亞板塊與菲律賓海板塊瘋狂擠壓，形成了臺灣島。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "板塊構造", "skill": "地理名詞與概念配對", "difficulty": 2, "id": 1}, {"question": "臺灣島至今仍持續受到板塊擠壓，這造成了臺灣什麼自然現象頻繁？", "options": ["颱風侵襲", "地震頻繁", "乾旱嚴重", "火山大量噴發"], "answer": 1, "explanation": "教材說明板塊持續擠壓碰撞，因此地震頻繁，比喻為伺服器的日常維修。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "板塊構造", "skill": "地形成因因果分析", "difficulty": 2, "id": 2}, {"question": "下列何者屬於臺灣西部海岸常見的地形特徵？", "options": ["筆直陡峭的斷崖", "崎嶇不平的珊瑚礁", "平靜的潟湖與沙洲", "曲折的岬灣地形"], "answer": 2, "explanation": "教材指出臺灣西部海岸地形平緩，河川攜帶泥沙堆積形成沙灘、沙洲和潟湖。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "臺灣海岸分類", "skill": "圖文資料解讀與實例辨識", "difficulty": 2, "id": 3}, {"question": "臺灣東部海岸著名的清水斷崖，屬於哪種地形特徵？", "options": ["沙洲與潟湖", "珊瑚礁海岸", "筆直陡峭的斷崖", "曲折的岬灣"], "answer": 2, "explanation": "教材明確提到臺灣東部海岸有筆直陡峭的斷崖，清水斷崖即是著名地標。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "臺灣海岸分類", "skill": "地理名詞與概念配對", "difficulty": 2, "id": 4}, {"question": "墾丁國家公園船帆石的海岸地形屬於下列何者？", "options": ["西部潟湖海岸", "东部斷崖海岸", "南部珊瑚礁海岸", "北部岬灣海岸"], "answer": 2, "explanation": "教材指出南部恆春半島因板塊抬升使珊瑚礁露出海面，形成珊瑚礁海岸，墾丁國家公園即屬此類。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "臺灣海岸分類", "skill": "地理名詞與概念配對", "difficulty": 2, "id": 5}, {"question": "野柳地質公園 famous 的「女王頭」屬於哪種海岸地形？", "options": ["西部潟湖地形", "东部斷崖地形", "南部珊瑚礁地形", "北部岬灣地形"], "answer": 3, "explanation": "教材說明北部海岸有形狀奇特的岩石與曲折的海岸線，屬於岬灣地形，野柳地質公園即為代表。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "臺灣海岸分類", "skill": "地理名詞與概念配對", "difficulty": 2, "id": 6}, {"question": "雲林外傘頂洲漂移到嘉義外圍，形成了哪一個潟湖？", "options": ["高屏潟湖", "四草潟湖", "東石潟湖", "淡水潟湖"], "answer": 2, "explanation": "教材明確提到雲林外傘頂洲漂移到嘉義外圍，形成東石潟湖，是重要的蚵仔產地。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "臺灣海岸分類", "skill": "圖文資料解讀與實例辨識", "difficulty": 2, "id": 7}, {"question": "臺灣島的海岸線全長約有多少公里？", "options": ["八百五十公里", "九百二十公里", "一千一百五十公里", "一千三百二十公里"], "answer": 2, "explanation": "教材指出臺灣島海岸線長達一千一百五十公里，且每一段都有不同的風貌。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "地形形成", "skill": "地理名詞與概念配對", "difficulty": 2, "id": 8}, {"question": "高雄港是藉由哪種海岸地形開發而成的國際商港？", "options": ["珊瑚礁海岸", "斷崖海岸", "岬灣地形", "潟湖地形"], "answer": 3, "explanation": "教材明確說明高雄港是利用潟湖開發的臺灣重要國際商港。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "地理名詞與概念配對", "difficulty": 2, "id": 9}, {"question": "基隆港是根據哪種海岸地形所修築的港口？", "options": ["西部沙洲潟湖", "东部斷崖", "南部珊瑚礁", "北部岬灣"], "answer": 3, "explanation": "教材指出基隆港是利用北部海岸的岬灣修築而成。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "地理名詞與概念配對", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "臺灣島多樣的地形（平原、台地、盆地、丘陵、山地、海岸）是如何形成的？", "options": ["僅因板塊張裂拉伸而成", "僅因河流侵蝕沖刷而成", "板塊推擠作用結合長期侵蝕與堆積作用", "由火山喷發與地震直接隆起而成"], "answer": 2, "explanation": "教材說明板塊的推擠作用加上長時間風雨河流海浪侵蝕及堆積作用，才形成臺灣島多樣的地形。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "地形形成", "skill": "地形成因因果分析", "difficulty": 3, "id": 11}, {"question": "西部海岸的沙洲與潟湖主要是由下列哪種作用形成的？", "options": ["風力侵蝕作用", "板塊張裂作用", "河川攜帶泥沙堆積作用", "珊瑚礁生物堆積作用"], "answer": 2, "explanation": "教材指出西部海岸地形平緩，河川攜帶泥沙入海，常常堆積形成沙灘、沙洲和潟湖，屬於堆積作用。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "侵蝕與堆積作用", "skill": "地形成因因果分析", "difficulty": 3, "id": 12}, {"question": "臺灣東部海岸地形險峻、早期人們難以登陸，主要原因為何？", "options": ["受寒流經過，海水溫度过低", "受板塊推擠作用影響，斷崖聳立", "受強風侵蝕，岩石鬆散不易立足", "受珊瑚礁覆蓋，海灘狹窄"], "answer": 1, "explanation": "教材說明東部海岸受到板塊推擠的buff，地形非常險峻，有筆直陡峭的斷崖，早期人們很難登陸。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "板塊構造", "skill": "地形成因因果分析", "difficulty": 3, "id": 13}, {"question": "南部恆春半島的珊瑚礁海岸是如何形成的？", "options": ["海浪長期侵蝕岩石所形成", "河川堆積泥沙於海岸所形成", "板塊抬升使珊瑚礁露出海面所形成", "火山噴發冷卻後形成"], "answer": 2, "explanation": "教材指出南部海域海水溫暖清澈有珊瑚礁，板塊抬升露出海面，形成了珊瑚礁海岸。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "地形形成", "skill": "地形成因因果分析", "difficulty": 3, "id": 14}, {"question": "野柳地質公園奇特的岩石與曲折的海岸線，主要是由哪種作用形成的？", "options": ["河流堆積作用", "風浪侵蝕作用", "板塊張裂作用", "珊瑚蟲生物堆積"], "answer": 1, "explanation": "教材說明北部海岸形狀奇特的岩石與曲折的海岸線，都是風浪侵蝕所形成的雕塑級藝術品。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "侵蝕與堆積作用", "skill": "地形成因因果分析", "difficulty": 3, "id": 15}, {"question": "西部海岸的潟湖為什麼適合發展養殖漁業？", "options": ["因為潟湖水深且水流急", "因為外海沙洲阻擋風浪，潟湖內風浪小", "因為潟湖有黑潮經過，水溫適中", "因為潟湖靠近斷崖，魚類資源豐富"], "answer": 1, "explanation": "教材指出外海的沙洲阻擋了風浪，沙洲與陸地間形成平靜的潟湖，因此適合發展近海漁業與養殖漁業。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "人地互動關係推論與評估", "difficulty": 3, "id": 16}, {"question": "東部海岸離岸不遠水深即達數百公尺，還有黑潮經過，這對生態有何影響？", "options": ["使海水溫度降低，不利生物生長", "吸引多種鯨豚，形成豐富的海洋生態", "造成海水混濁，珊瑚無法生長", "使漁業資源減少，不易捕撈"], "answer": 1, "explanation": "教材說明東部海岸水深且黑潮經過，吸引了多種鯨豚，簡直是海洋生物圖鑑。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "人地互動關係推論與評估", "difficulty": 3, "id": 17}, {"question": "下列何者是「侵蝕地形」而非「堆積地形」？", "options": ["東石潟湖", "外傘頂洲沙洲", "野柳女王頭", "西部沿海蚵塘"], "answer": 2, "explanation": "野柳女王頭是風浪侵蝕形成的雕塑級岩石，屬於侵蝕地形；其餘選項均為堆積作用形成。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "侵蝕與堆積作用", "skill": "地理名詞與概念配對", "difficulty": 3, "id": 18}, {"question": "港口能夠成為貿易中心，與下列哪一項自然條件最有關係？", "options": ["港灣附近有豐富礦產資源", "沙洲和岬角可阻擋外海風浪，港灣內風平浪靜", "港灣水深且靠近熱帶雨林", "港口位於板塊張裂處，地熱豐富"], "answer": 1, "explanation": "教材指出沙洲和岬角可以阻擋外海風浪，港灣內風平浪靜，就像天然的保護buff，讓船隻停泊更安全。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "人地互動關係推論與評估", "difficulty": 3, "id": 19}, {"question": "臺灣島的地形多樣，包括平原、台地、盆地、丘陵、山地與海岸，這些地形形成的主要動力來自於？", "options": ["內力：板塊擠壓隆起；外力：風雨河流海浪侵蝕與堆積", "僅內力：火山噴發與地震", "僅外力：風化侵蝕與河流沖刷", "內力與外力均無關，純為海平面變化所致"], "answer": 0, "explanation": "教材說明板塊推擠（內力）加上長時間風雨河流海浪侵蝕與堆積作用（外力），共同造就了臺灣島多樣的地形。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "地形形成", "skill": "地形成因因果分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "若從「人地互動」的角度分析，下列哪一個港口與地形配對的關係最為正確？", "options": ["基隆港——潟湖地形，風平浪靜利於停泊", "高雄港——岬灣地形，天然屏障阻擋風浪", "高雄港——潟湖地形，風平浪靜利於停泊", "基隆港——斷崖地形，水深便於大船進出"], "answer": 2, "explanation": "教材明確指出高雄港是利用潟湖開發的國際商港，而基隆港是利用北部海岸的岬灣修築而成，選項C配對正確。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "人地互動關係推論與評估", "difficulty": 4, "id": 21}, {"question": "东部海岸因地形險峻、早期難以登陸，因此保留了較完整的生態環境。這種「人地關係」體現了下列哪一種現象？", "options": ["人類改造自然，創造新的生態環境", "自然條件限制人類活動，反而讓生態得以保存", "人類開發導致生態破壞，自然被迫適應", "地形與生態之間完全無任何關聯"], "answer": 1, "explanation": "教材說明東部海岸地形險峻，早期人們很難登陸，因此保留了比較完整的生態環境，體現了自然限制人類活動反而保護生態的人地關係。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "人地互動關係推論與評估", "difficulty": 4, "id": 22}, {"question": "野柳地質公園與墾丁國家公園皆被政府設立為保護區，但兩者設立的目的各有側重。下列敘述何者最為恰當？", "options": ["兩者皆以發展養殖漁業為主要目的", "野柳以地質教育與觀光為主，墾丁以生態保育為主", "兩者皆以近海漁業發展為主要目的", "野柳以珊瑚礁保育為主，墾丁以地質研究為主"], "answer": 1, "explanation": "教材指出野柳被設為地質公園，成為觀光和教育的特色副本；墾丁國家公園則是進行生態保育，開設珍稀生物圖鑑DLC，兩者目的不同。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "人地互動關係推論與評估", "difficulty": 4, "id": 23}, {"question": "從「人地互動」的角度來看，臺灣西部海岸的潟湖發展養殖漁業，與東部海岸因險峻地形而保留生態，兩者相比較，最重要的差異在於？", "options": ["西部完全無人居住，东部有人開發", "西部地形利於人類開發利用，东部地形限制人類活動", "兩地皆因自然條件限制而無人開發", "西部因板塊張裂而適合養殖，东部因板塊擠壓而生態完整"], "answer": 1, "explanation": "教材指出西部潟湖風浪小，適合發展養殖漁業，人類積極利用自然條件；東部因斷崖險峻，早期難以登陸，人類活動受限，生態得以保存。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "人地互動關係推論與評估", "difficulty": 4, "id": 24}, {"question": "若某人想要在臺灣尋找能同時欣賞珊瑚礁景觀與進行生態保育觀察的地點，最應該前往？", "options": ["西部海岸的潟湖地區", "东部海岸的斷崖地區", "南部恆春半島的珊瑚礁海岸", "北部海岸的岬灣地區"], "answer": 2, "explanation": "教材指出南部恆春半島海水溫暖清澈有珊瑚礁，且政府設立墾丁國家公園進行生態保育，最適合同時欣賞珊瑚礁與觀察生態。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "圖文資料解讀與實例辨識", "difficulty": 4, "id": 25}, {"question": "臺灣島海岸線長達一千一百五十公里，每一段都有不同風貌。這種海岸多樣性對臺灣的人地關係產生了什麼影響？", "options": ["導致各地經濟活動完全相同", "使各地僅能發展單一產業", "不同海岸地形造就了各地差異化的生產與生活型態", "海岸多樣性與人文活動完全無關"], "answer": 2, "explanation": "教材指出臺灣島海岸線長且每一段都有不同的風貌，而且影響了人們的生產與生活，不同地形造就了不同的發展方向。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "人地關係", "skill": "人地互動關係推論與評估", "difficulty": 4, "id": 26}, {"question": "若比較西部潟湖與北部岬灣在港口開發上的差異，下列敘述何者最為正確？", "options": ["兩地皆因河流堆積形成，開發方式完全相同", "西部潟湖因沙洲阻風形成平靜水域，北部岬灣因侵蝕形成曲折海岸，兩者皆利於港口開發", "西部潟湖因侵蝕形成，北部岬灣因堆積形成，功能截然不同", "西部潟湖不適合港口開發，僅北部岬灣可建港"], "answer": 1, "explanation": "教材指出西部潟湖由堆積作用形成，沙洲阻擋風浪後港灣內風平浪靜；北部岬灣由風浪侵蝕形成，同樣具有天然屏障，兩者皆利於修築港口。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "侵蝕與堆積作用", "skill": "地形成因因果分析", "difficulty": 4, "id": 27}, {"question": "從板塊構造的角度分析，臺灣地震頻繁的根本原因為何？", "options": ["臺灣位於板塊內部，地殼穩定", "臺灣位於歐亞板塊與菲律賓海板塊的交界處，持續擠壓碰撞", "臺灣因地震頻繁而形成了板塊邊界", "臺灣的板塊正在彼此拉張分離"], "answer": 1, "explanation": "教材說明歐亞板塊與菲律賓海板塊持續擠壓碰撞，至今仍在進行，因此地震頻繁，這正是板塊邊界活動的表現。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "板塊構造", "skill": "地形成因因果分析", "difficulty": 4, "id": 28}, {"question": "蘇花公路開闢於清水斷崖旁，這項建設主要利用了哪一地理條件？", "options": ["西部平緩的潟湖地形", "东部斷崖海岸的地勢，依山傍海開闢", "南部珊瑚礁海岸的平坦地形", "北部岬灣的港灣地形"], "answer": 1, "explanation": "教材指出清水斷崖是東部斷崖海岸的著名地標，蘇花公路就是在旁邊開闢的，說明公路建設利用了东部斷崖的地勢條件。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "地形形成", "skill": "圖文資料解讀與實例辨識", "difficulty": 4, "id": 29}, {"question": "综合評估：臺灣島的形成與海岸地形發展，下列哪一個論述最為全面且準確？", "options": ["臺灣島僅由板塊擠壓形成，海岸地形與人類活動完全無關", "臺灣島是板塊擠壓形成，地形經侵蝕堆積作用演變，不同海岸地形影響了各地人類生產生活與發展方向", "臺灣島的地形 solely 由風雨侵蝕造成，板塊作用已停止", "臺灣各海岸地形完全相同，因此人類活動模式也完全一致"], "answer": 1, "explanation": "教材完整論述：臺灣島由兩板塊擠壓形成，經侵蝕與堆積作用發展出多樣地形，不同海岸地形（潟湖、斷崖、珊瑚礁、岬灣）各自影響人們的漁業、港口、觀光等生產生活活動。", "subject": "社會科（地理）", "unit": "臺灣的自然環境", "concept": "地形形成", "skill": "人地互動關係推論與評估", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
