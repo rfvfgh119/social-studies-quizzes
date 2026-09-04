@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會｜6上1-1｜自治精神的萌芽</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "三年級", "unit": "日治時期的臺灣", "topic": "日治時期抗日運動與社會運動的演變", "filename": "南一國小社會｜6上1-1｜自治精神的萌芽", "summary": "以遊戲副本比喻串聯日治時期抗日運動演變，從武裝抗日到社會運動的民主化進程。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "甲午戰爭戰敗後，清帝國與日本簽訂的條約名稱為何？", "options": ["南京條約", "馬關條約", "辛丑條約", "天津條約"], "answer": 1, "explanation": "甲午戰爭戰敗後，清帝國與日本簽訂馬關條約，將臺灣割讓給日本。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "馬關條約", "skill": "歷史事件記憶", "difficulty": 2, "id": 1}, {"question": "臺灣民主國的首任總統是誰？", "options": ["劉永福", "林獻堂", "唐景崧", "蔣渭水"], "answer": 2, "explanation": "唐景崧被推舉為臺灣民主國首任總統，但後來先逃回廈門。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "臺灣民主國", "skill": "歷史人物記憶", "difficulty": 2, "id": 2}, {"question": "臺灣民主國的年號為何？", "options": ["抗日", "永清", "大明", "臺灣"], "answer": 1, "explanation": "臺灣民主國年號為「永清」，代表永遠效忠清朝，顯示其延緩日本接收的性質。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "臺灣民主國", "skill": "歷史事實記憶", "difficulty": 2, "id": 3}, {"question": "臺灣民主國存在多长时间？", "options": ["約三十天", "約一百五十天", "約一年", "約三年"], "answer": 1, "explanation": "臺灣民主國只存在一百五十天，屬於短暫的過渡政權。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "臺灣民主國", "skill": "歷史事實記憶", "difficulty": 2, "id": 4}, {"question": "日治時期日本在臺灣設立的最大規模武裝抗日事件為何？", "options": ["二林蔗農事件", "噍吧哖事件", "乙未戰爭", "太陽花學運"], "answer": 1, "explanation": "噍吧哖事件是日治時期規模最大的漢人武裝抗日事件。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "噍吧哖事件", "skill": "歷史事件記憶", "difficulty": 2, "id": 5}, {"question": "噍吧哖事件發生於西元哪一年？", "options": ["一八九五年", "一九〇五年", "一九一五年", "一九二五年"], "answer": 2, "explanation": "噍吧哖事件發生於西元一九一五年，由余清芳發動。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "噍吧哖事件", "skill": "歷史時間記憶", "difficulty": 2, "id": 6}, {"question": "噍吧哖事件的領導者是谁？", "options": ["林獻堂", "蔣渭水", "余清芳", "唐景崧"], "answer": 2, "explanation": "噍吧哖事件由余清芳於一九一五年發動，以西來庵為根據地。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "噍吧哖事件", "skill": "歷史人物記憶", "difficulty": 2, "id": 7}, {"question": "日治時期臺灣總督擁有哪些權力？", "options": ["僅行政權", "行政與立法權", "行政立法司法軍事大權", "僅軍事權"], "answer": 2, "explanation": "臺灣總督掌握行政、立法、司法、軍事等大權，是威權統治的核心。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "總督府統治", "skill": "歷史概念理解", "difficulty": 2, "id": 8}, {"question": "日治時期的公學校主要招收哪一族群的兒童？", "options": ["日本兒童", "臺灣兒童", "原住民兒童", "歐美兒童"], "answer": 1, "explanation": "臺灣兒童就讀公學校，日本兒童則就讀小學校。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "教育制度", "skill": "歷史事實記憶", "difficulty": 2, "id": 9}, {"question": "二林蔗農事件發生於西元哪一年？", "options": ["一九一五年", "一九二○年", "一九二五年", "一九三五年"], "answer": 2, "explanation": "二林蔗農事件發生於西元一九二五年，是臺灣第一起農民運動。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "農民運動", "skill": "歷史時間記憶", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "臺灣民主國年號「永清」的主要意義為何？", "options": ["表示追求民主獨立", "表示永遠效忠清朝的延緩策略", "表示與日本和平共處", "表示建立新國家制度"], "answer": 1, "explanation": "年號「永清」代表永遠效忠清朝，顯示臺灣民主國只是延緩日本接收的策略，並非真正追求民主獨立。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "臺灣民主國", "skill": "概念分析", "difficulty": 3, "id": 11}, {"question": "噍吧哖事件後，臺灣抗日運動的主要形式發生何種轉變？", "options": ["從社會運動轉向武裝抗日", "從和平請願轉向暴力抗爭", "從武裝抗日轉向社會運動", "從農民運動轉向工人運動"], "answer": 2, "explanation": "噍吧哖事件是轉折點，此後抗日運動由武裝轉向非武裝的社會運動。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "抗日運動轉變", "skill": "因果分析", "difficulty": 3, "id": 12}, {"question": "噍吧哖事件爆發的主要原因為何？", "options": ["臺灣人爭取民主權利", "無法自由開採樟腦與颱風造成農作物歉收的經濟壓力", "日本推行現代化教育引起反彈", "日軍強制徵收土地建鐵路"], "answer": 1, "explanation": "無法自由開採樟腦加上颱風造成農作物歉收，農民經濟壓力爆表，是噍吧哖事件爆發的主要原因。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "噍吧哖事件", "skill": "因果分析", "difficulty": 3, "id": 13}, {"question": "噍吧哖事件中，抗日民眾使用宗教號召的方式為何？", "options": ["發放避彈神符宣稱刀槍不入", "成立農民協會爭取權益", "發起請願運動要求議會", "辦報提倡文化啟蒙"], "answer": 0, "explanation": "余清芳以西來庵為根據地，發售避彈神符宣稱刀槍不入，用宗教力量號召民眾抗日。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "噍吧哖事件", "skill": "資料解讀", "difficulty": 3, "id": 14}, {"question": "總督府的警察制度有何特色？", "options": ["警察僅負責治安維護", "警察管控地方大小事務，包括治安、衛生、經濟開發", "警察僅管轄城市地區", "警察權力受到議會監督"], "answer": 1, "explanation": "警察制度是總督府威權統治的裝備，管控治安、衛生、經濟開發等地方大小事務。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "警察統治", "skill": "概念理解", "difficulty": 3, "id": 15}, {"question": "臺灣文化協會的主要宗旨為何？", "options": ["發起武裝抗日行動", "辦報、播電影、演講，提升臺灣人文化素養與自我意識", "爭取臺灣獨立建國", "推動與日本人的經濟合作"], "answer": 1, "explanation": "臺灣文化協會由蔣渭水、林獻堂等人發起，透過辦報、播電影、演講等方式提升臺灣人文化素養與自我意識。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "臺灣文化協會", "skill": "概念理解", "difficulty": 3, "id": 16}, {"question": "臺灣議會設置請願運動歷時多長？", "options": ["五年", "十年", "十四年", "二十年"], "answer": 2, "explanation": "臺灣議會設置請願運動歷時十四年，共提出請願十五次。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "請願運動", "skill": "歷史事實記憶", "difficulty": 3, "id": 17}, {"question": "臺灣議會設置請願運動與臺灣民主國最大的差異為何？", "options": ["請願運動規模更大", "請願運動有真正的民主概念，是爭取人民作主", "臺灣民主國有軍事武裝", "兩者沒有任何差異"], "answer": 1, "explanation": "臺灣民主國年號永清只是延緩策略，請願運動則是有民主概念，真正爭取人民作主。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "比較辨析", "skill": "比較辨析", "difficulty": 3, "id": 18}, {"question": "二林蔗農事件中，蔗農被要求將甘蔗賣給誰？", "options": ["自由市場的買家", "特定糖廠", "農民合作社", "日本商會"], "answer": 1, "explanation": "總督府規定蔗農只能賣甘蔗給特定糖廠，價格與數量都由會社決定。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "二林蔗農事件", "skill": "資料解讀", "difficulty": 3, "id": 19}, {"question": "日治時期首次民選議員發生於西元哪一年？", "options": ["一九二五年", "一九二七年", "一九三五年", "一九四○年"], "answer": 2, "explanation": "西元一九三五年首次民選議員，是臺灣地方自治的起點。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "地方自治", "skill": "歷史時間記憶", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "為何說噍吧哖事件是日治時期抗日運動的轉折點？", "options": ["因為它是第一次武裝抗日事件", "因為此事件後抗日由武裝轉向社會運動", "因為它是唯一成功的抗日事件", "因為日本因此撤出臺灣"], "answer": 1, "explanation": "噍吧哖事件後，抗日由武裝轉向社會運動，是版本大更新的分水嶺。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "抗日運動轉變", "skill": "因果分析", "difficulty": 4, "id": 21}, {"question": "總督府推行現代化教育的真正目的為何？", "options": ["提升臺灣人的民主素養", "為了提升識字率並協助發展日本經濟", "促進臺灣文化獨立發展", "培養臺灣人領導能力"], "answer": 1, "explanation": "現代化教育是殖民統治的一環，目的是提升識字率並協助發展日本經濟。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "教育政策", "skill": "因果分析", "difficulty": 4, "id": 22}, {"question": "總督府推行現代化教育卻意外產生什麼結果？", "options": ["臺灣人完全接受日本統治", "培育出知識菁英，他們後來以非武力方式爭取權益", "臺灣人放弃學習日語", "農民運動完全消失"], "answer": 1, "explanation": "現代化教育培育出接觸西方政治思想的知識菁英，他們開始用非武力方式爭取權益。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "教育影響", "skill": "因果分析", "difficulty": 4, "id": 23}, {"question": "臺灣議會設置請願運動雖失敗，但對臺灣歷史有何貢獻？", "options": ["成功讓臺灣獲得獨立", "促使地方自治選舉開放，奠定民主基礎", "讓日本撤換總督", "使臺灣人放棄政治參與"], "answer": 1, "explanation": "請願運動歷時十四年提出十五次，雖失敗但促使地方自治選舉開放，是臺灣地方自治的起點。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "請願運動意義", "skill": "綜合分析", "difficulty": 4, "id": 24}, {"question": "二林蔗農事件與噍吧哖事件在反抗方式上有何根本差異？", "options": ["兩者都是武力抗爭", "噍吧哖用宗教武力號召，二林由知識分子引導社會運動", "噍吧哖由知識分子領導，二林用宗教號召", "兩者沒有任何差異"], "answer": 1, "explanation": "噍吧哖事件用宗教武力號召，二林事件则由知識分子引導非武力的社會運動，代表策略升級。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "比較辨析", "skill": "比較辨析", "difficulty": 4, "id": 25}, {"question": "二林蔗農事件中，蔗農最終採取什麼抗爭方式？", "options": ["武裝攻擊糖廠", "不配合採收甘蔗", "請願要求降低稅賦", "遷移至其他地區"], "answer": 1, "explanation": "協商失敗後，蔗農不配合採收甘蔗，與日本警察發生衝突，數十位民眾被捕判刑。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "二林蔗農事件", "skill": "資料解讀", "difficulty": 4, "id": 26}, {"question": "從噍吧哖事件到二林蔗農事件，反映出臺灣抗日運動怎样的演變趨勢？", "options": ["從和平請願轉向武力抗爭", "從武裝轉向和平社會運動，被捕人數從上千降到數十", "從農民運動轉向工人運動", "從知識分子領導轉向農民自發行動"], "answer": 1, "explanation": "從噍吧哖到二林，抗日由武裝轉向和平社會運動，被捕人數從上千降到數十，代表策略升級。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "運動演變", "skill": "歷史脈絡整合", "difficulty": 4, "id": 27}, {"question": "「種作甘蔗無快活，風颱大水驚到大，對一點蔗汁一點汗」這首歌反映二林事件的什麼意義？", "options": ["歌頌甘蔗種植的樂趣", "反映蔗農辛酸的自覺意識象徵", "讚美總督府的經濟政策", "描述農民豐收的喜悅"], "answer": 1, "explanation": "甘蔗歌反映蔗農辛酸，成為農民自覺意識的象徵，鼓舞更多地方發起農民運動。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "農民運動", "skill": "資料解讀", "difficulty": 4, "id": 28}, {"question": "臺灣民主國與臺灣議會設置請願運動在性質上有何本質差異？", "options": ["兩者都是真正的民主運動", "臺灣民主國是延緩策略，請願運動是真正爭取人民作主", "臺灣民主國有武力，請願運動也有武力", "兩者皆已實現民主目標"], "answer": 1, "explanation": "臺灣民主國年號永清只是延緩日本接收的策略；請願運動則有民主概念，真正爭取人民作主。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "比較辨析", "skill": "比較辨析", "difficulty": 4, "id": 29}, {"question": "綜合上述教材，日治時期臺灣民主化進程的關鍵轉折是什麼？", "options": ["從武力抗爭全面轉向和平社會運動，累積民主經驗", "總督府主動放棄威權統治", "臺灣人完全接受日本統治", "抗日運動持續以武裝方式進行"], "answer": 0, "explanation": "抗日精神從武力轉向和平爭取，透過社會運動、請願運動、農民運動累積民主經驗，這是臺灣民主化的關鍵轉折。", "subject": "社會科", "unit": "日治時期的臺灣", "concept": "民主化進程", "skill": "綜合分析", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
