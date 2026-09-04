@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會｜6上1-3｜臺灣人民有哪些權利和義務？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "八年級", "unit": "戒嚴令與憲法權利", "topic": "戒嚴令歷史與憲法自由權利的衝突分析", "filename": "康軒社會｜6上1-3｜臺灣人民有哪些權利和義務？", "summary": "以遊戲比喻探討台灣戒嚴令與憲法權利的衝突及人民權利義務。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，台灣戒嚴令持續了多久？", "options": ["12年", "38年", "50年", "70年"], "answer": 1, "explanation": "教材明確指出1949年公告的戒嚴令為期38年。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令", "skill": "理解與記憶", "difficulty": 2, "id": 1}, {"question": "戒嚴令期間，基隆、高雄、馬公三個港口被稱為？", "options": ["自由貿易港", "監護開放港", "國際貿易港", "封鎖禁運港"], "answer": 1, "explanation": "教材提到基隆、高雄、馬公三港口被「監護開放」，其他港口則被限制進出。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令的限制措施", "skill": "理解與記憶", "difficulty": 2, "id": 2}, {"question": "戒嚴令期間的宵禁時間為何？", "options": ["晚間10點至清晨6點", "凌晨12點至清晨5點", "凌晨1點至5點", "晚間9點至清晨7點"], "answer": 2, "explanation": "教材明確說明基隆、高雄兩市凌晨一點到五點實施宵禁。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令的限制措施", "skill": "理解與記憶", "difficulty": 2, "id": 3}, {"question": "戒嚴令期間，商店的營業時間限縮到幾點？", "options": ["晚上8點", "晚上10點", "半夜12點", "凌晨1點"], "answer": 2, "explanation": "教材提到商店營業時間限縮到半夜12點。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令的限制措施", "skill": "理解與記憶", "difficulty": 2, "id": 4}, {"question": "戒嚴令期間，人民外出必須隨身攜帶什麼？", "options": ["護照", "學生證", "身分證", "駕照"], "answer": 2, "explanation": "教材指出玩家外出必須隨身帶身分證，沒帶會被逮捕拘禁。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令的限制措施", "skill": "理解與記憶", "difficulty": 2, "id": 5}, {"question": "憲法哪一條保障人民身體自由？", "options": ["第七條", "第八條", "第九條", "第十條"], "answer": 1, "explanation": "憲法第八條明確表示人民身體的自由應受保障，非經法定程序不得逮捕拘禁。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "憲法第八條", "skill": "理解與記憶", "difficulty": 2, "id": 6}, {"question": "憲法第九條規定軍事審判主要限制哪一族群？", "options": ["所有國民", "現役軍人", "公務員", "學生"], "answer": 1, "explanation": "憲法第九條軍事審判只限制現役軍人，一般人民不受軍事審判。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "憲法第九條", "skill": "理解與記憶", "difficulty": 2, "id": 7}, {"question": "下列何者不是憲法保障的自由權？", "options": ["居住遷徙自由", "言論講學著作出版自由", "無限賺錢的自由", "通訊秘密自由"], "answer": 2, "explanation": "憲法保障居住遷徙（第十條）、言論自由（第十一條）、通訊秘密（第十二條），但自由不是無限的。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "憲法保障的自由權", "skill": "理解與記憶", "difficulty": 2, "id": 8}, {"question": "人民年滿幾歲就有投票權等參政權？", "options": ["18歲", "20歲", "22歲", "25歲"], "answer": 1, "explanation": "教材明確說明參政權年滿20歲就有投票權、罷免、競選公職、擔任公務員等權利。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "參政權", "skill": "理解與記憶", "difficulty": 2, "id": 9}, {"question": "國民教育的強制年齡範圍是？", "options": ["6歲至12歲", "6歲至15歲", "6歲至18歲", "3歲至15歲"], "answer": 1, "explanation": "教材指出6到15歲國民強制接受教育，這是權利也是義務。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "受國民教育的義務", "skill": "理解與記憶", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "教材用什麼比喻來描述戒嚴令與憲法之間的關係？", "options": ["遊戲副本與獎勵", "版本衝突與惡意外掛", "伺服器當機與重啟", "新玩家與老玩家"], "answer": 1, "explanation": "教材以「版本衝突」形容戒嚴令覆蓋憲法正常規則，如同惡意外掛覆蓋正常遊戲機制。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "版本衝突", "skill": "分析與比較", "difficulty": 3, "id": 11}, {"question": "戒嚴令對人民而言，教材形容為類似遊戲中的什麼效果？", "options": ["增益Buff", "減益Debuff", "初始技能", "隱藏任務"], "answer": 1, "explanation": "對統治者是維穩Buff，但對玩家（人民）是重重Nerf和Debuff效果。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令的影響", "skill": "分析與比較", "difficulty": 3, "id": 12}, {"question": "戒嚴令期間嚴禁哪些行為？", "options": ["出國旅行", "購買房產", "聚眾集會、罷工、罷課、遊行、請願", "更換身分證"], "answer": 2, "explanation": "教材明確列出嚴禁聚眾集會、罷工、罷課、遊行、請願等行為。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令的限制措施", "skill": "理解與記憶", "difficulty": 3, "id": 13}, {"question": "憲法保障的「自由權」包括以下哪些項目？①身體自由②居住遷徙自由③言論自由④無限賺錢自由", "options": ["①②③", "①②④", "①③④", "②③④"], "answer": 0, "explanation": "憲法保障身體、居住遷徙、言論、通訊、宗教、集會等自由，但不包括無限賺錢的自由。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "憲法保障的自由權", "skill": "分析與比較", "difficulty": 3, "id": 14}, {"question": "憲法保障的自由權是否有其限制？", "options": ["完全沒有限制", "不能侵害他人、不能違背社會公益", "只能由法院限制", "只有言論自由有限制"], "answer": 1, "explanation": "教材強調自由不是無限外掛，不能侵害他人、不能違背社會公益。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "自由權的限制", "skill": "分析與比較", "difficulty": 3, "id": 15}, {"question": "納稅在教材中被比喻為什麼？", "options": ["購買遊戲道具", "給伺服器交維護費", "解鎖隱藏任務", "參加PVP戰鬥"], "answer": 1, "explanation": "教材將納稅比喻為給伺服器交維護費，用於蓋公園、醫院、學校等公共建設。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "納稅義務", "skill": "應用與解釋", "difficulty": 3, "id": 16}, {"question": "服兵役的義務在教材中被比喻為什麼？", "options": ["日常任務", "支線任務", "國家防禦機制與伺服器安全保障", "自願副本"], "answer": 2, "explanation": "教材將服兵役比喻為抵禦外敵的國家防禦機制，是伺服器安全保障。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "服兵役義務", "skill": "應用與解釋", "difficulty": 3, "id": 17}, {"question": "關於台灣兵役制度，下列敘述何者正確？", "options": ["男女皆強制服兵役", "18歲男性強制徵召，女性志願當兵", "只有女性需要服兵役", "台灣已全面取消兵役制度"], "answer": 1, "explanation": "教材指出18歲男性必須接受徵召，女性則依志願當兵。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "服兵役義務", "skill": "理解與記憶", "difficulty": 3, "id": 18}, {"question": "憲法第八條與戒嚴令在逮捕拘禁規定上的主要差異為何？", "options": ["憲法允許任意逮捕，戒嚴令則需程序", "憲法要求非經法定程序不得逮捕，戒嚴令可直接逮捕", "兩者沒有差異", "憲法與戒嚴令都允許任意逮捕"], "answer": 1, "explanation": "憲法第八條要求非經法定程序不得逮捕拘禁，而戒嚴令期間外出未帶身分證即可被逮捕，兩者有根本差異。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令與憲法的衝突", "skill": "分析與比較", "difficulty": 3, "id": 19}, {"question": "教材將十二年國教中「高中職以上」比喻為什麼？", "options": ["強制新手教學", "進階職涯選擇的自願副本", "隱藏任務", "伺服器維護"], "answer": 1, "explanation": "國民教育是強制新手教學（6-15歲），高中職以上是自願的進階副本。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "受國民教育的義務", "skill": "應用與解釋", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "教材用「版本衝突」來描述戒嚴令與憲法的關係，此比喻的主要意涵為何？", "options": ["表示兩者完全相容", "表示戒嚴令覆蓋了憲法保障的權利，造成規則矛盾", "表示憲法從未存在過", "表示戒嚴令比憲法更高級"], "answer": 1, "explanation": "版本衝突比喻戒嚴令作為期間限定的惡意外掛，直接覆蓋了憲法這套保障權利的正常規則。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "版本衝突", "skill": "批判性思考", "difficulty": 4, "id": 21}, {"question": "從權利與義務的平衡角度來看，下列何者最符合教材觀點？", "options": ["人民只有權利沒有義務", "義務完全壓迫人民自由", "人民享有憲法保障的權利，同時也負有納稅、服兵役、受教育等義務", "權利與義務完全不相干"], "answer": 2, "explanation": "教材說明權利是增益技能，義務是必須完成的任務，兩者並存於憲法框架中。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "權利與義務的平衡", "skill": "批判性思考", "difficulty": 4, "id": 22}, {"question": "教材提到「自由不是無限外掛」，此說法的主要目的是什麼？", "options": ["鼓勵人民放棄自由", "說明自由權有其界限，不能侵害他人或違背社會公益", "主張自由完全不存在", "認為政府應該全面控制自由"], "answer": 1, "explanation": "自由有界限，不能侵害他人或違背社會公益，例如網路發言也不能任意Gank他人。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "自由權的限制", "skill": "批判性思考", "difficulty": 4, "id": 23}, {"question": "關於兵役制度中男性強制、女性志願的設計，教材引導讀者思考什麼問題？", "options": ["這是否違反憲法平等權", "女性應該完全免除任何義務", "兵役制度應該立即廢除", "這與憲法完全無關"], "answer": 0, "explanation": "教材明確將此列為經典爭議點，引導讀者思考是否違反憲法平等權。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "權利與義務的平衡", "skill": "批判性思考", "difficulty": 4, "id": 24}, {"question": "教材將戒嚴令期間描述為「官方後門程式」，此比喻暗示了什麼？", "options": ["戒嚴令是正式且合法的永久制度", "戒嚴令是繞過正常憲法機制的非常態手段", "戒嚴令受到憲法完全支持", "後門程式是用來保障人民自由的"], "answer": 1, "explanation": "「官方後門程式」暗示戒嚴令是繞過憲法正常規則的非常態機制，最終仍須解除。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "版本衝突", "skill": "批判性思考", "difficulty": 4, "id": 25}, {"question": "從遊戲化比喻來看，「Patch更新」在教材中用來比喻什麼現象？", "options": ["遊戲bug無法修復", "兵役時間根據國際情勢和國家安全需求進行調整", "憲法被完全刪除", "戒嚴令永遠不會解除"], "answer": 1, "explanation": "教材用Patch更新比喻兵役時間的調整，像是遊戲平衡數值一樣因應環境變化。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "遊戲化學習", "skill": "應用與解釋", "difficulty": 4, "id": 26}, {"question": "教材提到挪威、南韓等國女性也需要當兵，這是在引導讀者思考什麼？", "options": ["台灣應該立即全面廢除兵役", "各國根據不同環境設定對應制度，台灣的兵役制度可進一步討論改進", "女性當兵完全沒有意義", "台灣應該禁止女性入伍"], "answer": 1, "explanation": "教材以此引導思考不同國家的設定差異，以及台灣兵役制度在平等權上的爭議性。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "權利與義務的平衡", "skill": "批判性思考", "difficulty": 4, "id": 27}, {"question": "戒嚴令期間的「物價凍結」和「囤積必需品會被官方警告」，反映了政府當時採取了什麼樣的管控方式？", "options": ["完全自由的市場經濟", "對人民經濟活動的全面監控與限制", "鼓勵民間商業發展", "僅針對外國貿易的限制"], "answer": 1, "explanation": "物價凍結和囤積警告反映戒嚴期間政府對人民經濟生活進行了嚴格管控。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "戒嚴令的限制措施", "skill": "分析與比較", "difficulty": 4, "id": 28}, {"question": "教材以「伺服器」比喻國家，此比喻中「公共建設」比喻什麼？", "options": ["遊戲中的裝飾道具", "由稅金支撐的公園、醫院、學校等公共設施", "玩家自製的私人建築", "伺服器中的NPC"], "answer": 1, "explanation": "稅金被比喻為伺服器維護費，用於建設公園、醫院、學校等公共設施。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "納稅義務", "skill": "應用與解釋", "difficulty": 4, "id": 29}, {"question": "綜合教材內容，「掌握遊戲規則和NPC邏輯」這個比喻，最終要傳達給讀者的核心觀點是什麼？", "options": ["歷史課文只是死板資訊，不需要深入理解", "理解歷史制度背後的原則與邏輯，才能真正掌握社會科知識", "歷史學習只需要背誦年代和事件", "遊戲比喻會分散學習注意力"], "answer": 1, "explanation": "教材透過遊戲化比喻，引導學生理解歷史制度背後的邏輯與原則，讓學習不再死板。", "subject": "社會科", "unit": "戒嚴令與憲法權利", "concept": "遊戲化學習", "skill": "批判性思考", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
