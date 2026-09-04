@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國小社會｜6上1-2｜科技發展為什麼需要管理？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會", "grade": "七年級", "unit": "科技發展的問題", "topic": "科技發展與社會影響", "filename": "翰林國小社會｜6上1-2｜科技發展為什麼需要管理？", "summary": "以遊戲比喻講解科技發展對社會的影響，涵蓋資訊、能源、生物科技與智慧城鄉四大主題及其相關法規。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，「地球Online」比喻的是什麼？", "options": ["一個線上遊戲", "現實社會的模擬", "一個沙盒模擬遊戲", "網路世界"], "answer": 2, "explanation": "教材將現實社會比喻為一個超大型沙盒模擬遊戲，名叫「地球Online」，藉此說明科技發展的影響。", "subject": "社會", "unit": "科技發展的問題", "concept": "科技與社會關係的比喻", "skill": "概念理解", "difficulty": 2, "id": 1}, {"question": "教材中，「Buff」指的是科技的什麼影響？", "options": ["副作用", "便利生活的優點", "法律規範", "遊戲中的道具"], "answer": 1, "explanation": "Buff 是遊戲術語，指增益效果；教材用它比喻科技帶來生活便利的正面影響。", "subject": "社會", "unit": "科技發展的問題", "concept": "科技影響的比喻", "skill": "概念理解", "difficulty": 2, "id": 2}, {"question": "教材提到「Nerf」是指科技的什麼？", "options": ["升級選項", "新的遊戲內容", "潛在的負面效果", "官方公告"], "answer": 2, "explanation": "Nerf 是遊戲術語，指削弱或副作用；教材用它比喻科技帶來的負面影響，如環境或社會問題。", "subject": "社會", "unit": "科技發展的問題", "concept": "科技影響的比喻", "skill": "概念理解", "difficulty": 2, "id": 3}, {"question": "在網路上隨意截圖、分享影片，可能觸犯什麼法律？", "options": ["道路交通管理條例", "著作權法", "社會秩序維護法", "消費者保護法"], "answer": 1, "explanation": "教材指出，盜用他人 DLC 內容（如影片、圖片）會觸犯著作權法，屬於侵權行為。", "subject": "社會", "unit": "科技發展的問題", "concept": "資訊數位科技法規", "skill": "概念理解", "difficulty": 2, "id": 4}, {"question": "點擊不明連結可能導致什麼風險？", "options": ["帳號升級", "個人資料被竊取", "獲得免費道具", "觸發遊戲任務"], "answer": 1, "explanation": "教材比喻點擊不明連結如同打開惡意副本，可能竊取個人資料並植入病毒。", "subject": "社會", "unit": "科技發展的問題", "concept": "資通安全風險", "skill": "概念理解", "difficulty": 2, "id": 5}, {"question": "政府制定「資通安全法」的主要目的是什麼？", "options": ["保護遊戲伺服器安全", "防護全體玩家的個人資料安全", "限制網路使用時間", "增加遊戲趣味性"], "answer": 1, "explanation": "教材指出，資通安全法是為了防護全體玩家的資安，防止網路惡意入侵與個資竊取。", "subject": "社會", "unit": "科技發展的問題", "concept": "資通安全法", "skill": "概念理解", "difficulty": 2, "id": 6}, {"question": "在網路上亂發布不當言論，可能面臨什麼後果？", "options": ["獲得遊戲獎勵", "帳號被 Ban 掉或面臨法律責任", "解鎖新區域", "觸發隱藏任務"], "answer": 1, "explanation": "教材比喻亂發布不當言論會侵犯他人名譽，如同被 GM Ban 掉 ID，甚至面臨法律責任。", "subject": "社會", "unit": "科技發展的問題", "concept": "網路行為規範", "skill": "概念理解", "difficulty": 2, "id": 7}, {"question": "教材建議的網路安全基本守則不包括以下何項？", "options": ["不點不明網址", "支持正版內容", "隨意分享他人隱私", "別當鍵盤俠"], "answer": 2, "explanation": "教材強調謹慎小心、不點不明網址、支持正版、別當鍵盤俠；隨意分享他人隱私會侵犯權益，非建議行為。", "subject": "社會", "unit": "科技發展的問題", "concept": "網路安全守則", "skill": "概念理解", "difficulty": 2, "id": 8}, {"question": "教材中提到的「官方公告」比喻的是什麼？", "options": ["遊戲內的提示訊息", "政府發布的法規", "社群媒體貼文", "軟體更新記錄"], "answer": 1, "explanation": "教材以「官方公告」比喻政府發布的法規，用於保護玩家（民眾）權益。", "subject": "社會", "unit": "科技發展的問題", "concept": "法規的比喻", "skill": "概念理解", "difficulty": 2, "id": 9}, {"question": "遇到中獎簡訊要求點擊連結領獎，教材建議如何處理？", "options": ["立即點擊連結領取", "分享給朋友一起領獎", "不點不分享，保護自己", "忽略簡訊即可"], "answer": 2, "explanation": "教材以 QTE 環節提醒，面對可疑簡訊應「不點不分享」，以保護個人資料安全。", "subject": "社會", "unit": "科技發展的問題", "concept": "網路安全情境判斷", "skill": "情境判斷決策", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "教材中，「能源科技」被比喻為遊戲中的什麼？", "options": ["裝飾道具", "動力核心", "任務引導", "隱藏功能"], "answer": 1, "explanation": "教材指出能源如同遊戲中的動力核心，維持整個伺服器的運作與發展。", "subject": "社會", "unit": "科技發展的問題", "concept": "能源科技的角色", "skill": "概念理解", "difficulty": 3, "id": 11}, {"question": "我國主要的發電方式是什麼？", "options": ["水力發電", "核能發電", "火力發電", "風力發電"], "answer": 2, "explanation": "教材明確提到，我國主要發電還是火力發電，佔能源結構中的主要地位。", "subject": "社會", "unit": "科技發展的問題", "concept": "主要發電方式", "skill": "概念理解", "difficulty": 3, "id": 12}, {"question": "火力發電可能造成的環境問題，教材用什麼比喻？", "options": ["遊戲獎勵", "環境 Debuff", "新地圖解鎖", "技能升級"], "answer": 1, "explanation": "教材指出火力發電排放二氧化碳造成空氣污染，導致地球暖化，比喻為環境 Debuff（負面效果）。", "subject": "社會", "unit": "科技發展的問題", "concept": "火力發電的負面影響", "skill": "概念理解", "difficulty": 3, "id": 13}, {"question": "教材提到核能的主要爭議點是什麼？", "options": ["發電效率太低", "核輻射外洩與核廢料問題", "建設成本過高", "噪音污染嚴重"], "answer": 1, "explanation": "教材說明核能雖高效，但核輻射外洩可能造成生態浩劫，核廢料更是超級爭議 Boss。", "subject": "社會", "unit": "科技發展的問題", "concept": "核能爭議", "skill": "概念理解", "difficulty": 3, "id": 14}, {"question": "教材中，「綠色能源 DLC」指的是什麼？", "options": ["遊戲內購道具", "再生能源科技", "節能家電產品", "環境保護運動"], "answer": 1, "explanation": "教材以「綠色能源 DLC」比喻太陽能、風力、水力等再生能源，是政府積極開發的新能源方案。", "subject": "社會", "unit": "科技發展的問題", "concept": "再生能源比喻", "skill": "概念理解", "difficulty": 3, "id": 15}, {"question": "為了讓地球永續經營，教材建議民眾落實什麼行動？", "options": ["增加能源消耗", "節能減碳", "使用更多化石燃料", "減少再生能源"], "answer": 1, "explanation": "教材指出民眾需共同落實節能減碳，如同公會戰，才能讓地球 Online 永續經營。", "subject": "社會", "unit": "科技發展的問題", "concept": "節能減碳責任", "skill": "概念理解", "difficulty": 3, "id": 16}, {"question": "火力發電與核能發電的風險差異，以下敘述何者正確？", "options": ["兩者都會造成空氣污染", "火力發電排放溫室氣體，核能爭議在輻射與廢料", "兩者都沒有環境負面影響", "核能發電效率較火力發電低"], "answer": 1, "explanation": "教材比較火力發電主要造成空氣污染與地球暖化，核能則有輻射外洩與核廢料爭議，風險類型不同。", "subject": "社會", "unit": "科技發展的問題", "concept": "能源科技比較", "skill": "議題分析比較", "difficulty": 3, "id": 17}, {"question": "再生能源與傳統能源的環保影響比較，教材強調什麼？", "options": ["再生能源完全無缺點", "再生能源較無污染，有助環境永續", "傳統能源更環保", "兩者對環境影響相同"], "answer": 1, "explanation": "教材指出再生能源（綠色能源）是較清潔的選項，能減少環境 Debuff，促進地球永續經營。", "subject": "社會", "unit": "科技發展的問題", "concept": "再生能源環保效益", "skill": "議題分析比較", "difficulty": 3, "id": 18}, {"question": "教材中，「政府積極開發再生能源科技樹」比喻什麼？", "options": ["政府投資傳統能源", "政府推動能源轉型政策", "限制民眾用電", "增加火力發電廠"], "answer": 1, "explanation": "教材以「科技樹」比喻政府積極開發太陽能、風力等再生能源，屬於能源轉型政策。", "subject": "社會", "unit": "科技發展的問題", "concept": "能源政策比喻", "skill": "概念理解", "difficulty": 3, "id": 19}, {"question": "若需改善火力發電造成的環境問題，教材建議的最佳方案是？", "options": ["擴大燃煤發電", "增加核能發電比例", "發展再生能源與節能減碳", "忽略溫室氣體排放"], "answer": 2, "explanation": "教材指出應升級能源科技樹，發展再生能源並落實節能減碳，以解決環境 Debuff。", "subject": "社會", "unit": "科技發展的問題", "concept": "能源議題解決方案", "skill": "情境判斷決策", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "教材將「生物科技」比喻為遊戲中的什麼？", "options": ["基礎技能", "高階技能樹", "輔助道具", "新手任務"], "answer": 1, "explanation": "教材指出生物科技是能控制與改造動植物的高階技能樹，具有巨大潛力與爭議。", "subject": "社會", "unit": "科技發展的問題", "concept": "生物科技的比喻", "skill": "概念理解", "difficulty": 4, "id": 21}, {"question": "教材提到生物科技用在複製人類，會觸發什麼問題？", "options": ["遊戲難度降低", "倫理爭議與違背自然法則", "獲得額外獎勵", "解鎖新劇情"], "answer": 1, "explanation": "教材明確指出複製人類會觸發倫理問題，可能違背自然法則，需政府制定規則防止不當運用。", "subject": "社會", "unit": "科技發展的問題", "concept": "生物科技倫理爭議", "skill": "概念理解", "difficulty": 4, "id": 22}, {"question": "政府為防止生物科技不當運用，採取什麼措施？", "options": ["完全禁止所有生物科技研究", "制定相關遊戲規則（法規）", "鼓勵私人企業自由發展", "不進行任何干預"], "answer": 1, "explanation": "教材指出政府會制定相關法規，如同遊戲規則，防止生物科技被不當運用。", "subject": "社會", "unit": "科技發展的問題", "concept": "生物科技監管", "skill": "概念理解", "difficulty": 4, "id": 23}, {"question": "教材中，基因改造食品的標示規定比喻為什麼？", "options": ["官方透明化資訊", "隱藏劇情提示", "額外付費內容", "遊戲錯誤修復"], "answer": 0, "explanation": "教材以「官方透明化資訊」比喻基因改造食品必須明確標示，讓民眾有選擇權。", "subject": "社會", "unit": "科技發展的問題", "concept": "基因改造標示法規", "skill": "概念理解", "difficulty": 4, "id": 24}, {"question": "教材將「智慧城鄉」的科技應用比喻為什麼？", "options": ["遊戲難度提升", "優化更新 Patch", "新增武器系統", "伺服器當機風險"], "answer": 1, "explanation": "教材指出智慧城鄉應用如同遊戲中的優化更新 Patch，提升玩家（民眾）生活體驗。", "subject": "社會", "unit": "科技發展的問題", "concept": "智慧城鄉比喻", "skill": "概念理解", "difficulty": 4, "id": 25}, {"question": "臺北捷運 GO APP 的功能，教材比喻為什麼？", "options": ["任務獎勵", "QOL 優化（生活品質提升）", "遊戲內商城", "隱藏地圖"], "answer": 1, "explanation": "教材以「QOL 優化」比喻臺北捷運 GO APP 即時顯示車廂擁擠程度，提升民眾搭乘體驗。", "subject": "社會", "unit": "科技發展的問題", "concept": "智慧城鄉 APP 應用", "skill": "概念理解", "difficulty": 4, "id": 26}, {"question": "花蓮垃圾追蹤系統採用什麼科技手段？", "options": ["人工巡邏", "GPS 追蹤與縮時攝影", "紙本登記", "網路問卷調查"], "answer": 1, "explanation": "教材指出花蓮垃圾追蹤使用 GPS 追蹤廢棄物車，並搭配縮時攝影作為證據，防止亂丟垃圾。", "subject": "社會", "unit": "科技發展的問題", "concept": "智慧城鄉科技手段", "skill": "概念理解", "difficulty": 4, "id": 27}, {"question": "教材將垃圾追蹤系統比喻為什麼角色？", "options": ["遊戲 NPC", "GM 監控機制", "敵人單位", "輔助道具"], "answer": 1, "explanation": "教材比喻 GPS 追蹤與縮時攝影如同 GM 在監控，防止惡意玩家（亂丟垃圾者）破壞環境秩序。", "subject": "社會", "unit": "科技發展的問題", "concept": "智慧城鄉監控比喻", "skill": "概念理解", "difficulty": 4, "id": 28}, {"question": "教材中，「每個決策都是一次選擇，影響著遊戲的未來走向」主要強調什麼？", "options": ["科技發展無需考慮後果", "科技應用需審慎評估其社會與環境影響", "遊戲結果完全隨機", "玩家可任意破壞規則"], "answer": 1, "explanation": "教材透過比喻強調，科技應用如同遊戲決策，每個選擇都影響社會與環境的未來，需謹慎評估。", "subject": "社會", "unit": "科技發展的問題", "concept": "科技倫理與責任", "skill": "議題分析比較", "difficulty": 4, "id": 29}, {"question": "綜合教材內容，科技發展對社會影響的整體觀點為何？", "options": ["科技只有好處，無需擔心問題", "科技帶有雙面性，需透過法規與倫理規範引導其善用", "應完全禁止可能有害的科技", "民眾無需負責，由政府全權處理"], "answer": 1, "explanation": "教材以遊戲比喻說明科技提供便利（Buff）但也有潛在風險（Nerf），需透過法規、倫理與民眾參與共同引導，促進永續發展。", "subject": "社會", "unit": "科技發展的問題", "concept": "科技發展整體觀點", "skill": "議題分析比較", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
