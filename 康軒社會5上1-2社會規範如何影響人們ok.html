@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上1-2社會規範如何影響人們ok</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "社會科（公民）", "grade": "八年級", "unit": "人際互動與社會規範", "topic": "社會規範的種類、功能與變遷", "filename": "康軒社會5上1-2社會規範如何影響人們ok", "summary": "以遊戲比喻講解風俗、宗教、道德與法律四種社會規範的功能、差異與時代變遷。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "社會規範的核心目的是什麼？", "options": ["讓每個人可以自由做任何想做的事", "維持社會秩序並減少衝突與紛爭", "強化特定陣營的文化優勢", "讓法律系統更容易運作"], "answer": 1, "explanation": "教材指出社會規範是所有玩家共同認可的行為準則，共通目的在維持社會秩序、減少衝突，提升遊戲體驗。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "社會規範", "skill": "概念辨別", "difficulty": 2, "id": 1}, {"question": "下列何者屬於「風俗習慣」？", "options": ["遵守交通紅綠燈", "中秋節烤肉團聚", "勸人為善、相信善惡有報", "上學時穿著整齊校服"], "answer": 1, "explanation": "中秋節烤肉是漢人陣營的團聚活動，屬於約定俗成的生活習慣，是風俗習慣的範例。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "風俗習慣", "skill": "概念辨別", "difficulty": 2, "id": 2}, {"question": "關於宗教信仰，下列敘述何者正確？", "options": ["宗教只存在於漢人陣營", "宗教鼓勵競爭，讓玩家變得更強", "宗教會指引信徒修身養性、勸人為善", "宗教與社會秩序完全無關"], "answer": 2, "explanation": "教材提到宗教信仰有行為規範和戒律，指引信徒修身養性、勸人為善，提升品德值與社群穩定性。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "宗教信仰", "skill": "概念辨別", "difficulty": 2, "id": 3}, {"question": "「孝親敬長、友愛同學」屬於哪一種社會規範？", "options": ["風俗習慣", "宗教信仰", "倫理道德", "法律條文"], "answer": 2, "explanation": "倫理道德是人與人之間合宜的相處方式，以及判斷是非善惡的標準，孝敬父母、友愛同學屬於道德範疇。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "倫理道德", "skill": "概念辨別", "difficulty": 2, "id": 4}, {"question": "四種社會規範中，唯一具有強制力的是？", "options": ["風俗習慣", "宗教信仰", "倫理道德", "法律"], "answer": 3, "explanation": "法律是唯一具有強制力的規範，違反會啟動懲罰機制，如罰款或限制行動。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "法律", "skill": "概念辨別", "difficulty": 2, "id": 5}, {"question": "下列何者是「倫理道德」的具體表現？", "options": ["過年期間走春拜年", "在教堂做禮拜", "主動讓座給老奶奶", "不闖紅燈等綠燈"], "answer": 2, "explanation": "讓座給老奶奶是道德值的展現，屬於人與人之間合宜的相處方式，能增加魅力值與社群聲望。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "倫理道德", "skill": "概念辨別", "difficulty": 2, "id": 6}, {"question": "原住民族的豐年祭主要功能為何？", "options": ["增加政府稅收", "凝聚部落力量與文化傳承", "遵守法律規定", "提升個人的道德值"], "answer": 1, "explanation": "豐年祭讓族人產生歸屬感，是凝聚部落力量的關鍵，屬於風俗習慣中的歲時節慶活動與文化傳承。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "風俗習慣", "skill": "概念辨別", "difficulty": 2, "id": 7}, {"question": "基督教強調「愛人如己」，主要功能是？", "options": ["強制所有人遵守", "提升社群的友善度與包容度屬性", "決定玩家的經濟收入", "限制玩家的移動自由"], "answer": 1, "explanation": "基督教強調愛人如己，讓信徒多關心周遭的人，提升友善度與包容度屬性，屬於宗教信仰的勸善功能。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "宗教信仰", "skill": "概念辨別", "difficulty": 2, "id": 8}, {"question": "違反法律可能導致什麼後果？", "options": ["被其他玩家討厭但不會有實際懲罰", "自動獲得隱藏任務獎勵", "被GM開罰單或限制行動", "只會在內心感到愧疚"], "answer": 2, "explanation": "法律是唯一具強制力的規範，違反會被處以罰款甚至限制行動，輕則警告重則封號。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "法律", "skill": "概念辨別", "difficulty": 2, "id": 9}, {"question": "下列何者最能說明「遵守社會規範」的共同目的？", "options": ["讓每個玩家都能獨自變強", "維持伺服器秩序，提升所有玩家的遊戲體驗", "確保只有特定陣營能贏", "讓遊戲公司賺更多錢"], "answer": 1, "explanation": "社會規範共通目的是維持社會秩序、減少衝突與紛爭，提升所有玩家的遊戲體驗。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "社會秩序", "skill": "概念辨別", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "校規要求學生必須穿校服，這與法律最大的差異在於？", "options": ["校規具有強制力，法律沒有", "校規沒有國家強制力，法律是由國家執行的強制性規範", "校規和法律的強制力完全相同", "校規只適用於遊戲場景"], "answer": 1, "explanation": "法律是唯一具有國家強制力的規範，校規屬於一般規章，違反不會啟動國家懲罰機制，兩者層級與強制力不同。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "法律", "skill": "比較分析", "difficulty": 3, "id": 11}, {"question": "風俗習慣與宗教信仰最根本的差異為何？", "options": ["風俗習慣比較有趣，宗教信仰比較無聊", "風俗習慣是約定俗成的文化模式，宗教信仰基於超自然信仰與戒律體系", "風俗習慣由國家制定，宗教信仰由個人自由選擇", "兩者完全沒有差異"], "answer": 1, "explanation": "風俗習慣是特定社群長時間生活形成的約定俗成行為模式；宗教信仰則基於對超自然力量的信仰，有自己的行為規範與戒律。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "風俗習慣與宗教信仰", "skill": "比較分析", "difficulty": 3, "id": 12}, {"question": "某人在廟裡捐錢求平安，此行為屬於哪種規範？", "options": ["風俗習慣，因為這是台灣常見的活動", "倫理道德，因為這是做好事", "宗教信仰，因為是基於信仰體系的行為", "法律，因為廟宇有管理規定"], "answer": 2, "explanation": "捐錢求平安是基於民間信仰體系的行为，涉及對超自然力量的信仰，屬於宗教信仰範疇。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "宗教信仰", "skill": "情境應用", "difficulty": 3, "id": 13}, {"question": "為什麼道德能減少玩家之間的爭議？", "options": ["因為道德會被寫成法律條文", "因為道德能約束個人行為，使人際關係更和諧暢通", "因為道德具有國家強制力", "因為道德只能用在遊戲中"], "answer": 1, "explanation": "倫理道德是判斷是非善惡的標準與合宜的相處方式，遵守道德能讓關係更和諧，減少爭議，讓所有玩家安心遊玩。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "倫理道德", "skill": "歸納統整", "difficulty": 3, "id": 14}, {"question": "行人不走斑馬線被開罰單，此處「罰單」代表什麼規範的特徵？", "options": ["風俗習慣的特徵", "宗教信仰的特徵", "倫理道德的特徵", "法律的特徵，因為具有強制懲罰機制"], "answer": 3, "explanation": "罰單是法律強制力的具體展現，法律是唯一具有國家強制力與懲罰機制的社會規範。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "法律", "skill": "情境應用", "difficulty": 3, "id": 15}, {"question": "道德與法律在約束力上的主要差異為何？", "options": ["道德比法律更具強制力", "法律具有外部強制力，道德主要靠內省與社會評價", "兩者完全一樣，都可以被罰款", "道德只能用在家人之間"], "answer": 1, "explanation": "道德主要靠個人內省與社會評價來約束行為，而法律具有國家強制力，違反會受到明確的懲罰機制。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "倫理道德與法律", "skill": "比較分析", "difficulty": 3, "id": 16}, {"question": "「做壞事會被系統懲罰」是教材中用來形容哪一種規範的比喻？", "options": ["風俗習慣", "宗教信仰中的善惡有報觀念", "倫理道德中的讓座行為", "法律中的罰單制度"], "answer": 1, "explanation": "民間信仰認為善惡有報、人在做天在看，教材用此比喻道德值系統來說明宗教信仰對行為的約束功能。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "宗教信仰", "skill": "概念辨別", "difficulty": 3, "id": 17}, {"question": "為什麼排隊屬於社會規範而不只是個人選擇？", "options": ["因為排隊是法律強制規定", "因為它是共同認可的行為準則，違反會遭到其他玩家討厭", "因為排隊是宗教信仰的一部分", "因為不排隊會被開罰單"], "answer": 1, "explanation": "排隊是共同認可的行為準則，不排隊會遭到其他玩家討厭，這說明了社會規範透過社會評價來發揮約束力。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "社會規範", "skill": "情境應用", "difficulty": 3, "id": 18}, {"question": "下列何者最能體現「倫理道德」與「風俗習慣」的差異？", "options": ["道德是內建品格屬性，風俗是特定社群的文化傳統", "道德由國家制定，風俗由民間自發形成", "道德具有強制力，風俗完全沒有約束力", "兩者沒有差異，都是社會規範"], "answer": 0, "explanation": "倫理道德是內在的品格屬性與是非判斷標準；風俗習慣是特定社群長時間生活形成的文化模式，兩者來源與作用機制不同。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "倫理道德與風俗習慣", "skill": "比較分析", "difficulty": 3, "id": 19}, {"question": "駕駛違規停車被開罰單，此處法律發揮的主要功能為何？", "options": ["提升玩家的個人魅力值", "維持交通流暢與安全，保障所有玩家的遊戲體驗", "增進家人好友之間的好感度", "傳承特定陣營的文化"], "answer": 1, "explanation": "法律作為強制性平衡機制，違規停車被罰是為了確保交通流暢安全，保障所有玩家的遊戲體驗與伺服器穩定。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "法律", "skill": "情境應用", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "教材提到「以前農曆七月結婚會被當成Bug，現在很多玩家就不忌諱了」，此現象主要說明了什麼？", "options": ["法律可以隨意被玩家修改", "社會規範會隨著時代與社會發展而調整變遷", "風俗習慣完全沒有功能", "宗教信仰已經消失"], "answer": 1, "explanation": "社會規範不是死的，會隨著伺服器更新（社會發展）而改變，農曆七月結婚從忌諱到接受，正說明了規範的變遷。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "規範變遷", "skill": "批判思考", "difficulty": 4, "id": 21}, {"question": "「以前只有男孩滿月吃油飯，現在男女寶都能分享喜悅」，此變遷背後的推動因素最可能是？", "options": ["政府頒布新法律強制規定", "性別平權觀念被解鎖，反映社會價值觀的演進", "宗教信仰的改變", "風俗習慣完全失去了功能"], "answer": 1, "explanation": "此現象反映性別平權觀念的普及，社會規範隨時代變遷而調整，以符合現代玩家的需求與價值觀。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "規範變遷", "skill": "批判思考", "difficulty": 4, "id": 22}, {"question": "如果一個社會完全沒有法律，但有完善的道德與宗教，最可能出現的問題為何？", "options": ["完全不會有任何問題，因為道德足夠", "缺乏強制懲罰機制來約束嚴重違規行為，社會秩序可能崩潰", "所有人會自動變得很善良", "宗教會自動取代法律的功能"], "answer": 1, "explanation": "道德與宗教主要靠自覺與社會評價約束，缺乏國家強制力；若無法律，嚴重違規行為將難以有效制裁，社會秩序可能不穩。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "法律與道德", "skill": "批判思考", "difficulty": 4, "id": 23}, {"question": "某個新移民族群希望保留自己的歲時節慶傳統，但與主流社會的一些風俗不同，最適當的處理方式為何？", "options": ["強制新移民放棄原有風俗，完全融入主流", "尊重多元文化，讓不同陣營在社會規範下和平共處", "禁止任何新移民的活動", "讓每個族群各自為政，完全不與主流互動"], "answer": 1, "explanation": "社會規範的目的在維持秩序並減少衝突，同時不同陣營各有文化Buff，在共同認可的行為準則下和平共處，才是社會規範的真諦。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "社會規範", "skill": "情境應用", "difficulty": 4, "id": 24}, {"question": "下列哪一選項最能說明「社會規範具有時代性」？", "options": ["排隊的行為自古以來在所有社會都完全相同", "法律條文永遠不會改變", "不同時代對於哪些行為合宜有不同的判斷標準", "宗教信仰在所有時代都完全相同"], "answer": 2, "explanation": "社會規範會隨社會發展而調整，不同時代對於合宜行為有不同的判斷，如農曆七月結婚從忌諱到接受，正說明規範具有時代性。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "規範變遷", "skill": "歸納統整", "difficulty": 4, "id": 25}, {"question": "有人認為「只要內心覺得問心無愧，做什麼都不違法道德」，此觀點的問題為何？", "options": ["此觀點完全正確，道德只看內心", "道德除了內省，也涉及人際關係與社會評價，單憑自認為無愧不足以作為道德判斷的唯一標準", "道德和法律完全無關", "此觀點說明法律比道德更重要"], "answer": 1, "explanation": "倫理道德是判斷是非善惡的標準，也涉及人與人之間的合宜相處，單憑個人主觀感受不足以判斷，還需考量對他人的影響與社會共識。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "倫理道德", "skill": "批判思考", "difficulty": 4, "id": 26}, {"question": "某玩家為了快速通關不斷抄近路闖紅燈，最終被GM開罰單。此情境中，法律與道德的互動關係為何？", "options": ["法律與道德完全無關", "法律在此情境中提供明確的懲罰機制，而道德觀念則提醒玩家應為他人著想", "道德比法律更重要，不需要罰單", "法律只是裝飾，道德才是唯一準則"], "answer": 1, "explanation": "法律提供強制性懲罰機制確保秩序，道德則引導玩家為他人著想並相互尊重，兩者在社會中互補運作。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "法律與道德", "skill": "情境應用", "difficulty": 4, "id": 27}, {"question": "教材最後提到「在追求個人便利與權益時，也要為他人著想並相互尊重」，這主要強調了哪一種規範的精神？", "options": ["只有法律的強制力最重要", "倫理道德的核心精神，也與社會規範的共同目的相呼應", "風俗習慣可以隨意改變", "宗教信仰已經過時了"], "answer": 1, "explanation": "為他人著想、相互尊重是倫理道德的核心精神，同時也是社會規範維持秩序、減少衝突的共同目的的體現。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "倫理道德與社會秩序", "skill": "歸納統整", "difficulty": 4, "id": 28}, {"question": "社會規範從傳統走向現代的過程中，下列何者最可能是變遷的驅動力？", "options": ["遊戲公司的商業利益", "伺服器中玩家人數的增減", "社會發展與價值觀的演進，如性別平權觀念的普及", "特定陣營的文化霸權"], "answer": 2, "explanation": "社會規範會隨伺服器更新（社會發展）而改變，性別平權等價值觀的演進是推动規範變遷的重要因素。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "規範變遷", "skill": "歸納統整", "difficulty": 4, "id": 29}, {"question": "若某個社群中，人們普遍遵守道德但不尊重法律，最可能產生什麼後果？", "options": ["社會會更加和諧美好", "嚴重危害社會秩序的行為可能缺乏有效制裁，導致秩序失衡", "道德可以完全取代法律的所有功能", "沒有任何實際影響"], "answer": 1, "explanation": "道德雖能約束輕微違規，但對嚴重違反社會秩序的行為缺乏強制懲罰力；若只靠道德而忽視法律，社會秩序可能失衡。", "subject": "社會科（公民）", "unit": "人際互動與社會規範", "concept": "法律與道德", "skill": "批判思考", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
