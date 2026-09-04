@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會5上1-1鳥瞰臺灣</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d; --bg-deep2:#1d2557; --card:#fdfbf5; --ink:#1f2333;
+    --gold:#f2a93b; --gold-dark:#c9821c; --teal:#2fbf9f; --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{ background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%); min-height:100vh; color:var(--ink); }
+  .gate-card{ background:linear-gradient(180deg,#fffdf8,#fdfbf5); border:1px solid rgba(0,0,0,.06); box-shadow:0 10px 30px -12px rgba(0,0,0,.45); }
+  .torch-bar{ height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden; }
+  .torch-bar > div{ height:100%;border-radius:999px; background:linear-gradient(90deg,var(--gold-dark),var(--gold)); transition:width .35s ease; }
+  .option-btn{ transition:transform .12s ease, box-shadow .12s ease, background .12s ease; border:2px solid rgba(0,0,0,.08); }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{ background:rgba(47,191,159,.14);border-color:var(--teal); }
+  .option-btn.wrong{ background:rgba(232,93,78,.12);border-color:var(--ember); }
+  .badge-tag{ font-size:.7rem;letter-spacing:.02em; background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12); border-radius:999px;padding:.15rem .6rem; }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+<div id="app" class="w-full max-w-2xl"></div>
+<script>
+const QUIZ_DATA = {"meta": {"subject": "地理", "grade": "七年級", "unit": "台灣的地理位置與自然資源", "topic": "台灣的戰略地理位置與生物、海洋、交通資源", "filename": "南一國小社會5上1-1鳥瞰臺灣", "summary": "以遊戲隱喻解說台灣位於亞洲太平洋交界的戰略地理優勢，涵蓋候鳥遷徙、海洋漁場與海空運樞紐等主題。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "台灣被描述為位於亞洲與太平洋的什麼位置？", "options": ["邊陲小島", "黃金交會點", "寒流發源地", "內陸高原"], "answer": 1, "explanation": "教材中明確指出台灣座落於亞洲與太平洋的黃金交會點，地理位置優越。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣的戰略地理位置", "skill": "地理位置分析", "difficulty": 2, "id": 1}, {"question": "台灣位在哪兩條候鳥遷徙路線之間，成為重要的中繼站？", "options": ["東亞到澳洲", "北美到南美", "歐洲到非洲", "西亞到東南亞"], "answer": 0, "explanation": "教材提到台灣位在東亞到澳洲的候鳥遷徙路線上，是候鳥回血補魔的中繼站。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "候鳥遷徙路線與台灣地緣關係", "skill": "地理位置分析", "difficulty": 2, "id": 2}, {"question": "黑面琵鷺主要從哪些地方來台灣度冬？", "options": ["澳洲與紐西蘭", "中國與朝鮮", "日本與菲律賓", "印度與孟加拉"], "answer": 1, "explanation": "教材指出黑面琵鷺從中國與朝鮮來台灣度冬，台灣是其重要的越冬地。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "候鳥過境與越冬", "skill": "概念對照與區辨", "difficulty": 2, "id": 3}, {"question": "灰面鵟鷹被稱為什麼，每年過境台灣幾次？", "options": ["神話之鳥，每年一次", "國慶鳥，每年兩次", "候鳥之王，每年三次", "保育明星，每年四次"], "answer": 1, "explanation": "灰面鵟鷹俗稱「國慶鳥」，每年過境台灣兩次。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "候鳥遷徙路線與台灣地緣關係", "skill": "讀圖解讀能力", "difficulty": 2, "id": 4}, {"question": "台灣哪些地形環境提供候鳥豐富的覓食資源？", "options": ["高山與冰川", "沙漠與戈壁", "濕地、農地、鹽田、養殖區", "都市與工業區"], "answer": 2, "explanation": "教材提到台灣有豐富的濕地、農地、鹽田、養殖區，提供鳥類免費自助餐。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "候鳥棲地資源", "skill": "讀圖解讀能力", "difficulty": 2, "id": 5}, {"question": "黑潮暖流的流向方向為何？", "options": ["從北往南", "從西往東", "從南往北", "從東往西"], "answer": 2, "explanation": "教材明確說明黑潮是從南往北的暖流。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "黑潮暖流的特性", "skill": "讀圖解讀能力", "difficulty": 2, "id": 6}, {"question": "台灣周邊形成世界級漁場的主要原因為何？", "options": ["只有黑潮暖流經過", "只有中國沿岸寒流經過", "黑潮暖流與中國沿岸寒流交會", "位於內海且水流平緩"], "answer": 2, "explanation": "秋冬時中國沿岸流（寒流）與黑潮暖流交會，帶來豐富營養鹽，形成世界級漁場。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "寒暖流交會與漁場形成", "skill": "因果關係推論", "difficulty": 2, "id": 7}, {"question": "台灣是哪兩大地區之間的中間地帶，使其成為海空運樞紐？", "options": ["東亞與南亞", "東北亞與東南亞", "西亞與東亞", "中亞與北亞"], "answer": 1, "explanation": "教材指出台灣位處東北亞與東南亞的中間地帶，是飛機貨船必經之路。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣作為海空運樞紐的優勢", "skill": "地理位置分析", "difficulty": 2, "id": 8}, {"question": "台灣總面積約多少平方公里？", "options": ["約12,000平方公里", "約25,000平方公里", "約36,000平方公里", "約50,000平方公里"], "answer": 2, "explanation": "教材指出台灣總面積約36,000平方公里，包含台灣本島與周圍島嶼。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣區域範圍", "skill": "讀圖解讀能力", "difficulty": 2, "id": 9}, {"question": "以下哪個島嶼以其「洋樓」建築聞名，反映早期居民遠赴東南亞經商的歷史？", "options": ["澎湖群島", "馬祖列島", "金門群島", "綠島"], "answer": 2, "explanation": "教材提到金門的洋樓是早期居民遠赴東南亞經商後帶回的異國風格建築。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣群島範圍與人文特色", "skill": "讀圖解讀能力", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "黑面琵鷺在全球數量恢復後，台灣仍保有全球約多少比例的黑面琵鷺？", "options": ["約50%", "約30%", "約56%", "約20%"], "answer": 2, "explanation": "全球黑面琵鷺已達4,800多隻，台灣貢獻2,700多隻，約佔56%。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "候鳥保育與台灣地緣角色", "skill": "因果關係推論", "difficulty": 3, "id": 11}, {"question": "黑嘴端鳳頭燕鷗被稱為「神話之鳥」，台灣在牠的生存中扮演什麼角色？", "options": ["主要越冬地", "重要繁殖地", "長途遷徙中途站", "人工養殖中心"], "answer": 1, "explanation": "教材指出黑嘴端鳳頭燕鷗全球只剩百隻，台灣（馬祖）是牠們重要的繁殖地。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "中繼站與繁殖地的生態功能差異", "skill": "概念對照與區辨", "difficulty": 3, "id": 12}, {"question": "中國沿岸流在台灣的季節性出現時間為何？", "options": ["春季", "夏季", "秋冬", "全年"], "answer": 2, "explanation": "教材提到秋冬時中國沿岸流（寒流）與黑潮暖流交會，促成漁場形成。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "寒暖流交會的季節性", "skill": "因果關係推論", "difficulty": 3, "id": 13}, {"question": "黑潮暖流對台灣海洋生態最直接的作用是？", "options": ["降低海水溫度", "帶來大量營養鹽", "減少海洋生物種類", "形成大型海溝"], "answer": 1, "explanation": "教材指出黑潮暖流帶來超多營養鹽，是形成世界級漁場的重要關鍵。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "黑潮暖流對漁業的影響", "skill": "因果關係推論", "difficulty": 3, "id": 14}, {"question": "台灣過境航路服務費一年可賺進多少？", "options": ["約5億元", "約10億元", "約24.2億元", "約50億元"], "answer": 2, "explanation": "教材明確提到光是過境航路服務費，一年就賺進24.2億元。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣作為海空運樞紐的經濟效益", "skill": "讀圖解讀能力", "difficulty": 3, "id": 15}, {"question": "從台灣飛往亞太各國平均只需2.5小時，這個地理優勢被比喻為什麼？", "options": ["遠程跳躍點", "短程傳送點", "中立安全區", "緩衝地帶"], "answer": 1, "explanation": "教材將此比喻為「短程傳送點」，凸顯台灣在交通上的地理便利性。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣交通樞紐地位的優勢", "skill": "地理位置分析", "difficulty": 3, "id": 16}, {"question": "馬祖的「媽祖巨神像」反映當地與海洋的什麼關係？", "options": ["發展工業港", "依賴漁業與航海信仰", "發展觀鳥觀光", "開墾農地為主"], "answer": 1, "explanation": "媽祖巨神像是漁民為求航海平安而建，島名也因此而來，反映親近海洋的信仰文化。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣群島範圍與人文特色", "skill": "因果關係推論", "difficulty": 3, "id": 17}, {"question": "台灣作為「候鳥中繼站」與「越冬地」的差異，下列敘述何者正確？", "options": ["候鳥只在中繼站繁殖", "中繼站僅供短暫休息，越冬地供長期停留", "兩者功能完全相同", "台灣只有中繼站功能，沒有越冬地"], "answer": 1, "explanation": "中繼站是候鳥遷徙途中短暫休息補給的地方；黑面琵鷺來台灣度冬則是長期越冬，說明兩者功能不同。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "中繼站與越冬地的生態功能差異", "skill": "概念對照與區辨", "difficulty": 3, "id": 18}, {"question": "以下關於黑潮與中國沿岸流的比較，何者正確？", "options": ["黑潮是寒流，中國沿岸流是暖流", "黑潮從北往南，中國沿岸流從南往北", "黑潮是暖流從南往北，中國沿岸流是寒流", "兩股海流都從北往南流動"], "answer": 2, "explanation": "黑潮是從南往北的暖流；中國沿岸流是秋冬季節從北往南的寒流，兩股海流屬性不同。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "黑潮與中國沿岸流的屬性差異", "skill": "概念對照與區辨", "difficulty": 3, "id": 19}, {"question": "台灣成為「海空運樞紐」的核心地理因素為何？", "options": ["地形多山，適合架設機場", "位於東北亞與東南亞中間，是飛機貨船必經之路", "四面環海，適合發展造船業", "氣候溫和，全年適宜飛行"], "answer": 1, "explanation": "教材指出台灣位處東北亞與東南亞中間地帶，是飛機貨船的必經之路，這是成為樞紐的核心地理因素。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣作為海空運樞紐的成因", "skill": "因果關係推論", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考", "questions": [{"question": "綜合教材內容，下列何者最能說明台灣地理位置與自然資源的互動關係？", "options": ["台灣位置偏遠，因而生態保存完整", "台灣位於亞洲與太平洋交界，寒暖流交會與遷徙路線叠加，形塑豐富的自然資源與經濟優勢", "台灣氣候全年炎熱，適合所有候鳥越冬", "台灣漁業資源僅靠黑潮暖流單一因素維持"], "answer": 1, "explanation": "教材整體強調台灣位於亞洲與太平洋黃金交會點，寒暖流交會形成漁場，同時也是候鳥遷徙中繼站與海空運樞紐，地理位置與自然、經濟資源密切互動。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "地理位置與自然資源的互動關係", "skill": "因果關係推論", "difficulty": 4, "id": 21}, {"question": "台灣群島的多元文化特色（如金門洋樓、馬祖媽祖信仰）反映了什麼地理現象？", "options": ["群島居民與外界隔绝，文化獨立的結果", "台灣開闊多元，持續與外界交流，反映親近海洋的地理特性", "外來文化強行取代本土文化", "群島因缺乏資源而被迫向外移民"], "answer": 1, "explanation": "教材指出這些都是親近海洋的證明，台灣是「開闊多元的文化伺服器」，持續與外界交流，反映海洋地理特性。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "地理位置如何形塑人文資源", "skill": "概念對照與區辨", "difficulty": 4, "id": 22}, {"question": "若台灣的地理位置發生劇烈變化（如大幅南移），對候鳥生態可能產生何種影響？", "options": ["無顯著影響，因為候鳥會自行調整路線", "可能失去作為東亞至澳洲遷徙路線中繼站的地位，影響候鳥補給與生存", "候鳥數量會大幅增加", "僅影響黑面琵鷺，不影響其他物種"], "answer": 1, "explanation": "教材強調台灣位居東亞至澳洲遷徙路線的中繼站，地理位置一旦改變，將直接影響候鳥的補給與生態鏈。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "地理位置與生態保育的關聯", "skill": "因果關係推論", "difficulty": 4, "id": 23}, {"question": "黑潮暖流與中國沿岸寒流的交會，除了形成漁場外，還可能對台灣氣候產生何種影響？", "options": ["使台灣全年氣候寒涼", "使台灣冬季完全無雨", "調節沿岸氣溫與濕度，影響局部微氣候", "對氣候沒有任何影響"], "answer": 2, "explanation": "暖流與寒流交會除帶來營養鹽形成漁場外，也會影響沿岸溫濕度，調節局部微氣候，教材雖未明言但屬地理基本原理之延伸推論。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "海流對氣候與生態的綜合影響", "skill": "因果關係推論", "difficulty": 4, "id": 24}, {"question": "比較台灣本島與台灣地區（含群島）的範圍，下列敘述何者最精確？", "options": ["兩者範圍相同，都是台灣島", "台灣地區包含本島及澎湖、金門、馬祖、釣魚台、南海諸島等周邊島嶼", "台灣本島面積大於台灣地區總面積", "台灣地區的範圍不含南海諸島"], "answer": 1, "explanation": "教材指出台灣這個「伺服器」是「群島擴充包」，總面積36,000平方公里包含台灣本島及周圍島嶼（澎湖、金門、馬祖、釣魚台、南海諸島）。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣本島與台灣地區的範圍區別", "skill": "概念對照與區辨", "difficulty": 4, "id": 25}, {"question": "從地理學角度分析，台灣作為亞太「短程傳送點」的核心優勢來自於？", "options": ["機場數量最多", "地處東北亞與東南亞中間，航程約2.5小時即可到達各亞太主要城市", "台灣航空技術全球領先", "政府補貼所有航班運費"], "answer": 1, "explanation": "教材強調台灣位處東北亞與東南亞中間地帶，飛往亞太各國平均只需2.5小時，這是成為短程傳送點的地理基礎。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣交通樞紐地位的地理成因", "skill": "地理位置分析", "difficulty": 4, "id": 26}, {"question": "若全球氣候變遷導致黑潮暖流強度改變，最可能對台灣產生何種連鎖影響？", "options": ["漁業資源不受影響", "僅影響候鳥路線，不影響海洋生態", "影響漁場營養鹽供應，進而影響海洋生物與漁業經濟", "暖流增強一定會使漁獲量倍增"], "answer": 2, "explanation": "黑潮暖流帶來營養鹽是漁場形成的關鍵，若其強度改變，將連鎖影響營養鹽供應、海洋生物分布與台灣漁業經濟。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "地理位置與自然資源的互動關係", "skill": "因果關係推論", "difficulty": 4, "id": 27}, {"question": "下列關於台灣地理位置「戰略價值」的敘述，何者最符合教材主旨？", "options": ["台灣只是太平洋上的小島，戰略價值有限", "台灣位於亞洲與太平洋黃金交會點，兼具生態、漁業與交通樞紐等多重優勢", "台灣的戰略價值僅在於軍事防禦", "台灣的戰略價值僅來自於黑潮暖流"], "answer": 1, "explanation": "教材以遊戲比喻強調台灣是「Buff疊滿的傳奇級裝備」，戰略價值涵蓋生態中繼站、世界級漁場與海空運樞紐等多重優勢。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "台灣戰略地理位置的綜合評析", "skill": "概念對照與區辨", "difficulty": 4, "id": 28}, {"question": "從地理與人文的綜合觀點，台灣群島各具特色的文化跡象（如金門洋樓、馬祖信仰）說明了什麼？", "options": ["各島嶼居民閉門自守，文化互不影響", "台灣群島因海洋地理特性，持續與外界交流，形塑多元文化層積", "所有島嶼的文化完全相同", "文化差異僅由氣候差異造成"], "answer": 1, "explanation": "教材指出這些都是親近海洋的證明，台灣是「開闊多元的文化伺服器」不斷與外界交流，反映海洋地理促成的多元文化特性。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "地理位置如何形塑人文資源", "skill": "因果關係推論", "difficulty": 4, "id": 29}, {"question": "綜合評估台灣作為「候鳥中繼站」與「經濟樞紐」的雙重角色，下列推論何者最合理？", "options": ["兩者毫無關聯，可以分開討論", "同樣源於台灣位於亞洲與太平洋交界的戰略位置，是地理優勢在不同層面的展現", "經濟樞紐地位比生態價值更重要", "候鳥遷徙路線與航運路線完全相反"], "answer": 1, "explanation": "教材主旨強調台灣得天獨厚的地理位置同時帶來生態資源與經濟優勢，候鳥中繼站與經濟樞紐同樣源於台灣位於亞洲與太平洋黃金交會點的戰略地位。", "subject": "地理", "unit": "台灣的地理位置與自然資源", "concept": "地理位置與自然資源、經濟活動的互動關係", "skill": "因果關係推論", "difficulty": 4, "id": 30}]}]};
+const state = { screen: "home", currentLevelIdx: 0, currentQIdx: 0, selectedOption: null, levelResults: [null, null, null], levelAnswers: [{}, {}, {}], retryQueue: [], retryIdx: 0, inRetry: false, abilityStats: {}, conceptStats: {} };
+const LEVEL_STYLES = [ {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"}, {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"}, {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"} ];
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+function renderHome(){
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+    <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+    <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+    <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">本次教材</p>
+      <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+      ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+    </div>
+    <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">🚀 開始挑戰</button>
+  </div>`;
+}
+function startAdventure(){ state.currentLevelIdx = 0; state.screen = "levelIntro"; render(); }
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx, style = LEVEL_STYLES[idx];
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <div class="text-5xl mb-3">${style.icon}</div>
+    <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+    <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">開始挑戰</button>
+  </div>`;
+}
+function beginLevelQuiz(){ state.currentQIdx = 0; state.selectedOption = null; state.inRetry = false; state.screen = "quiz"; render(); }
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+    <div class="space-y-3" id="options">
+      ${q.options.map((opt,i)=>`<button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">${esc(opt)}</button>`).join("")}
+    </div>
+    <button id="confirmBtn" disabled onclick="confirmAnswer()" class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed">確認答案</button>
+  </div>`;
+}
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>btn.classList.toggle("ring-2", idx===i));
+  const btn = document.getElementById("confirmBtn"); btn.disabled = false; btn.classList.remove("bg-gray-300","cursor-not-allowed"); btn.classList.add("bg-[var(--bg-deep)]");
+}
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    const s = state.abilityStats[q.skill] || {correct:0,total:0}; s.total++; if(isCorrect) s.correct++; state.abilityStats[q.skill] = s;
+    const c = state.conceptStats[q.concept] || {correct:0,total:0}; c.total++; if(isCorrect) c.correct++; state.conceptStats[q.concept] = c;
+  }
+  state.lastCorrect = isCorrect; state.screen = "feedback"; render();
+}
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion(), correct = state.lastCorrect;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-6 fade-in">
+    <div class="text-center mb-4"><div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div></div>
+    <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+      <p class="text-sm text-gray-500 mb-1">正確答案</p><p class="font-bold mb-3">${esc(q.options[q.answer])}</p>
+      <p class="text-sm text-gray-500 mb-1">解析</p><p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+    </div>
+    <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">下一題</button>
+  </div>`;
+}
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect) state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    state.retryIdx++; state.retryQueue = state.retryQueue.slice(state.retryIdx); state.retryIdx = 0;
+    state.screen = state.retryQueue.length === 0 ? "levelResult" : "quiz"; render(); return;
+  }
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10) finishLevel(); else { state.screen = "quiz"; render(); }
+}
+function finishLevel(){
+  const level = currentLevel(), answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0; const wrongQuestions = [];
+  level.questions.forEach(q=>{ if(answers[q.id] === q.answer) correctCount++; else wrongQuestions.push(q); });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = { score, correctCount, wrongCount: 10-correctCount, wrongQuestions, passed: score >= 60 };
+  state.screen = "levelResult"; render();
+}
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx], isLast = state.currentLevelIdx === 2;
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in">
+    <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+    <div class="flex flex-col gap-3">
+      ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl">📝 錯題重練</button>` : ""}
+      ${r.passed ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>` : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">重新挑戰這一關</button>`}
+    </div>
+  </div>`;
+}
+function startRetry(){ const r = state.levelResults[state.currentLevelIdx]; state.retryQueue = [...r.wrongQuestions]; state.retryIdx = 0; state.inRetry = true; state.screen = "retryIntro"; render(); }
+function renderRetryIntro(){ app.innerHTML = `<div class="gate-card rounded-3xl p-8 text-center fade-in"><h2 class="text-xl font-black mb-2">錯題重練</h2><button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl">開始重練</button></div>`; }
+function retryLevel(){ state.levelAnswers[state.currentLevelIdx] = {}; state.currentQIdx = 0; state.inRetry = false; state.screen = "quiz"; render(); }
+function nextLevel(){ state.currentLevelIdx++; state.screen = "levelIntro"; render(); }
+function goFinal(){ state.screen = "final"; render(); }
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  app.innerHTML = `<div class="gate-card rounded-3xl p-8 fade-in text-center">
+    <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+    <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+    <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl">🔄 重新挑戰全部</button>
+  </div>`;
+}
+function restartAll(){ state.screen = "home"; state.currentLevelIdx = 0; state.currentQIdx = 0; state.selectedOption = null; state.levelResults = [null,null,null]; state.levelAnswers = [{},{},{}]; state.retryQueue = []; state.retryIdx = 0; state.inRetry = false; state.abilityStats = {}; state.conceptStats = {}; render(); }
+function esc(str){ const div = document.createElement("div"); div.textContent = String(str ?? ""); return div.innerHTML; }
+render();
+</script>
+</body>
+</html>
