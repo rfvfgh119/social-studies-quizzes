@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國小社會｜6上2-1｜今日的消費行為有什麼轉變？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "公民", "grade": "三年級", "unit": "消費與生活", "topic": "貨幣、支付方式與消費權益", "filename": "翰林國小社會｜6上2-1｜今日的消費行為有什麼轉變？", "summary": "以遊戲比喻講解貨幣演進、多元支付方式、消費權益維護與環保消費的社會科教材。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "課本提到，在貨幣出現之前，人們常用什麼方式取得所需物品？", "options": ["直接用錢購買", "以物易物", "使用信用卡", "行動支付結帳"], "answer": 1, "explanation": "教材指出貨幣出現前，人們要用東西換東西，這稱為以物易物。選項A、C、D均為貨幣出現後的支付方式。", "subject": "公民", "unit": "消費與生活", "concept": "貨幣的演進", "skill": "概念理解", "difficulty": 2, "id": 1}, {"question": "貨幣出現後，最大的優點是什麼？", "options": ["可以儲存更多金錢", "交易更方便且可衡量商品價值", "讓以物易物更容易進行", "避免所有詐騙案件發生"], "answer": 1, "explanation": "教材說明貨幣讓交易更方便，還可衡量商品價值，如同遊戲版本更新。選項A非貨幣主要功能；選項C與教材相反；選項D過於絕對。", "subject": "公民", "unit": "消費與生活", "concept": "貨幣的功能", "skill": "概念理解", "difficulty": 2, "id": 2}, {"question": "下列何者屬於「電子票證」的特性？", "options": ["銀行先墊款，之後再還", "用手機綁定卡片付款", "事先儲值，感應扣款", "實體紙鈔或硬幣"], "answer": 2, "explanation": "教材明確指出電子票證是事先儲值、感應扣款。選項A為信用卡特性；選項B為行動支付；選項D為現金。", "subject": "公民", "unit": "消費與生活", "concept": "多元支付方式", "skill": "概念理解", "difficulty": 2, "id": 3}, {"question": "信用卡與現金的最大差異，下列敘述何者正確？", "options": ["信用卡需要先儲值才能使用", "信用卡是銀行先墊款，之後再還", "現金可以直接刷卡消費", "信用卡不能用來積點數"], "answer": 1, "explanation": "教材說明信用卡是銀行先墊款，之後再還，且可以積點數。選項A是電子票證特性；選項C說法錯誤；選項D與教材相反。", "subject": "公民", "unit": "消費與生活", "concept": "多元支付方式", "skill": "概念理解", "difficulty": 2, "id": 4}, {"question": "遇到網路詐騙或疑問時，應撥打哪一專線求證防身？", "options": ["1950全國消費者服務專線", "110報案專線", "165反詐騙諮詢專線", "1999市政服務專線"], "answer": 2, "explanation": "教材明確指出165專線是反詐騙諮詢專線，可撥打求證防身。選項A是用於消費申訴；選項B、D非教材提及的專線。", "subject": "公民", "unit": "消費與生活", "concept": "網路防詐", "skill": "概念理解", "difficulty": 2, "id": 5}, {"question": "購買到問題商品時，應憑藉什麼文件要求退換貨？", "options": ["銀行信用卡", "身份證字號", "發票、保證書或購買證明", "社交媒體帳號"], "answer": 2, "explanation": "教材說明消費權益保護需憑發票、保證書或購買證明，在期限內要求退錢或換貨。選項A、B、D均非教材提及之憑證。", "subject": "公民", "unit": "消費與生活", "concept": "消費權益保護", "skill": "概念理解", "difficulty": 2, "id": 6}, {"question": "賣家拒絕退換貨時，可撥打哪一專線求助？", "options": ["165反詐騙專線", "1950全國消費者服務專線", "113保護專線", "0800免付費專線"], "answer": 1, "explanation": "教材指出若賣家拒絕退換貨，可撥打1950專線，直接轉接地方消保中心協助處理。選項A用於防詐騙，非消費申訴。", "subject": "公民", "unit": "消費與生活", "concept": "消費權益保護", "skill": "概念理解", "difficulty": 2, "id": 7}, {"question": "「快時尚」的主要特點為何？", "options": ["生產高品質耐用衣物", "企業快速生產平價新款刺激購買", "鼓勵消費者延長衣物使用期限", "全部使用天然材料生產"], "answer": 1, "explanation": "教材說明快時尚是企業快速生產平價新款，刺激消費者大量購買汰換。選項A、C、D均與快時尚概念相反。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "概念理解", "difficulty": 2, "id": 8}, {"question": "下列何者屬於綠色消費的實踐方式？", "options": ["大量購買最新款式快時尚", "愛惜物品延長使用期限", "拒絕使用任何二手商品", "將舊衣物直接丟棄掩埋"], "answer": 1, "explanation": "教材指出綠色消費包括愛惜物品延長使用期限、善用二手衣物網站、舊衣物重製再利用。選項A、D會增加環境負擔；選項C說法錯誤。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "概念理解", "difficulty": 2, "id": 9}, {"question": "行動支付是什麼？", "options": ["事先儲值後感應扣款", "銀行先墊款之後再還", "用手機綁定卡片刷手機付款", "直接以物易物交易"], "answer": 2, "explanation": "教材說明行動支付是用手機綁定卡片，刷手機就能付款。選項A是電子票證；選項B是信用卡；選項D是貨幣出現前的交易方式。", "subject": "公民", "unit": "消費與生活", "concept": "多元支付方式", "skill": "概念理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "小華要去夜市買小吃，攤販大多只收現金。下列哪種支付方式最適合他？", "options": ["行動支付", "現金", "電子票證", "信用卡"], "answer": 1, "explanation": "教材指出現金適合小攤販，是最直接的付費方式。行動支付和電子票證需設備支援，夜市攤販不一定能接受；信用卡也可能不便。", "subject": "公民", "unit": "消費與生活", "concept": "多元支付方式", "skill": "生活應用", "difficulty": 3, "id": 11}, {"question": "小美每次搭公車都會使用同一種支付工具，先儲值再感應扣款。這是哪種支付方式？", "options": ["行動支付", "現金", "電子票證", "信用卡"], "answer": 2, "explanation": "教材說明電子票證是事先儲值、感應扣款，搭公車超方便。行動支付是手機綁定卡片；現金是實體紙鈔硬幣；信用卡是銀行先墊款。", "subject": "公民", "unit": "消費與生活", "concept": "多元支付方式", "skill": "生活應用", "difficulty": 3, "id": 12}, {"question": "小李想透過網路購物，他最應該先做哪件事來保護自己？", "options": ["不消費，全部去實體店面", "蒐集資料、查詢賣家評價和信用", "直接付款，避免商品被搶光", "只選擇價格最低的賣家"], "answer": 1, "explanation": "教材指出消費前要先蒐集資料，查詢賣家評價和信用，才能避免個人資料外流、收款不出貨等陷阱。選項A過於消極；選項C、D可能增加風險。", "subject": "公民", "unit": "消費與生活", "concept": "網路防詐", "skill": "生活應用", "difficulty": 3, "id": 13}, {"question": "下列關於信用卡與電子票證的比較，何者正確？", "options": ["兩者都需要事先儲值才能使用", "信用卡是事先儲值，電子票證是銀行先墊款", "電子票證是事先儲值，信用卡是銀行先墊款後還", "兩者都可以直接感應扣款，沒有差異"], "answer": 2, "explanation": "教材明確說明電子票證是事先儲值、感應扣款；信用卡是銀行先墊款，之後再還。選項A、B將兩者混淆；選項D忽略兩者的本質差異。", "subject": "公民", "unit": "消費與生活", "concept": "多元支付方式", "skill": "比較分析", "difficulty": 3, "id": 14}, {"question": "關於165專線與1950專線的區別，下列敘述何者正確？", "options": ["165用於消費申訴，1950用於防詐騙", "兩者都是用來處理消費糾紛", "165用於防詐騙，1950用於消費申訴", "兩者功能完全相同"], "answer": 2, "explanation": "教材分別說明165是反詐騙諮詢專線，1950是全國消費者服務專線，兩者可區分但功能不同。選項A將兩者互換；選項B、D未區分兩者差異。", "subject": "公民", "unit": "消費與生活", "concept": "消費權益保護", "skill": "比較分析", "difficulty": 3, "id": 15}, {"question": "台灣每年丟棄多少噸衣物，平均每分鐘約500件？", "options": ["2.8萬噸", "5.5萬噸", "8.2萬噸", "12萬噸"], "answer": 2, "explanation": "教材明確指出台灣每年丟棄8.2萬噸衣服，平均每分鐘500件。選項A、B、D的數字均與教材不符。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "概念理解", "difficulty": 2, "id": 16}, {"question": "快時尚造成環境問題的主要原因是什麼？", "options": ["衣物品質太好導致無法分解", "消費者購買太少造成資源浪費", "大量購買汰換造成廢棄衣物與化學染劑污染", "企業使用太多天然材料生產"], "answer": 2, "explanation": "教材指出快時尚刺激大量購買汰換，廢棄衣物進入垃圾掩埋場，化學染劑汙染土壤水源。選項A、B與事實相反；選項D企業使用的是化學物質而非天然材料。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "因果分析", "difficulty": 3, "id": 17}, {"question": "若小明購買的商品在保證期限內出現瑕疵，賣家拒絕處理，他應該怎麼辦？", "options": ["自認倒楣，不再消費", "直接去法院告發賣家", "撥打1950專線或向消保中心申訴", "在社群媒體發文辱罵賣家"], "answer": 2, "explanation": "教材說明賣家拒絕退換貨時，可撥打1950專線或向消保中心申訴，消保中心會協助處理。選項A消極；選項B做法過度；選項D不是合理做法。", "subject": "公民", "unit": "消費與生活", "concept": "消費權益保護", "skill": "生活應用", "difficulty": 3, "id": 18}, {"question": "下列哪一項是企業採取永續生產的具體做法？", "options": ["快速生產大量廉價新品", "使用化學染劑降低生產成本", "用天然材料並減少化學物質", "鼓勵消費者頻繁汰換衣物"], "answer": 2, "explanation": "教材指出企業採取永續生產，會使用天然材料、減少化學物質。選項A、B、D均與快時尚或不可持續做法相關。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "概念理解", "difficulty": 2, "id": 19}, {"question": "關於超商詐騙案件，消費者可以透過什麼方式申請退款？", "options": ["直接向警察報案後自行處理", "透過超商詐騙案件申訴平臺", "只能在購物網站留下負面評價", "拨打165專線申請退款"], "answer": 1, "explanation": "教材明確指出有超商詐騙案件申訴平臺，可申請退款。選項A、C非教材所述方法；選項D165是諮詢防身，非申訴退款管道。", "subject": "公民", "unit": "消費與生活", "concept": "網路防詐", "skill": "概念理解", "difficulty": 2, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "小芳在網路購物時，發現賣家要求她先轉帳到個人帳戶才出貨。依據教材知識，她最應採取的行動是什麼？", "options": ["立刻轉帳，以免商品賣光", "暫停交易，撥打165專線求證防身", "直接收下商品後再付款", "告訴朋友這是很好的購物方式"], "answer": 1, "explanation": "教材指出網路購物可能有不良賣家收款不出貨的陷阱，遇到疑問應撥打165專線求證防身。選項A可能中計；選項C不符合常理；選項D會傳播錯誤觀念。", "subject": "公民", "unit": "消費與生活", "concept": "網路防詐", "skill": "情境應用", "difficulty": 4, "id": 21}, {"question": "學校舉辦二手衣交換活動，鼓勵學生將不穿的衣服拿來交換。這主要符合教材中的哪一項理念？", "options": ["快時尚刺激大量購買", "綠色消費與舊物再利用", "以物易物取代貨幣", "減少消費權益保護"], "answer": 1, "explanation": "教材指出綠色消費包括善用二手衣物網站、舊衣物重製再利用。選項A是快時尚做法；選項C雖提及以物易物但非活動主旨；選項D與主題無關。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "情境應用", "difficulty": 4, "id": 22}, {"question": "小明發現所購買的電器產品在保固期內壞掉，但賣家堅持不給退換。下列哪項策略最符合教材建議的權益保護流程？", "options": ["直接丟棄產品，避免麻煩", "蒐集發票與保證書，先與賣家溝通，遭拒後撥1950申訴", "在網絡上散布賣家負面消息", "自認運氣不好，下次不買"], "answer": 1, "explanation": "教材說明應憑發票、保證書要求退換貨，若賣家拒絕可撥打1950專線或向消保中心申訴。選項A、D消極；選項C非合理做法；選項B符合完整流程。", "subject": "公民", "unit": "消費與生活", "concept": "消費權益保護", "skill": "情境應用", "difficulty": 4, "id": 23}, {"question": "某快時尚品牌每年推出大量新款，顧客買完幾次就丟棄。這種行為可能導致下列哪種環境後果？", "options": ["減少垃圾掩埋場的負擔", "促進資源的有效循環利用", "化學染劑污染土壤水源，廢棄衣物難分解", "降低全球暖化的速率"], "answer": 2, "explanation": "教材指出快時尚造成廢棄衣物進入垃圾掩埋場，化學染劑汙染土壤水源，且有些衣物難分解，焚燒還產生有毒氣體。選項A、B、D均與實際後果相反。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "因果分析", "difficulty": 4, "id": 24}, {"question": "小美出国旅遊時，不想攜帶大量現金，希望用安全又方便的方式消費。根據教材，她最合適的作法是什麼？", "options": ["完全不出門消費", "國內換當地貨幣或用信用卡、行動支付", "只靠以物易物交易", "請當地朋友代付所有費用"], "answer": 1, "explanation": "教材指出出國可國內換當地貨幣，或用信用卡、行動支付，多元支付方式就像解鎖新技能。選項A、C不切實際；選項D非教材建議做法。", "subject": "公民", "unit": "消費與生活", "concept": "多元支付方式", "skill": "情境應用", "difficulty": 4, "id": 25}, {"question": "下列哪種消費行為最能體現教材所倡導的「聰明理財」與「綠色消費」兼顧的理念？", "options": ["看到特價就大量採購不需要的物品", "衝動購物後用信用卡刷卡，積更多點數", "規劃消費、愛惜物品並善用二手平台", "追求最新款快時尚，穿幾次就丟棄"], "answer": 2, "explanation": "教材強調消費前要規劃，避免過度消費，養成良好消費習慣；同時提倡愛惜物品延長使用期限、善用二手衣物網站。選項A、B屬衝動或過度消費；選項D是快時尚行為。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "綜合分析", "difficulty": 4, "id": 26}, {"question": "假設某電子商務平台頻繁出現詐騙案件，作為消費者，最符合教材建議的防範策略是？", "options": ["完全禁止網路購物", "購物前蒐集資料，查詢賣家評價與信用，遇疑撥165求證", "看到便宜商品就立刻付款，不需要任何檢查", "只相信廣告宣傳，不參考他人評價"], "answer": 1, "explanation": "教材指出消費前要蒐集資料、查詢賣家評價和信用，若有疑問撥打165專線求證防身。選項A過於極端；選項C、D容易落入詐騙陷阱。", "subject": "公民", "unit": "消費與生活", "concept": "網路防詐", "skill": "情境應用", "difficulty": 4, "id": 27}, {"question": "小傑的媽媽教導他：「購物前要查看商品說明，索取購買證明，這就像遊戲裡要仔細看物品說明，避免買到爛裝備。」這句話提醒我們什麼？", "options": ["購物不需要看說明，直接買即可", "消費前後都要有警覺性，保護自身權益", "只有貴價商品才需要索取證明", "遊戲裝備與消費權益完全無關"], "answer": 1, "explanation": "教材以遊戲比喻說明消費時不買危險商品、閱讀說明、索取證明，就像看物品說明避免爛裝備。選項A、C、D均偏離教材主旨。", "subject": "公民", "unit": "消費與生活", "concept": "消費權益保護", "skill": "批判思考", "difficulty": 4, "id": 28}, {"question": "某公司為回應環保議題，開始生產以天然材料製成、減少化學物質的衣物，並鼓勵消費者延長衣物使用期限。這最符合教材中的哪項概念？", "options": ["快時尚的永續生產模式", "綠色消費與企業永續生產的結合", "以物易物的復古生產方式", "增加消費以提升經濟成長"], "answer": 1, "explanation": "教材指出企業可採取永續生產（用天然材料、減少化學物質），消費者也可選擇友善環境的商品。選項A「快時尚」與此矛盾；選項C、D非教材所述概念。", "subject": "公民", "unit": "消費與生活", "concept": "綠色消費", "skill": "綜合分析", "difficulty": 4, "id": 29}, {"question": "小琳在夜市購買了夜市小吃，用行動支付結帳後發現食物有異味，想要求退換貨。關於她的處理方式，下列何者最恰當？", "options": ["行動支付無法退換，只能自認倒楣", "保留購買證明，先與攤販溝通，遭拒後撥1950申訴", "直接在社群媒體發文聲討攤販", "下次不帶行動支付，改現金交易"], "answer": 1, "explanation": "教材說明無論何種支付方式，消費後都應保留憑證，若商品有問題可依權益流程退換貨，遭拒可撥1950申訴。選項A說法錯誤；選項C、D非合理解決方案。", "subject": "公民", "unit": "消費與生活", "concept": "消費權益保護", "skill": "情境應用", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
