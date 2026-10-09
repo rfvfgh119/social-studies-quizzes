@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國小社會6上2-2為什麼我們需要理財規畫？ok</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "公民", "grade": "國一～國二", "unit": "理財規劃", "topic": "記帳、目標設定、風險評估與資源配置", "filename": "翰林國小社會6上2-2為什麼我們需要理財規畫？ok", "summary": "透過遊戲化比喻講解記帳、理財目標設定、風險評估與資源配置等理財規劃核心觀念。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，記帳的主要目的是什麼？", "options": ["記錄每一筆交易，讓錢的去向清楚可見", "讓媽媽不再責罵亂花錢的行為", "增加自己獲得零用錢的機會", "將所有收入都存入銀行帳戶"], "answer": 0, "explanation": "教材指出記帳是「讓你清清楚楚看到每一塊錢的去向」，選項B是干擾項（教材說記帳不是媽媽專用的東西），選項C和D教材皆未提及。", "subject": "公民", "unit": "理財規劃", "concept": "記帳的目的", "skill": "理解基礎概念", "difficulty": 2, "id": 1}, {"question": "下列哪一項不屬於教材所述的「收入」來源？", "options": ["購買遊戲點卡的支出", "過年收到的紅包", "獲得的獎學金", "每個月領到的零用錢"], "answer": 0, "explanation": "教材明確指出「零用錢、紅包、獎學金都是你的遊戲資源（收入）」，購買遊戲點卡的支出屬於支出，不屬於收入，選項A為正確答案。", "subject": "公民", "unit": "理財規劃", "concept": "收入來源", "skill": "理解基礎概念", "difficulty": 2, "id": 2}, {"question": "紙本記帳與APP記帳的主要差異是什麼？", "options": ["APP記帳有自動統計報表功能，紙本需自己算", "紙本記帳可以隨時隨地記錄，APP則不行", "紙本記帳能自動算出支出比例，APP不能", "APP記帳只能記錄收入，不能記錄支出"], "answer": 0, "explanation": "教材提到APP記帳「有統計報表功能，自動幫你算出各類的支出比例」，紙本則需自己分類記錄計算，選項B與實際相反，選項C和D皆與教材內容不符。", "subject": "公民", "unit": "理財規劃", "concept": "記帳的兩種方式", "skill": "理解基礎概念", "difficulty": 2, "id": 3}, {"question": "紙本記帳可以將支出細分成哪六個欄位？", "options": ["食衣住行育樂", "吃喝玩樂購物", "日常儲蓄投資", "學習生活娛樂"], "answer": 0, "explanation": "教材明確指出紙本記帳「還能細分成食衣住行育樂六個欄位」，其他選項為常见混淆詞彙，但教材僅提及食衣住行育樂。", "subject": "公民", "unit": "理財規劃", "concept": "紙本記帳分類欄位", "skill": "理解基礎概念", "difficulty": 2, "id": 4}, {"question": "理財目標設定的公式包括哪三個要素？", "options": ["目標金額、時間、方法", "收入、支出、儲蓄", "風險、獲利、時間", "記帳、檢視、投資"], "answer": 0, "explanation": "教材明確指出「目標＋時間＋方法，三個要素缺一不可」，選項B是家庭理財支出概念，選項C涉及風險評估，選項D涉及記帳流程。", "subject": "公民", "unit": "理財規劃", "concept": "理財目標設定三要素", "skill": "理解基礎概念", "difficulty": 2, "id": 5}, {"question": "教材中嘉家設定的理財目標，他決定自己分擔的金額是多少？", "options": ["1000元", "5000元", "250元", "100元"], "answer": 0, "explanation": "教材指出嘉家的畢業旅行費用為5000元，他「決定自己分擔1000元」，選項B是總費用，選項C是每月省下金額，選項D為虛設數值。", "subject": "公民", "unit": "理財規劃", "concept": "理財目標案例", "skill": "理解基礎概念", "difficulty": 2, "id": 6}, {"question": "緊急預備金建議準備多少個月的生活費？", "options": ["3到6個月", "1到2個月", "6到12個月", "12到24個月"], "answer": 0, "explanation": "教材明確說明「緊急預備金就是準備3到6個月的生活費，用來應付突發狀況」，其他數值皆不符合教材內容。", "subject": "公民", "unit": "理財規劃", "concept": "緊急預備金", "skill": "理解基礎概念", "difficulty": 2, "id": 7}, {"question": "家庭理財規劃與個人理財的主要差異是什麼？", "options": ["家庭理財規模更大，需要全家一起討論", "家庭理財不需要設定目標", "個人理財較家庭理財更容易達成", "家庭理財只需要爸爸一個人決定"], "answer": 0, "explanation": "教材指出「家庭理財規模更大」且「嘉家跟爸媽一起討論理財方式」，選項B和D與教材相反，選項C教材未提及。", "subject": "公民", "unit": "理財規劃", "concept": "家庭理財與個人理財差異", "skill": "理解基礎概念", "difficulty": 2, "id": 8}, {"question": "關於風險與獲利的關係，教材的說明是什麼？", "options": ["風險較低＝獲利較少，風險較高＝獲利或虧損幅度較大", "風險越高獲利一定越多", "風險與獲利沒有必然關係", "銀行存款的風險比股票高"], "answer": 0, "explanation": "教材明確指出「風險較低＝獲利較少，風險較高＝獲利或虧損都較高」，選項B忽略了可能虧損的情況，選項C與教材相反，選項D與教材所述相反。", "subject": "公民", "unit": "理財規劃", "concept": "風險與獲利關係", "skill": "理解基礎概念", "difficulty": 2, "id": 9}, {"question": "投資自己為什麼被教材認為是風險最低的理財方式？", "options": ["學習知識和增進能力，未來能找到理想工作", "投資自己不需要付出任何代價", "投資自己的報酬一定比股票更高", "投資自己不會遇到任何失敗"], "answer": 0, "explanation": "教材指出「學知識、增進能力，未來能找到理想工作」是投資自己的好處，選項B「不需要付出任何代價」過於絕對，選項C和D皆為教材未提及的絕對化說法。", "subject": "公民", "unit": "理財規劃", "concept": "投資自己是風險最低的理財方式", "skill": "理解基礎概念", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "記帳為什麼需要配合「定期檢視」才能發揮功效？", "options": ["因為定期檢視能找出不必要的支出，否則記了等於沒記", "因為不定期檢視，記帳的資料會被APP自動刪除", "因為定期檢視才能將錢存入銀行帳戶", "因為記帳本身無法記錄任何支出數字"], "answer": 0, "explanation": "教材強調「不管用哪種方式，重點是定期檢視，不然記了等於沒記」，檢視目的是找出「不必要的支出然後減少它」，選項B、D皆為虛構內容。", "subject": "公民", "unit": "理財規劃", "concept": "記帳與定期檢視的關係", "skill": "比較分析", "difficulty": 3, "id": 11}, {"question": "根據嘉家的例子，他每月省下250元零用錢，四個月可以存到1000元。以下哪項最能說明此目標設定的邏輯？", "options": ["目標1000元＋時間四個月＋方法每月省250元", "目標250元＋時間四個月＋方法省下半零用錢", "目標5000元＋時間一年＋方法每月省250元", "目標1000元＋方法省下半紅包＋時間二個月"], "answer": 0, "explanation": "教材指出目標設定公式為「目標＋時間＋方法」，嘉家的目標是1000元、時間四個月、方法每月省250元，選項B目標數值錯誤，選項C是毕业旅行總費用而非自己分擔目標，選項D時間與方法皆錯誤。", "subject": "公民", "unit": "理財規劃", "concept": "理財目標設定公式的應用", "skill": "應用目標設定公式", "difficulty": 3, "id": 12}, {"question": "家庭理財的三大類別分別是什麼？", "options": ["緊急預備金、家用支出和理財投資", "記帳、儲蓄和消費", "零用錢、紅包和獎學金", "紙本、APP和銀行存款"], "answer": 0, "explanation": "教材明確說明家庭理財需考慮「緊急預備金、家用支出和理財投資三類」，選項B是理財行為而非類別，選項C是收入來源，選項D是記帳工具和理財方式。", "subject": "公民", "unit": "理財規劃", "concept": "家庭理財三大類別", "skill": "分類歸納", "difficulty": 3, "id": 13}, {"question": "為什麼選擇理財方式前，教材強調要了解內容和費用並避免誤信來路不明的消息？", "options": ["因為理財可能帶來獲利也可能出現虧損，需要充分了解才能做出合適選擇", "因為所有理財方式都是一樣的，不需要特別了解", "因為來路不明的消息一定都是詐騙，與理財無關", "因為只要選擇銀行存款就不需要做任何風險評估"], "answer": 0, "explanation": "教材指出「因為理財可能帶來獲利，也可能出現虧損，是必須承擔的風險」，所以需要充分了解內容和費用，選項B忽略了風險差異，選項C過於絕對，選項D忽略了個人風險承受度的差異。", "subject": "公民", "unit": "理財規劃", "concept": "風險評估的原則", "skill": "因果分析", "difficulty": 3, "id": 14}, {"question": "根據教材，銀行存款與股票兩種理財方式的差異，下列敘述何者正確？", "options": ["銀行存款風險較低、獲利相對較少；股票風險較高、獲利或虧損幅度都可能較大", "銀行存款風險較高，但獲利比股票穩定", "股票的風險和獲利都低於銀行存款", "銀行存款和股票的風險與獲利完全相同"], "answer": 0, "explanation": "教材明確對比兩者：「銀行存款風險較低但獲利相對較少；股票風險較高，獲利或虧損都可能很大」，選項B、C、D皆與教材所述相反。", "subject": "公民", "unit": "理財規劃", "concept": "銀行存款與股票風險比較", "skill": "比較分析", "difficulty": 3, "id": 15}, {"question": "教材用甘蔗吸管案例說明資源配置時，最想要強調的是什麼觀念？", "options": ["選擇產品時要全面評估優缺點，不能只看一面", "甘蔗吸管是唯一好的環保產品", "台灣只能用甘蔗渣做成吸管", "環保產品一定比塑膠產品價格更低"], "answer": 0, "explanation": "教材指出甘蔗吸管雖有耐高溫、可分解等優點，但也有無法重複使用和不能回收的缺點，強調要「全面評估優缺點，不能只看一面」，選項B、C、D皆為教材未提及的絕對化說法。", "subject": "公民", "unit": "理財規劃", "concept": "資源配置的評估觀念", "skill": "案例分析", "difficulty": 3, "id": 16}, {"question": "以下關於「家庭理財需要全家一起討論」的說明，何者最符合教材內容？", "options": ["這樣能達成目標並學到正確的消費觀念", "因為爸爸必須独自掌握家庭的財務狀況", "只有成年人才需要討論，學生不需要參與", "全家討論會延緩理財目標的達成速度"], "answer": 0, "explanation": "教材指出嘉家與爸媽一起討論理財，並說明這樣「不僅能達成目標，還能學到正確的消費觀念」，選項B、C與教材精神相反，選項D教材未提及。", "subject": "公民", "unit": "理財規劃", "concept": "家庭理財的參與方式", "skill": "比較分析", "difficulty": 3, "id": 17}, {"question": "教材提到投入100萬元，存銀行一年可能賺1萬5千元，但買股票可能賺20萬也可能賠20萬。這說明了什麼？", "options": ["風險越高，獲利或虧損的潛在幅度越大", "股票一定比銀行存款更值得投資", "銀行存款的報酬率永遠低於通膨", "投入金額相同時，兩種方式的風險是完全一樣的"], "answer": 0, "explanation": "教材以具體數字說明風險與獲利成正比，選項A是正確的總結，選項B過於絕對，選項C教材未提及通膨，選項D與教材所述相反。", "subject": "公民", "unit": "理財規劃", "concept": "風險與獲利幅度關係", "skill": "比較分析", "difficulty": 3, "id": 18}, {"question": "記帳的紙本方式列出日期、項目、收入、支出、餘額，還能細分六欄位。這主要能幫助使用者做什麼？", "options": ["一眼看出哪一項花最多錢，進行數據分析", "自動將錢轉入銀行帳戶儲蓄", "免除定期檢視的必要，因為分類就完成了", "保證每個月都能存下固定的金額"], "answer": 0, "explanation": "教材指出分類的好處是「一眼就能看出哪一項花最多錢，這就是遊戲裡的數據分析」，選項B是APP可能具備的功能，選項C與教材「定期檢視」的重點相反，選項D過於絕對。", "subject": "公民", "unit": "理財規劃", "concept": "紙本記帳的功能與限制", "skill": "因果分析", "difficulty": 3, "id": 19}, {"question": "下列關於家庭理財中「緊急預備金」的說明，何者最符合教材內容？", "options": ["準備3到6個月生活費，用來應付突發狀況", "將所有家庭收入存入緊急帳戶不動用", "用來購買股票以獲得較高的投資報酬", "緊急預備金只需要準備1個月的生活費就足夠"], "answer": 0, "explanation": "教材明確指出緊急預備金是「準備3到6個月的生活費，用來應付突發狀況」，選項B、C誤解其用途，選項D數值與教材不符。", "subject": "公民", "unit": "理財規劃", "concept": "緊急預備金的用途", "skill": "比較分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "小明想買一台 priced at 3000元的手機，他目前每月有500元零用錢，想在三個月內存夠。以下哪項做法最符合教材的理財目標設定原則？", "options": ["每月存300元，剩餘200元留作緊急預備金", "將每月零用錢全部存起來，三個月可以存1500元，再想辦法湊夠剩下的", "不設定目標，因為手機隨時可以買", "直接向爸媽借錢，不需要自己存錢"], "answer": 1, "explanation": "教材強調目標要具體（目標＋時間＋方法），小明要存3000元但每月只能存500元，三個月存不下，選項B誠實地分析了缺口並提出進一步尋找方法，選項A未設明確目標，選項C和D不符合理財規劃精神。", "subject": "公民", "unit": "理財規劃", "concept": "理財目標設定的實際應用", "skill": "應用目標設定公式", "difficulty": 4, "id": 21}, {"question": "小華的媽媽建議她把過年紅包存入銀行定存，而爸爸建議她買股票。根據教材的風險評估觀念，小華應該如何思考？", "options": ["先評估自己能承擔多少損失，再選擇適合自己的理財方式", "股票一定比銀行存款好，因為獲利潛力更大", "媽媽一定錯，爸爸一定對，因為爸爸比較有经验", "兩條路都走不通，紅包應該全部花掉"], "answer": 0, "explanation": "教材指出風險評估是「在選擇理財方式前，先評估自己能承擔多少損失」，並強調風險與獲利成正比，選項B忽略了可能虧損的風險，選項C和D皆為教材未提及的錯誤態度。", "subject": "公民", "unit": "理財規劃", "concept": "風險評估的實際應用", "skill": "情境應用", "difficulty": 4, "id": 22}, {"question": "某環保產品宣傳其可自然分解且無塑化劑，但詳細說明卻寫著「無法重複使用」和「不能回收再利用」。根據教材資源配置的觀念，這說明什麼道理？", "options": ["選擇時要全面評估優缺點，不能只看宣傳的一面", "不能環保的產品，應該放棄購買", "只要產品環保，其他缺點都可以忽略", "環保產品一定比一般產品更適合使用"], "answer": 0, "explanation": "教材用甘蔗吸管案例說明「選擇產品時要全面評估優缺點，不能只看一面」，選項B和D過於絕對，選項C忽略了教材強調的全面評估觀念。", "subject": "公民", "unit": "理財規劃", "concept": "資源配置的全面評估", "skill": "案例分析", "difficulty": 4, "id": 23}, {"question": "小李發現自己每個月領到零用錢後，很快就花光了，記帳一個月後發現大部分錢花在「娛樂」項目。根據教材，他接下來最應該做什麼？", "options": ["定期檢視記帳紀錄，找出不必要的娛樂支出並減少", "把記帳簿扔掉，因為記帳沒有用", "告訴爸媽以後不要給他零用錢", "把所有娛樂支出全部砍掉，一分錢都不花"], "answer": 0, "explanation": "教材指出記帳後要「定期檢視，找出不必要的支出然後減少它」，選項A是正確的持續應用，選項B與教材精神相反，選項C和D皆是過度反應，不符合理性理財的原則。", "subject": "公民", "unit": "理財規劃", "concept": "記帳與定期檢視的持續應用", "skill": "情境應用", "difficulty": 4, "id": 24}, {"question": "小芳計畫畢業旅行，總費用5000元，她自己願意分擔1000元，並決定每月存250元，四個月完成。半年後，她發現還缺500元。根據教材，她應該如何處理？", "options": ["重新檢視收支，調整每月儲蓄金額或尋找其他收入來源", "放棄目標，因為計劃已經失敗了", "告訴爸媽要1000元，自己什麼都不需要做", "把目標改成存500元就好，不需要再去畢業旅行了"], "answer": 0, "explanation": "教材強調目標設定需要具體且持續檢視調整，選項A符合「目標＋時間＋方法」持續調整的原則，選項B和D是放棄態度，選項C不符合獨立理財的精神。", "subject": "公民", "unit": "理財規劃", "concept": "理財目標的調整與應用", "skill": "情境應用", "difficulty": 4, "id": 25}, {"question": "根據教材，為什麼「投資自己」被認為是風險最低的理財方式？", "options": ["因為學習知識和增進能力是穩健的，未來能找到理想工作", "因為投資自己不需要花任何錢", "因為投資自己一定能在短期內獲得高額報酬", "因為投資自己與理財完全無關"], "answer": 0, "explanation": "教材指出「投資自己是最穩健的理財方式，學知識、增進能力，未來能找到理想工作」，選項B「不需要花任何錢」過於絕對，選項C「高額報酬」不符合穩健的定義，選項D與教材結論相反。", "subject": "公民", "unit": "理財規劃", "concept": "投資自己作為理財方式", "skill": "因果分析", "difficulty": 4, "id": 26}, {"question": "媽媽告訴小文：「我們家的理財規劃要討論緊急預備金、家用支出和理財投資三類。」以下哪項屬於「緊急預備金」的適當用途？", "options": ["應對家中突發的醫療費用支出", "購買最新款的流行服飾", "投資高風險的股票市場", "安排年度的家庭旅遊行程"], "answer": 0, "explanation": "教材指出緊急預備金是用來「應付突發狀況」，選項A的突發醫療費用符合此目的，選項B是日常消費，選項C屬於理財投資而非緊急預備金，選項D是計畫性支出。", "subject": "公民", "unit": "理財規劃", "concept": "緊急預備金的實際用途", "skill": "情境應用", "difficulty": 4, "id": 27}, {"question": "小明的爸爸買了一支股票，一個月後虧損了20萬。根據教材的風險評估觀念，小明最合理解釋爸爸虧損的原因是？", "options": ["股票屬於高風險理財方式，可能獲利也可能虧損，這是必須承擔的風險", "爸爸一定是不小心被詐騙了", "股票根本不能用，應該全部都改存銀行", "股票虧損一定是因為操作時間太短"], "answer": 0, "explanation": "教材說明股票風險高，「可能賺20萬也可能賠20萬」，虧損是必須承擔的風險，選項B過於猜測，選項C過於絕對（教材也承認股票有獲利可能），選項D教材未提及。", "subject": "公民", "unit": "理財規劃", "concept": "風險承擔的理性認知", "skill": "因果分析", "difficulty": 4, "id": 28}, {"question": "某APP記帳軟體提供自動統計報表，顯示小明每月「食」佔總支出40%，「樂」佔30%。根據教材，小明接下來最應該做什麼？", "options": ["定期檢視數據，分析哪些支出可以調整", "因為APP自動計算了，所以不用再檢視", "將所有錢都用來購買美食和玩具", "改變記帳方式，改用手寫紙本"], "answer": 0, "explanation": "教材強調「不管用哪種方式，重點是定期檢視」，APP雖能自動統計但仍需主動檢視分析，選項B與教材「不然記了等於沒記」的觀點相反，選項C和D皆非教材建議的合理做法。", "subject": "公民", "unit": "理財規劃", "concept": "記帳與檢視的綜合應用", "skill": "情境應用", "difficulty": 4, "id": 29}, {"question": "小明想理財規劃，但他現在是學生，沒有收入。根據教材，他應該如何開始理財規劃？", "options": ["從記錄零用錢、紅包等收入開始記帳，並考慮投資自己", "因為沒有收入所以無法進行任何理財規劃", "先等工作賺錢以後再開始學理財", "直接向爸媽要求更多零用錢來存錢"], "answer": 0, "explanation": "教材指出學生的收入包含「零用錢、紅包、獎學金」，且強調「學生可以投資自己，這是風險最低的理財方式」，選項B、C否定了學生理財的可能性，選項D不符合自主理財的精神。", "subject": "公民", "unit": "理財規劃", "concept": "學生理財規劃的起點", "skill": "情境應用", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
