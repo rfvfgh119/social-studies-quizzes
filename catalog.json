@@ -1,0 +1,276 @@
+{
+  "groups": [
+    {
+      "id": "nanyi-5up",
+      "title": "南一五上",
+      "url": "collections/nanyi-5up/"
+    },
+    {
+      "id": "kangxuan-5up",
+      "title": "康軒五上",
+      "url": "collections/kangxuan-5up/"
+    },
+    {
+      "id": "hanlin-5up",
+      "title": "翰林五上",
+      "url": "collections/hanlin-5up/"
+    },
+    {
+      "id": "nanyi-6up",
+      "title": "南一六上",
+      "url": "collections/nanyi-6up/"
+    },
+    {
+      "id": "kangxuan-6up",
+      "title": "康軒六上",
+      "url": "collections/kangxuan-6up/"
+    },
+    {
+      "id": "hanlin-6up",
+      "title": "翰林六上",
+      "url": "collections/hanlin-6up/"
+    }
+  ],
+  "courses": [
+    {
+      "id": "nanyi-5up-3-1",
+      "group": "nanyi-5up",
+      "title": "豐饒的土地",
+      "unit": "3-1",
+      "publisher": "南一",
+      "grade": 5
+    },
+    {
+      "id": "nanyi-5up-3-2",
+      "group": "nanyi-5up",
+      "title": "山中的故事",
+      "unit": "3-2",
+      "publisher": "南一",
+      "grade": 5
+    },
+    {
+      "id": "nanyi-5up-4-1",
+      "group": "nanyi-5up",
+      "title": "潟湖上的海上貿易",
+      "unit": "4-1",
+      "publisher": "南一",
+      "grade": 5
+    },
+    {
+      "id": "nanyi-5up-4-2",
+      "group": "nanyi-5up",
+      "title": "大航海時期來臺的人們",
+      "unit": "4-2",
+      "publisher": "南一",
+      "grade": 5
+    },
+    {
+      "id": "nanyi-5up-4-3",
+      "group": "nanyi-5up",
+      "title": "大航海時期對臺的影響",
+      "unit": "4-3",
+      "publisher": "南一",
+      "grade": 5
+    },
+    {
+      "id": "kangxuan-5up-3-1",
+      "group": "kangxuan-5up",
+      "title": "史前人類如何利用環境與資源來生活？",
+      "unit": "3-1",
+      "publisher": "康軒",
+      "grade": 5
+    },
+    {
+      "id": "kangxuan-5up-3-2",
+      "group": "kangxuan-5up",
+      "title": "原住民族如何與環境共存？",
+      "unit": "3-2",
+      "publisher": "康軒",
+      "grade": 5
+    },
+    {
+      "id": "kangxuan-5up-4-1",
+      "group": "kangxuan-5up",
+      "title": "大航海時代臺灣如何登上世界舞臺？",
+      "unit": "4-1",
+      "publisher": "康軒",
+      "grade": 5
+    },
+    {
+      "id": "kangxuan-5up-4-2",
+      "group": "kangxuan-5up",
+      "title": "大航海時代有哪些人經營臺灣？",
+      "unit": "4-2",
+      "publisher": "康軒",
+      "grade": 5
+    },
+    {
+      "id": "kangxuan-5up-4-3",
+      "group": "kangxuan-5up",
+      "title": "大航海時代對臺灣帶來什麼影響？",
+      "unit": "4-3",
+      "publisher": "康軒",
+      "grade": 5
+    },
+    {
+      "id": "hanlin-5up-3-1",
+      "group": "hanlin-5up",
+      "title": "早期移民如何在臺灣建立家園？",
+      "unit": "3-1",
+      "publisher": "翰林",
+      "grade": 5
+    },
+    {
+      "id": "hanlin-5up-3-2",
+      "group": "hanlin-5up",
+      "title": "開港通商為什麼改變了臺灣的發展？",
+      "unit": "3-2",
+      "publisher": "翰林",
+      "grade": 5
+    },
+    {
+      "id": "hanlin-5up-4-1",
+      "group": "hanlin-5up",
+      "title": "人們如何適應不同地形創造所需？",
+      "unit": "4-1",
+      "publisher": "翰林",
+      "grade": 5
+    },
+    {
+      "id": "hanlin-5up-4-2",
+      "group": "hanlin-5up",
+      "title": "沿海的利用為什麼呈現多元發展？",
+      "unit": "4-2",
+      "publisher": "翰林",
+      "grade": 5
+    },
+    {
+      "id": "hanlin-5up-4-3",
+      "group": "hanlin-5up",
+      "title": "土地開發與環境保護該如何抉擇？",
+      "unit": "4-3",
+      "publisher": "翰林",
+      "grade": 5
+    },
+    {
+      "id": "nanyi-6up-3-1",
+      "group": "nanyi-6up",
+      "title": "臺灣經濟的基礎",
+      "unit": "3-1",
+      "publisher": "南一",
+      "grade": 6
+    },
+    {
+      "id": "nanyi-6up-3-2",
+      "group": "nanyi-6up",
+      "title": "臺灣的區域發展與交流",
+      "unit": "3-2",
+      "publisher": "南一",
+      "grade": 6
+    },
+    {
+      "id": "nanyi-6up-4-1",
+      "group": "nanyi-6up",
+      "title": "多元族群的共榮",
+      "unit": "4-1",
+      "publisher": "南一",
+      "grade": 6
+    },
+    {
+      "id": "nanyi-6up-4-2",
+      "group": "nanyi-6up",
+      "title": "世界看見臺灣",
+      "unit": "4-2",
+      "publisher": "南一",
+      "grade": 6
+    },
+    {
+      "id": "nanyi-6up-4-3",
+      "group": "nanyi-6up",
+      "title": "與世界做朋友",
+      "unit": "4-3",
+      "publisher": "南一",
+      "grade": 6
+    },
+    {
+      "id": "kangxuan-6up-3-1",
+      "group": "kangxuan-6up",
+      "title": "戰後經濟發展如何影響人們生活？",
+      "unit": "3-1",
+      "publisher": "康軒",
+      "grade": 6
+    },
+    {
+      "id": "kangxuan-6up-3-2",
+      "group": "kangxuan-6up",
+      "title": "臺灣如何發展成為科技島？",
+      "unit": "3-2",
+      "publisher": "康軒",
+      "grade": 6
+    },
+    {
+      "id": "kangxuan-6up-4-1",
+      "group": "kangxuan-6up",
+      "title": "都市與鄉村為什麼會互動交流？",
+      "unit": "4-1",
+      "publisher": "康軒",
+      "grade": 6
+    },
+    {
+      "id": "kangxuan-6up-4-2",
+      "group": "kangxuan-6up",
+      "title": "都市化與工業化如何影響人們的生活？",
+      "unit": "4-2",
+      "publisher": "康軒",
+      "grade": 6
+    },
+    {
+      "id": "kangxuan-6up-4-3",
+      "group": "kangxuan-6up",
+      "title": "都市與鄉村為什麼需要邁向永續發展？",
+      "unit": "4-3",
+      "publisher": "康軒",
+      "grade": 6
+    },
+    {
+      "id": "hanlin-6up-3-1",
+      "group": "hanlin-6up",
+      "title": "資訊科技如何改變生活帶來挑戰？",
+      "unit": "3-1",
+      "publisher": "翰林",
+      "grade": 6
+    },
+    {
+      "id": "hanlin-6up-3-2",
+      "group": "hanlin-6up",
+      "title": "能源科技如何兼顧用電與環保？",
+      "unit": "3-2",
+      "publisher": "翰林",
+      "grade": 6
+    },
+    {
+      "id": "hanlin-6up-3-3",
+      "group": "hanlin-6up",
+      "title": "生物科技為什麼需要規範管理？",
+      "unit": "3-3",
+      "publisher": "翰林",
+      "grade": 6
+    },
+    {
+      "id": "hanlin-6up-4-1",
+      "group": "hanlin-6up",
+      "title": "規範如何維持秩序並守護權益？",
+      "unit": "4-1",
+      "publisher": "翰林",
+      "grade": 6
+    },
+    {
+      "id": "hanlin-6up-4-2",
+      "group": "hanlin-6up",
+      "title": "民主社會是如何運作與維繫？",
+      "unit": "4-2",
+      "publisher": "翰林",
+      "grade": 6
+    }
+  ]
+}

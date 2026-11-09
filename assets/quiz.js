@@ -1,4 +1,4 @@
-const app=document.getElementById('quiz-app'),STORE='uncle-six-kx6-3-1-quiz-v1';
+const app=document.getElementById('quiz-app'),STORE=QUIZ_DATA.meta.slug?'uncle-six-'+QUIZ_DATA.meta.slug+'-quiz-v1':'uncle-six-kx6-3-1-quiz-v1';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const initial=()=>({screen:'home',level:0,index:0,selected:null,answers:[{},{},{}],results:[null,null,null],retry:[],retryMode:false,lastCorrect:false});
 let state=initial(),storageOK=true;
