@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會5上3-1豐饒的土地</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "國二", "unit": "台灣農業的演進與轉型", "topic": "台灣農業發展歷程、產品特色與永續挑戰", "filename": "南一國小社會5上3-1豐饒的土地", "summary": "以遊戲比喻導覽台灣農業從蔗糖帝國到科技轉型的歷史與永續議題。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "最初将甘蔗引入台湾的是哪个族群？", "options": ["A. 荷兰人", "B. 西班牙人", "C. 清朝移民", "D. 日本人"], "answer": 0, "explanation": "教材明确指出：「荷兰人带来的甘蔗种植」是最早引入的记录。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "糖業歷史", "skill": "事實記憶與回溯", "difficulty": 2, "id": 1}, {"question": "日治时期台湾糖业达到鼎盛时，糖产量位居全球第几？", "options": ["A. 第一", "B. 第二", "C. 第三", "D. 第四"], "answer": 2, "explanation": "教材提到：「台湾糖产量是世界第三」。同时提到糖业占外销总值一半，但排名为第三。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "糖業歷史", "skill": "事實記憶與回溯", "difficulty": 2, "id": 2}, {"question": "日治时期，谁培育出蓬莱米以符合日本人的口味？", "options": ["A. 约翰·陶德", "B. 矶永吉教授", "C. 荷兰传教士", "D. 清朝知府"], "answer": 1, "explanation": "教材明确指出：「蓬莱米是谁培育出来的？是矶永吉教授在日治时期培育成功的。」", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "稻米改良", "skill": "事實記憶與回溯", "difficulty": 2, "id": 3}, {"question": "福尔摩沙乌龙茶是通过谁的推广打入了纽约市场？", "options": ["A. 矶永吉", "B. 约翰·陶德", "C. 荷兰商人", "D. 清朝官员"], "answer": 1, "explanation": "教材明确记载：「约翰·陶德将福尔摩沙乌龙茶卖到纽约」，使台湾茶获得国际崇高声望。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "茶葉出口", "skill": "事實記憶與回溯", "difficulty": 2, "id": 4}, {"question": "台湾糖业目前仅剩几家糖厂仍在运作？", "options": ["A. 一家", "B. 两家", "C. 三家", "D. 四家"], "answer": 1, "explanation": "教材说明：「现在只剩善化和虎尾两家糖厂在运作。」", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "糖業歷史", "skill": "事實記憶與回溯", "difficulty": 2, "id": 5}, {"question": "以下哪一项不是当前台湾农业面临的「Debuff」（问题）？", "options": ["A. 国际竞争加剧", "B. 农村劳动力短缺", "C. 气候过于寒冷", "D. 土壤与水源污染"], "answer": 2, "explanation": "教材提到的问题包括国际竞争激烈、农村劳动力缺乏、农药滥用导致污染；未提及气候寒冷。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "農業挑戰", "skill": "分類辨別", "difficulty": 2, "id": 6}, {"question": "台湾蝴蝶兰在全球市场上的占有率约为多少？", "options": ["A. 三分之一", "B. 四分之一", "C. 二分之一", "D. 五分之一"], "answer": 0, "explanation": "教材明确说：「蝴蝶兰更是厉害，全球三分之一在台湾。」", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "高端農業", "skill": "事實記憶與回溯", "difficulty": 2, "id": 7}, {"question": "台南北门区的「大王莲」休闲农业属于哪一种类型？", "options": ["A. 养植渔业", "B. 混农林业", "C. 休闲农业", "D. 有机农业"], "answer": 2, "explanation": "教材指出：「休闲农业让城市人来体验农村生活，台南白河的大王莲就是典型例子。」注意教材原文为「台南白河的大王莲」，结合选项选择休闲农业。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "休閒農業", "skill": "分類辨別", "difficulty": 2, "id": 8}, {"question": "下列哪项最能描述传统台湾家庭畜牧业的特征？", "options": ["A. 大规模机械化牧場", "B. 小规模家庭副業", "C. 无人智慧监控系统", "D. 大量依赖进口饲料"], "answer": 1, "explanation": "教材提到：「早期台湾畜牧业是小规模家庭副業」，用厨余喂养，主要供自家食用。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "畜牧業現代化", "skill": "分類辨別", "difficulty": 2, "id": 9}, {"question": "口蹄疫爆发于民国86年（1997年），对台湾造成的直接冲击是什么？", "options": ["A. 牛肉价格大幅下跌", "B. 猪肉外销几乎全断", "C. 养牛产业被禁", "D. 农业观光全面停摆"], "answer": 1, "explanation": "教材明确说：「口蹄疫爆发时，猪肉外销几乎全断掉。」", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "口蹄疫疫情", "skill": "因果分析", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "台湾糖业从兴盛走向衰落的主要原因不包括下列何者？", "options": ["A. 战后工业转型，农业退居次位", "B. 国际竞争激烈，价格失去优势", "C. 甘蔗品种退化无法生长", "D. 糖厂现代化后成本上升"], "answer": 2, "explanation": "教材提到糖业没落原因是「工业化转型」和「国际竞争」，并未提及甘蔗品种退化。选项C为教材无依据的内容。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "糖業歷史", "skill": "因果關係分析", "difficulty": 3, "id": 11}, {"question": "蓬莱米为何比在来米更具市场优势？", "options": ["A. 产量更高且不易生病", "B. 比在来米更软黏，符合现代人口味", "C. 不需要任何肥料即可生长", "D. 只在热带地区才能种植"], "answer": 1, "explanation": "教材指出：「蓬莱米比在来米更软黏，更符合现代人口味。」这是其核心改良方向，而非产量或抗病性。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "稻米改良", "skill": "概念辨析", "difficulty": 3, "id": 12}, {"question": "台湾发展养殖渔业日益重要的原因最主要是：", "options": ["A. 远洋捕撈技术尚未成熟", "B. 民众只喜欢吃养捕鱼虾", "C. 过度捕捞导致野生鱼群资源枯竭", "D. 政府禁止所有海洋捕撈活动"], "answer": 2, "explanation": "教材说明：「全球过度捕捞导致鱼群资源逐渐枯竭，所以现在养殖渔业变成非常重要的来源。」", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "養殖漁業", "skill": "因果分析", "difficulty": 3, "id": 13}, {"question": "混农林业的运作原理是什么？", "options": ["A. 在同一块田里轮流种植不同作物", "B. 用机器替代人力进行耕作", "C. 在树下种作物，利用树荫保护土壤并提升价值", "D. 只在冬季种植经济价值较高的作物"], "answer": 2, "explanation": "教材解释混农林业：「就是在树下种作物，利用树荫保护土壤，这样既能水土保持又能提升产品价值。」", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "混農林業", "skill": "概念辨析", "difficulty": 3, "id": 14}, {"question": "现代智慧牧場相比传统家庭畜牧业，最大的改变在于：", "options": ["A. 完全不需要人类管理", "B. 使用高科技设备监控与管理生产", "C. 不再养殖任何动物", "D. 以进口饲料取代本地饲料"], "answer": 1, "explanation": "教材提到：「牧场都用高科技设备了，有无驾駛飼料車和智慧監控」等科技升级带来的生产力提升。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "畜牧業現代化", "skill": "比較分析", "difficulty": 3, "id": 15}, {"question": "台湾糖厂在日治时期的地位，可以用下列哪句话最恰当形容？", "options": ["A. 供应全岛民生所需", "B. 台湾糖业供应整个中国大陆", "C. 糖业仅作为内部消费之用", "D. 糖厂多为小型家庭作坊"], "answer": 1, "explanation": "教材明确说：「那时台湾糖甚至供应整个中国大陆」，并且「糖业占外销总值一半超夸张」，显示其国际级重要地位。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "糖業歷史", "skill": "資料判讀", "difficulty": 3, "id": 16}, {"question": "关于有机农业，下列叙述何者正确？", "options": ["A. 有机农业完全不使用任何农药", "B. 有机农业旨在减少化学肥料使用，维持生态平衡", "C. 有机农业产量比一般农业高很多", "D. 有机农业在台湾已完全普及"], "answer": 1, "explanation": "教材澄清迷思：有机农业是让土地生生不息维持生态平衡，并非完全不用农药（Q&A中说明），而是转向减少化学品。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "有機農業", "skill": "概念辨析", "difficulty": 3, "id": 17}, {"question": "休闲农业的主要功能和价值在于：", "options": ["A. 取代传统农业生产", "B. 提供城市居民体验农村生活的机会", "C. 专门种植观赏花卉对外出售", "D. 主要用于发展高端养殖渔业"], "answer": 1, "explanation": "教材指出：「休闲农业让城市人來体验农村生活」，将其比作「农业变成一种娱乐游戏」。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "休閒農業", "skill": "因果分析", "difficulty": 3, "id": 18}, {"question": "友善饲养改善动物福利的具体做法是：", "options": ["A. 停止所有畜牧活动", "B. 加大鸡舍空间，不再关在格子笼中", "C. 让动物每天外出狩猎", "D. 完全以草食为主取消配合饲料"], "answer": 1, "explanation": "教材说明：「友善饲养」即「不再关在格子笼，让鸡有活动空间」，能提高鸡蛋品质也符合环保趋势。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "畜牧業現代化", "skill": "概念辨析", "difficulty": 3, "id": 19}, {"question": "为什么台湾被称为「养殖王国」？", "options": ["A. 拥有全球最大的海洋面积", "B. 养殖技术顶尖，尤以虱目鱼、石斑鱼、虾类著称", "C. 完全不进行远洋捕捞", "D. 鱼类产量超过世界上任何国家"], "answer": 1, "explanation": "教材指出：「台湾养殖技术很有名，被称为养殖王国」，具体列举虱目鱼、石斑鱼、虾子养殖技术顶尖。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "養殖漁業", "skill": "概念辨析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "小明想参与一份既能让土地永续发展、又能增加收入的农业方案，若他住在屏东，最适合参考哪种模式？", "options": ["A. 扩大单一甘蔗种植以求量价双收", "B. 在槟榔树下种植可可，利用树荫保护土壤", "C. 完全放弃农业改营观光游乐业", "D. 大量使用农药以确保当季收成最大化"], "answer": 1, "explanation": "教材提到屏东可可是混农林业的好方法：「在槟榔树下种可可，利用树荫保护土壤」，兼顾水土保持和产品价值提升，符合永续与增收双重目标。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "混農林業", "skill": "情境應用", "difficulty": 4, "id": 21}, {"question": "如果某国突然对台湾猪肉实施全面禁运，最可能是发生了下列何种情况？", "options": ["A. 台湾农民开始全面转为养牛", "B. 爆发口蹄疫等动物传染病疫情", "C. 蓬莱米产量大幅超标", "D. 茶葉出口市场打开新销路"], "answer": 1, "explanation": "教材说明口蹄疫爆发时「猪肉外销几乎全断」，因此若遭遇全面禁运，最合理的推断是发生动物疫病。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "口蹄疫疫情", "skill": "因果推論", "difficulty": 4, "id": 22}, {"question": "一位外国游客想买最具代表性的台湾茶叶伴手禮，最应该推荐他购买哪种茶？", "options": ["A. 由荷兰人引进的最初种植茶", "B. 约翰·陶德销往纽约的福尔摩沙乌龙茶", "C. 专门为日本皇室种植的抹茶", "D. 在来米茶园旁混种的杂草茶"], "answer": 1, "explanation": "教材强调：「约翰·陶德将福尔摩沙乌龙茶卖到纽约，让台湾茶在国际间获得了崇高声望」，此为其最具代表性的国际品牌。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "茶葉出口", "skill": "情境應用", "difficulty": 4, "id": 23}, {"question": "下列哪种做法最能帮助解决台湾农村劳动力短缺的问题，同时提升农业竞争力？", "options": ["A. 全面废除机械化，回归纯人力耕作", "B. 发展休闲农业吸引城市人口体验参与", "C. 减少农业种类只保留一种高产量作物", "D. 完全停止对外输出农产品自给自足"], "answer": 1, "explanation": "休闲农业能吸引城市人来体验农村生活，创造就业机会与经济收益，是对应劳动力短缺与创新转型的有效策略之一，符合教材倡导的方向。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "休閒農業", "skill": "問題解決策略評估", "difficulty": 4, "id": 24}, {"question": "台湾从「蔗糖帝国」走向多元化的过程中，推动这一转型最重要的历史因素是：", "options": ["A. 荷兰人首次引入甘蔗种植", "B. 清朝时期大量出口大陆", "C. 战后工业化转型使农业退居次位", "D. 蝴蝶兰成为全球顶级商品"], "answer": 2, "explanation": "教材指出：「战后台湾工业化转型，农业退居次位」是推动糖业及其他传统产业必须寻找新出路的关键历史转折点。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "糖業歷史", "skill": "綜合分析", "difficulty": 4, "id": 25}, {"question": "若想品尝具有历史传承又高品质的台糖产品，以下哪个地点最值得前往？", "options": ["A. 台北101附近的连锁超市", "B. 台中港的大型批发市场", "C. 云林虎尾的转型观光糖厂", "D. 高雄捷运站旁的食品加工厂"], "answer": 2, "explanation": "教材明确：「善化和虎尾两家糖厂仍在运作」，且虎尾糖厂已转型为观光景点，还能买到「高品质的虎尾糖」，兼具历史与品质。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "糖業歷史", "skill": "情境應用", "difficulty": 4, "id": 26}, {"question": "假设你是一名营养师，希望向家长推荐一种既健康又对环境友善的饮食习惯，并结合台湾本土农业特色，最合适的建议是：", "options": ["A. 多吃进口肉类减少本土农产品摄入", "B. 支持本地养殖渔产，减少对野生鱼类的依赖", "C. 完全不吃海鲜只吃蔬菜水果", "D. 鼓励家庭自行排放废水灌溉农田"], "answer": 1, "explanation": "教材明确建议：「支持本地养殖减少对野生鱼类依赖，这样才能让海洋生态永续发展下去」，兼顾健康饮食与环境永续。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "養殖漁業", "skill": "情境應用與跨概念整合", "difficulty": 4, "id": 27}, {"question": "台湾农业在面对国际竞争压力时，以下哪种策略最能发挥台湾的特色优势？", "options": ["A. 大量使用农药以降低生产成本", "B. 放弃所有农作物只发展观光产业", "C. 发展高端科技农业，如蝴蝶兰全球市占三分之一", "D. 拒绝一切农业科技保持传统耕作方式"], "answer": 2, "explanation": "教材提到蝴蝶兰「全球三分之一在台湾」，这是台湾农业的高端科技树成果，发展特色科技农业是应对竞争的有效策略。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "高端農業", "skill": "問題解決策略評估", "difficulty": 4, "id": 28}, {"question": "一个原本从事传统密集养殖的农场主，想要转型为友善饲养并提升产品竞争力，最合理的第一步应该是：", "options": ["A. 立即将所有动物放生至野外", "B. 扩大养殖空间，减少格子笼的使用", "C. 全面改为种植果树放弃养殖业", "D. 停止所有销售改为自己家中消耗"], "answer": 1, "explanation": "教材说明友善饲养的核心做法是「不再关在格子笼，让鸡有活动空间」，这是提升动物福利与产品品质的可行第一步。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "畜牧業現代化", "skill": "情境應用", "difficulty": 4, "id": 29}, {"question": "下列关于台湾农业「从蔗糖帝国到科技转型」的整体脉络，敘述最完整正确的是：", "options": ["A. 从日治糖业霸主→战后全数关厂→目前无任何农业产出", "B. 从蔗糖出口→稻米茶葉多样化→面临污染与挑战→转向有机与科技永续", "C. 全程依靠外国资本维持，台湾本地农户从未参与经营", "D. 农业问题完全靠进口解决，国内生产已无意义"], "answer": 1, "explanation": "教材整体脉络涵盖：蔗糖黄金期→稻米/茶叶等产品升级→环境污染挑战→有机/混农林业/休闲农业等永续转型路径，选项B最为完整准确。", "subject": "社會科", "unit": "台灣農業的演進與轉型", "concept": "農業發展綜合", "skill": "綜合分析", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
