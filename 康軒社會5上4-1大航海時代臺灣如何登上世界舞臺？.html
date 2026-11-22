@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上4-1大航海時代臺灣如何登上世界舞臺？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "歷史", "grade": "三年級", "unit": "大航海時代與臺灣", "topic": "臺灣在全球貿易網中的角色轉變與列強競爭", "filename": "康軒社會5上4-1大航海時代臺灣如何登上世界舞臺？", "summary": "教材透過遊戲化比喻說明臺灣如何從區域貿易節點躍升為17世紀全球商業網絡的關鍵樞紐，並分析荷西殖民競爭與鄭氏統治的後續影響。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，臺灣在地理上有什麼特殊優勢？", "options": ["位於亞洲東部南北往來必經的交通樞紐", "是太平洋上最大的島嶼", "靠近歐洲的遠洋航線中心", "擁有豐富的礦產資源可供開採"], "answer": 0, "explanation": "教材明確指出臺灣是「南北往來的必經之路，地理位置極佳」，像古代的高雄港一樣是交通樞紐。其他選項教材並未提及。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "臺灣地理樞紐地位", "skill": "基本知識記憶", "difficulty": 2, "id": 1}, {"question": "大航海時代發生在西元哪一段時期？", "options": ["十五到十七世紀", "十二到十四世紀", "十八到十九世紀", "十九到二十世紀"], "answer": 0, "explanation": "教材明確說「西元十五到十七世紀，歐洲技術大幅升級，開啟了遠洋航行」，這就是大航海時代。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "大航海時代時間範圍", "skill": "時間知識記憶", "difficulty": 2, "id": 2}, {"question": "歐洲人到大航海時代為什麼需要尋找新的海上航線前往亞洲？", "options": ["陸路運輸成本太高，導致商品價格昂貴", "歐亞之間沒有陸路可以通行", "亞洲國家拒絕與歐洲進行貿易", "海路的風向比陸路更加穩定安全"], "answer": 0, "explanation": "教材指出歐洲人需要亞洲的瓷器、絲綢和香料，這些「陸路運輸成本太高，價格非常昂貴，所以歐洲人改走海路」。選項B、C、D均非教材所述原因。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "大航海時代背景與動機", "skill": "基本因果記憶", "difficulty": 2, "id": 3}, {"question": "十六世紀時，常來臺灣交易的主要是哪兩個國家的海商？", "options": ["中國與日本", "英國與法國", "荷蘭與西班牙", "葡萄牙與義大利"], "answer": 0, "explanation": "教材明確提到「十六世紀中國與日本海商常來交易」，鄭芝龍就是當時的海上霸主。荷、西等歐洲勢力是在此之後才到來。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "十六世紀臺灣的貿易對象", "skill": "基本史實記憶", "difficulty": 2, "id": 4}, {"question": "鄭芝龍後來的命運為何？", "options": ["投降清朝後被殺", "戰死於臺灣抗擊荷蘭人的戰爭", "成功建立獨立王國統治臺灣", "遷居歐洲從事海上貿易"], "answer": 0, "explanation": "教材說明鄭芝龍「後來投降清朝，還被殺了」，原因是清廷想招降他兒子鄭成功未果所致。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "鄭芝龍的身世與結局", "skill": "人物史實記憶", "difficulty": 2, "id": 5}, {"question": "荷蘭人是從哪裡出發，途經何處抵達臺灣南部的？", "options": ["從巴達維亞出發，先在澎湖登陸後轉往臺灣南部", "從菲律賓馬尼拉北上至臺灣北部", "直接從荷蘭本土航海橫越太平洋", "從中國福州港口出發沿海岸南下"], "answer": 0, "explanation": "教材清楚描述：「他們從巴達維亞出發，先在澎湖登陸，然後被明帝國趕走，才轉往臺灣南部」。馬尼拉是西班牙的起點而非荷蘭。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "荷蘭人來臺的路徑", "skill": "過程與順序記憶", "difficulty": 2, "id": 6}, {"question": "西班牙人在臺灣北部建立了哪些據點？", "options": ["雞籠和淡水", "台南和鹿港", "基隆和新竹", "安平和阿緱"], "answer": 0, "explanation": "教材明確指出「西班牙人從馬尼拉北上到臺灣北部，雞鈴和淡水，他們也在那裡建立據點」。台南是荷蘭人的據點而非西班牙。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "西班牙在臺殖民據點", "skill": "地點配對記憶", "difficulty": 2, "id": 7}, {"question": "'福爾摩沙'（Formosa）這個名字的由來是什麼？", "options": ["來自葡萄牙語'Ilha Formosa'，意為美麗之島", "來自荷蘭語對原住民部落的稱呼", "是鄭成功為了紀念臺灣而命名的", "清朝官員給臺灣的正式行政名稱"], "answer": 0, "explanation": "教材明確說明：「這就是福爾摩沙名字的由來，Ilha Formosa，美麗之島」。其他選項均與教材內容不符。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "福爾摩沙命名由來", "skill": "名詞解釋記憶", "difficulty": 2, "id": 8}, {"question": "鄭成功擊敗荷蘭人後，在臺灣實施了哪些建設政策？", "options": ["屯墾與推廣儒家文化經典的教育", "推行自由市場經濟與外商免稅政策", "引進荷蘭的軍事制度改革軍隊", "全面拆毀原有的殖民建築重建城市"], "answer": 0, "explanation": "教材指出鄭成功趕走荷蘭人後開始屯墾，並「重視教育，推廣儒家文化經典」。教材未提及選項中的其他政策。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "鄭氏政權的建設與文教政策", "skill": "史實配對記憶", "difficulty": 2, "id": 9}, {"question": "臺灣在史前時代已有人與島外交流的证据是什么？", "options": ["考古遺址發現的玉是當時的交易品", "出土了大量歐洲陶瓷碎片", "發現了古代海港的殘留結構", "刻有中文文字的銅器廣泛流通"], "answer": 0, "explanation": "教材提到「考古遺址發現的玉，就是當時的交易品」，但受限於技術只是區域性交流，尚未進入全球貿易網絡。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "史前時代臺灣的對外交流", "skill": "考古證據記憶", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "歐洲技術在十五至十七世紀大幅升級，最直接促成了下列哪一項變化？", "options": ["遠洋航行成為可能，啟動大航海時代", "亞洲各國自動開放所有港口通商", "陸路絲綢之路的貿易量大幅增加", "歐洲內部各王國停止相互之間的戰爭"], "answer": 0, "explanation": "教材明確指出「西元十五到十七世紀，歐洲技術大幅升級……就是大航海時代，開啟了遠洋航行」。選項A為最直接的結果。B、C、D教材未提及或與史實相反。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "技術進步與大航海時代的因果关系", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "台灣為什麼會捲入十七世紀的全球貿易網絡之中？", "options": ["因為其地理位置位於日本與東南亞之間，是中間站", "因為臺灣本島盛產歐洲人急需的瓷器與絲綢", "因為鄭芝龍主動邀請歐洲各國前來開埠通商", "因為清代政府強制開放臺灣作為國際貿易港"], "answer": 0, "explanation": "教材明確說明「臺灣位置剛好在日本和東南亞之間，是中間站，方便跟中國和日本做生意」，這是臺灣被捲入全球貿易網的核心原因。瓷器與絲綢產自中國，鄭芝龍是中國商人而非主動邀請者，D項時間與史實皆不對。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "臺灣融入全球貿易的原因鏈條", "skill": "因果分析", "difficulty": 3, "id": 12}, {"question": "比較荷蘭與西班牙在臺灣的殖民活動，兩者的主要差異在於：", "options": ["荷蘭佔領南部，西班牙佔領北部，兩者各自建立貿易據點", "荷蘭以傳教為主，西班牙以開礦為主", "荷蘭先來但很快離開，西班牙後來長期佔領", "荷蘭主要與日本貿易，西班牙主要與中國貿易"], "answer": 0, "explanation": "教材清楚區分：荷蘭在臺灣南部建立貿易據點，西班牙從馬尼拉北上到臺灣北部（雞籠、淡水）建立據點。教材未提及傳教或開礦是主要目的，也未說其中一方很快離開，且兩者的貿易對象並非如此簡單劃分。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "荷西殖民活動的比較", "skill": "比較分析", "difficulty": 3, "id": 13}, {"question": "鄭芝龍與鄭成功父子兩人面對清廷的態度有何不同？", "options": ["鄭芝龍選擇投降清朝，鄭成功則選擇抗清據守臺灣", "鄭芝龍堅持抗清直到犧牲，鄭成功選擇歸順清朝", "父子兩人都投降清朝但獲得不同的封號", "父子兩人從未與清朝有任何接觸"], "answer": 0, "explanation": "教材指出鄭芝龍投降清朝後被殺，原因是清廷想招降他的兒子鄭成功未果。這顯示鄭成功並未投降，而是選擇抗清並最終收復臺灣。其他選項與此明顯事實不符。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "鄭氏父子的政治抉擇差異", "skill": "比較分析", "difficulty": 3, "id": 14}, {"question": "明代政府將荷蘭人從澎湖驅逐後，荷蘭人轉而佔領臺灣南部。這段歷史說明了什麼？", "options": ["明帝國對沿海地區仍有管轄與主權意識", "荷蘭人是應明政府的邀請才來到臺灣南部", "澎湖在當時已經不重要，因此被放棄", "臺灣當時已是明帝國直接統治的領土"], "answer": 0, "explanation": "教材提到荷蘭人「先在澎湖登陸，然後被明帝國趕走，才轉往臺灣南部」，這反映出明帝國對周邊海域有管轄意識。B選項与史實相反；C選項無依據；D選項在當時尚未實現，鄭成功才是較晚才開發臺灣。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "明帝國與早期殖民者的互動關係", "skill": "推理分析", "difficulty": 3, "id": 15}, {"question": "教材中提到臺灣從史前時代到十五至十七世紀的交流規模有什麼變化？", "options": ["從區域性的交流躍升為全球貿易網絡的一環", "始終維持同樣規模的區域性交流", "突然斷裂再重新開始全球貿易", "交流方向由西方改為完全轉向東方"], "answer": 0, "explanation": "教材明確對比：史前時代「受限於技術，當時只是區域性交流」，到了大航海時代才「變成全球等級的伺服器」，臺灣成為全球商業網絡關鍵樞紐。這展現出規模的根本性擴增。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "臺灣對外交流規模的歷史演變", "skill": "比較分析", "difficulty": 3, "id": 16}, {"question": "為什麼西班牙人要從馬尼拉北上至臺灣北部建立據點？", "options": ["為了將商品轉運至日本和菲律賓之間獲利", "為了占領臺灣全島作為進一步侵略中國大陸的基地", "因為臺灣北部的自然港口比馬尼拉更加優越", "因為受到葡萄牙人的壓力被迫向北遷移"], "answer": 0, "explanation": "教材明確說明西班牙人的目標是「轉運商品到日本和菲律賓」，利用臺灣北部作為中轉站。其他選項在教材中並無依據。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "西班牙殖民臺灣的目的與動機", "skill": "因果分析", "difficulty": 3, "id": 17}, {"question": "鄭成功在臺灣推行的教育政策，長期來看對臺灣社會有何影響？", "options": ["深刻影響了當時的社會與文化發展方向", "使臺灣文化完全脫離中華文化的影響軌跡", "促進了荷蘭文藝復興風格在臺灣的普及", "導致原住民語言迅速取代漢人使用的閩南語"], "answer": 0, "explanation": "教材指出鄭氏政權重視教育、推廣儒家文化經典，這「深刻影響了當時的社會與文化」。選項B、C、D皆與教材及史實相悖。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "鄭氏政權文教政策的影響", "skill": "推論分析", "difficulty": 3, "id": 18}, {"question": "'臺灣變成戰場'這句話反映的是什麼歷史現象？", "options": ["荷蘭與西班牙兩國在臺灣形成夾擊競爭態勢", "中原王朝與地方割據勢力的內戰", "美國介入臺灣事務引發國際衝突", "原住民各部落之間的土地爭奪戰爭"], "answer": 0, "explanation": "教材描述「荷蘭西班牙兩邊夾擊，臺灣變成戰場」，指的是歐洲兩大殖民勢力同時在臺灣經營所形成的競爭局面。選項B、C、D均非教材所指內容。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "荷西競爭與臺灣的地緣重要性", "skill": "概念理解", "difficulty": 3, "id": 19}, {"question": "教材用「遊戲伺服器」「副本」「Buff」「資源點」等比喻來說明歷史，這種敘事方式最主要的功能是：", "options": ["降低學習門檻，幫助學生理解抽象的歷史脈絡", "證明歷史本身就是一款電子遊戲", "暗示現代玩家比古人更具優勢", "讓學生的考試重點變得更加模糊難辨"], "answer": 0, "explanation": "整篇教材透過遊戲化比喻將複雜的歷史事件串聯起來，例如把大航海時代比作「大型多人線上遊戲伺服器」，把臺灣比作「地圖有特殊Buff」。這有助於學生以熟悉的概念理解陌生的歷史脈絡。選項B、C、D皆曲解了作者意圖。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "教材的教學策略與敘事方法", "skill": "文本理解與分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "假如你是一位明朝的地方官，得知荷蘭人企圖在臺灣南部建立據點，根據教材所述當時的情境，你最合理的應對策略應該是：", "options": ["行使主權管辖，阻止對方在澎湖及臺灣建立據點", "歡迎荷蘭人以促進當地貿易繁榮", "立刻派遣軍隊跨海攻佔荷蘭人的殖民地", "宣布臺灣為獨立自治領地不再隸屬明朝"], "answer": 0, "explanation": "教材顯示明帝國曾將荷蘭人從澎湖趕走，這反映明廷對該區域有管轄意識。因此面對類似情況，行使管轄權是最符合當時歷史情境的策略。其他選項不符合明代的實際態度與做法。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "歷史情境下的策略判斷與主權意識", "skill": "情境應用與推論", "difficulty": 4, "id": 21}, {"question": "如果今天有一位國際貿易公司想在東亞地區設立物流中轉站，要求符合教材所述十七世紀臺灣吸引歐洲商人的條件，以下哪一特徵是最重要的考量因素？", "options": ["位於區域間交通樞紐的戰略地理位置", "擁有最發達的本地手工業生產能力", "當地人口數量足夠提供充足勞動力", "氣候溫暖適合全年無休的作业環境"], "answer": 0, "explanation": "教材核心論點是臺灣之所以被捲入全球貿易，根本在於其「南北往來的必經之路」的地理樞紐地位。如同古代高雄港與今日高雄港的功能連貫，地理位置優勢是穿越時代的關鍵因素。其他選項教材未強調。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "地理優勢的跨時代延續性與應用", "skill": "跨概念整合與情境應用", "difficulty": 4, "id": 22}, {"question": "一位同學認為：「歐洲人到臺灣是為了傳播文明，而不是為了追求利益。」根據教材內容，這項說法最可能的問題在哪裡？", "options": ["忽略了歐洲人來臺的主要動機是商業貿易利益", "正確理解了天主教會在殖民行動中的作用", "說明了歷史事件的道德與文化價值面向", "證明了臺灣當時的文化落後於歐洲文明"], "answer": 0, "explanation": "教材明确指出歐洲人來臺的核心動因是「搶著來臺灣佔領資源點」以及透過臺灣進行貿易往來獲利，並補充「浪漫背後是激烈的資源競爭與博弈」。所謂「傳播文明」掩盖了殖民的實質利益驅動。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "殖民活動動機的歷史評估", "skill": "批判性思考與概念辨析", "difficulty": 4, "id": 23}, {"question": "如果要在教科書中添加一個「歷史連貫性」的小欄目，將大航海時代與當代臺灣連接，以下哪個例子最能呼應教材的核心主題？", "options": ["引用高雄港古今功能的延續性說明臺灣持續扮演貿易樞紐的角色", "比較明代海禁政策與當代海關制度的相同之處", "說明鄭成功時代的農業技術如何推動當今機械工業", "介紹大航海時代的星象導航與当代GPS系統的技術差異"], "answer": 0, "explanation": "教材結尾以「歷史的脈絡是連貫的，從來沒有中斷過」作結，並特別舉例「如今高雄港是全球繁忙的貨櫃港」與古代臺灣的交通樞紐地位呼應。此選項完美契合教材所要傳達的核心訊息。其他選項偏離主題。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "歷史脈絡的古今貫穿與現實連結", "skill": "綜合分析與跨時代聯繫", "difficulty": 4, "id": 24}, {"question": "假設你正在設計一款歷史教育遊戲，玩家要扮演十六世紀的商人在东亚地區選擇最佳貿易據點。根據教材提供的資訊，選擇臺灣的主要優勢理由應該是什麼？", "options": ["位處日本、東南亞与中国之間的戰略位置，利於多方貿易", "臺灣是唯一禁止外國競爭者進入的天然避風港", "臺灣原住民族群願意免費提供所有物資給外商", "當時臺灣已經有完善的鐵路運輸系統方便貨物集散"], "answer": 0, "explanation": "教材核心論述：臺灣的優勢在於「位置剛好在日本和東南亞之間，是中間站，方便跟中國和日本做生意」。此地理樞紐地位是多方貿易的最佳條件。其他選項皆為不實或夸大之詞。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "臺灣在全球貿易網絡中的戰略定位", "skill": "情境應用與多要素整合", "difficulty": 4, "id": 25}, {"question": "教材描述鄭成功「帶來軍隊進行屯墾與各項建設」，「重視教育，推廣儒家文化經典」，這兩種政策分別解決了什麼層面的問題？", "options": ["屯墾解決經濟與糧食自給，教育則奠定長期的文化底蘊", "屯墾是為了對抗清朝的軍事部署，教育是為了提升軍事事業", "屯墾是為了向外擴張領土，教育是為了同化原住民族群", "屯墾是為了發展出口貿易，教育是為了培養官僚人才"], "answer": 0, "explanation": "教材將屯墾比作「新地圖開服後的基礎建設」，將教育稱為「軟實力的長期投資」。這表示屯墾側重物質經濟基礎（如糧食、土地開發），而儒家教育側重文化和價值體系的建立，兩者互補缺一不可。其他選項過度引申或未在教材中明確提及。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "鄭氏政權建設政策的雙重面向分析", "skill": "分析與綜合", "difficulty": 4, "id": 26}, {"question": "如果一個現代學者想要研究「臺灣在全球貿易史上角色的轉變」，以下哪個研究主題最符合教材所提供的框架？", "options": ["探討臺灣如何從區域性交流的島嶼轉變為大航海時代全球貿易網絡的关键節點", "統計十七世紀臺灣與歐洲所有商品的貿易總額數字", "比較鄭成功與荷蘭人之間的個人恩怨對貿易的影響", "調查現代高雄港與十七世紀港口之間的建築風格異同"], "answer": 0, "explanation": "教材的主軸即是臺灣從「史前區域性交流」到「全球等級的伺服器」的角色躍升，核心概念圍繞在「交通樞紐」地位如何使臺灣捲入全球貿易網絡。選項A準確把握此命題主軸，其餘選項或是太過狹隘，或是偏離教材的核心論述。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "臺灣歷史角色的整體演變框架", "skill": "綜合理解與研究問題建構", "difficulty": 4, "id": 27}, {"question": "教材中提到「荷蘭人率先在臺灣南部建立貿易據點」「西班牙人後來從北部加入戰局」，這兩個殖民國家在臺灣的活動共同確認了一件事，這件事是什麼？", "options": ["臺灣在國際貿易上具有重要戰略地位", "臺灣的原住民社會已經高度中央集權化", "歐洲各國之間在此地區的爭端可以和平解決", "熱帶島嶼的資源遠勝於歐洲本身的條件"], "answer": 0, "explanation": "教材總結說：「荷蘭西班牙兩邊夾擊，臺灣變成戰場，這確認了臺灣在國際貿易上的重要性。」正是因為臺灣的位置太重要了，才引起兩大帝國的爭奪。選項A是最精確的概括。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "列強競爭背後的歷史意義詮釋", "skill": "概念抽象與總結", "difficulty": 4, "id": 28}, {"question": "某次段考出現這樣一道情境題：「如果你生活在十六世紀末的臺灣沿海，最可能觀察到的情景是？」請依據教材判斷哪一選項最為合理？", "options": ["中國和日本的海商频繁往来，郑芝龙率船队活跃于海上", "台湾已经全面工业化，工厂林立", "欧洲军舰停泊在台北港进行长期军事占领", "原住民部落普遍使用闽南语与外来商人交易"], "answer": 0, "explanation": "教材說明十六世紀是「中國與日本海商常來交易」的時期，鄭芝龍此時已經是海上霸主。臺灣全面工業化是近代之事（B錯誤）；西班牙直到十七世紀才到北部（C時間不對）；當時閩南語尚未在台湾普遍通行（D缺乏依據）。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "歷史情境的時空合理性判斷", "skill": "情境推論與史料運用", "difficulty": 4, "id": 29}, {"question": "如果老師要求你用一句話總結本課關於「臺灣與世界關係」的核心觀點，以下哪一項最能精準呈現教材的立場？", "options": ["臺灣因其獨特的地理位置，在大航海時代由區域性交流躍升為參與全球貿易的重要樞紐", "歐洲殖民者的到来给台湾带来了先进的技术和文化传统", "郑成功收复台湾标志着中国从此彻底掌控了整个东亚贸易网络", "大航海时代之后，亚洲各国之间的陆路贸易已经完全消失"], "answer": 0, "explanation": "選項A完整涵蓋了教材的核心論點：臺灣的地理樞紐地位使其從區域性交流躍升為全球貿易一環，且「歷史的脈絡是連貫的」這一主旨也被包含在內。B overly simplistic且忽略競爭面貌；C夸大其詞；D與史實不符。", "subject": "歷史", "unit": "大航海時代與臺灣", "concept": "臺灣與世界關係的綜合敘述", "skill": "綜合分析與提煉主旨", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
