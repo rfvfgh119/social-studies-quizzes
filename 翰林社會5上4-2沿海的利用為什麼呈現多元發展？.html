@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林社會5上4-2沿海的利用為什麼呈現多元發展？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "地理", "grade": "八年級", "unit": "臺灣地理—海岸地形與人文發展", "topic": "臺灣各區域海岸線特徵及其對產業與聚落發展的影響", "filename": "翰林社會5上4-2沿海的利用為什麼呈現多元發展？", "summary": "本文以遊戲比喻解說臺灣海岸地形特徵，及其對各地人文開發的影響。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "板塊撞擊對臺灣地形最主要的影響是什麼？", "options": ["使台灣整體地勢中間高、四周低", "造成台灣全島都是平原地形", "使台灣西部隆起成高山", "讓台灣完全沉入海底"], "answer": 0, "explanation": "教材提到板塊撞擊使中間隆起變成高山，因此台灣中間是山、兩邊是海，呈現中間高四周低的結構。其他選項與此因果關係不符。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "板塊運動與地形演變", "skill": "基本記憶", "difficulty": 2, "id": 1}, {"question": "下列哪一地點屬於西部海岸常見的平緩沙岸地形？", "options": ["墾丁", "野柳", "北門潟湖", "清水斷崖"], "answer": 2, "explanation": "北門潟湖位於台南西部海岸，是沙洲環圍形成的半封閉水域，屬西部沙岸地形。墾丁位於南部、野柳位於北部、清水斷崖位於東部，均非西部沙岸典型代表。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "海岸地形分類與空間分佈", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 2}, {"question": "野柳地質公園以奇岩怪石聞名，該地位於臺灣何處？", "options": ["西部", "北部", "東部", "南部"], "answer": 1, "explanation": "教材明確指出野柳地質公園位於北部海岸，是北部特色景點，現已轉型為觀光資源。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "海岸地形分類與空間分佈", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 3}, {"question": "沙洲的主要功能是什麼？", "options": ["提供優質砂礦開採區", "形成天然防波堤保護內陸", "阻擋海水流入河川口", "建造大型深水港的基地"], "answer": 1, "explanation": "教材指出沙洲像天然防波堤，能保護內陸安全，並供早期移民以小船停靠利用地形資源。其餘選項並非沙洲的主要功能。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "沙洲的功能與特徵", "skill": "概念辨析", "difficulty": 2, "id": 4}, {"question": "西部海岸早期移民大量從事曬鹽、養牡蠣，其主要原因是？", "options": ["西部氣候寒冷多雨", "西部地形平緩，河川堆積作用形成沙灘與沙洲", "西部有豐富的溫泉資源", "西部山脈高大，適合畜牧"], "answer": 1, "explanation": "教材提到西部地形平緩，河川堆積作用形成沙灘和沙洲，是移民登陸與利用地形資源的理想地點，進而發展曬鹽與養蚵等經濟活動。其他選項與事實不符。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "西部海岸地形與人文活動", "skill": "因果推論", "difficulty": 2, "id": 5}, {"question": "山脈作為屏障，對臺灣東西部發展造成的最大影響是什麼？", "options": ["使東部更容易發展農業", "增加東西部交通往來的便利性", "使東西部交流變得困難", "促成中央山脈成為主要商業通道"], "answer": 2, "explanation": "教材指出山脈作為屏障讓東西交流變得困難，這是東部開發較晚的重要原因之一。其他選項與山脈屏障的作用相反。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "地形對人文發展的影響", "skill": "因果推論", "difficulty": 2, "id": 6}, {"question": "河川堆積作用最常形成的海岸地形是？", "options": ["海蝕洞", "珊瑚礁", "沙洲與沙灘", "斷崖"], "answer": 2, "explanation": "教材提到河川堆積作用形成沙灘和沙洲地形，這屬於西部海岸平緩地形的成因之一。海蝕洞和斷崖屬侵蝕地形，珊瑚礁與生物生長有關。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "海岸地形成因", "skill": "因果推論", "difficulty": 2, "id": 7}, {"question": "清水斷崖位於臺灣何地，有何特徵？", "options": ["西部，地势平緩適合作業", "南部，以珊瑚礁聞名", "東部，垂直入海的陡峭斷崖", "北部，具有豐富天然良港"], "answer": 2, "explanation": "教材明確指出清水斷崖位於東部海岸，是垂直入海的壯觀斷崖，為東部海岸代表性地標。其他選項將地點或特徵錯置。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "東部海岸地形特徵", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 8}, {"question": "珊瑚礁海岸最可能出現在臺灣哪個區域？", "options": ["北部淡水性河口", "中部平原地帶", "南部墾丁一帶", "東部斷崖海岸"], "answer": 2, "explanation": "教材提到南部屬熱帶氣候，海水溫暖乾淨，是珊瑚礁生長的最佳環境，墾丁因此有許多珊瑚礁。北部是良港，中部無海岸，東部以斷崖為主。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "南部珊瑚礁海岸", "skill": "地圖判讀與空間定位", "difficulty": 2, "id": 9}, {"question": "台南北門地區的潟湖環境對當地經濟有什麼特殊貢獻？", "options": ["發展了深淵漁業", "形成蚵架養殖的優越環境", "促成大型商港建設", "帶動沙漠觀光事業"], "answer": 1, "explanation": "教材指出潟湖是半封閉水域，鹹水與淡水交互作用適合牡蠣生長，北門蚵架品質好正是地理環境給予的專屬加成。其他選項與潟湖環境無關。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "潟湖與產業發展", "skill": "因果推論", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "沙洲與潟湖的相關關係，下列敘述何者正確？", "options": ["沙洲將海水完全隔絕形成湖泊", "沙洲環圍海水形成半封閉的潟湖水域", "潟湖是沙洲侵蝕後的產物", "沙洲與潟湖沒有任何地理關聯"], "answer": 1, "explanation": "教材說明沙洲把海水圍起來形成半封閉水域即潟湖，兩者為堆積作用的連續地貌。A誤以為完全隔絕，C混淆成因順序，D否定兩者的關聯性。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "沙洲與潟湖的成因關係", "skill": "概念辨析", "difficulty": 3, "id": 11}, {"question": "北部海岸之所以有許多天然良港，最主要的原因是？", "options": ["河川帶來大量泥沙淤積", "地形平緩適合填海造陸", "海岸線曲折，岬角與海湾相間", "火山爆發形成天然港口"], "answer": 2, "explanation": "教材指出北部海岸線曲折，岬角（凸出陸地）與海湾（凹進水域）相間，海湾可躲避風雨，適合船隻停泊，是港口建設的理想點。其他選項與北部海岸特徵不符。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "北部灣岬地形與港口發展", "skill": "因果分析", "difficulty": 3, "id": 12}, {"question": "豐濱鄉居民在階地上開墾梯田種植水稻，這反映了何種人地關係？", "options": ["居民改變地形以迎合自身需求", "居民順應陡峭地形限制就地利用資源", "政府強制推行高山農業政策", "稻米需要海拔高的寒帶氣候才能生長"], "answer": 1, "explanation": "教材提到東部地形陡峭不利農業和聚落，居民只能在抬升階地上開墾梯田種水稻，這是適應環境的智慧型玩法。B精確描述順應限制的原則，其他選項偏離實際。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "人地關係與環境適應", "skill": "因果推論", "difficulty": 3, "id": 13}, {"question": "為何台灣東部開發比西部晚？請選擇最適當的原因組合。", "options": ["①山地陡峭不利農業聚落②中央山脈阻擋東西交流③缺乏天然良港④氣候過於炎熱", "①②③", "①③④", "②③④"], "answer": 0, "explanation": "教材指出東部海岸陡峭是困難模式、山脈作為屏障使東西交流困難，且陡峭地形不利農業和聚落發展；但未提及氣候過於炎熱為限制因素。故①②③正確。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "區域發展差異的原因分析", "skill": "比較分析", "difficulty": 3, "id": 14}, {"question": "西部沙岸與北部灣岬地形對人文發展的影響，兩人相比，最大的差異在於？", "options": ["西部側重海洋生產活動，北部側重交通貿易", "西部發展觀光，北部發展農業", "兩者都以糖業為主要經濟支柱", "西部交通發達，北部相對落後"], "answer": 0, "explanation": "教材說明西部平緩沙岸利於養蚵曬鹽等生產活動，而北部灣岬地形提供天然良港促進海運與貿易發展，兩者發展重點不同。其他選項與教材所述不符。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "區域發展模式比較", "skill": "比較分析", "difficulty": 3, "id": 15}, {"question": "下列哪一項最能說明「地理環境決定開發方式」這一原則？", "options": ["居民憑感覺在任意地點建立聚落", "各地依據自身海岸條件發展相應產業與聚落", "政府強行在所有海岸建設相同類型的城市", "人類活動不受地理環境任何影響"], "answer": 1, "explanation": "教材總結「地理環境決定了開發方式，這是鐵律」，並指出各地區依海岸類型發展不同產業，從養蚵曬鹽到海運貿易到觀光。B精確反映此原則，其餘皆違反教材結論。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "人地關係的核心原則", "skill": "概念歸納", "difficulty": 3, "id": 16}, {"question": "野柳地質公園從特殊的自然地貌成為觀光資源，這個轉變说明了什麼現象？", "options": ["自然景觀無法轉化為經濟價值", "海岸利用可以從生產活動轉向觀光產業", "地質公園不需要任何保護就能發展", "觀光發展必然會破壞原有自然環境"], "answer": 1, "explanation": "教材提到野柳的奇岩怪石由特殊地貌轉變為觀光資源，顯示海岸利用從生產轉向旅遊的可能性，是產業轉型的正面案例。A、C、D都與教材意涵相反。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "自然資源的產業轉型", "skill": "因果推論", "difficulty": 3, "id": 17}, {"question": "墾丁國家公園將珊瑚礁海岸規劃為保護區，主要目的是？", "options": ["限制所有人類活動以達到零開發", "平衡觀光发展与生态保护", "阻止民眾接近海洋享受自然", "僅供科學研究不開放公眾參觀"], "answer": 1, "explanation": "教材指出政府在墾丁規劃國家公園保護區讓民眾體驗大自然的美好，同時也要保護珊瑚礁生態不被破壞，體現平衡發展與保護的理念。A過於極端，C、D與教材描述的開放目標不符。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "保育與發展的平衡", "skill": "概念辨析", "difficulty": 3, "id": 18}, {"question": "深澳漁港建於海灣內，最有利的建設條件是？", "options": ["海湾水深適合各類船隻直接靠岸", "海湾能躲避風雨，提供船只停泊的安全環境", "海湾地形利於大型機場建設", "海湾地區氣候乾燥利於魚貨晾曬"], "answer": 1, "explanation": "教材說明岬角和海湾是港口建設的理想點，其中海湾可以躲避風雨，適合船隻停泊，深澳漁港正是利用此地形優勢而建。A誇大了所有船隻都能使用，C、D與海灣功能無關。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "地形與聚落建設的關係", "skill": "因果分析", "difficulty": 3, "id": 19}, {"question": "政府修建蘇花公路的主要地理背景與目的為何？", "options": ["為了開發東部礦產資源", "為了克服東部地形障礙，連結東部與外部經濟圈", "因為西部已無任何交通路線可言", "為了取代原有的鐵路運輸系統"], "answer": 1, "explanation": "教材指出為了克服地形障礙，政府修建蘇花公路，連結東部與外部世界的經濟圈。A、C、D均未在教材中提到或與主旨不符。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "交通建設與地形適應", "skill": "因果分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "某開發團隊計劃在臺灣某海岸設立大型工業區，該地點夏季風從海上吹來且常有颱風經過。從人地關係的角度來看，下列哪一種海岸類型最不適合此種開發？", "options": ["西部平緩沙岸，地形易整平但缺乏天然屏障", "北部湾岬地形，有岬角遮蔽但有都市化压力", "南部珊瑚礁海岸，生態敏感且屬國家公園範圍", "東部斷崖地形，施工難度極高"], "answer": 2, "explanation": "教材強調南部珊瑚礁海岸已規劃為國家公園保護區，需保護生態不被破壞，大型工業開發會嚴重衝突此保育目標。A雖不適宜但非教材明令禁止，B有一定適配空間，D地形限制是工程問題而非政策冲突。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "海岸開發的綜合評估", "skill": "情境應用與決策", "difficulty": 4, "id": 21}, {"question": "若要從根本上解釋臺灣西部多平原、東部多山地險峻的地形格局，最根本的原因應追溯至？", "options": ["河流長年沖刷的結果", "人類長期開發造成的改變", "板塊碰撞擠壓使中間隆起成高山", "火山爆發均勻分布在全島"], "answer": 2, "explanation": "教材反覆强调板塊運動是臺灣地形的主程式，板塊撞擊使中間隆起變成高山，這是東西地形差異的根源。A、B屬於次要因素，D不符合實際。根本原因在于板塊運動的第一性原理。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "地形成因的深層因果鏈", "skill": "綜合分析", "difficulty": 4, "id": 22}, {"question": "如果一個新興城鎮計劃在臺灣某海岸發展，該地擁有平緩沙灘、潟湖環境及穩定的季風條件。以下哪一項產業組合最為適宜？", "options": ["深海捕撈與造船工業", "蚵架養殖與海鹽生产", "高山滑雪與森林伐木", "稀土開採與核電廠建设"], "answer": 1, "explanation": "教材指出西部沙洲潟湖環境適合養蚵曬鹽，這是地理環境給予的專屬加成。平緩沙灘、潟湖與穩定季風正好配合這兩項產業。其他選項與該海岸條件完全不匹配。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "因地制宜的產業選擇", "skill": "情境應用與決策", "difficulty": 4, "id": 23}, {"question": "某地方政府的觀光發展報告指出：『本區擁有天然良港與海灣地形，過去以貿易為主，現在更應發揮此優勢發展多元觀光。』根據教材，這個地區最可能是？", "options": ["花蓮縣富岡漁港周邊", "新竹縣香山溼地", "基隆市八斗子一帶", "台東縣卑南鄉沿海"], "answer": 2, "explanation": "教材提到北部海岸線曲折、有天然良港，深澳漁港建於海湾中，基隆位於台灣北端具備此特徵。A、D屬東部斷崖地形，C新竹香山是西部沙岸但無天然良港優勢。只有基隆符合北部湾岬+天然良港+貿易歷史的描述。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "區域特徵與產業演變的整合", "skill": "綜合分析與推論", "difficulty": 4, "id": 24}, {"question": "如果要向一位從未到過臺灣的人介紹臺灣海岸地形的多样性，並且要突顯各地因地制宜的特色，以下排序最能展現這種『多元發展遊戲邏輯』的是？", "options": ["統一強調臺灣四面都是相同的沙灘", "按經度由西至東：沙岸養殖→良港貿易→斷崖生態→珊瑚礁觀光", "隨意挑選三個最著名的景點混雜排列", "優先列出人口最多城市的海岸作為代表"], "answer": 1, "explanation": "教材總結五大重點涵蓋西部沙岸、北部良港、東部斷崖、南部珊瑚礁，並強調每個地方都有自己的專屬技能樹。按西→東的空間順序展開，清晰呈現各地依據自身地理條件發展不同產業的多元邏輯。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "區域多元發展的整體理解", "skill": "歸納與綜合表達", "difficulty": 4, "id": 25}, {"question": "一個年輕的環保團體希望在南部海岸推動珊瑚礁保護教育，但當地居民擔心會影響就業機會。從教材观点來看，最佳的解決策略應該是？", "options": ["全面禁止任何人進入南部海岸", "在發展觀光的同時落實保育措施，尋求平衡", "犧牲生態保護以換取短期經濟成長", "放棄南部海岸不再做任何開發"], "answer": 1, "explanation": "教材明確提到『平衡發展與保護是關鍵』，並把墾丁國家公園視為環保任務範例。B選項完美呼應教材理念，在保護前提下仍可透過觀光創造就業。其餘選項皆走向極端，偏離平衡原則。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "發展與保育的平衡策略", "skill": "情境應用與決策", "difficulty": 4, "id": 26}, {"question": "假設你是位城乡规划師，收到提案想在臺东斷崖下方填海造陸建設新市區。根據教材所揭示的原理，此提案最主要的问题在於？", "options": ["填海造陸成本过高但不影响生态环境", "忽略东部陡峭地形本就是限制开发的天然屏障，强行人工改变易引发地质灾害", "东部人口过多already导致住房紧张", "该区域已有充足的平地可供建設"], "answer": 1, "explanation": "教材强调東部是陡峭斷崖、山脈屏障，陡峭地形不利聚落發展，居民只能適應性地利用階地梯田。在此填海造陸違背因地制宜原則且可能引發災害。A低估風險，C、D與教材描述的事實相反。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "地形限制與人地協調", "skill": "情境應用與批判思考", "difficulty": 4, "id": 27}, {"question": "西部海岸自早期晒鹽養蚵，到如今部分地区转型发展观光产业，这个演变过程最能说明什么地理概念？", "options": ["地理环境完全不会改变人类的产业选择", "海岸资源一旦开发完毕就无法再利用", "随着时代变迁，海岸利用模式可根据环境与需求进行调整转型", "传统产业一定会被新兴产业完全取代"], "answer": 2, "explanation": "教材提到野柳由特殊地貌轉為觀光資源，並泛指海岸利用從生產轉向旅遊，體現資源利用的可變性與适应性。B過於絕對，A、D否認了演變可能性，唯有C精準把握教材意涵。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "海岸利用的歷史演變", "skill": "概念歸納與推論", "difficulty": 4, "id": 28}, {"question": "QTE環節要求答出西部主要地形名稱，以下選項何者完整且正確？", "options": ["斷崖、珊瑚礁、階地", "沙洲、潟湖、沙灘", "岬角、海灣、峽谷", "火山口、熔岩流、地震帶"], "answer": 1, "explanation": "教材QTE環節明確提示答案為『沙洲、潟湖、沙灘』，這三者均為西部海岸的典型地形。A屬東/南部地形，C含非西部專有的岬角，D屬火山地震地質現象。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "西部海岸地形的名詞辨別", "skill": "概念辨析與歸納", "difficulty": 2, "id": 29}, {"question": "有人認為『只要臺灣各地都发展觀光業，就不用擔心區域發展不平衡的問題』。根据教材内容，你最認同以下哪種回應？", "options": ["完全同意，觀光業能解決所有區域問題", "不同意，各地應根據自身地理條件發展適合的產業，多元發展才是正道", "觀光業是唯一可行的發展途徑", "西部 Already太擁擠不需要再發展其他產業"], "answer": 1, "explanation": "教材結尾強調『每個地方都有自己的專屬技能樹』，並總結五大要點分別是養殖、貿易、生態、觀光等不同方向，體現多元發展的遊戲邏輯。B呼應此精神，其餘選項皆偏離教材核心論點。", "subject": "地理", "unit": "臺灣地理—海岸地形與人文發展", "concept": "多元發展理念的綜合理解", "skill": "綜合分析与思辯", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
