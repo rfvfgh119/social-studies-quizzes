@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林社會5上3-1早期移民如何在臺灣建立家園？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "歷史", "grade": "國中三年級", "unit": "清代臺灣的開發與社會變遷", "topic": "清代臺灣移民開發、民變械鬥與族群關係", "filename": "翰林社會5上3-1早期移民如何在臺灣建立家園？", "summary": "以遊戲比喻解說清代臺灣從移民開墾、水利建設、貿易繁榮到民變械鬥與族群衝突的發展過程。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "清廷早期禁止移民攜帶家眷來臺的主要目的是什麼？", "options": ["防止移民在臺灣長期定居形成勢力", "鼓勵移民返回中國繁衍子孫", "減少臺灣的人口壓力與糧食需求", "避免移民占用臺灣的肥沃土地"], "answer": 0, "explanation": "教材指出清廷禁止帶家眷是「防範叛亂」的防禦性設定，擔心移民組團攻略伺服器（長期定居形成勢力），故選A。B、C、D並非教材所述的清廷目的。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "清廷治臺政策", "skill": "歷史事件因果分析", "difficulty": 2, "id": 1}, {"question": "下列哪位歷史人物投資開發了八堡圳？", "options": ["施世榜", "吳沙", "林爽文", "朱一貴"], "answer": 0, "explanation": "教材明確提到「施世榜投資開發的八堡圳」，故選A。吳沙是開墾宜蘭的人物，林爽文和朱一貴是民變領袖，均與八堡圳無關。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "水利建設", "skill": "歷史人物配對", "difficulty": 2, "id": 2}, {"question": "「一府二鹿三艋舺」中的「府城」指的是哪個地方？", "options": ["臺南", "彰化", "臺北", "新竹"], "answer": 0, "explanation": "教材說明口訣「一府二鹿三艋舺」，並解釋「府城是臺南」，故選A。彰化是鹿港所在地，臺北是艋舺所在地。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "港口城市", "skill": "地名人物配對", "difficulty": 2, "id": 3}, {"question": "朱一貴起事時自稱是什麼身份？", "options": ["明朝後裔", "清朝皇子", "鄭成功後代", "臺灣王"], "answer": 0, "explanation": "教材指出朱一貴「自稱明朝後裔號召眾人反抗」，故選A。其餘選項均非教材所述。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "民變事件", "skill": "歷史事件记忆", "difficulty": 2, "id": 4}, {"question": "林爽文事件中，林爽文的籍貫屬於哪個縣？", "options": ["漳州", "泉州", "廣州", "福州"], "answer": 0, "explanation": "教材明確說明「他是漳州籍玩家領袖」，故選A。此題考查對民變領袖背景的記憶。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "民變事件", "skill": "歷史人物配對", "difficulty": 2, "id": 5}, {"question": "清廷為了處理械鬥中無人認領的遺骸，設立了什麼設施？", "options": ["同歸所", "義塚園", "安良堂", "聚賢祠"], "answer": 0, "explanation": "教材提到「清廷設了同歸所合葬無人認領」，並以芝山岩大墓公為例，故選A。其餘選項雖看似合理，但非教材所述。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "械鬥社會後果", "skill": "專有名詞記憶", "difficulty": 2, "id": 6}, {"question": "清廷劃設紅線和藍線的主要目的是什麼？", "options": ["隔離漢人與原住民", "劃分軍事防禦區域", "規範貿易港口範圍", "分配農田灌溉用水"], "answer": 0, "explanation": "教材指出清廷「劃下紅線藍線試圖隔離漢人」，故選A。這是清廷針對原漢關係的隔離政策。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "原漢關係", "skill": "政策目的理解", "difficulty": 2, "id": 7}, {"question": "竹筍法是清代臺灣的一種水利技術，其主要功能是什麼？", "options": ["攔截溪水水位", "抽取地下水灌溉", "建造大型水庫蓄洪", "導引海水進入田地"], "answer": 0, "explanation": "教材明確說明「林先生發明竹筍法攔截溪水水位」，屬低成本高回報的科技樹，故選A。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "水利技術", "skill": "專有名詞配對", "difficulty": 2, "id": 8}, {"question": "清代臺灣主要輸出中國的農產品是哪些？", "options": ["稻米和蔗糖", "茶葉和樟腦", "稻米和茶葉", "蔗糖和樟腦"], "answer": 0, "explanation": "教材提到臺灣「輸出稻米蔗糖輸入布匹藥材」，故選A。茶葉和樟腦是晚期臺灣商品，非教材所述。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "跨海貿易", "skill": "歷史事實記憶", "difficulty": 2, "id": 9}, {"question": "誰招募漢人開墾宜蘭地區，導致與當地原住民發生衝突？", "options": ["吳沙", "施世榜", "朱一貴", "林爽文"], "answer": 0, "explanation": "教材指出「吳沙招募漢人開墾導致族群摩擦」，對象是噶瑪蘭族（宜蘭地區），故選A。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "原住民關係", "skill": "歷史人物配對", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "清廷為何對臺灣採取防範性治臺政策？下列何者最能說明此政策的根本原因？", "options": ["擔憂臺灣成為反清勢力基地", "希望限制臺灣的人口成長速度", "認為臺灣地形不利農業發展", "避免臺灣與中國大陸貿易往來"], "answer": 0, "explanation": "教材說明清廷禁止帶家眷是因「怕你們組團攻略伺服器」，即防範叛亂，擔憂臺灣成為反清基地，故選A。B、C、D非教材所述根本原因。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "清廷治臺政策", "skill": "歷史事件因果分析", "difficulty": 3, "id": 11}, {"question": "水利工程對清代臺灣農業發展有何關鍵影響？", "options": ["擴大耕地面積並提升作物產量", "改變臺灣氣候使其更適合耕種", "取代了傳統的自然降雨灌溉", "減少對中國市場的貿易依賴"], "answer": 0, "explanation": "教材強調「沒有水圳系統根本無法高效farming」，水利讓彰化平原變富饒，故選A。B、C、D均非教材所述水利的實際影響。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "水利建設", "skill": "因果關係分析", "difficulty": 3, "id": 12}, {"question": "朱一貴事件與林爽文事件有什麼重要差異？", "options": ["林爽文事件規模更大且波及全臺", "朱一貴事件持續時間更久", "林爽文自稱明朝後裔起事", "朱一貴事件主要由漳泉械鬥引發"], "answer": 0, "explanation": "教材指出朱一貴「雖然很快被鎮壓」，而林爽文事件「規模更大」、「幾乎牽動全臺灣」，故選A。B、C、D皆與教材內容不符。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "民變事件比較", "skill": "比較異同分析", "difficulty": 3, "id": 13}, {"question": "閩粵械鬥產生的根本原因為何？", "options": ["土地與水源的競爭", "宗教信仰的差異", "語言不通造成的誤解", "清廷政府的挑撥離間"], "answer": 0, "explanation": "教材明確提到漳州人跟泉州人「因為土地水源打架」，是為了爭奪資源，故選A。其他選項非教材所述械鬥的根本原因。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "械鬥原因", "skill": "因果關係分析", "difficulty": 3, "id": 14}, {"question": "清廷劃設紅線藍線政策未能有效隔離漢人與原住民，主要原因為何？", "options": ["漢人開墾需求過大，屢禁不止", "原住民主動越界侵略漢人土地", "清廷官員無力執行隔離政策", "紅線藍線的地理位置設定錯誤"], "answer": 0, "explanation": "教材說明「漢人需求太大根本管不住玩家，越界開墾屢禁不止」，故選A。這反映政策目標與現實需求的落差。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "原漢關係", "skill": "政策影響分析", "difficulty": 3, "id": 15}, {"question": "平埔族逐漸融入漢文化的主要原因為何？", "options": ["被迫遷移或與漢人通婚", "清廷強制推行漢人教育", "平埔族主动放弃原有文化", "平埔族人口自然減少亡"], "answer": 0, "explanation": "教材指出「平埔族群被迫遷移或跟漢人通婚」，導致「語言消失姓氏改變生活方式改變」，故選A。B、C、D非教材所述原因。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "族群融合", "skill": "文化變遷分析", "difficulty": 3, "id": 16}, {"question": "「一府二鹿三艋舺」的順序反映了清代臺灣何種發展趨勢？", "options": ["西部沿海港口依興起先後排序", "城市規模由大到小的排列", "各港口貿易金額的多寡次序", "政府重視程度的官方排名"], "answer": 0, "explanation": "教材說明這三個是「西部沿海崛起三大港口據點」，口訣代表它們興起的順序，故選A。這不是規模、貿易額或官方排名。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "港口城市", "skill": "資料解讀分析", "difficulty": 3, "id": 17}, {"question": "民間水利建設（如竹筍法）相較於官方主導的水利工程，具有什麼特色？", "options": ["成本低且效益高", "規模較大但耗時長", "完全不需人力維護", "只適合小面積農田使用"], "answer": 0, "explanation": "教材形容竹筍法是「典型的低成本高回報科技樹」，讓原本難開墾的土地變良田，故選A。其餘選項與教材描述不符。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "水利技術", "skill": "概念比較分析", "difficulty": 3, "id": 18}, {"question": "械鬥對臺灣社會造成了哪些負面影響？", "options": ["導致大量人員傷亡與流離失所", "促進了不同族群間的交流融合", "提升了臺灣的整體經濟水準", "減少了清廷对臺灣的治理負擔"], "answer": 0, "explanation": "教材指出械鬥「導致大量人員傷亡流離」，是惡性競爭，故選A。B、C、D與教材所述械鬥的負面影響相反。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "械鬥社會後果", "skill": "影響分析", "difficulty": 3, "id": 19}, {"question": "清廷官員貪汙對清代臺灣社會發展造成什麼影響？", "options": ["加剧民變與社會動盪", "促進臺灣經濟快速成長", "改善官民之間的信任關係", "加速水利建設的推進速度"], "answer": 0, "explanation": "教材指出「清廷官員又貪汙管理完全跟不上」是「伺服器崩潰前兆」，導致民變，故選A。貪汙加劇社會矛盾而非促進發展。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "清廷治理", "skill": "因果關係分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "如果在某地區發現古代水圳遺跡，最可以推論該地區的什麼特徵？", "options": ["過去是以農業為主的聚落", "曾是重要的海港貿易中心", "發生過大规模的族群衝突", "鄰近原住民传统领域"], "answer": 0, "explanation": "教材強調水利是「清代臺灣最重要的科技樹」，「沒有水圳系統根本無法高效farming」，故水圳遺跡可推論該地曾以農業為主，選A。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "水利與農業", "skill": "史料推論能力", "difficulty": 4, "id": 21}, {"question": "當兩個不同族群因水源爆發衝突時，根據清代臺灣的經驗，最適合的解決方式應優先考慮什麼？", "options": ["建立公平合理的水資源分配制度", "加強軍事武裝以防禦對方入侵", "尋求外來勢力介入調停仲裁", "放棄爭議地區讓雙方撤離"], "answer": 0, "explanation": "教材顯示械鬥源於土地水源競爭，最終靠適應共存規則解決，故公平的資源分配是根本之道，選A。B是激化衝突，C、D非教材所示解決方案。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "族群衝突解決", "skill": "情境應用能力", "difficulty": 4, "id": 22}, {"question": "綜合教材內容，清代臺灣發展的關鍵驅動力為何？", "options": ["移民開發、水利建設與貿易循環", "清廷強勢軍事統治與隔離政策", "原住民主動與漢人文化交流", "歐洲殖民勢力的技術引進"], "answer": 0, "explanation": "教材總結「從偷渡開荒到水利升級貿易繁榮」是發展主軸，故選A。清廷政策是防範而非推動發展，C、D非教材所述驅動力。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "臺灣發展動力", "skill": "綜合分析能力", "difficulty": 4, "id": 23}, {"question": "若要規劃一座展示清代臺灣歷史的博物館，最合適的選址應考量什麼因素？", "options": ["昔日重要貿易港口或民變發生地", "當前人口最少偏遠鄉村地區", "遠離所有原住民居住区域", "清廷官衙旧址所在的行政中心"], "answer": 0, "explanation": "教材提到艋舺、鹿港是熱門觀光地圖，赤嵌樓有林爽文事件石碑，故貿易港口或民變地點最能呈現歷史，選A。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "歷史遺址應用", "skill": "情境判斷能力", "difficulty": 4, "id": 24}, {"question": "高山族（深山林區原住民）較少受漢人文化影響，主要原因為何？", "options": ["清廷隔離政策使其較少接觸漢人", "高山族主动拒绝与汉人往来", "漢人因地理障碍无法进入山區", "高山族拥有更强的军事力量"], "answer": 0, "explanation": "教材指出「深山林區原住民則保持原有文化，因為隔離政策讓他們較少受影響」，故選A。其他選項非教材所述原因。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "原漢關係", "skill": "因果分析能力", "difficulty": 4, "id": 25}, {"question": "假如你生活在清代臺灣，發現當地發生漳泉械鬥，根據教材所述，最可能發生的情況是什麼？", "options": ["雙方因土地水源競爭而武裝衝突", "清廷立即派出大軍平息一切紛爭", "双方通過和平談判解决所有問題", "居民集體遷移到其他國家避戰"], "answer": 0, "explanation": "教材說明械鬥是「漳州人跟泉州人因為土地水源打架，拿武器互砍」，故選A。清廷往往反應不及，B錯誤；C、D非教材所述反應。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "械鬥情境", "skill": "情境應用能力", "difficulty": 4, "id": 26}, {"question": "清代臺灣人口暴增後，最直接引發的社會問題是什麼？", "options": ["資源競爭加劇與族群衝突頻傳", "農業技術迅速進步而糧食過剩", "清廷放寬移民政策歡迎更多人", "原住民主動讓出平原土地居住"], "answer": 0, "explanation": "教材指出「人口暴增導致資源競爭越來越烈」，繼而引發民變與械鬥，故選A。B、C、D均與教材所述後果相反。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "人口與社會問題", "skill": "因果推論能力", "difficulty": 4, "id": 27}, {"question": "根據教材，臺灣西部平原能成為重要糧倉的關鍵條件為何？", "options": ["水利建設完善加上适宜耕種的自然條件", "清廷提供大量資金補助農民耕種", "原住民讓出大部分平原土地給漢人", "進口外國先進農業機械設備"], "answer": 0, "explanation": "教材說明水利（八堡圳等）讓平原變富饒，稻米蔗糖產量高，故選A。清廷未補助農民，C、D非教材所述條件。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "農業發展條件", "skill": "综合分析能力", "difficulty": 4, "id": 28}, {"question": "清代臺灣民變事件頻繁發生，最主要的共同背景原因為何？", "options": ["官逼民反與社會矛盾積累", "外國勢力的武力干涉支持", "原住民發動全面性武装攻擊", "氣候異常導致嚴重糧荒飢餓"], "answer": 0, "explanation": "教材指出林爽文「看不得官員欺壓百姓所以率眾起義」，朱一貴也因官逼民反，故選A。B、C、D非教材所述民變主因。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "民變成因", "skill": "因果歸納能力", "difficulty": 4, "id": 29}, {"question": "綜合清代臺灣的發展歷程，下列何者最能詮釋這段歷史的本質？", "options": ["移民開發、衝突與融合的動態過程", "清廷成功治理下的和平開發時代", "原住民逐漸征服漢人的故事", "完全由外力推動的現代化進程"], "answer": 0, "explanation": "教材總結「清代臺灣史就是一部移民開發資源衝突與融合的過程」，故選A。B忽略了衝突，C、D與史實相反。", "subject": "歷史", "unit": "清代臺灣的開發與社會變遷", "concept": "歷史本質詮釋", "skill": "綜合評鑑能力", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
