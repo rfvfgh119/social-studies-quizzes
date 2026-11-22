@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林社會5上3-2開港通商為什麼改變了臺灣的發展？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "歷史", "grade": "國中三年級", "unit": "臺灣近代史／清代治臺後期", "topic": "清代治臺後期的變革與現代化", "filename": "翰林社會5上3-2開港通商為什麼改變了臺灣的發展？", "summary": "以遊戲化對話形式講述清代治臺後期從開港通商、牡丹社事件、清法戰爭到臺灣建省的近代變革歷程。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材內容，下列哪一項不是五十八年天津條約後開放的通商港口？", "options": ["雞籠", "淡水", "嘉義", "打狗"], "answer": 2, "explanation": "四大通商港口為雞籠、淡水、安平、打狗，嘉義不在其中。其他選項均為正確港口名稱。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "開港通商與四大港口", "skill": "基本記憶與辨識", "difficulty": 2, "id": 1}, {"question": "清代治臺后期，茶葉和樟腦主要生產於臺灣哪個區域？", "options": ["南部地區", "中部平原", "北部地區", "東部海岸"], "answer": 2, "explanation": "教材明確指出茶葉和樟腦主要在北部地區生產，糖則是南部比較多。B選項中部平原未在教材提及。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "三大出口商品產區分布", "skill": "空間對應能力", "difficulty": 2, "id": 2}, {"question": "大稻埕在開港通商的經濟版圖中扮演什麼樣的角色？", "options": ["西部海運的造船基地", "北部商品的集散中心", "南部糖業的批發市場", "中部茶園的灌溉水源"], "answer": 1, "explanation": "教材指出大稻埕是北部商品的集散中心，商業非常興盛，且靠近淡水港方便運送貨物。其餘選項均非教材所述功能。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "大稻埕的經濟角色", "skill": "基本記憶與概念理解", "difficulty": 2, "id": 3}, {"question": "一八七四年牡丹社事件中，日本出兵的藉口是什麼？", "options": ["原住民與英國商人發生衝突", "中國軍隊攻擊日軍营地", "琉球漁民被原住民誤殺", "台灣當局拒絕開放更多港口"], "answer": 2, "explanation": "教材明確說明日本藉口是琉球人被原住民誤殺的事件。其餘選項均非教材記載的歷史事實。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "牡丹社事件的起因", "skill": "基本記憶與辨識", "difficulty": 2, "id": 4}, {"question": "一八八五年清帝國宣布臺灣建省，由誰擔任首任巡撫？", "options": ["沈葆楨", "劉銘傳", "施琅", "蔣經國"], "answer": 1, "explanation": "教材清楚記載劉銘傳是一八八五年臺灣建省後的首任巡撫。沈葆楨負責的是 earlier 的海防建設，並非建省後的巡撫。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "臺灣建省與首任巡撫", "skill": "人物與時間配對", "difficulty": 2, "id": 5}, {"question": "劉銘傳推動修建的臺灣第一條鐵路，連接哪兩個城市？", "options": ["台北與桃園", "基隆與新竹", "臺北與臺中", "高雄與屏東"], "answer": 1, "explanation": "教材明確指出第一條鐵路是從基隆到新竹。需特別注意鐵路因技術限制僅完成此段，並未貫通全島。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "劉銘傳的基礎建設", "skill": "基本記憶與空間對應", "difficulty": 2, "id": 6}, {"question": "馬雅各在臺灣南部活動時的主要貢獻是什麼？", "options": ["創辦女子學堂推廣教育", "開設西式醫館提供醫療", "調查鳥類昆蟲記錄新種", "主持鐵路工程技術設計"], "answer": 1, "explanation": "教材說明馬雅各在南部臺南開設第一座西式醫館。A選項是馬偕的事蹟，C是斯文豪，D與傳教士無關。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "西方傳教士的醫療貢獻", "skill": "人物與事蹟配對", "difficulty": 2, "id": 7}, {"question": "英國人斯文豪對臺灣生態研究的最大貢獻為何？", "options": ["建立了西式的醫學教育體系", "撰寫了首部臺灣地方志書", "發現近三分之一鳥類的新物種", "繪製了第一張臺灣地形地圖"], "answer": 2, "explanation": "教材明確指出斯文豪調查許多鳥類昆蟲，發現將近三分之一的鳥類新物種。其餘選項均非教材所述。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "斯文豪的生態調查成就", "skill": "基本記憶與辨識", "difficulty": 2, "id": 8}, {"question": "沈葆楨來臺後興建了哪些防禦建設？", "options": ["修建鐵路與架設電報", "興建西式砲臺與修築恆春城", "購買輪船增援海防", "創立理學堂與女學堂"], "answer": 1, "explanation": "教材明確記載沈葆楨興建西式砲臺如二鯤鯓砲臺，並修築恆春城。AD選項屬劉銘傳或傳教士的事迹。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "沈葆楨的防務建設", "skill": "人物與事迹配對", "difficulty": 2, "id": 9}, {"question": "馬偕在北部地區的貢獻特別值得關注的一項是哪一項？", "options": ["免費拔牙與提供醫療", "創辦女子學堂提倡女性教育", "主持清法戰爭的防禦佈陣", "調查臺灣原住民語言"], "answer": 1, "explanation": "教材特別強調馬偕「特別提倡女子教育」，設立淡水女學堂培養女性人才，這是其獨特的貢獻。A雖也是他的事蹟但不是特別標舉的特色。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "馬偕的教育貢獻特色", "skill": "細節記憶與辨析", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "若將以下三個事件依時間先後排列，正確的順序應為何？①牡丹社事件 ②清法戰爭 ③臺灣建省", "options": ["①→②→③", "①→③→②", "②→①→③", "③→①→②"], "answer": 0, "explanation": "依教材：一八七四年牡丹社事件（①），一八八四年清法戰爭（②），一八八五年臺灣建省（③）。故正確順序為①→②→③。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "重大歷史事件的時間順序", "skill": "時間順序排列能力", "difficulty": 3, "id": 11}, {"question": "教師指出：『因為北部的高價茶葉、樟腦出口量大，加上大稻埕靠近淡水港形成集散中心，所以經濟重心向北移動。』下列哪一項最符合這句話的因果邏輯？", "options": ["地理優勢使得高價值商品更容易出口，帶動北部繁榮", "南部糖業衰退導致人口遷移至北部地區", "清帝國刻意扶持北部產業以削弱南部勢力", "西方勢力直接干預臺灣內部經濟分配"], "answer": 0, "explanation": "教材明確建立因果鏈：北部茶葉樟腦價值高→大稻埕靠近淡水港方便集散→經濟重心北移。B、C、D均為教材未支持的推論。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "經濟重心北移的原因分析", "skill": "因果關係分析", "difficulty": 3, "id": 12}, {"question": "清法戰爭後，清帝國決定臺灣建省，此一決策最主要的歷史脈絡因素是什麼？", "options": ["太平天國之亂已平定，清廷得以抽調資源", "日本在甲午戰爭後割佔臺灣", "外部威脅屢次侵臺顯示原有行政體制不足以應對防務", "西方列強要求清政府提升臺灣的政治地位"], "answer": 2, "explanation": "教材顯示一八七四年牡丹社事件與一八八四年清法戰爭均顯示外患威脅，清帝國防務政策因此逐步強化，最終促成一八八五年建省。A甲午戰爭發生於一八九五年晚於建省；BD非教材所述原因。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "臺灣建省的歷史背景", "skill": "因果關係分析", "difficulty": 3, "id": 13}, {"question": "沈葆楨所採用的凹凸狀城牆設計，其主要戰術目的是什麼？", "options": ["節省建材以加快修建速度", "增加牆體美觀以展現威儀", "提供掩護以利射擊敵人", "便利居民日常進出城池"], "answer": 2, "explanation": "教材明確指出凹凸狀城牆設計的目的是為了提供掩護方便射擊敵人，這是一種防禦戰術考量。其余选项与防御目的无关。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "沈葆楨建築設計的防禦功能", "skill": "概念辨析与应用理解", "difficulty": 3, "id": 14}, {"question": "以下關於沈葆楨與劉銘傳治理臺灣重點的比较，何者最為正確？", "options": ["兩人都以全面推動現代化建設為主軸", "沈重在軍事防務建設，劉重在各領域的現代化推動", "沈主攻經濟發展，劉專心對外通商擴張", "兩人主要貢獻都在宗教與教育領域"], "answer": 1, "explanation": "教材清晰呈現沈葆楨的主要作為是海防建設（砲臺、恆春城），劉銘傳則是全面現代化建設（鐵路、電報、輪船）。两人职责各有侧重，并非完全相同。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "沈葆楨與劉銘傳的治理差異", "skill": "比較分析能力", "difficulty": 3, "id": 15}, {"question": "馬偕在北部免費拔牙並辦學校，起初當地居民對他有誤解與衝突，但後來信任了他。造成轉變的最主要原因最可能是？", "options": ["馬偕提供了實際的醫療幫助解決了居民問題", "清政府強制要求居民接受西方傳教士", "馬偕的傳教方式完全迎合了本地信仰", "居民受到西方勢力的軍事威脅而屈服"], "answer": 0, "explanation": "教材指出起初有誤解衝突，但後來信任他們是因為他們確實解決了許多實際問題（醫療改善了生活品質）。這說明信任來自實質幫助而非外力脅迫。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "中西文化交流與信任建立過程", "skill": "推論與情境分析", "difficulty": 3, "id": 16}, {"question": "從資料判讀的角度來看，為什麼說一八八四年的清法戰爭和一八七四年的牡丹社事件應該嚴格區分？", "options": ["兩者都是日本入侵事件，只是規模不同", "清法戰爭是法國發動，牡丹社事件是日本挑釁，參與方與性質完全不同", "兩者時間相近，應該合併討論才能理解全貌", "清法戰爭沒有實際戰事發生，只是外交危機"], "answer": 1, "explanation": "教材清楚說明一八七四年是日本的牡丹社事件，一八八四年是清法戰爭（法國進攻），兩者相隔十年，侵略者與性質皆不同。混淆两者是常見的誤解。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "牡丹社事件與清法戰爭的區辨", "skill": "資料判讀與概念辨析", "difficulty": 3, "id": 17}, {"question": "如果要在教材中找到一個「最能說明臺灣邁向現代化起步」的綜合性證據，下列何者最適合？", "options": ["四大通商港口的開放使貿易量成長", "西方人以名字命名了新發現的鳥類物種", "鐵路、電報與輪船等交通通訊基礎設施的建立", "清帝國正式宣布臺灣建省以提升行政地位"], "answer": 2, "explanation": "教材總結指出這些建設（鐵路、電報、輪船）「讓臺灣看起來不一樣了，從農業社會轉向工業化起步階段」，這是最直接的現代化證據。建省是政治地位提升，貿易增長是經濟現象，不如基礎設施建設更能體現現代化本質。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "臺灣現代化起步的標誌", "skill": "材料解讀與綜合分析", "difficulty": 3, "id": 18}, {"question": "劉銘傳推動的電報系統對當時的軍事行動有何關鍵作用？", "options": ["能用來娛樂將士的日常生活", "能快速傳遞軍事情報跨越長距離阻隔", "可以預測天氣變化避免作戰風險", "用於遠程操控武器系統精準打擊"], "answer": 1, "explanation": "教材明確說明電報「能讓遠距離傳遞訊息變得非常快速，這對掌握軍情有很大的幫助」。这是当时最先进的通讯技术，对军事指挥至关重要。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "電報系統的軍事應用價值", "skill": "功能理解與因果分析", "difficulty": 3, "id": 19}, {"question": "如果某個學生把沈葆楨的建設成果錯記成劉銘傳的贡献，下列哪一項是他最可能犯下的錯誤？", "options": ["把二鯤鯓砲臺歸功於劉銘傳", "把鐵路的建設年份寫成一八七四年", "以為馬雅各在北部傳教", "認為大稻埕是南部糖業集散中心"], "answer": 0, "explanation": "二鯤鯓砲臺是沈葆楨興建的西式砲臺之一，屬於海防建設範疇，容易與劉銘傳的全面建設混淆。B是時間錯誤，CD是空間/事件錯誤，與兩人混淆無直接關聯。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "沈葆楨建設成果的人物歸屬", "skill": "常見誤解辨析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "一位同學在筆記上寫下：「由於外部威脅連續衝擊臺灣安全，促使清政府陸續派遣大臣來臺加強防務，從而被動啟動了一系列的建設與改革。」這個敘述最符合下列哪個歷史發展脈絡？", "options": ["開港通商→經濟繁榮→主動推行現代化", "外患不斷→防務強化→帶動整體建設與現代化起步", "內部政爭→官員調動→自然產生基礎建設", "農業轉型→糧食增加→吸引外來投資開發"], "answer": 1, "explanation": "教材清楚呈現：牡丹社事件(1874)→沈葆楨加強海防→清法戰爭(1884)→劉銘傳推動建設→建省(1885)。整個過程是由外部威脅驅動的政策調整與建設推動。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "清代治臺後期變革的因果脈絡", "skill": "因果關係综合分析", "difficulty": 4, "id": 21}, {"question": "假如你是一位一八八〇年代生活在臺灣的農民，你發現家鄉發生了幾個變化：①村里通了電報線路 ②年輕人可以坐火車去外地 ③附近有了西洋醫生看診 ④村裡建了一座新的西式教堂。你認爲這些現象共同指向臺灣正在經歷什麼樣的轉變？", "options": ["從傳統農業社會逐步走向現代化的過程", "逐漸被西方國家完全殖民控制的過程", "清朝政府放棄臺灣不再重視的過程", "原住民文化全面取代漢人文化的過程"], "answer": 0, "explanation": "教材指出這些建設（鐵路、電報、西式醫療）讓臺灣「從農業社會轉向工業化起步階段」，是現代化的具體表現。這些都是積極的社會變遷，而非殖民或被放棄。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "臺灣從傳統向現代過渡的綜合理解", "skill": "綜合分析与情境应用", "difficulty": 4, "id": 22}, {"question": "如果老師要你解釋「為什麼說清法戰爭是臺灣建省的重要催化劑」，下列哪一項論述最完整且準確？", "options": ["清法戰爭證明臺灣戰略位置重要，顯示原有行政體制不足以應付外侮，迫使清帝國提升其地位以加強防務", "清法戰爭讓日本人撤出臺灣，清政府趁機收回主權並單獨管理", "清法戰爭期間歐洲列強贈送了大量資金給清政府，得以用於臺灣開發", "清法戰爭是臺灣人民自發反抗外國的結果，與清政府決策無關"], "answer": 0, "explanation": "教材雖未明言但可合理推導：清法戰爭再次凸顯臺灣戰略重要性及防禦薄弱，加上此前牡丹社事件的教訓，促使清帝國一八八五年正式建省。此選項最貼近教材所述的防務強化脈絡。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "清法戰爭與臺灣建省的因果關係", "skill": "推論與論證能力", "difficulty": 4, "id": 23}, {"question": "假設你在博物馆看到一件展品：一座帶有明顯凹凸設計的防禦城牆模型，旁邊標籤寫著「一八七四年後建造」。這個展品最能連結到下列哪一段歷史發展？", "options": ["劉銘傳為了发展贸易而興建的商業倉庫", "沈葆楨在牡丹社事件後加強海防所興建的防禦工事", "清法戰爭後西方商人建造的辦公大樓", "日本統治時期修建的警備據點"], "answer": 1, "explanation": "教材顯示一八七四年牡丹社事件後，沈葆楨來臺加強海防，興建行伍砲臺並修築恆春城，且採用凹凸狀城牆設計以利射擊。時間點與描述完全吻合。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "歷史文物與事件脈絡的對應", "skill": "史料解讀與情境關聯", "difficulty": 4, "id": 24}, {"question": "某位歷史研究者想要寫一篇關於「十九世紀後半葉臺灣如何從農業社會邁向現代化」的文章，他應該重点突出哪幾項核心內容才能使論點最有說服力？", "options": ["單純羅列所有在臺外國人的姓名與出生年份", "只著重描寫清法戰爭的戰場經過與傷亡數字", "結合經濟結構改變、防務強化、行政升格與基礎建設推進等多面向進行综合分析", "專注介紹西方傳教士的個人傳記故事"], "answer": 2, "explanation": "教材涵蓋經濟北移、防務強化（沈葆楨）、全面現代化（劉銘傳）、中外交流等多方面，要论证「從農業到現代化」需要綜合分析這些層面，而非單一分述。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "清代治臺後期現代化進程的综合分析", "skill": "跨概念整合与分析论证", "difficulty": 4, "id": 25}, {"question": "一位學生在作文中写道：「西方傳教士來到臺灣，雖然一開始引起了一些衝突誤解，但他們確實透過醫療和教育改善了当地人的生活品質。」若要補充最具體的佐證資料，以下哪一項最不適當？", "options": ["馬雅各在南部臺南開設第一座西式醫館", "斯文豪發現了大量鳥類昆蟲新物種", "馬偕在北部免費拔牙並創辦理學堂和女學堂", "傳教士的活動促進了中西文化交流與互信建立"], "answer": 1, "explanation": "題目要求佐證「醫療和教育改善生活品質」。A是醫療貢獻、C是醫療與教育貢獻、D是整體影響，都可佐證。B斯文豪是生態調查學者非傳教士，與醫療教育無關。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "西方傳教士貢獻的具體事例辨析", "skill": "證據評估與選擇能力", "difficulty": 4, "id": 26}, {"question": "如果我們用遊戲比喻來理解這段歷史：開港通商像是開啟了新地圖，牡丹社事件像是第一個Boss戰，清法戰爭像是第二個Boss戰，那麼臺灣建省代表了什麼樣的遊戲進展？", "options": ["玩家終於準備好面對最終關卡了", "主角獲得新身份（巡撫）並 unlocking 新的建設任務技能", "遊戲難度突然降低進入通關模式", "所有副本都已結束可以退出遊戲"], "answer": 1, "explanation": "教材顯示建省後劉銘傳成為首任巡撫，積極推動全面建設（鐵路、電報、輪船），就像遊戲中獲得新身分並解锁新能力繼續發展。這不是終局而是新階段的開始。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "臺灣建省的象徵意義與歷史定位", "skill": "跨概念整合與抽象思維", "difficulty": 4, "id": 27}, {"question": "觀察教材中提到：四大通商港口開放後，茶葉、樟腦、糖成為主要出口商品，並帶來經濟重心北移。如果要為這個經濟變遷找到一個最根本的驱动力解释，應該是？", "options": ["西方列強的貿易需求引發了臺灣產業結構的調整與區域經濟重心的轉移", "清政府主動調整税收政策鼓勵產業升級", "臺灣本地農民自發地改變了農作物品種", "日本與法國的戰爭影響了全球貿易路線"], "answer": 0, "explanation": "教材開篇即指出這些港口是「西方勢力進入臺灣的入口」，出口的商品滿足西方市場需求，进而带动北部高價商品（茶葉、樟腦）發展，形成經濟重心北移。根本驱动力是西方貿易需求。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "開港通商對經濟結構的根本影響", "skill": "深度因果分析与综合推理", "difficulty": 4, "id": 28}, {"question": "當我們在比較沈葆楨與劉銘傳兩位官員的历史贡献时，若想凸顯「防務優先」與「建設優先」的不同治理思路，下列哪一項配對最恰當？", "options": ["沈葆楨→購買新式輪船便於運輸，劉銘傳→興建砲臺強化防禦", "沈葆楨→架設電報快速傳遞訊息，劉銘傳→修築恆春城保護百姓", "沈葆楨→興建新式砲臺與修城，劉銘傳→修建鐵路與電報系統", "沈葆楨→創辦醫學堂推廣教育，劉銘傳→調查生態記錄生物"], "answer": 2, "explanation": "沈葆楨的作為集中在防務建設（砲臺、恆春城），劉銘傳的作為集中在現代化基礎設施（鐵路、電報、輪船）。這個配對清楚呈現兩人治理重點的差異。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "沈葆楨與劉銘傳治理重點的比較", "skill": "比較分析與概念區辨", "difficulty": 4, "id": 29}, {"question": "如果你要向朋友解釋「為什麼一八八五年的臺灣建省是清代治臺後期最重要的轉折點」，基於教材內容，你最有力的論據組合應該是？", "options": ["建省前曾有開港、建砲臺、修鐵路等多項变革，建省標誌著清政府對臺灣的態度從邊緣防衛轉向積極經營的制度化承諾", "建省本身直接帶來了巨大的經濟繁榮，讓臺灣一年內就超越了所有東南沿海省份", "建省意味著清政府完全放寬了對外貿易的限制，使臺灣變成自由港", "建省是西方列強長期施壓的結果，清政府無力抵抗才做出的讓步"], "answer": 0, "explanation": "教材完整呈现：開港(1860)-牡丹社(1874)-沈葆楨防務(1874後)-清法戰爭(1884)-建省(1885)-劉銘傳建設(1885後)。建省是前述一系列外部刺激與內部調整的集大成，象徵中央政府對臺灣戰略價值的重新認知與制度化重視。", "subject": "歷史", "unit": "臺灣近代史／清代治臺後期", "concept": "臺灣建省的歷史地位與綜合意義", "skill": "綜合论证與观点表达", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
