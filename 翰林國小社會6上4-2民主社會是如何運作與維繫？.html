@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國小社會6上4-2民主社會是如何運作與維繫？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "公民", "grade": "國二", "unit": "中華民國憲法概論", "topic": "憲法地位、人民權利義務與五權政治架構", "filename": "翰林國小社會6上4-2民主社會是如何運作與維繫？", "summary": "以遊戲比喻解說憲法地位，涵蓋人民權利義務、五權分立與央地分工的核心內容。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材內容，中華民國憲法正式施行的時間為何？", "options": ["民國36年12月25日", "民國35年12月25日", "民國37年1月1日", "民國34年7月7日"], "answer": 0, "explanation": "教材明確指出憲法於民國36年12月25日正式施行。選項B年份錯誤；C日期錯誤；D是七七事變爆發日，與憲法無關。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "憲法施行時間", "skill": "知識記憶", "difficulty": 2, "id": 1}, {"question": "憲法第7條主要保障人民的哪一種權利？", "options": ["平等權", "言論自由", "信仰自由", "集會結社自由"], "answer": 0, "explanation": "教材中老師以問答形式明確點出「第7條就是『人民有平等的權利』」。其他選項雖也是憲法保障的權利，但並非第7條的內容。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "憲法第7條平等權", "skill": "知識記憶", "difficulty": 2, "id": 2}, {"question": "下列何者屬於人民應盡的三大基本義務？", "options": ["納稅、服兵役、接受國民教育", "納稅、服公職、參加公民投票", "選舉、罷免、參軍", "服兵役、讀書、遵守交通規則"], "answer": 0, "explanation": "教材總結時明確列出三大義務為納稅、服兵役、接受國民教育。選項B參軍非義務；C選舉與罷免是權利而非義務；D讀書說法不精確且守法已另有依據。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "人民基本義務", "skill": "知識記憶", "difficulty": 2, "id": 3}, {"question": "中華民國憲法所規範的五權機關，包含下列哪一項？", "options": ["行政院、立法院、司法院、考試院、監察院", "總統府、行政院、立法院、司法院、監察院", "行政院、立法院、最高法院、考試院、監察院", "行政院、立法院、司法院、內政部、監察院"], "answer": 0, "explanation": "教材明確認定五權為行政院、立法院、司法院、考試院、監察院。選項B錯把總統府算入；C最高法院屬司法院下屬；D內政部非五權之一。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "五權分立", "skill": "知識記憶", "difficulty": 2, "id": 4}, {"question": "人民享有的四種政治權利分別是哪些？", "options": ["選舉、罷免、創制、複決", "選舉、罷免、請願、訴訟", "投票、連署、公投、陳情", "表達、集會、參政、監督"], "answer": 0, "explanation": "教材明確指出四種權利為選舉、罷免、創制、複決。選項B中的請願與訴訟另有所指；C混淆了不同制度名稱；D則是較寬泛的描述用語。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "人民參政權利", "skill": "知識記憶", "difficulty": 2, "id": 5}, {"question": "關於中央政府與地方政府的分工關係，下列敘述何者正確？", "options": ["中央制定全國性政策法規，地方政府因地制宜執行落實", "中央政府負責執行，地方政府負責立法", "中央與地方各自獨立運作，無需配合", "地方可以自行制定違反中央法規的政策"], "answer": 0, "explanation": "教材以「主伺服器與分區伺服器」比喻說明央地分工，並明確指出此為「均權制度」精神。選項B因果顛倒；C違反分工合作原則；D違法則不合法。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "中央與地方均權制度", "skill": "概念理解", "difficulty": 2, "id": 6}, {"question": "下列哪一項是人民參與公共事務的有效管道之一？", "options": ["集會遊行與陳情連署", "任意佔用公有土地抗議", "未經允許竊取政府檔案", "網路謾罵官員個人"], "answer": 0, "explanation": "教材提到民眾可透過集會遊行、陳情連署表達訴求。選項B、C、D皆違法或逾矩，不符合民主社會的參與精神。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "公民參與管道", "skill": "概念理解", "difficulty": 2, "id": 7}, {"question": "納稅的主要用途是什麼？", "options": ["支撐公共建設與服務", "補貼特定企業的經營虧損", "發放全民每月固定津貼", "補助國外外交活動"], "answer": 0, "explanation": "教材以遊戲道具費用為喻，說明稅金用於公共建設與服務，如學校、公園等設施。其餘選項偏離教材所言之納稅目的。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "人民義務之納稅", "skill": "概念理解", "difficulty": 2, "id": 8}, {"question": "憲法之所以被視為國家根本大法，主要是因為什麼原因？", "options": ["憲法如同遊戲設定檔，決定社會後續玩法的基本框架", "憲法條文數量最多涵蓋一切細節", "憲法是政府每年都要全面修改的法律", "憲法僅適用於政府機關而不約束人民"], "answer": 0, "explanation": "教材以遊戲比喻強調憲法是基礎設定檔，雖然條文不多但決定整體架構。選項B認為條文多即重要，與事實相反；Cannual修改不符憲法穩定性；D憲法同時規範人民。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "憲法地位與性質", "skill": "概念理解", "difficulty": 2, "id": 9}, {"question": "下列有關「權利與義務關係」的敘述，何者最符合教材主旨？", "options": ["權利與義務是一體兩面的概念，需兼顧並存", "權利比義務更重要，二者不需要同時考慮", "只要享受權利即可，不必承擔任何義務", "義務是用來限制权利的負面存在"], "answer": 0, "explanation": "教材特別提醒學生勿將權利與義務對立，強調二者一體兩面。選項BCD皆為常見誤解，違背權利義務並重之憲法精神。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "權利義務關係", "skill": "概念理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "某校為新住民子女開設華語補救教學課程，此舉最主要落實了憲法中的哪項精神？", "options": ["保障弱勢族群的平等受教育權", "賦予新住民特殊優先待遇", "限制本土學生的受教機會", "證明憲法與教育完全無關"], "answer": 0, "explanation": "教材明確以此為例說明平等權的實踐。選項B誤解為特權；C反公平；D與教材主旨完全相反。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "平等權之具體實踐", "skill": "情境應用", "difficulty": 3, "id": 11}, {"question": "縣市政府劃設行人優先區，這項政策最能體現何種憲法設計原理？", "options": ["中央政府立法規範，地方因地制宜實施的分工程序", "地方政府完全自主不需中央介入的鬆散體制", "中央政府代替地方執行每一項建設決策", "地方可以不顧中央法規自行其是"], "answer": 0, "explanation": "教材直接以行人路權為例說明央地分工。選項B放任地方主義錯誤；C過度中央集權；D違背法治。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "中央與地方分工原理", "skill": "情境應用", "difficulty": 3, "id": 12}, {"question": "若一位縣長施政不佳，民眾欲依法撤換該縣長，應該行使下列哪項權利？", "options": ["罷免權", "選舉權", "創制權", "複決權"], "answer": 0, "explanation": "教材說明罷免是撤換不適任代表的機制，與選舉相輔相成。選舉是選出代表；創制複決針對法律條文，非撤換人。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "政治權利之區別辨析", "skill": "概念辨析", "difficulty": 3, "id": 13}, {"question": "關於憲法中五權分立的意義，下列敘述何者最精闢？", "options": ["五個機關分開運作又互相監督，防止濫權", "五個機關彼此完全獨立沒有任何聯繫", "只有一個機關最具權威其他皆附隨運作", "五權分立只存在於理論上無法實際運作"], "answer": 0, "explanation": "教材指出五權互相制衡確保政府不會濫用權力。選項B否定互動；C違背分立；D貶低制度效能皆非正解。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "五權分立本質", "skill": "概念辨析", "difficulty": 3, "id": 14}, {"question": "無障礙設施的設置要求，主要源自憲法保障的哪一項權利？", "options": ["身心障礙者在法律面前一律享有平等權", "僅限視障人士獨享的特權保障", "與憲法毫無關聯的普通行政命令", "優先照顧富人的資源分配"], "answer": 0, "explanation": "教材以《身心障礙者權益保障法》為例說明平等權的延伸實踐。選項BCD皆偏離憲法保障平等的核心理念。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "平等權之跨領域延伸", "skill": "關聯推論", "difficulty": 3, "id": 15}, {"question": "創制權與複決權跟選舉權、罷免權相比，最大的差異在於什麼？", "options": ["創制複決主要是針對法律條文的增修或廢除，後者針對人事任免", "二者完全相同只是名稱不同", "創制複決只能由官員行使民眾無法參與", "選舉罷免針對法律而非人"], "answer": 0, "explanation": "教材雖未詳述兩者差異，但從參政權整段脈絡可合理推論：選舉罷免管人，創制複決管事（法律）。選項BCD皆與此分類邏輯相悖。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "參政權利的深度辨析", "skill": "概念辨析", "difficulty": 3, "id": 16}, {"question": "政府修建公共公園與醫療照護，其主要經費來源對應的是人民哪項義務？", "options": ["納稅義務，因為稅金用以支撐公共建設與服務", "服兵役義務，因為打仗也需要錢", "受教義務，因為教育經費來自稅金", "參政義務，因為投票決定預算"], "answer": 0, "explanation": "教材明確建立納稅與公共建設之間的因果鏈。服兵役保衛安全、受教提升素質、參政參與決策，皆非公共建設的直接財源。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "義務與政府功能的因果關聯", "skill": "因果分析", "difficulty": 3, "id": 17}, {"question": "某市公所擬規劃社區長者日照中心，此项工作主要由哪個層級的政府負責？", "options": ["地方政府負責在地規劃與設置執行", "中央政府直接派人去每個社區興建", "中央政府完全不參與任何形式的相關工作", "完全由各里長個人出資興辦不具政府責任"], "answer": 0, "explanation": "依均權制度，社會福利設施屬地方自治事項，由地方政府因地制宜推動。選項BCD皆違背央地分工的基本原理。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "央地事權劃分判斷", "skill": "情境應用", "difficulty": 3, "id": 18}, {"question": "一部紀錄片引發社會關注進而推動動物保護法修法，此案例最足以說明何種現象？", "options": ["文化影響力結合公民參與可以促成政策改變", "电影工業比法律體系更有絕對權威", "政府從來不關心影視作品所反映的社會議題", "僅靠一部電影就能自動推翻所有舊法"], "answer": 0, "explanation": "教材以此案例說明文化影響力結合公民參與的力量。選項B誇大電影權威；C忽略媒體與民意的實質作用；D過於絕對且不切實際。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "公民參與管道的實例驗證", "skill": "資料判讀", "difficulty": 3, "id": 19}, {"question": "酒駕修法加重罰款反映了公民參與的何种運作機制？", "options": ["民眾透過媒體發聲，間接驅動政府調整政策", "只有少數人投書才能讓法律立刻更改的簡單過程", "政府主動修法與民意完全無關的封闭程序", "酒駕問題因罰款提高就必然永遠消失不再發生"], "answer": 0, "explanation": "教材點名酒駕案作為人民驅動政策改變的案例，強調媒體橋樑與社會壓力機制。選項B過度簡化；C否定民意作用；D結果承諾過於樂觀。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "民意與政策互動關係", "skill": "因果分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "小明每天搭乘公立學校巴士上學，這條免費服務背後體現了憲法哪兩個概念的連結？", "options": ["人民納稅義務與政府提供公共服務的責任", "服兵役義務與國防安全保障", "言論自由與新聞報導自由", "參政權利與政黨輪替機制"], "answer": 0, "explanation": "教材建立納稅─公共建設─基本權利的完整邏輯鏈，公校巴士正是稅金支撐公共服務的實例。其餘選項與該情境無直接因果鏈。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "權利義務的一體兩面整合", "skill": "綜合分析", "difficulty": 4, "id": 21}, {"question": "若某個社區想把住宅區改建為公園，最合適的行動順序應是什麼？", "options": ["居民發起連署陳情→媒體廣泛報導→政府評估立法或調度資源→地方執行規劃", "直接強行拆除私人建築→事後通知政府→等待議會表決", "委託私人建築公司自行施工→完成后申請報備", "只在網路上發言抱怨而不採取任何實際行動"], "answer": 0, "explanation": "教材示範公民參與的多步驟過程，從民意匯聚到政策回應皆有案例可循。選項BCD分別涉及暴力、偽法及消極不作为，皆違背民主參與的正當程序。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "公民參與管道之綜合評析", "skill": "情境應用", "difficulty": 4, "id": 22}, {"question": "某縣市長在任內積極推動綠色運輸政策，但受到部分居民的反彈聲浪。依據教材所講的民主運作原理，最適合的應對方式是什麼？", "options": ["透過公開聽證會傾聽民意，同時堅持環境永續的長期目標加以溝通說明的方式", " ignoring 所有反對聲音強制推行", "為了討好少数人而立即完全放棄該政策", "解散縣議會並繞過監督機構單獨決策"], "answer": 0, "explanation": "教材強調民意驅動政策但也重視公民監督與政府回应的雙向互動。選項B壓迫民意、C屈從短期利益、D破坏憲政體制皆不可取。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "民意監督與施政抉擇的平衡", "skill": "高階應用", "difficulty": 4, "id": 23}, {"question": "五權分立制度與一般所知的三權分立最大差異在哪裡？", "options": ["五權增加了考試院與監察院，形成更細密的職能分工與相互監督網絡", "五權只是把三權拆成五個部門並沒有實質差異", "五權制度完全照搬自美國沒有本土特色", "三權分立比五權更為落后所以台灣從未採用過"], "answer": 0, "explanation": "教材點出五權為行政院、立法院、司法院、考試院、監察院，考試與監察兩權是三權體系中所沒有的專責機關。選項BCD皆為明顯誤解。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "五權與三權制度比較", "skill": "比較分析", "difficulty": 4, "id": 24}, {"question": "某地發生污染事件，當地居民集體向環保署陳情並舉辦記者會，最終促使 stricter 法規出台。這個案例凸顯了公民參與的什麼特質？", "options": ["多樣管道叠加使用可產生強大的政策改變推力", "單一管道就足以解决所有社會問題", "公民參與只會帶來混亂不會有任何正面效果", "政府從來不會因为外力强壓而作出任何改變"], "answer": 0, "explanation": "教材呈現陳情、媒體、集會等多種管道协同作用的真實案例。選項B低估問題複雜性；C與教材實例矛盾；D忽視前述多個成功修法的證據。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "多元參與機制的成效評估", "skill": "綜合評鑑", "difficulty": 4, "id": 25}, {"question": "憲法既然保障了人民眾多權利，為什麼還要规定義務？", "options": ["權利與義務相輔相成，義務是維持權利得以實現的社會基礎", "權利本身就足夠自動運作不需要義務配合", "規定義務只是為了讓人民负担更多麻煩", "義務是完全獨立於權利之外的另一套不相干制度"], "answer": 0, "explanation": "教材反覆強調權利義務一體兩面，納稅支撐公共服務即為最佳例證。選項BCD皆將二者割裂看待，與教材主旨根本矛盾。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "權利義務辯證關係", "skill": "推論解釋", "difficulty": 4, "id": 26}, {"question": "某位高中生想影響國家教育政策的改革，他最有效且合法的途徑組合应该是？", "options": ["參加青年議員諮詢會議表達意見，同時關注公民投票議題並理性發表看法", "偷偷塗改教育部網站的資訊然後散播謠言", "拒絕上學以示抗爭迫使政府屈服", "利用社群媒體造謠攻擊所有政治人物"], "answer": 0, "explanation": "教材鼓勵年輕人以合法、理性、多元的方式參與公共事務。選項BCD皆違法或過度激進，不僅不能實現目標還會損害自身權益。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "青年參政管道的策略選擇", "skill": "情境應用", "difficulty": 4, "id": 27}, {"question": "流浪動物保護修法過程顯示，公民參與除了投票以外還能透過哪些方式發揮影響力？", "options": ["觀看紀錄片引發共鳴、轉發討論擴散 awareness、連署支持修法提案等文化與組織行動", "只有不斷在政府大門前靜坐絕食才有辦法推動改變", "依賴少數政治明星個人魅力来决定立法走向", "完全由政府內部閉門決策民眾只需接受結果"], "answer": 0, "explanation": "教材以《十二夜》為例說明文化作品如何凝聚共識並催生政策變革。選項B範圍過窄排他；C個人崇拜不符合民主精神；D消極被動違背參與原則。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "非傳統參政方式的價值肯定", "skill": "綜合分析", "difficulty": 4, "id": 28}, {"question": "中央制定全國性交通規範，而地方政府設置行人優先區，這套運作最能印證憲法設計的什麼精神？", "options": ["各司其職又相互合作的均權精神", "中央全盤掌控一切避免地方出錯的集權理念", "地方各行其是造成全國混亂的分散狀態", "中央與地方毫無關聯各自為政的二元格局"], "answer": 0, "explanation": "教材以行人路權為例精闢闡釋均權制度的運作邏輯。選項B是極端中央集權；C否定統一規範必要性；D否認互動關係皆失真。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "均權制度的深層意涵", "skill": "概念辨析", "difficulty": 4, "id": 29}, {"question": "倘若某一天你發現社區附近的公園年久失修，依据教材所传达的理念，你最積極且恰當的做法應該是？", "options": ["主動向里鄰長或公所反映問題，請求協調撥用稅金進行翻修改善", "認爲那是政府的事跟自己無關就不去處理", "擅自進入公園私自拆毀重建然後聲稱是自己做的", "在網路上 anonymously 辱罵管理單位卻沒有任何實際行動"], "answer": 0, "explanation": "教材倡導公民積極參與並善用各種合法管道監督政府。反映需求是正当權利也是履行公民責任。選項BCD分別為消極冷漠、違法破壞與虛空謾罵，皆不利问题解决。", "subject": "公民", "unit": "中華民國憲法概論", "concept": "公民意識與實際行動的結合", "skill": "高階應用", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
