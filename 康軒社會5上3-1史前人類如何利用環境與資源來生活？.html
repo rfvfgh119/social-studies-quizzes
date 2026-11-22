@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上3-1史前人類如何利用環境與資源來生活？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "歷史", "grade": "國中", "unit": "臺灣史前時代", "topic": "史前文化的三階段演進與考古遺址", "filename": "康軒社會5上3-1史前人類如何利用環境與資源來生活？", "summary": "以遊戲改版比喻說明台灣史前三時代的技術演進、遺址特徵與考試重點。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "台灣史前時代大致可分為哪三個階段？", "options": ["舊石器時代、新石器時代、金屬器時代", "石器時代、青銅器時代、鐵器時代", "捕獵時代、農耕時代、工業時代", "舊石器時代、青銅器時代、鐵器時代"], "answer": 0, "explanation": "教材明確指出史前時代分成三段：舊石器時代、新石器時代與金屬器時代。其餘選項雖為一般歷史分期名詞，但非本單元所講之三分法。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "史前時代三期劃分", "skill": "時間軸排序與分期歸類能力", "difficulty": 2, "id": 1}, {"question": "舊石器時代的基本生存技能有哪些？", "options": ["用火、採集、漁獵、打製石器", "磨製石器、農業、陶器、畜養", "冶鐵、航海、貿易、文字", "採集、畜牧、鑄銅、手工編織"], "answer": 0, "explanation": "教材指出舊石器時代四大基本生存技能為用火、採集、漁獵、打製石器。B選項為新石器時代技能，C、D選項技術年代錯置。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "舊石器時代生活型態", "skill": "概念辨識能力", "difficulty": 2, "id": 2}, {"question": "距今約七千年前開始上線的新石器時代，其核心亮點是哪三樣？", "options": ["磨製石器、農業生產、製作陶器", "打製石器、漁獵採集、穴居", "冶鐵技術、外銷貿易、城市發展", "牛耕犁田、絲綢紡織、青銅禮器"], "answer": 0, "explanation": "教材明載新石器時代三大核心亮點為磨製石器、農業生產、製作陶器。B為舊石器時代，C為金屬器時代及更晚時期，D為中國大陸商周特徵。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "新石器時代三大核心", "skill": "時間軸排序與分期歸類能力", "difficulty": 2, "id": 3}, {"question": "以下哪一項考古遺址屬於「金屬器時代」？", "options": ["十三行遺址", "卑南遺址", "八仙洞遺址", "大坌坑遺址"], "answer": 0, "explanation": "十三行遺址位於新北八里，是台灣西部最重要的金屬器時代遺址。卑南為新石器時代，八仙洞屬舊石器時代，大坌坑未在本教材中提及。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "考古遺址年代歸屬", "skill": "考古證據解讀能力", "difficulty": 2, "id": 4}, {"question": "「豐田玉」產自台灣的哪個地區？", "options": ["花蓮壽豐鄉", "臺東卑南", "新北八里", "台東八仙洞"], "answer": 0, "explanation": "教材說明豐田玉產自花蓮壽豐鄉的豐田地區，該地自古盛產優質透閃石玉，是當時重要的貿易資源。其餘選項皆為其他遺址所在地。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "重要資源與貿易網路", "skill": "基本概念辨析能力", "difficulty": 2, "id": 5}, {"question": "卑南遺址出土的著名文物是什麼？", "options": ["人獸形玉質耳飾", "铁刀與炼鐵渣", "人形陶偶與豬形陶偶", "玻璃珠與瑪瑙飾品"], "answer": 0, "explanation": "卑南遺址最著名的出土文物為精緻的人獸形玉質耳飾。鐵刀與煉鐵渣屬於十三行遺址，陶偶亦出自十三行，玻璃珠和瑪瑙飾品為外來交易物品。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "卑南遺址特色文物", "skill": "考古證據解讀能力", "difficulty": 2, "id": 6}, {"question": "舊石器時代的人類居住環境為何？", "options": ["多半住在天然岩洞里", "建造石板屋固定聚居", "打造木結構永久性房屋", "在河邊修建防洪堤岸"], "answer": 0, "explanation": "教材指出舊石器時代人類沒有永久住所，多半住在天然岩洞裡，隨時應對環境變化。B為卑南遺址石板屋特色，C、D均屬後世技術。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "舊石器時代居住型態", "skill": "時間軸排序與分期歸類能力", "difficulty": 2, "id": 7}, {"question": "金屬器時代大約開始於多久以前？", "options": ["大約兩千多年前", "約七千年前", "約五萬年前", "約三百多年前"], "answer": 0, "explanation": "教材明確寫道金屬器時代大約兩千多年前煉鐵技術傳入臺灣後登場。七千年前為新石器時代，五萬年前為舊石器時代，三百多年前不符史實。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "金屬器時代起始時間", "skill": "時間軸排序與分期歸類能力", "difficulty": 2, "id": 8}, {"question": "十三行遺址位於台灣的哪個縣市？", "options": ["新北市八里", "花蓮縣壽豐鄉", "臺東市", "基隆市中正區"], "answer": 0, "explanation": "教材指出十三行遺址位于新北八里，是台灣西部最重要的金屬器時代遺址。B為豐田玉產地，C為卑南遺址所在地，D未在本教材中出現。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "十三行遺址地理位置", "skill": "基本概念辨析能力", "difficulty": 2, "id": 9}, {"question": "根據教材，台灣最早的人类活動足跡大約出現在多久以前？", "options": ["大約五萬年前", "大約七千年前", "大約兩千年前", "大約一百年前"], "answer": 0, "explanation": "教材指出考古證據顯示早在五萬年前臺灣就有史前人類活動足跡，這段時間對應舊石器時代初期。七千年前是新石器時代開始，數字不可混淆。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "台灣史前人類的起點", "skill": "時間軸排序與分期歸類能力", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "「打製石器」與「磨製石器」最主要的差異在哪裡？", "options": ["打製是用敲打成形，磨製是用砥石摩擦使刃口平滑鋒利", "打製石器比磨製石器使用年代更晚", "磨製石器只需要敲打，不需要任何後處理", "打製石器邊緣光滑鋒利，磨製石器反而粗糙"], "answer": 0, "explanation": "教材明確說明：打製是把石頭敲打成形，邊緣粗糙；磨製則把石器放在砥石上來回摩擦，做出平滑鋒利的刃口。B、C、D皆與教材所述相悖。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "打製與磨製石器工藝差異", "skill": "比較分析與概念辨析能力", "difficulty": 3, "id": 11}, {"question": "新石器時代出現的「農業生產」對人類生活方式造成什麼關鍵改變？", "options": ["促使人類由遊移改為定居生活", "使人類學會了航海貿易技術", "讓工具材質從石頭轉向金屬", "讓所有人類都可以從事玉石雕刻"], "answer": 0, "explanation": "教材說明因為有了農業，人類不需要天天追逐食物來源，作物生長周期迫使留在一處照顧，於是聚落形成、房屋固定，進入定居生活。B、C、D均非農業直接造成的結果。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "農業革命與定居生活", "skill": "因果分析能力", "difficulty": 3, "id": 12}, {"question": "豐田玉從花蓮運送到台東卑南遺址，這件事說明了新石器時代怎樣的現象？", "options": ["當時已有島內物資流通與貿易路線", "卑南遺址居民自行到花蓮開採玉石", "花蓮與台東之間有定期的海上移民活動", "玉料是通過中國大陸經海路輸入台灣的"], "answer": 0, "explanation": "教材說明玉料從花蓮運到台東，代表當時已有島內貿易路線，這種物資流動是早期文明的標配。B、D缺乏教材證據支持，C則是過度推論，原物料運輸不等於人口移民。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "島內物資流通與貿易網絡", "skill": "資料判讀與歷史推論能力", "difficulty": 3, "id": 13}, {"question": "為什麼說「陶器」不是舊石器時代就已經有的？", "options": ["因為教材把陶器列在新石器時代的三大核心亮點之一", "因為陶器必須用火燒製，而舊石器時代不會用火", "因為所有考古證據都顯示陶器出現於金屬器時代", "因為舊石器時代的人類根本不需要容器"], "answer": 0, "explanation": "教材將磨製石器、農業生產、製作陶器並列為新石器時代的三大核心亮點，並特別提醒不要誤以為陶器出現在舊石器時代。B錯誤因為舊石器時代已學會用火；C和D也非教材所述。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "陶器時代歸屬與常見誤區", "skill": "概念辨析能力", "difficulty": 3, "id": 14}, {"question": "十三行遺址出土了大量「煉鐵渣」，這項證據最能說明什麼？", "options": ["十三行人不僅使用鐵器，也掌握自主煉鐵的技術", "十三行遺址的居民以貿易進口鐵器為主", "當時臺灣已經有成熟的鐵器出口產業", "十三行居民的冶金技術來自中國大陸直接移入"], "answer": 0, "explanation": "教材說明十三行遺址發現大量鐵渣、鐵刀、鐵鋤等，且指出「十三行人不只是用鐵，還自己炼铁」。A符合此推論；B與出土煉鐵渣矛盾；C、D皆為教材未提及的過度推論。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "十三行遺址煉鐵技術", "skill": "考古證據解讀與歷史推論能力", "difficulty": 3, "id": 15}, {"question": "十三行遺址出土的「人面陶罐」推測用於什麼目的？", "options": ["宗教儀式或墓葬用途", "日常飲水與儲存食物", "裝飾居所牆壁", "記錄文字的書寫工具"], "answer": 0, "explanation": "教材指出人面陶罐推測是「用於宗教儀式或墓葬用途」，代表當時人們在物質改善之外也有了精神文化需求。A正確；B、C、D皆為不符合教材記載的錯誤推測。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "十三行遺址出土文物功能推測", "skill": "考古證據解讀與歷史推論能力", "difficulty": 3, "id": 16}, {"question": "新石器時代「定居生活」形成後，對社會結構帶來什麼影響？", "options": ["社會結構跟著複雜化，出現聚落、設施與墓地", "所有居民開始從事同一種工作，社會趨向平等", "聚落人數減少，部落規模縮小到家庭單位", "人們不再需要分工合作，彼此完全獨立生活"], "answer": 0, "explanation": "教材指出隨著農業穩定、聚落形成（房屋、儲藏設施、墓地固定下來），「社會結構也跟着複雜化」。A正確；B、C、D均與教材描述相反或缺乏依據。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "定居生活與社會複雜化", "skill": "因果分析能力", "difficulty": 3, "id": 17}, {"question": "為什麼十三行遺址被形容為「高端裝備副本所在地」？", "options": ["因為此地出土豐富的鐵器與煉鐵殘渣，代表高階科技", "因為遺址位於高山之上，攀登難度極高", "因為出土文物全部是黃金打造的武器", "因為十三行遺址至今尚未完全發掘完畢"], "answer": 0, "explanation": "師長用遊戲比喻說明，十三行遺址出土大量鐵器及煉鐵渣，象徵當時的科技高度，如同遊戲中的高端裝備副本。B、C、D皆不符合教材所述內容。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "十三行遺址科技意義解讀", "skill": "概念辨析與資料判讀能力", "difficulty": 3, "id": 18}, {"question": "以下關於玻璃珠與瑪瑙飾品的敘述，何者符合教材內容？", "options": ["它們有可能是透過貿易從東南亞甚至更遠地區而來", "它们是台灣本地生產的主要商品", "它們屬於舊石器時代的典型出土物", "它們是用來作為農業生產的工具"], "answer": 0, "explanation": "教材指出金屬器時代交換範圍擴展到亞洲各地，玻璃珠、瑪瑙飾品可能來自東南亞甚至更遠地區，顯示外貿網路的擴大。A正確；B、C、D皆與教材所述矛盾。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "金屬器時代對外貿易範圍", "skill": "資料判讀能力", "difficulty": 3, "id": 19}, {"question": "下列有關三段史前時代更迭關係的描述，何者最符合教材內容？", "options": ["三個時代是漸進演化，偏远區域可能滯留較早階段", "舊石器時代結束後，全臺灣立刻全面進入新石器時代", "新石器時代結束時，所有人類同時學會了煉鐵技術", "三段時代各自獨立，毫無技術傳承關係"], "answer": 0, "explanation": "教材特別強調這三個時代「並不是斷層式切換，而是漸進演化的過程，某些偏遠區域可能還停留在較早的階段」。A正確；B、C、D皆為過度簡化或錯誤敘述。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "時代演進的非同步性", "skill": "綜合理解與概念辨析能力", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "如果某位考生在考試中遇到這樣一道題：『以下哪一項是舊石器時代的典型特徵？』他應該選哪一項才正確？", "options": ["用火、採集、漁獵、打製石器", "磨製石器、農業生產、定居生活", "冶鐵技術、外銷貿易、城鎮發展", "陶器製造、玉器雕刻、石板屋建築"], "answer": 0, "explanation": "根據教材，舊石器時代的核心技能為用火、採集、漁獵、打製石器，無農業、無永久住所、無陶器。B为新石器時代特徵，C为金属器时代及以后，D混合了新石器与金属器时代元素，易造成混淆。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "舊石器時代特徵綜合辨析", "skill": "概念辨析與跨知識整合能力", "difficulty": 4, "id": 21}, {"question": "如果你在野外考察中看到一批精美的玉器，且得知它們出自卑南遺址，你怎麼判斷它們所屬的時代與背景？", "options": ["這是新石器時代晚期製品，反映當時已有玉器雕刻技術與島內物資交流", "這是舊石器時代的製品，因為台灣很早就有人類活動", "這是金屬器時代的出土物，因為玉器需要金屬工具才能精雕細琢", "這是現代仿製品，古代不可能做出如此精美的玉器"], "answer": 0, "explanation": "教材說明卑南遺址是新石器時代遺址，以精美的人獸形玉質耳飾聞名，且玉料從花蓮豐田運至台東，顯示當時已有島內資源流通。A完全符合教材；B時代錯誤，C玉器技術不需金屬，D否定了考古發現。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "卑南玉器與新石器時代文明程度", "skill": "考古推論與情境應用能力", "difficulty": 4, "id": 22}, {"question": "某市政府計畫在某處史前遺址旁建設社區活動中心，引發當地居民與文史工作者的爭議。根據教材理念，下列哪種做法最為恰當？", "options": ["兼顧文化資產保存價值與地方信仰、生活需求，尋求兩全的解決方案", "為了加速地方發展，應優先拆除遺址以擴建社區設施", "完全不考慮居民意見，原地將所有遺址全面封閉保護", "只保留最具商業價值的文物區，其餘土地一律開發"], "answer": 0, "explanation": "教材以遊戲比喻強調：既要保留經典老地圖（文化資產守護），又要給新玩家好的體驗（社區需求），兩者之間要找平衡點。A符合同一理念；B、C、D皆偏頗一端，不符多面向思考的要求。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "遺址保存與地方發展之平衡觀點", "skill": "多元觀點批判與議題論述能力", "difficulty": 4, "id": 23}, {"question": "假設你在研究一個尚未被完全發掘的遺址，出土了以下器物：打製石器、少量粗陶片、人類骨骸。根據教材的分類框架，這個遺址最有可能是哪個時代？", "options": ["舊石器時代，因為以打製石器為主，陶器極不發達或未正式出現", "新石器時代，因為已經出現了陶器碎片", "金屬器時代，因為有三種不同的出土文物", "無法判斷，因為教材沒有提供足夠的資訊"], "answer": 0, "explanation": "教材明確指出新石器時代三大亮點含陶器，而舊石器時代只有打製石器、採集漁獵等基本技能。出土打製石器為主且僅有零星粗陶片，偏向舊石器時代末期的過渡狀態，不具備新石器時代完整的陶器與磨製石器特征。B選項將極少量的陶片等同於完整陶器文化，過於草率。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "考古遺址年代判定與過渡期理解", "skill": "考古推論與綜合分析能力", "difficulty": 4, "id": 24}, {"question": "如果一個學生說：「我認為歷史進步就像遊戲更新一樣，舊版本的功能會在新版本中完全消失。」你根據教材內容，會如何糾正他的想法？", "options": ["提醒他教材強調時代更迭是漸進式的，較早階段的文化在某些區域仍可能持續存在", "同意他的說法，因為新版本一定比舊版本高級得多", "告訴他遊戲改版的比喻只代表好玩，不能用來理解歷史演進", "說這不重要，只要記住考試重點就好"], "answer": 0, "explanation": "教材明確以「不同伺服器版本並存」比喻歷史演進的非同步性，並說明「某些偏遠區域可能還停留在較早的階段」。A符合此比喻與教學意圖；B過度簡化，C、D忽視了教材的核心訊息。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "史前時代漸進演進的非同步性", "skill": "綜合理解與批判思考能力", "difficulty": 4, "id": 25}, {"question": "十三行遺址出土了人形陶偶、豬形陶偶與人面陶罐，從這些發現可以推論當時的人類社會有什麼特徵？", "options": ["物質條件改善後，精神文化與審美需求也同步成長，顯示文明已具一定複雜度", "當時人類只會玩賞玩具，沒有實際的宗教信仰", "這些陶偶只是不小心被埋入地下的生活用品，沒有特殊意義", "十三行人已經擁有文字系統，用來記錄陶偶的用途"], "answer": 0, "explanation": "教材明確指出這些陶偶代表古人「已經有審美需求和精神世界」，是「物質條件改善之後精神文化同步成長」的文明演進典型特徵。A完整詮釋此意義；B、C過度簡化或否認其文化價值，D的文字說法教材完全未提及。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "出土文物與精神文化生活的關聯推論", "skill": "考古證據解讀與歷史推論能力", "difficulty": 4, "id": 26}, {"question": "下列四個關於台灣史前時代的陳述中，哪一個最不容易出錯，符合教材的主要論述？", "options": ["新石器時代因為農業與陶器的出現，使人類開始走向定居生活與社會複雜化", "舊石器時代的人類已經掌握了穩定的農業耕作技術", "金屬器時代的人類完全放棄了石器，轉而只用鐵器做所有事情", "三段史前時代是同時在台灣各地同時發生的"], "answer": 0, "explanation": "A精確概括教材中新石器時代三大亮點及其連鎖效應。B錯誤，舊石器時代無農業；C錯誤，金屬器時代仍有石器使用；D錯誤，教材強調三個時代是漸進且不同步的演進過程。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "各時代核心特徵的完整理解", "skill": "概念辨析與判斷能力", "difficulty": 4, "id": 27}, {"question": "如果你要向同學解釋「為什麼新石器時代被視為台灣史前文化的一大躍升」，你最適當的切入點是什麼？", "options": ["以「定居生活＋技術升級＋資源交換」三位一體的方式說明其綜合影響", "只強調磨製石器比打製石器好用這一項技術差異", "單單列出新石器時代的所有年份，幫助同學背誦記憶", "告訴同學新石器時代最重要的一點就是開始吃農作物"], "answer": 0, "explanation": "教材以遊戲改版比喻，強調新石器時代的多重變革共同造就生活品質飆升，包括磨製石器、農業、陶器、定居生活與島內貿易等多方面。A從綜合角度說明，B、D過於片面，C只是死背方法不符核心理念。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "新石器時代變革的綜合評價", "skill": "綜合分析與表達能力", "difficulty": 4, "id": 28}, {"question": "有一段留言說：「以前我只會背年代名稱，現在知道背後的故事脈絡，考試題看起來親切多了。」根據教材結尾，「故事脈絡」最不包括以下哪一項？", "options": ["每一項技術突破都伴隨著社會結構、經濟模式與精神生活的整體改變", "史前歷史只是一堆冷冰冰的數字與專有名詞，不需要理解深層意義", "各個考古遺址各有特色，像時間機器一樣封存著古代的記憶", "不同時代是漸進演化的，不同區域有不同的進程快慢"], "answer": 1, "explanation": "教材主旨正是要打破「枯燥的文字堆砌」印象，引導學生看見歷史脈絡。B與教材立場完全相反，不是故事脈絡的一部分。A、C、D皆符合教材強調的核心理念。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "學習史前歷史的態度與方法", "skill": "批判理解與元認知能力", "difficulty": 4, "id": 29}, {"question": "如果把三段史前時代想像成三個關卡等級，下列哪組「關卡名稱—核心戰力」配對最貼近教材描述？", "options": ["舊石器＝徒手求生新手村／打製石器＋漁獵採集＋用火；新石器＝穩健基地防守期／磨製石器＋農業＋陶器＋定居；金屬器＝高端裝備擴展局／鐵器＋外銷貿易網", "舊石器＝高端裝備局／冶鐵＋外銷；新石器＝新手村／採集＋漁獵；金屬器＝穩健期／石器為主", "舊石器＝穩健期／定居＋農業；新石器＝高手局／煉鐵＋航海上；金屬器＝新手村／打製石器", "以上三種配對都可以，因為時代分類本來就沒有一定標準"], "answer": 0, "explanation": "A完整且準確呼應教材的三段式比喻與各時代核心技術：舊石器打製石器與遊獵生活，新石器磨製石器與定居農業，金屬器煉鐵與廣泛貿易。B、C時序完全顛倒，D雖提及開放性但忽略了考試有正確答案的事實。", "subject": "歷史", "unit": "臺灣史前時代", "concept": "三段時代核心特徵的整體梳理", "skill": "知識結構化與表格整理能力", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
