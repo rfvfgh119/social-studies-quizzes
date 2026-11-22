@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林社會5上4-3土地開發與環境保護該如何抉擇？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "社會", "grade": "國中三年級", "unit": "人地關係與環境永續", "topic": "臺灣的土地開發、環境議題與傳統風土建築", "filename": "翰林社會5上4-3土地開發與環境保護該如何抉擇？", "summary": "以遊戲比喻解說臺灣人地互動、環境永續議題與傳統風土建築文化。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "課文中以遊戲比喻說明，過度開發山坡地會觸發哪一種環境負面效果？", "options": ["觸發環境Debuff，導致水土流失加劇", "增加生態多样性，改善居住品質", "促進經濟成長，提升地方繁榮", "改善排水系統，減少洪澇風險"], "answer": 0, "explanation": "教材明確指出過度開發山坡地如同「開了外掛」，直接觸發環境Debuff，造成水土流失加劇。其餘選項為正面結果，與教材內容相反。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "環境Debuff（水土流失）的成因", "skill": "知識辨識", "difficulty": 2, "id": 1}, {"question": "南投廬山溫泉區在哪一年因颱風影響而遭遇重大變故？", "options": ["民國97年辛樂克颱風", "民國88年九二一大地震", "民國91年納莉颱風", "民國100年莫拉克颱風"], "answer": 0, "explanation": "教材明確指出民國97年辛樂克颱風使塔羅灣溪暴漲，導致溫泉飯店倒塌。其他年份或颱風名稱均非課文所述事件。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "廬山溫泉區災變時間", "skill": "知識辨識", "difficulty": 2, "id": 2}, {"question": "西南沿海因地層下陷，政府推動的補救措施是鼓勵民眾改種什麼作物？", "options": ["改種高粱作物", "改種水稻作物", "改種甘蔗作物", "改種香蕉作物"], "answer": 0, "explanation": "教材明確指出政府推出補丁方案，鼓勵民眾改種高粱作物，因其需水量少、省水環保且可獲現金補助。其他作物不在課文敘述範圍內。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "地層下陷的補救措施", "skill": "知識辨识", "difficulty": 2, "id": 3}, {"question": "高雄愛河整治的主要工程是什麼？", "options": ["興建污水下水道工程", "拓寬河道與裝上路燈", "拆除沿岸工廠", "移植大量水生植物"], "answer": 0, "explanation": "教材指出政府投入經費整治愛河，透過「興建污水下水道工程」將廢水處理後再排放，從而恢復河川品質。拓寬河道與裝上路燈是日本人時期所做的早期建設，非整治重點。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "愛河整治對策", "skill": "知識辨識", "difficulty": 2, "id": 4}, {"question": "聯合國訂定的世界海洋日是在每年的哪一天？", "options": ["六月八日", "三月十二日", "四月二十二日", "十月四日"], "answer": 0, "explanation": "教材明確提到聯合國訂定世界海洋日為每年六月八日。其他日期分別對應其他地方性或國際性環保紀念日，並非課文內容。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "世界海洋日的日期", "skill": "知識辨識", "difficulty": 2, "id": 5}, {"question": "澎湖花宅聚落選擇建在何處，主要因為哪裡有利於撈捕漁獲？", "options": ["天然港灣", "高山梯田", "河口三角洲", "石灰岩溶洞"], "answer": 0, "explanation": "教材指出花宅聚落位於「天然港灣」，利於撈捕漁獲；小山丘則供耕種作業，漁農業並存滿足生活所需。其他選項與花宅地理位置無關。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "花宅聚落地理環境", "skill": "知識辨識", "difficulty": 2, "id": 6}, {"question": "魯凱族石板屋的屋頂設計仿造哪種動物的鱗片排列？", "options": ["百步蛇", "雲豹", "台灣黑熊", "台灣蜥蜴"], "answer": 0, "explanation": "教材說明魯凱族石板屋屋頂鋪設仿「百步蛇」鱗片由上而下穩固排列，不怕強風豪雨。魯凱族自稱為雲豹傳人，但屋頂設計靈感來自百步蛇。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "魯凱族石板屋設計特色", "skill": "知識辨識", "difficulty": 2, "id": 7}, {"question": "課文所提廬山溫泉區遷移計畫中，業者被輔導遷移至哪個地方作為新據點？", "options": ["埔里福興農場", "水里傷賓館", "信義鄉明潭地區", "仁愛鄉翠峯湖"], "answer": 0, "explanation": "教材明確指出南投縣政府輔導業者遷移至「埔里福興農場」。此為課文提及的唯一遷移地點。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "廬山溫泉區遷村新據點", "skill": "知識辨識", "difficulty": 2, "id": 8}, {"question": "根據課文，魯凱族石板屋的牆壁有何特點？", "options": ["石板堆疊不用膠著物，留有縫隙可通風", "使用水泥黏合確保防震抗風", "以磚塊砌成，外面塗抹石灰防潮", "採用竹編結構內填泥土保暖"], "answer": 0, "explanation": "教材描述石板屋以板岩頁岩堆疊，不使用膠著物，因此有縫隙可透氣，夏天隔熱冬天煙霧能排出。這正是會呼吸的房子的特色。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "魯凱族石板屋建築構造", "skill": "知識辨識", "difficulty": 2, "id": 9}, {"question": "課文提到西南沿海養殖漁業超抽地下水，會造成下列何種結果？", "options": ["地層下陷，房屋道路受損", "土壤鹽分增加，農作物豐收", "地下水位上升，灌溉更方便", "海水倒灌減少，海岸線擴大"], "answer": 0, "explanation": "教材指出超抽地下水就像地基不穩的城堡，地下空間被掏空，觸發地層下陷Debuff，導致地面沉沒、房屋道路受損。其他選項與因果關係不符。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "地層下陷的成因與後果", "skill": "知識辨識", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "根據課文，西南沿海地層下陷的主因是「超抽地下水」，以下哪一項最能說明其因果機制？", "options": ["地下水被大量抽出後，地下空間掏空，如同地基不穩導致地面沉沒", "降雨量減少使土壤乾燥收縮，進而引起地表隆起破壞", "海水温度升高導致珊瑚礁白化，使岸邊土地失去支撐", "地殼板块擠壓造成岩層斷裂，形成大規模的地面塌陷"], "answer": 0, "explanation": "教材以「地基不穩的城堡」比喻超抽地下水後地下空間被掏空，導致地層下陷。選項B、C、D引入課文未提及的機制（降雨減少、海溫升高、板塊擠壓），無法從教材推導。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "地層下陷的因果機制", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "課文以「遊戲」比喻人地互動，下列哪一項最貼近此比喻的核心概念？", "options": ["過度開發如同開外掛違反規則，最終觸發懲罰機制", "玩家可以在任何地區無限開發資源而不受限制", "遊戲設計者會主動幫助玩家修復所有錯誤行為", "地形地貌永遠不會改變，玩家可以任意改造"], "answer": 0, "explanation": "課文核心比喻：原住民族「完美契合伺服器規則」，而過度開發山坡地等行為如同「開外掛」，觸發環境Debuff（山崩土石流等懲罰）。選項B、C、D皆與比喻含意相反或課文無根據。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "人地互動的遊戲比喻意義", "skill": "概念辨析", "difficulty": 3, "id": 12}, {"question": "比較高雄愛河污染與復甦兩個階段，下列敘述何者正確？", "options": ["人口增加、工廠林立且污水下水道未跟上，導致愛河污染；後經下水道工程整治得以復甦", "愛河污染是因日本時代拓寬河道所致，台灣光復後才加以整治恢復", "愛河復甦主因是民眾自發淨灘，政府並未投入相關經費治理", "愛河自古即遭嚴重污染，日本時期便已嘗試整治但未成功"], "answer": 0, "explanation": "教材指出愛河在現代城市化進程中因人口增加、工廠林立、污水下水道未跟上而污染；政府後來投入經費興建污水下水道工程使之復甦。選項B將污染歸咎日本時期，選項C忽略政府投入，選項D與課文明確記載之時間線不符。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "愛河污染的成因與復甦機制", "skill": "比較分析", "difficulty": 3, "id": 13}, {"question": "課文提到澎湖花宅聚落的建築取材珊瑚礁岩、玄武岩、泥沙等地在材料，此做法體現了什麼概念？", "options": ["就地取材，降低運輸成本並適應當地環境", "進口高級建材以展現聚落富庶面貌", "完全依賴外來物資供應穩定施工品質", "刻意保留原始地貌不做任何建築改造"], "answer": 0, "explanation": "課文強調花宅聚落「普遍取自在地材料」，形成具有生態意義的建築，此即就地取材、順應環境的典型表現。選項B、C與課文「就地取材」矛盾；選項D忽略了聚落確實有建造活動的事實。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "花宅聚落就地取材的智慧", "skill": "概念應用", "difficulty": 3, "id": 14}, {"question": "魯凱族石板屋的設計考慮了多個面向，下列何者「非」課文所述的功能目的？", "options": ["利用石板縫隙排除室內煮食用煙霧", "屋頂仿百步蛇鱗片排列以防強風豪雨", "狹窄出口增加敵人入侵時的防禦時間", "以大型落地玻璃窗導入自然採光節能"], "answer": 3, "explanation": "課文提及縫隙排煙、百步蛇鱗片屋頂防風雨、狹窄出口作防禦，三者皆為石板屋的設計功能。選項D的「落地玻璃窗」是现代建築元素，課文完全未提及，且與石板屋傳統構造格格不入。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "魯凱族石板屋設計功能辨析", "skill": "概念辨析", "difficulty": 3, "id": 15}, {"question": "課文指出西南沿海地層下陷問題，政府以「改種高粱」作為補丁方案。以下哪一項最能說明該措施的合理性？", "options": ["高粱需水量少，可降低地下水抽取壓力同時提供經濟收益", "高粱生長快速，可迅速覆蓋裸露地面防止風蝕", "高粱根系深長，能將鬆軟的地層重新固定穩固", "高粱價格高價，可提高農民收入不需其他補助"], "answer": 0, "explanation": "教材明確指出高粱「需水量少省水又環保，還能獲得政府現金補助」，雙重效益減緩地下水超抽並維持農民收入。選項B、C涉及風蝕與根部固層等非課文所述機轉；選項D忽略課文提到的「政府補助」要素。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "地層下陷對策的合理性分析", "skill": "因果分析", "difficulty": 3, "id": 16}, {"question": "課文提及聯合國世界海洋日的宗旨包含多項內容，下列敘述何者「不包括」在課文所述之中？", "options": ["向人類賴以生存的海洋致敬", "了解海洋蘊含的豐富價值", "改善全球性污染問題", "強制禁止各國在所有海域進行捕魚活動"], "answer": 3, "explanation": "課文列舉世界海洋日時提到「致敬海洋、了解價值、改善污染、保護魚類資源不過度消耗」，並未主張全面禁捕，而是呼籲可持續利用。選項D屬於極端措施，與課文「不過度消耗」的平衡理念不符。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "世界海洋日宗旨的理解", "skill": "概念辨析", "difficulty": 3, "id": 17}, {"question": "課文以「副本更新」比喻廬山溫泉區的變遷，以下關於該案例的敘述何者最為準確？", "options": ["因地層滑動不安全，政府規劃保育土地永續計劃並輔導遷村", "因溫泉水量枯竭，業者自行決定搬遷至埔里經營", "因地震導致全區廢棄，政府未做任何應對措施", "因遊客人數暴增造成擁擠，政府實施限流管制"], "answer": 0, "explanation": "課文明確指出：調查發現地層滑動→區域不安全→南投縣政府發布公告規劃保育土地永續計劃→輔導業者遷至埔里福興農場。選項B忽視政府角色與地質因素；選項C與事實相反；選項D無教材根據。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "廬山溫泉區遷村案例分析", "skill": "資料判讀與綜合分析", "difficulty": 3, "id": 18}, {"question": "課文提到部分海岸面臨的挑戰包括哪些項目？以下組合何者正確？①廢棄物污染 ②人工化 ③過度開發破壞天然資源", "options": ["①②③皆是", "僅①②，不含③", "僅①③，不含②", "僅②③，不含①"], "answer": 0, "explanation": "課文明確列舉三項海岸挑戰：廢棄物污染海岸、人工化、過度開發破壞天然資源。此三項皆為不可逆損傷，需要民眾配合整體管理。選項A完整涵蓋課文所列三點。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "海岸面臨的環境挑戰", "skill": "資料判讀", "difficulty": 3, "id": 19}, {"question": "課文將土地利用分為「開發」與「保護」兩端，但其核心觀點為何？", "options": ["不是非黑即白的選擇，而是尋找永續的平衡點", "應該優先發展經濟，環境保護可在後續階段再處理", "環境保護絕對优先，任何形式的開發都是錯誤的", "开发与保护兩者沒有關聯，可以分別獨立討論"], "answer": 0, "explanation": "課文結尾總結：土地開發與環境保護「不是非黑即白的選擇，而是尋找永續的平衡點」，要像遊戲資源管理一樣既要發展又要保護生態才能玩得更久更遠。選項B、C、D皆偏離課文主旨。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "人地關係的永續平衡觀", "skill": "觀念統整", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "某鄉鎮位於山坡地，地方政府擬開發為觀光渡假村。依據課文原理，下列哪一項做法最符合永續發展的概念？", "options": ["先進行整體環境評估與地質安全檢測，制定開發與保護並重的規劃方案", "快速完成開發爭取商機，事後再處理可能產生的環境問題", "完全禁止任何開發行為，維持現狀不做任何利用", "大量砍伐林木開闢道路以方便遊客交通與アクセス"], "answer": 0, "explanation": "課文核心觀點為「開發土地不能只顧經濟利益，缺乏整體規劃會爆雷」，並強調要尋求永續平衡。選項A體現事先評估與整體規劃的精神，最符合課文道理。選項B屬課文批評的短視近利；選項C走向另一極端；選項D為課文警告的過度開發行為。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "山坡地開發的永續決策", "skill": "情境應用", "difficulty": 4, "id": 21}, {"question": "一位農民在西南沿海地區承租魚塭養蝦，近年該區地層持續下陷。若你建議他依循課文所說的永續玩法調整，下列何者最適當？", "options": ["配合政府宣導改種高粱等節水作物，減少地下水抽取以緩解地層下陷", "繼續加大抽水幅度以增加產量，用經濟效益抵消潛在風險", "放棄養殖轉向礦業開採，挖掘更多地下資源增加收入", "將魚塭填平改建高樓大廈出租，徹底改變土地使用方式"], "answer": 0, "explanation": "課文提出之「正確的資源管理」即是滿足需求同時保護環境，並以西南沿海為例說明改種高粱可省水環保並獲補助。選項A直接運用此原理解決問題；選項B延續課文所批判的超抽模式；選項C、D皆為課文未提及且可能加劇環境負擔的做法。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "地層下陷區的個人決策應用", "skill": "情境應用", "difficulty": 4, "id": 22}, {"question": "某國中小學規劃校外教學行程，老師希望帶學生認識因地制宜的传统建築智慧。若只能選擇一個地點，依據課文內容最適合的是？", "options": ["前往澎湖花宅聚落或屏東魯凱族石板屋，觀察先民如何就地取材、順應環境設計居所", "參觀台北市摩天大樓群，學習現代建築如何突破地形限制打造空中花園", "前往台北101大樓，探討高科技建材如何完全取代傳統建築形式", "前往台中工業區，了解現代化生產線如何取代手工匠藝的重要性"], "answer": 0, "explanation": "課文花宅聚落與魯凱族石板屋兩段專門展示先民就地取材、順應自然的建築智慧，正符合「因地制宜」主題。選項B、C聚焦現代建築科技，選項D講工業生產，皆偏離課文關於風土建築與人地互動的核心內容。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "風土建築教學的實務應用", "skill": "情境應用與整合分析", "difficulty": 4, "id": 23}, {"question": "某河岸社區長期遭受污水污染困擾，居民健康受損但附近工廠持續營運。若要運用課文中的案例與理念來處理此情境，最恰當的做法是？", "options": ["參考高雄愛河整治經驗，推動設置完善的污水下水道系統，讓政府投入經費根治污染源", "模仿課程中廬山溫泉區的做法，直接將整個社區搬遷至其他地區以避免污染", "放任市場機制運作，讓工廠自行決定是否投資環保設備來減少排污", "向媒體曝光此事後不再關注，相信污染會隨著時間自動消失"], "answer": 0, "explanation": "課文愛河案例顯示：透過政府投入經費、興建污水下水道工程，可將污染河川整治為親水環境，實現環境復甦。選項A正是引用此成功經驗。選項B錯誤套用廬山遷村案例；選項C忽視市場失靈可能；選項D消極被动不符合課文精神。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "愛河案例的跨情境遷移應用", "skill": "綜合分析與情境應用", "difficulty": 4, "id": 24}, {"question": "課文將原住民的生活方式比喻為「頂級玩家」，認為他們「完美契合伺服器規則」。這說法主要想傳達什麼訊息？", "options": ["原住民懂得善用山林知識與環境共生，是可持续发展的典範", "原住民的科技能力遠超越現代社會，值得全面效仿", "早期人類從未開發過任何自然資源，始終保持純樸生活", "現代人的所有行為都已破壞自然，完全没有改善空間"], "answer": 0, "explanation": "課文此比喻意在讚揚原住民族利用山林知識與環境共生的生存智慧，呼應後面提出的「永續玩法」理念。選項B過度拔高原住民科技；選項C忽略了原住民族同樣利用資源的事實；選項D過於悲觀，課文後段提供了改善的案例與方法。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "人地互動遊戲比喻的深度理解", "skill": "觀念統整與論述", "difficulty": 4, "id": 25}, {"question": "課文提到西南沿海地層下陷，政府補貼農民改種高粱。如果有一個類似情境發生在某山區村落，村民依賴超掘地下水灌溉農田導致局部地層沉降，下列哪一項對策最不適合照搬到該山區？", "options": ["直接全面禁止所有農牧活動，讓該地區完全恢复自然狀態", "引導村民改用滴灌等節水技術，並協助尋找替代水源以減輕抽取壓力", "邀請專家進行地質評估，判斷安全承載量後制定分區利用計畫", "設立環境教育園區，讓村民了解地下水资源有限性並參與保護行動"], "answer": 0, "explanation": "課文强调的是在「滿足需求同時保護環境」之間取得平衡，而非一刀切的禁止。選項A完全否定人類利用土地的需求，偏離課文「永續平衡」的核心精神。選項B、C、D皆提供兼顾發展與保護的可行路徑，較符合作品價值判斷。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "永續平衡原則的辨證思考", "skill": "價值判斷與論述", "difficulty": 4, "id": 26}, {"question": "課文說魯凱族石板屋出口狹窄可增加防守時間，這種設計反映出古人對於什麼因素的考量？", "options": ["兼顧生存需求與安全防護的綜合適應策略", "完全以戰爭防禦為唯一目的的軍事堡壘設計", "因材料不足而被迫接受的限制性建築條件", "單純基於美学考量的裝飾性入口設計"], "answer": 0, "explanation": "課文描述石板屋背山面溪、就地取材、透氣隔熱、排煙順暢、屋頂防水、狹窄出口防敵等多方面設計，整體反映的是先民在生活與安全間取得平衡的智慧。選項B將單一功能絕對化；選項C否認設計的有意義性；選項D忽略實用功能層面。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "風土建築多功能適應的分析", "skill": "深入分析", "difficulty": 4, "id": 27}, {"question": "課文結尾強調環境永續的發展需「找尋平衡點」，下列哪一項情境最能具體呈現這種平衡思維？", "options": ["政府輔導廬山業者遷村，既保障居民安全又維持部分業者生計", "為了保護動物棲地，禁止當地居民從事任何生產活動", "為了經濟成長，允許企業在保護區內隨意開發建設", "只要環境不受影響，可以無限制地開發任何可用土地"], "answer": 0, "explanation": "課文廬山案例中，政府「規劃保育土地永續計劃」並「輔導業者遷移至埔里」，同時兼顧居民安全與產業轉型，正好體現平衡思維。選項B、C、D皆偏向非黑即白的極端立場，不符合課文主張的中道永續理念。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "永續平衡的綜合評價", "skill": "觀念統整與價值判斷", "difficulty": 4, "id": 28}, {"question": "假設你是一位地方議員，收到民眾陳情希望開發家鄉山坡地興建社區。依據課文提供的全盤觀點，你最可能的回應是？", "options": ["請專業團隊進行地質与环境影响評估，並在開發計畫中納入水土保持與生態保護的措施", "完全支持開發，因為經濟利益可以解決一切問題", "完全反對開發，因為任何山坡地開發都會帶來災難性後果", "暫時擱置此案，等其他人先做實驗看看結果再決定"], "answer": 0, "explanation": "課文反覆強調的不是簡單禁止或盲目開發，而是要「整體規劃」「尋找永續平衡點」。選項A結合評估、規劃與保護，全面呼應課文精神。選項B偏激追求經濟；選項C走向環保極端；選項D消極逃避責任，三者皆不符課文指引。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "政策決策中的永續原則應用", "skill": "情境應用與价值判斷", "difficulty": 4, "id": 29}, {"question": "課文描繪澎湖花宅聚落與屏東魯凱族石板屋各有特色，兩者的共同點主要在於？", "options": ["都充分利用就地可得的材料，並根據當地自然條件進行設計", "都必須仰賴外部輸入大量現代建材才能建成", "都建在高海拔山區以避開洪水威脅", "都是近代由政府主導興建的文化資產"], "answer": 0, "explanation": "課文描述花宅聚落取材珊瑚礁岩、玄武岩等地材料，魯凱族石板屋亦以板岩頁岩就地搭建，二者皆「順應環境」利用本地資源。選項B與課文所述相反；選項C不適用於靠海的花宅；選項D兩者皆為歷史聚落而非近代官辦項目。", "subject": "社會", "unit": "人地關係與環境永續", "concept": "兩地風土建築的比較統合", "skill": "比較分析與综合", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
