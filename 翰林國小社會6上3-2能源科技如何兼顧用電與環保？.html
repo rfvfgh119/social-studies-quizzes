@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國小社會6上3-2能源科技如何兼顧用電與環保？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "三年級", "unit": "能源與環境議題", "topic": "臺灣用電結構與能源轉型", "filename": "翰林國小社會6上3-2能源科技如何兼顧用電與環保？", "summary": "本文探討臺灣用電結構與各項發電利弊，引導思考能源轉型的政策取捨。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "民國69年臺灣發電量大幅上升的主要原因，與下列哪一項最直接相關？", "options": ["住宅冷氣使用量暴增", "新竹科學園區成立帶動科技產業發展", "政府大量進口天然氣", "全民開始節約用電政策"], "answer": 1, "explanation": "教材指出民國69年新竹科學園區成立後，科技產業快速發展，使發電量暴增。住宅用電不是主因（A是陷阱），C、D教材未提及。", "subject": "社會科", "unit": "能源與環境議題", "concept": "用電增長的歷史原因", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 1}, {"question": "臺灣工業部門用電比例約佔百分之幾，為歷年最大用電主力？", "options": ["25%", "40%", "55.2%", "70%"], "answer": 2, "explanation": "教材明確指出工業部門用電佔55.2%，幾乎是住宅用電的三倍。此為考題常考的數據陷阱。", "subject": "社會科", "unit": "能源與環境議題", "concept": "工業用電比例", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 2}, {"question": "臺灣目前火力發電（煤、天然氣、石油）在整體發電結構中佔比約為：", "options": ["42%", "60%", "82%", "95%"], "answer": 2, "explanation": "教材明確指出臺灣82%的電來自火力發電，是維持供電穩定的主力，但也帶來空氣汙染與地球暖化問題。", "subject": "社會科", "unit": "能源與環境議題", "concept": "火力發電佔比", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 3}, {"question": "下列关于再生能源發電占比的敘述，何者最符合教材內容？", "options": ["再生能源已佔發電总量的一半以上", "太陽能板壽命僅5到10年就需全面汰換", "可再生能源約佔12%至12.7%，且穩定成長中", "風力發電已解決所有生態衝擊問題"], "answer": 2, "explanation": "教材指出再生能源約佔12%至12.7%，正在成長中；太陽能板壽命為20到30年（B錯），其餘選項與教材不符。", "subject": "社會科", "unit": "能源與環境議題", "concept": "再生能源發展現況", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 4}, {"question": "臺灣目前的核廢料主要貯存於哪一個地方？", "options": ["屏東恆春半島", "臺東綠島", "花蓮蘇澳港", "臺東蘭嶼"], "answer": 3, "explanation": "教材明確指出臺灣目前的核廢料存在蘭嶼貯存場，低階和高階核廢料的處置都還沒有定案。", "subject": "社會科", "unit": "能源與環境議題", "concept": "核廢料貯存地點", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 5}, {"question": "工業部門用電遠超住宅用電，其主要原因是：", "options": ["每家工廠的冷氣都比家用更耗電", "晶圓製程和科技產業需要龐大電力", "政府補貼工業用电價格較低", "住宅區人口逐年大幅下降"], "answer": 1, "explanation": "教材指出晶圓製程需要的電力恐怖，一部手機背後的運算工廠吃電量比整棟公寓還多。B最符合教材說明。", "subject": "社會科", "unit": "能源與環境議題", "concept": "工業用電原因", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 6}, {"question": "關於火力發電的敘述，下列何者為教材所指出的主要缺點？", "options": ["技術不夠成熟導致經常停電", "受天氣影響嚴重無法穩定供電", "產生空氣汙染和地球暖化問題", "發電成本比核能高出數倍"], "answer": 2, "explanation": "教材指出火力發電受天氣影響小、技術成熟是穩定主力，但帶有強力Debuff：空氣汙染和地球暖化。A、B與教材相反。", "subject": "社會科", "unit": "能源與環境議題", "concept": "火力發電優缺點", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 7}, {"question": "太阳能板壽終正寢後的處理問題，教材認為最大的技術難關在於：", "options": ["玻璃和鋁框架無法循環再利用", "整體回收成本過於高昂", "矽晶片電池的處理技術尚未突破", "台灣尚無任何太陽能板回收廠"], "answer": 2, "explanation": "教材明確指出玻璃、鋁框架可循環再利用，但矽晶片電池的處理仍是技術難關。C最準確。", "subject": "社會科", "unit": "能源與環境議題", "concept": "再生能源設備回收", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 8}, {"question": "关于能源轉型政策，教材提到政府除發展再生能源外也做了哪些事情？", "options": ["全面禁止所有火力發電廠運作", "定期稽查發電廠並規範排放標準", "強制全國關閉所有核能發電廠", "大幅提高居民用電價格以抑制需求"], "answer": 1, "explanation": "教材指出政府第一是定期稽查發電廠規範排放標準，第二是鼓勵全民節能減碳。B為正確答案。A、C、D教材未提及。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源轉型政策", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 9}, {"question": "AI產業快速發展對臺灣用電造成的主要影響為何？", "options": ["AI減少用電需求因為效率提升", "AI超級電腦的最大負載等於十萬戶家庭每日用電量", "AI對用電沒有顯著影響", "AI促使台灣轉向完全依賴核能"], "answer": 1, "explanation": "教材指出輝達在臺灣打造的AI超級電腦最大負載等於十萬戶家庭每日用電量，顯示科技進步持續推高用電需求。", "subject": "社會科", "unit": "能源與環境議題", "concept": "新科技對用電影響", "skill": "數據解讀與關鍵資訊提取", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "下列何者最能解釋「工業用電遠超住宅用電」此一現象的根本原因？", "options": ["國民生活水平提高導致家用電器增加", "科技產業的晶圓製程需要大量且穩定的電力供應", "政府長期對工業用電提供高額補貼", "住宅區面積擴張導致基礎設施耗電增加"], "answer": 1, "explanation": "教材指出晶圓製程需要的電力恐怖，一部手機背後的運算工廠吃電量比整棟公寓還多。B最符合因果推論。", "subject": "社會科", "unit": "能源與環境議題", "concept": "工業用電因果關係", "skill": "因果鏈條推論與影響評估", "difficulty": 3, "id": 11}, {"question": "關於核能發電，教材所呈現的正反觀點整合，下列何者最為恰當？", "options": ["核能完全不可取因為輻射風險太高", "核能優點是低碳穩定，缺點是核廢料處置未決", "核能發電不會產生任何放射性物質", "核能已經完美解決了所有安全疑慮"], "answer": 1, "explanation": "教材指出核能優點是只需少量原料就能提供大量電力且不放廢氣，但問題是輻射外洩會造成生態浩劫，核廢料貯放仍有巨大爭議。B精準概括正反兩面。", "subject": "社會科", "unit": "能源與環境議題", "concept": "核能利弊分析", "skill": "多角度比較與利弊辨析", "difficulty": 3, "id": 12}, {"question": "陆域風機可能引發的健康與生態問題，教材具體提到了哪些方面？", "options": ["僅限候鳥撞擊扇葉，無其他影響", "候鳥遷徙路徑受阻及低頻噪音造成人類健康問題", "風機噪音對植物生長有促進作用", "陸域風機完全沒有環境負面影響"], "answer": 1, "explanation": "教材指出風力發電的副作用包括影響候鳥遷徙路徑、撞擊鳥類機率，以及陸域風機低頻噪音造成頭痛、耳鳴、睡眠障礙甚至心血管疾病風險。B涵蓋全面。", "subject": "社會科", "unit": "能源與環境議題", "concept": "風力發電負面影響", "skill": "多角度比較與利弊辨析", "difficulty": 3, "id": 13}, {"question": "「用火電便利的Buff和環境污染的Debuff是綁在一起的」這一句話的核心意涵是什麼？", "options": ["環境污染可以透過科技手段完全消除", "享受便利用電的同時必須承擔環境代價", "火力發電最終會自然被淘汰", "便利與污染兩者可以同時實現而不衝突"], "answer": 1, "explanation": "教材以此比喻說明能源科技的困境：你用煤發電空氣變差，停用煤經濟可能受創，是用電便利與環境破壞兩難的體現。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源政策的兩難本質", "skill": "因果鏈條推論與影響評估", "difficulty": 3, "id": 14}, {"question": "關於再生能源「看天吃飯」的屬性，下列敘述何者最符合教材所述？", "options": ["太陽不下班才能發電，風不吹就沒電，具有間歇性", "現代科技已完全克服再生能源的不穩定問題", "所有再生能源都可以透過儲電設備全天候供應", "間歇性只影響太陽能，風力和水力不受影響"], "answer": 0, "explanation": "教材明確指出再生能源弱點是看天吃飯，太陽不下班沒辦法發電，風不吹一樣沒電，這就是間歇性供電問題。", "subject": "社會科", "unit": "能源與環境議題", "concept": "再生能源間歇性特質", "skill": "多角度比較與利弊辨析", "difficulty": 3, "id": 15}, {"question": "如果某同學看到「臺灣用電最多的是哪個部門？」的題目，最容易選錯的陷阱答案是：", "options": ["工業，因為晶圓製程需要大量電力", "農業，因為農場灌溉用電增加", "住宅，因為日常用電最明顯容易被直覺誤判", "商業，因為辦公室設備耗電量大"], "answer": 2, "explanation": "教材特別說明這是考題常考的陷阱：很多同學會選住宅因為覺得日常用電最明顯，但正確答案是工業（55.2%）。", "subject": "社會科", "unit": "能源與環境議題", "concept": "易混淆的用電部門數據", "skill": "數據解讀與關鍵資訊提取", "difficulty": 3, "id": 16}, {"question": "教材提出「能源政策從來不是單純的科技問題而是社會議題」的核心依據是什麼？", "options": ["每一種能源選擇都有經濟、環境和社會層面的代價與取捨", "科技本身就能解決所有能源和環境問題", "公民不需要參與能源政策的討論決策", "能源問題只需要工程師來判斷就好"], "answer": 0, "explanation": "教材強調每個選擇都有代價——用火電空氣變差，不用火電經濟受創，再生能源看天吃飯，核能有輻射風險，需要全民溝通價值取捨。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源政策的社會面向", "skill": "因果鏈條推論與影響評估", "difficulty": 3, "id": 17}, {"question": "下列關於各類能源的敘述，何者完整反映了教材的比較觀點？", "options": ["火電最差因為会汙染環境，應該立刻全面禁用", "核能最好因為乾淨又便宜，應大力推廣", "每種能源各有利基與缺陷，需兼顧平衡發展", "再生能源已能完全取代化石燃料成為主力"], "answer": 2, "explanation": "教材呈現火力穩定但有污染、核能低碳但有廢料風險、再生能源清潔但間歇性的觀點，結論是要追求永續發展的平衡，非片面取舍。", "subject": "社會科", "unit": "能源與環境議題", "concept": "各類型能源比較", "skill": "多角度比較與利弊辨析", "difficulty": 3, "id": 18}, {"question": "全臺灣如果每個人都隨手關燈、減少待機耗電，累積效果為何？教材如何比喻？", "options": ["節電效果微乎其微對發電結構無影響", "累積起來的節電量相當於一座發電廠", "只能節省不到百分之一的總用電量", "對環境改善有幫助但無法抵銷工業用電"], "answer": 1, "explanation": "教材以遊戲比喻：每個人都隨手關燈、減少待機耗電，累積起來的節電量相當於一座發電廠，說明個人行動的巨大加成效應。", "subject": "社會科", "unit": "能源與環境議題", "concept": "節能減碳的集體效應", "skill": "因果鏈條推論與影響評估", "difficulty": 3, "id": 19}, {"question": "從因果關係來看，為什麼政府推動能源轉型不能只是一味停用燃煤？", "options": ["因為燃煤是唯一可以穩定供電的發電方式", "因為停用燃煤會使供電不穩，繼續燒煤則空氣惡化，屬於兩難取捨", "因為台灣根本沒有足夠的再生能源資源", "因為居民反對任何改變能源結構的政策"], "answer": 1, "explanation": "教材指出火力發電受天氣影響小是穩定主力但帶Debuff污染，這就是兩難任務設計——停用煤供電可能受創，繼續燒煤空氣更差。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源轉型的複雜因果", "skill": "因果鏈條推論與影響評估", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "假設你是能源決策者，面對經濟發展需要更多電力但民眾擔心空氣品質，依教材框架最合理的優先策略是：", "options": ["優先發展再生能源，同時嚴格稽查現有發電廠並推動全民節能", "全面擴建燃煤發電廠以確保供電充足", "立即停止所有火力發電改用核能", "完全依賴國外進口電力解決供需問題"], "answer": 0, "explanation": "教材參考答案方向為優先發展再生能源、對現有發電廠嚴格稽查、同時推動全民節能。A符合三管齊下的平衡思維，其他選項皆為片面激進做法。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源政策綜合決策", "skill": "政策情境下的價值取捨與決策推演", "difficulty": 4, "id": 21}, {"question": "根據教材提到的能源結構現況，短期內無法大幅改動的主要原因是：", "options": ["台灣人根本不願意配合任何形式的節能措施", "每種能源都存在致命缺陷，難以單獨替代另一種", "政府已經宣布永遠不會推動任何能源轉型", "國際市場完全不提供任何新型能源技術"], "answer": 1, "explanation": "教材指出火力82%打底、再生能源12%補刀、核能5%維持平衡的配比短時間內很難大改，因為每項都有利弊——完全捨棄任何一項都會出大事，需兼顧平衡。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源結構改革限制因素", "skill": "因果鏈條推論與影響評估", "difficulty": 4, "id": 22}, {"question": "若某地計畫架設陸域風場，但當地居民擔心健康影響而抗拒，決策者最符合教材精神的做法應該是：", "options": ["壓住民眾疑慮直接施工，因為能源轉型是大人們的事", "完全放棄該地的風力發電計畫改走完全不同路線", "綜合評估風力效益、候鳥保護、居民健康後取得共識再決定", "讓全體居民投票決定，不需專家介入評估"], "answer": 2, "explanation": "教材強調能源政策需要全民溝通價值取捨，風力雖適合但需考量候鳥遷徙路徑和低頻噪音健康影響。C體現多元利益權衡後取得共識的精神。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源建設與社區協商", "skill": "政策情境下的價值取捨與決策推演", "difficulty": 4, "id": 23}, {"question": "隨著AI產業持續成長，未來臺灣能源政策可能面臨的最重大挑戰是：", "options": ["AI會自動解決用電過多的問題", "用電需求持續攀升將使既有能源兩難更加嚴峻複雜", "AI普及後大家就不需要用電腦了", "科技進步會讓能源問題不再重要"], "answer": 1, "explanation": "教材指出AI超級電腦最大負載等於十萬戶家庭每日用電量，科技進步持續推高用電需求，會讓原本的供電與環保困境更加複雜。", "subject": "社會科", "unit": "能源與環境議題", "concept": "新科技對能源政策的影響", "skill": "因果鏈條推論與影響評估", "difficulty": 4, "id": 24}, {"question": "如果你向別人解釋「享受經濟發展Buff要付出環境保護代價來Nerf負面效果」這句話，最能呼應教材主旨的是：", "options": ["經濟成長必然伴隨環境代价，需在發展與永續間求取平衡", "只要多賺錢就不必擔心環境問題", "環境保護會影響經濟發展的速度", "台灣的經濟發展已經完全不需要更多能源投入"], "answer": 0, "explanation": "教材核心訊息是能源轉型這場大規模伺服器維修中，我們享受了經濟發展紅利現在就要付環境代價，追求永續發展而非單邊偏向任一極端。", "subject": "社會科", "unit": "能源與環境議題", "concept": "經濟與環境的權衡本質", "skill": "綜合評鑑與概念整合", "difficulty": 4, "id": 25}, {"question": "教材中『每一道選擇都有代價』這段話放在能源政策的脈絡下，最適合用來解釋下列哪一組情境？", "options": ["開冷氣一定費電所以千萬不要開", "用煤發電供電穩定但污染空氣，不用煤供電可能不足但環境較好", "再生能源百分百乾淨絕對沒有任何副作用", "核能最安全最便宜應該全面重建"], "answer": 1, "explanation": "教材用此比喻說明每個能源方案皆有代價與兩難：火力穩定但汙染、再生能源清潔但間歇、核能低碳但有風險。B準確反映此權衡本質。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源選擇的代價與權衡", "skill": "综合评鑑与决策应用", "difficulty": 4, "id": 26}, {"question": "如果要讓一位同學真正理解「為什麼社會科不只是背資料而是理解世界為什麼是現在這個樣子」，以下哪一個提問最能達到這個目標？", "options": ["請背出火力發電的百分比數字", "探討為什麼工業用電比例高於住宅、這些數字背後反映了怎樣的經濟結構與生活型態?", "默寫三種發電方式的詳細定義", "列出所有國家使用的能源種類清單"], "answer": 1, "explanation": "教材結尾強調課本背後的數據都在說故事——理解工業用電為何最高、能源結構如何形成，才能真正掌握社會科的學習意義而非死記數字。", "subject": "社會科", "unit": "能源與環境議題", "concept": "社會科學習方法理解", "skill": "綜合评鑑与决策应用", "difficulty": 4, "id": 27}, {"question": "假設政府決定提高再生能源的目標比例，但未同步加強儲電技術研發，最可能出現的結果是：", "options": ["供電將完全不受到影響因為風和太陽永遠都有", "尖峰用電時段可能因再生能源不足而出現缺電風險", "火力發電廠會自動調整產能來彌補缺口", "民眾的自然用電習慣會因此完全改變"], "answer": 1, "explanation": "教材指出再生能源弱點是看天吃飯的間歇性供電問題——太陽不下班沒辦法發電風不吹一樣沒電。若不補強儲電技術，供電不穩定將成為實際問題。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源政策實施的連帶風險", "skill": "因果鏈條推論與影響評估", "difficulty": 4, "id": 28}, {"question": "如果一道題目的情境是「某地區想發展離岸風電卻遭到漁民反對」，依據教材所述，最完整的分析角度應該包含哪些面向？", "options": ["只計算經濟收益與發電量的数字", "僅考慮魚類生態是否受到影響", "綜合發電效益、生態衝擊、居民生計與能源政策目標的多方權衡", "讓廠商自行決定無需政府介入"], "answer": 2, "explanation": "教材貫穿全篇的理念是能源政策需要全民溝通價值取捨——風機有利可候鳥受損、有益供電但可能影響漁民生計。C涵蓋多方利益綜合分析的正確思維。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源政策的多元價值取捨", "skill": "綜合评鑑与决策应用", "difficulty": 4, "id": 29}, {"question": "教材把能源轉型比喻成「大規模的伺服器維修，我們都是玩家誰都無法旁觀」，以下哪一選項最能呼應這個比喻的核心寓意？", "options": ["能源問題只有政府和電力公司這些專業人士才有資格討論", "就像玩家在遊戲裡做選擇一樣，每個人都在用電行為中承擔責任", "伺服器壞了等技術人員修就好不必在意", "能源轉型是一場快節奏的競爭遊戲不需要反思"], "answer": 1, "explanation": "教材結尾強調我們享受經濟發展Buff現在就要付環境保護代價Nerf負面效果，能源轉型是大規模伺服器維修人人都是玩家無法旁觀。B點出每個人都該承擔用電責任的核心寓意。", "subject": "社會科", "unit": "能源與環境議題", "concept": "能源轉型的公民責任意識", "skill": "綜合评鑑与决策应用", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
