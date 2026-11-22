@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林社會5上4-1人們如何適應不同地形創所需？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "地理", "grade": "國一～國二", "unit": "台灣地形與開發", "topic": "台灣地形的形成、分類與各地形區的資源開發史及永續轉型", "filename": "翰林社會5上4-1人們如何適應不同地形創所需？", "summary": "以遊戲比喻講述台灣地形的板塊成因、五大地形特徵，以及各地形區從資源開發到永續轉型的歷史脈絡。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "台灣島形成主要原因是什麼？", "options": ["火山爆發噴出大量岩漿堆積而成", "菲律賓海板塊與歐亞板塊擠壓抬升而成", "河川沖積作用堆積形成的大型三角洲", "海水退却後露出的陸地板塊"], "answer": 1, "explanation": "教材指出大約六百萬年前菲律賓海板塊與歐亞板塊碰撞擠壓，使海底陸地板塊隆起，台灣島因此浮現海面。其他選項均非教材所述成因。", "subject": "地理", "unit": "台灣地形與開發", "concept": "板塊擠壓與地形隆起", "skill": "知識記憶", "difficulty": 2, "id": 1}, {"question": "台灣地形佔據面積最大的是哪一種？", "options": ["平原", "盆地", "山地", "丘陵"], "answer": 2, "explanation": "教材明確指出台灣五大地形中，山地「佔據了大部分面積」。平原雖適合農業但面積最小，台地與丘陵亦不如山地廣布。", "subject": "地理", "unit": "台灣地形與開發", "concept": "五大地形分類", "skill": "知識記憶", "difficulty": 2, "id": 2}, {"question": "下列何者正確描述了台地的特徵？", "options": ["四周高中間低，中央平坦", "地勢較為和緩起伏", "頂部平坦，四周較高", "坡度陡峭、起伏較大"], "answer": 2, "explanation": "教材定義：台地「頂部平坦四周較高」。A描述盆地，B描述丘陵，D描述山地，故皆不正確。", "subject": "地理", "unit": "台灣地形與開發", "concept": "五大地形分類－台地", "skill": "概念辨識", "difficulty": 2, "id": 3}, {"question": "為什麼台灣河川普遍具有流速快、長度短的特徵？", "options": ["因為台灣降雨量太少，水量不足", "因為台灣地形狹長，河川坡度大", "因為河川發源地都在平原地區", "因為台灣全年氣溫過高導致蒸發強"], "answer": 1, "explanation": "教材說明：台灣地形狹長，導致河川坡度很大，加上河川發源於山地流向大海，所以長度短、流速快、不易蓄水。B為正確因果。", "subject": "地理", "unit": "台灣地形與開發", "concept": "地形與河川特徵", "skill": "因果推論", "difficulty": 2, "id": 4}, {"question": "太平山林場後來轉型的發展方向為何？", "options": ["轉型為工業區提供就業機會", "轉型為大型住宅社區解決 housing", "轉型為森林遊樂區發展生態旅遊", "轉型為畜牧場發展肉品產業"], "answer": 2, "explanation": "教材明確指出太平山於民國八十年禁伐後，轉型為國家森林遊樂區，利用生態旅遊實現永續經營。其餘選項均非教材內容。", "subject": "地理", "unit": "台灣地形與開發", "concept": "資源開發與永續轉型", "skill": "知識記憶", "difficulty": 2, "id": 5}, {"question": "桃園台地先民為解決取水問題而建設的設施叫什麼？", "options": ["水庫", "埤塘", "水井", "堤防"], "answer": 1, "explanation": "教材說明桃園台地地势高起、取水不易，先民挖掘埤塘儲存雨水，最多時達數千口，稱為「千塘」。其餘選項非教材所述。", "subject": "地理", "unit": "台灣地形與開發", "concept": "台地與人地互動", "skill": "知識記憶", "difficulty": 2, "id": 6}, {"question": "關於中央山脈與海岸山脈的關係，下列敘述何者正確？", "options": ["海岸山脈位於歐亞板塊，每年向西推進靠近中央山脈", "中央山脈屬於菲律賓海板塊，每年升高速度較慢", "兩條山脈均處於沉降狀態，高度逐年降低", "海岸山脈是菲律賓海板塊前鋒，逐年西移；中央山脈持續升高"], "answer": 3, "explanation": "教材指出海岸山脈是菲律賓海板塊的前鋒且每年向西移動靠近中央山脈，同時中央山脈也持續升高，兩者保持動態平衡。", "subject": "地理", "unit": "台灣地形與開發", "concept": "板塊運動與山脈變化", "skill": "知識記憶", "difficulty": 2, "id": 7}, {"question": "台北盆地發展過程中，政府為解決交通壅塞問題採取的對策為何？", "options": ["擴建港灣增加水上交通", "建造捷運系統改善大眾運輸", "填平河道開闢更多道路", "遷移市中心功能至郊區"], "answer": 1, "explanation": "教材以台北盆地為例，說明汽機車數量暴增造成污染與壅塞後，政府建造捷運系統解決交通問題，視為科技樹升級優化環境的案例。", "subject": "地理", "unit": "台灣地形與開發", "concept": "盆地開發與科技應對", "skill": "知識記憶", "difficulty": 2, "id": 8}, {"question": "新竹北埔丘陵地居民利用地形特點主要種植什麼作物？", "options": ["水稻與甘蔗", "蓮霧等熱帶水果", "林木用於造紙工業", "茶葉發展茶文化觀光"], "answer": 3, "explanation": "教材指出北埔居民利用排水良好的丘陵地形種茶，並結合茶文化發展觀光休閒農業。A偏平原作物，C偏山地開發，D為屏東平原特色。", "subject": "地理", "unit": "台灣地形與開發", "concept": "丘陵地資源開發", "skill": "知識記憶", "difficulty": 2, "id": 9}, {"question": "台湾地震頻繁的主要原因是什麼？", "options": ["因為颱風頻率增加影響地殼穩定", "位於板塊交界處，板塊持續擠壓碰撞", "因為地下水位下降導致地層下陷", "因為火山多次爆發造成地殼震動"], "answer": 1, "explanation": "教材比喻地震是「伺服器維修」，因菲律賓海板塊與歐亞板塊持續推擠碰撞所致。此為板塊交界最直接的解釋。", "subject": "地理", "unit": "台灣地形與開發", "concept": "板塊擠壓與地震", "skill": "因果推論", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "為什麼台灣的五大地形會出現不同的產業型態？", "options": ["因為政府強制規劃不同區域產業別", "因為各地地形條件不同，人們因地制宜選擇適合的產業", "因為不同地形區有不同的氣候類型完全隔離", "因為外商投資偏好特定地形區域造成產業集中"], "answer": 1, "explanation": "教材核心邏輯為「地形→資源→產業」的因果鏈，各地因地形條件不同而發展適合的產業（如丘陵種茶、平原耕作），體現因地制宜原則。", "subject": "地理", "unit": "台灣地形與開發", "concept": "地形與產業關係", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "桃園台地埤塘數量大幅减少的最主要原因是什麼？", "options": ["長期旱災導致水面大量蒸發乾涸", "魚類種類改變使埤塘失去生態價值", "工商業發展需求將埤塘填平作為土地來源", "自來水管線普及使居民主動拆除埤塘"], "answer": 2, "explanation": "教材明確指出桃園埤塘隨工商業發展被大量填平改作工業區或住宅，導致生態失衡。D看似合理但不是教材所述原因。", "subject": "地理", "unit": "台灣地形與開發", "concept": "台地環境變遷", "skill": "因果分析", "difficulty": 3, "id": 12}, {"question": "太平山由林場轉型為森林遊樂區，說明了怎樣的發展思維轉變？", "options": ["從依賴外資轉向本土資源開發的思路", "從短期掠奪式開發轉向永續經營的思維", "從手工勞務轉向全面機械化生產的升級", "從農業主導轉向服務業為唯一核心的轉型"], "answer": 1, "explanation": "教材將早期大量採伐比喻為「不可持續的刷錢玩法」，轉型為森林遊樂區則是保護自然、永續經營的進化，展現發展思維的根本轉變。", "subject": "地理", "unit": "台灣地形與開發", "concept": "資源開發的歷史演變", "skill": "概念辨析", "difficulty": 3, "id": 13}, {"question": "下列關於丘陵地與台地發展模式的比較，何者最適當？", "options": ["丘陵地與台地都完全沒有面臨任何環境問題", "丘陵地與台地都只適合農業無法發展其他產業", "兩者都是順應地形特徵發揮智慧進行因地制宜的開發", "台地開發比丘陵地更困難是因為位置偏遠交通不便"], "answer": 2, "explanation": "北埔丘陵利用排水良好種茶，桃園台地挖掘埤塘儲水，兩者都展現利用地形優勢的智慧，符合「因地制宜」的核心概念。A、B過於絕對，D教材未提及。", "subject": "地理", "unit": "台灣地形與開發", "concept": "丘陵地與台地比較", "skill": "比較分析", "difficulty": 3, "id": 14}, {"question": "屏東平原農業作物的轉變反映了什麼現象？", "options": ["農民拒絕接受新技術堅持傳統耕作方式", "氣候變冷導致只能種植耐寒作物", "為了適應市場與環境變化而調整生產策略", "政府補貼減少迫使農民被迫棄耕改種他項"], "answer": 2, "explanation": "教材說明屏東平原從稻米甘蔗轉向蓮霧等熱帶水果，並舉辦博覽會結合觀光，顯示農業配合市場與環境變化主動調整，屬積極適應而非被迫。", "subject": "地理", "unit": "台灣地形與開發", "concept": "平原農業發展演變", "skill": "因果推論", "difficulty": 3, "id": 15}, {"question": "如果某地區地勢四周高中間低且內部平坦，最適合發展為什麼種產業？", "options": ["高山滑雪觀光業，因為海拔落差大", "大型重工業區，因為交通便利", "城市聚落與商業發展，因地勢平坦利於開墾建設", "深海漁業基地，因為近海资源豐富"], "answer": 2, "explanation": "四周高中間低平坦的地形特徵符合「盆地」定義，教材以台北盆地為例說明其平坦地形適合開墾發展，帶動人口聚集與城市成長。", "subject": "地理", "unit": "台灣地形與開發", "concept": "盆地地形與人居發展", "skill": "情境應用", "difficulty": 3, "id": 16}, {"question": "台灣地形的侵蝕作用主要扮演什麼角色？", "options": ["加速山脈升高讓台灣成為世界最高峰", "與隆起作用達成平衡，維持地形多樣性", "完全抵消板塊擠壓力使地震停止發生", "促使河川流速減慢以利船舶大型化航行"], "answer": 1, "explanation": "教材說明侵蝕是大自然的「反制機制」，風雨河水海浪破壞地表，使隆起速度與侵蝕速度達成微妙平衡，進而形成多樣化生態系。", "subject": "地理", "unit": "台灣地形與開發", "concept": "侵蝕與隆起的動態平衡", "skill": "因果分析", "difficulty": 3, "id": 17}, {"question": "以下哪一條因果鏈最能概括台灣地形的整體開發邏輯？", "options": ["地形→地震→災害→防護工程→安全居住", "地形→資源→產業→環境影響→人類應對", "地形→氣候→降雨→河川→航運→貿易發展", "地形→人口→都市→交通→空氣品質→健康"], "answer": 1, "explanation": "教材總結核心邏輯：地形決定資源，資源決定產業，產業影響環境，環境反作用於人類，形成動態平衡的系統工程，與B選項完全吻合。", "subject": "地理", "unit": "台灣地形與開發", "concept": "人地互動系統邏輯", "skill": "綜合分析", "difficulty": 3, "id": 18}, {"question": "為什麼台灣河川「不易蓄水」這對聚落發展的意義為何？", "options": ["河川不易蓄水迫使人們全部遷移至山區居住", "蓄水困難使得台灣完全無法發展農業灌溉", "人們因而沿河川兩岸發展聚落與城市，就近取用淡水資源", "蓄水不足促使大家放棄河流 entirely 改 reliance 地下水"], "answer": 2, "explanation": "教材指出雖然河川流速快不易蓄水，但人們仍然沿著河川開發形成聚落與城市，顯示河川仍是重要的水資源與發展軸線。", "subject": "地理", "unit": "台灣地形與開發", "concept": "河川與聚落發展", "skill": "因果推論", "difficulty": 3, "id": 19}, {"question": "台北盆地在發展過程中面臨的主要環境挑戰，與該地形特徵有何關聯？", "options": ["盆地地形四面環山不利通風加劇空气污染", "盆地四周高中間低導致排水不良引發大規模水患", "平地狭小不足以容納快速增長的人口數字", "盆地海拔过高導致冬季氣溫過低影響农业生产"], "answer": 0, "explanation": "教材以台北盆地為例說明汽機車暴增造成嚴重污染與交通壅塞，盆地地形四面環山不利污染物擴散，與A選項所述關聯最為密切。", "subject": "地理", "unit": "台灣地形與開發", "concept": "盆地環境問題分析", "skill": "因果分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "小明到南投縣觀察地形，發現當地地勢起伏和緩、高度不高，適合發展茶園景觀。此地最可能屬於哪種地形？", "options": ["山地，因為南投有著名的高山", "台地，因為地形頂部平坦", "丘陵，因為起伏較為和緩", "盆地，因為四周有高山環繞"], "answer": 2, "explanation": "「地勢和緩、起伏不大」是教材對丘陵的定義，北埔即為此類地形發展茶園的案例。山地坡度陡峭，台地頂部平坦且較高，盆地四周高中間低，均不符描述。", "subject": "地理", "unit": "台灣地形與開發", "concept": "丘陵地辨識與應用", "skill": "情境應用", "difficulty": 4, "id": 21}, {"question": "某鄉鎮過去依賴礦產開採維生，近年礦源枯竭、環境受損，村民擔心未來生計。依據教材觀念，下列哪種做法最符合永續發展理念？", "options": ["加大開採深度盡可能多挖最後一批礦藏", "停止開採後引進新的重污染工廠填补空缺", "保留部分礦區發展工業考古與生態旅遊吸引遊客", "直接棄置不管等待自然恢復而無需人為介入"], "answer": 2, "explanation": "教材以太平山為例說明從過度開發轉向永續經營的原則。C選項結合既有資源發展觀光與教育，是最符合教材所倡導的永續發展模式。", "subject": "地理", "unit": "台灣地形與開發", "concept": "永續發展情境判斷", "skill": "情境應用", "difficulty": 4, "id": 22}, {"question": "小李暑假去台東旅遊，看見一排整齊的茶園呈階梯狀分布在山坡上。這種階梯状茶園最可能位於台灣哪一地形區？", "options": ["桃園台地，利用埤塘灌溉擴大種植面積", "宜蘭山地，在高海拔地區種植高山茶", "花蓮平原，沿河川沖積扇發展梯田農業", "新竹丘陵，依山坡地形打造排水良好的茶園"], "answer": 3, "explanation": "教材以北埔為例說明丘陵地居民利用排水良好的地形種茶，建造階梯形狀茶園景觀，並結合觀光發展。此為典型丘陵地因地制宜的案例。", "subject": "地理", "unit": "台灣地形與開發", "concept": "丘陵地形態與人地互動", "skill": "情境應用", "difficulty": 4, "id": 23}, {"question": "如果你是一位地方議員，面对桃園台地埤塘大面积消失的問題，根據教材所傳達的理念，你最應該優先推動什麼政策？", "options": ["鼓勵農民在原有埤塘位置重建房屋以增加稅收", "補助農民將剩餘埤塘全部填平改為停車場", "推動師生行動保護埤塘生態、恢復濕地環境", "引進外來物種讓埤塘變成觀賞魚池吸引遊客"], "answer": 2, "explanation": "教材提到許多師生行動保護埤塘生態是人類意識覺醒後的自我修正，故优先推動生態保護政策最符合教材理念。", "subject": "地理", "unit": "台灣地形與開發", "concept": "永續經營的政策實踐", "skill": "情境應用", "difficulty": 4, "id": 24}, {"question": "屏東平原近年來農業转型，除了改种熱帶水果外還舉辦博覽會結合觀光。這種轉變最主要的原因是什？", "options": ["國際市場禁止台灣進口稻米和甘蔗农产品", "農民純粹追求更高利潤而隨機更换作物", "因應製糖業沒落及市場需求變化所作的适应性調整", "政府强制要求所有农民必须改种热带水果"], "answer": 2, "explanation": "教材說明屏東平原早期種植稻米甘蔗，後因製糖業沒落轉向蓮霧等熱帶水果，並結合觀光發展新模式，顯示這是順應環境與市場變化的主動調整。", "subject": "地理", "unit": "台灣地形與開發", "concept": "平原農業轉型動因", "skill": "綜合分析", "difficulty": 4, "id": 25}, {"question": "某地理考題給出一張台灣地圖，標記了五個地點，要求学生判斷哪個地點最有可能發生嚴重空气污染問題。根據教材提供的知識，下列哪一地點最值得關注？", "options": ["位於中央山脈深處的觀測站點", "位處台北盆地內的市中心區域", "坐落在太平洋海岸的山坡地帶", "位於蘭陽平原郊外的農作物區域"], "answer": 1, "explanation": "教材以台北盆地為例說明盆地地形易聚集污染物，加上汽機車暴增造成嚴重污染與交通壅塞，故盆地內市中心最需關注空氣品質問題。", "subject": "地理", "unit": "台灣地形與開發", "concept": "盆地地形與環境議題", "skill": "資料判讀與應用", "difficulty": 4, "id": 26}, {"question": "如果未來全球暖化導致台灣降雨型態改變，對於台灣河川水文可能產生的最直接影響是什麼？", "options": ["河川長度會因為侵蝕作用增強而變得更長", "河川流速會因為降水量增加而全面減慢", "現有短急的河川特徵將更加顯著，蓄水難度提升", "三大河川會自動延長流向西部海洋減少洪水風險"], "answer": 2, "explanation": "教材指出台灣河川因坡度大而流速快、不易蓄水。若暖化改變降雨型態，极端降水更頻繁，短急特徵將更顯著，與C选项所述最为吻合。", "subject": "地理", "unit": "台灣地形與開發", "concept": "氣候變遷與地形互動", "skill": "推論預測", "difficulty": 4, "id": 27}, {"question": "小華的家鄉位於台灣西部，地形平坦寬廣，適合農業耕作，但他發現家鄉近年来農業收入大幅減少。根據教材所述各地形開發歷程，最合理的判斷是什？", "options": ["家乡一定是丘陵地形才導致農業衰退", "可能是平原地區的傳統產業沒落，需要轉型創新", "家鄉應該是盆地地形才會面臨同樣困境", "農業收入減少一定是因為地震造成耕地破壞"], "answer": 1, "explanation": "教材中以屏東平原為例說明平原區傳統農業（稻米、甘蔗）面對產業沒落必須轉型（改種熱帶水果、結合觀光）。「地形平坦寬廣」正是平原特徵，故B最合理。", "subject": "地理", "unit": "台灣地形與開發", "concept": "平原產業轉型推論", "skill": "推論分析", "difficulty": 4, "id": 28}, {"question": "某個新上任的地方官員看到辖区内有一片頂部平坦、但整體高出周圍地面的區域，他想了解這裡曾經的自然條件對人類活動的限制。根據教材知識，該地最大的天然限制為何？", "options": ["地勢過低容易積水形成沼澤不利建築", "土壤過於貧瘠無法支撐任何農業生產", "取水的困難度較高需要額外工程解決", "地震頻率特別高建築物難以長期使用"], "answer": 2, "explanation": "「頂部平坦、整體高出周圍」是台地特徵。教材說明桃園台地「地势高起，取水不易」是先民面臨的大難題，需靠埤塘儲存雨水才能克服。", "subject": "地理", "unit": "台灣地形與開發", "concept": "台地限制與應對", "skill": "情境應用", "difficulty": 4, "id": 29}, {"question": "综合整個台灣地形開發歷程來看，早期、中期與現代三個階段的核心差異主要在什？", "options": ["從直接索取自然資源逐步轉向永續經營與生態保護", "從和平共存逐漸演變成激烈的人地衝突對抗", "從依賴人力工作完全轉向全面自動化機械作業", "從各個地形區各自發展變成全國統一單一產業模式"], "answer": 0, "explanation": "教材總結：早期直接索取→中期環境破壞→現代強調永續經營與生態保護，體現人類認知從征服自然走向與自然共存的進步歷程。", "subject": "地理", "unit": "台灣地形與開發", "concept": "開發歷程綜合評析", "skill": "綜合分析", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
