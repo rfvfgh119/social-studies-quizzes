@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上4-2大航海時代有哪些人經營臺灣？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "歷史", "grade": "二年級", "unit": "荷西時期與明鄭治台", "topic": "荷蘭西班牙統治台灣及鄭成功收復台灣", "filename": "康軒社會5上4-2大航海時代有哪些人經營臺灣？", "summary": "以遊戲比喻串講荷蘭西班牙統治台灣至鄭成功收復台灣的歷程與關鍵考點。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "荷蘭人於哪一年佔領台灣南部，開始在臺建立貿易據點？", "options": ["一六二四年", "一六二六年", "一六四二年", "一六六一年"], "answer": 0, "explanation": "教材明確指出一六二四年荷蘭人開啟南部地圖。一六二六年是西班牙人來臺的時間；一六四二年是荷蘭驅逐西班牙的時間；一六六一年是鄭成功出兵時間。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "荷治時間起點", "skill": "時間順序排序能力", "difficulty": 2, "id": 1}, {"question": "熱蘭遮城位於今天的哪個地區？", "options": ["台南安平古堡區域", "台南赤崁樓區域", "基隆和平島區域", "淡水紅毛城區域"], "answer": 0, "explanation": "教材指出熱蘭遮城位置在今天安平，是荷蘭人的頂級防禦塔。台南赤崁樓是普羅民遮城的位置；基隆和淡水則是西班牙人活動區域。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "熱蘭遮城地理位置", "skill": "地圖定位與空間理解能力", "difficulty": 2, "id": 2}, {"question": "西班牙人在北台灣建立的兩個城堡分別叫什麼名字？", "options": ["聖薩爾瓦多城與聖多明哥城", "熱蘭遮城與普羅民遮城", "安平古堡與赤崁樓", "福容城與台北城"], "answer": 0, "explanation": "教材明確指出西班牙人建立聖薩爾瓦多城和聖多明哥城，控制北部航道入口。熱蘭遮城與普羅民遮城是荷蘭人所建；後兩者為現代地名非當時城名。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "西班牙在台據點", "skill": "時間順序排序能力", "difficulty": 2, "id": 3}, {"question": "荷蘭人何時出兵擊敗西班牙、統一台灣全島？", "options": ["一六四二年", "一六二四年", "一六五二年", "一六六二年"], "answer": 0, "explanation": "教材指出一六四二年荷蘭艦隊北上攻擊，西班牙守軍投降，此後荷蘭統一台灣版圖。一六二四年為荷蘭進駐南部時間；一六五二年為郭懷一事件；一六六二年為鄭成功接管台灣時間。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "荷西勢力交替", "skill": "時間順序排序能力", "difficulty": 2, "id": 4}, {"question": "普羅民遮城位於今天的哪個地點附近？", "options": ["台南赤崁樓區域", "台南安平古堡區域", "新北淡水紅毛城區域", "基隆和平島區域"], "answer": 0, "explanation": "教材明確指出普羅民遮城位置在今天台南赤崁樓一帶，用來擴大防衛區域範圍。安平古堡對應熱蘭遮城；淡水紅毛城源自西班牙聖多明哥城。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "普羅民遮城地理位置", "skill": "地圖定位與空間理解能力", "difficulty": 2, "id": 5}, {"question": "郭懷一事件爆發於哪一年？", "options": ["一六五二年", "一六二四年", "一六四二年", "一六六一年"], "answer": 0, "explanation": "教材指出一六五二年爆發大規模反抗，即著名的郭懷一事件。一六二四年為荷蘭人來臺時間；一六四二年為荷蘭驅逐西班牙時間；一六六一年為鄭成功出兵時間。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "郭懷一事件時間", "skill": "時間順序排序能力", "difficulty": 2, "id": 6}, {"question": "鄭成功在哪一年率軍從福建渡海進攻台灣？", "options": ["一六六一年", "一六五二年", "一六四二年", "一六八三年"], "answer": 0, "explanation": "教材指出一六六一年鄭成功率軍從福建渡海，先攻普羅民遮城再包圍熱蘭遮城。一六五二年為郭懷一事件；一六四二年為荷蘭驅逐西班牙；一六八三年為清朝收復台灣時間。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "鄭成功來台時間", "skill": "時間順序排序能力", "difficulty": 2, "id": 7}, {"question": "鄭成功在台灣設立的首個行政中心名稱為何？", "options": ["承天府", "台湾府", "臺灣縣", "安平鎮"], "answer": 0, "explanation": "教材明確指出鄭成功設立承天府作為行政中心，這是台灣第一個漢人政權的建立。台湾府為清朝所設；其餘選項皆非教材所述。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "承天府的設立", "skill": "基本知識識記", "difficulty": 2, "id": 8}, {"question": "紅毛城最初是由哪個勢力所建造的？", "options": ["西班牙人", "荷蘭人", "鄭成功軍隊", "清朝政府"], "answer": 0, "explanation": "教材複習考點提及「紅毛城是由西班牙聖多明哥城改建」，故最初由西班牙人建造。這是一個常見混淆點，學生容易誤認為紅毛城是荷蘭人所建。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "紅毛城淵源辨析", "skill": "區分史實與傳說的辨析能力", "difficulty": 2, "id": 9}, {"question": "關於鄭成功與龜山島的關係，下列敘述何者正確？", "options": ["鄭成功從未到過宜蘭，當地只是傳說", "鄭成功曾登陸龜山島並留下碑文", "鄭成功將龜山島作為軍事基地", "鄭成功在龜山島與清軍作戰"], "answer": 0, "explanation": "教材最後提及龜山島傳說並非史實，鄭成功從未到過宜蘭當地，只是民間傳說。此題旨在提醒學生區分歷史事實與民間傳奇故事的重要性。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "史實與傳說的區分", "skill": "區分史實與傳說的辨析能力", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "熱蘭遮城與普羅民遮城在防禦體系中的功能差異，下列說明何者正確？", "options": ["熱蘭遮城控制港口，普羅民遮城控制內陸商業中心", "熱蘭遮城控制內陸商業中心，普羅民遮城控制港口", "兩座城堡皆用於军事進攻而非防禦", "兩座城堡各自獨立運作沒有聯動關係"], "answer": 0, "explanation": "教材指出雙核防禦體系中，熱蘭遮城擁有全圖視野和最强火力覆蓋控制港口，普羅民遮城則擴大防衛範圍控制內陸商業中心。兩城形成配合而非獨立運作，主要功能是防禦而非單純進攻。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "雙城防禦體系功能", "skill": "資料對比分析能力", "difficulty": 3, "id": 11}, {"question": "荷蘭人在台灣的經濟模式主要屬於哪一種類型？", "options": ["跨國貿易的套利經濟模型", "以農業自給自足的封建經濟", "依靠原住民手工業為主的採集經濟", "由政府計劃配發资源的統制經濟"], "answer": 0, "explanation": "教材明確描述荷蘭人招募漢人移民開墾稻米甘蔗，蔗糖出口日本中國，同時進口絲綢瓷器轉賣，這正是典型的套利經濟模型——利用價格差賺取利潤。其他選項均不符合教材所述。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "荷治經濟模式", "skill": "概念辨析能力", "difficulty": 3, "id": 12}, {"question": "促成郭懷一事件爆發的主要原因不包括下列哪一項？", "options": ["荷蘭人積極推行民主選舉制度", "荷蘭士兵仗勢欺人檢查稅金", "農民積累大量不滿情緒", "遭遇大旱災導致生產收入銳減"], "answer": 0, "explanation": "教材指出郭懷一事件因稅賦壓迫和大旱災引發，荷蘭士兵經常欺压百姓致使農民不滿。選項A「民主選舉制度」完全與史實不符且教材未提及，為本題正确答案（即最不相關的選項）。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "郭懷一事件起因", "skill": "因果關係推論能力", "difficulty": 3, "id": 13}, {"question": "郭懷一事件失敗後，荷蘭人做出了什麼調整來加強統治？", "options": ["在原址興建普羅民遮城以擴大防衛區域", "撤離台灣南部改往北部發展", "全面放寬對漢人和原住民的稅賦", "主動與鄭成功協商分割台灣"], "answer": 0, "explanation": "教材指出郭懷一事件後，荷蘭人意識到南部防禦不夠穩固，於是興建普羅民遮城擴大防衛範圍，形成與熱蘭遮城的雙核防御體系。荷蘭人並未撤離或放寬税賦，也未此時與鄭成功協商。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "郭懷一事件的影響", "skill": "因果關係推論能力", "difficulty": 3, "id": 14}, {"question": "西班牙人在台灣的統治方式與荷兰人有何主要區別？", "options": ["西班牙佔領北台灣，荷蘭佔領南台灣", "西班牙專注宗教傳播，荷蘭僅重視軍事征服", "西班牙統治時間遠長於荷蘭", "西班牙從未建立任何城堡據點"], "answer": 0, "explanation": "教材指出西班牙佔領北部基隆淡水，荷蘭佔領南部並建熱蘭遮城，形成南北夾擊局面。西班牙確實也建立城堡；荷蘭同時重視貿易與宗教；西班牙統治時間较短（1626-1642）；西班牙確實建立了兩座城堡。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "荷西統治區域比較", "skill": "資料對比分析能力", "difficulty": 3, "id": 15}, {"question": "郑成功選擇攻打台灣的理由中，下列何項並非其三大動機之一？", "options": ["為了向荷兰學習航海技術以報答恩情", "取得反清復明的根據地", "維持海上商業貿易的優勢", "解決軍隊糧食補給問題"], "answer": 0, "explanation": "教材明確列出鄭成功來台的三大動機：取得反清復明基地、維持海上商業貿易、解決軍隊糧食問題。向荷兰學習航海技術報答恩情完全不在動機之中，教材亦無相關記載。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "鄭成功來台動機", "skill": "概念辨析能力", "difficulty": 3, "id": 16}, {"question": "鄭成功進攻台灣時的戰略順序为何？", "options": ["先攻普羅民遮城切斷聯絡，再包圍熱蘭遮城長期圍困", "先包圍熱蘭遮城，再攻普羅民遮城", "同時進攻兩座城堡以求速戰速決", "先攻占北部基隆再向南推進"], "answer": 0, "explanation": "教材指出鄭成功首先進攻普羅民遮城切斷敵方聯絡，然後包圍熱蘭遮城進行長期圍困，最終荷蘭守軍孤立無援投降。這反映其穩健的戰略思路而非速戰速決。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "鄭成功攻城戰略", "skill": "時間順序排序能力", "difficulty": 3, "id": 17}, {"question": "鄭氏政權經營台灣的贸易模式與荷蘭東印度公司有何相似之處？", "options": ["都繼續輸出蔗糖鹿皮，輸入絲綢瓷器等商品", "鄭氏政權完全廢除所有貿易活動", "鄭氏政權只與日本貿易不與中國往來", "鄭氏政權以農業自給為主拒絕對外貿易"], "answer": 0, "explanation": "教材指出鄭成功繼續發展貿易輸出蔗糖鹿皮，輸入中國瓷器絲綢和日本軍需品，延續了類似的跨國貿易網絡。這不是廢除貿易而是延續發展，並非只與單一國家貿易或拒絕對外。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "荷治與明鄭貿易比較", "skill": "資料對比分析能力", "difficulty": 3, "id": 18}, {"question": "台灣之所以成為各國爭相控制的重要地點，最根本的原因是？", "options": ["位於亞洲東部海上航線要衝，連接三大市場", "台灣島面積是東南亞最大島嶼", "台灣拥有丰富的矿产资源可供开发", "台灣氣候全年適宜多種熱帶作物生長"], "answer": 0, "explanation": "教材總結指出台灣位於亞洲東部海上航線要衝，連接中國、日本和東南亞三大市場，誰控制台灣誰就掌握貿易話語權。这是根本原因，其他選項教材未提及或非主要原因。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "台灣的戰略地位", "skill": "因果關係推論能力", "difficulty": 3, "id": 19}, {"question": "鄭氏政權結束的原因為何？", "options": ["一六八三年清朝派兵攻打台灣結束鄭氏統治", "鄭經主動放棄台灣遷往中國大陸", "荷蘭東印度公司重新奪回台灣主權", "台灣內部發生大規模原住民起義推翻政權"], "answer": 0, "explanation": "教材明確指出鄭氏政權持續經營直到一六八三年，清朝派兵攻打台灣結束鄭氏統治，台灣正式納入大清帝國版圖。其他選項均與教材記載不符。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "鄭氏政權終結", "skill": "因果關係推論能力", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "如果我們用現代商業角度來看，荷蘭東印度公司在台灣的經營策略最類似下列哪種做法？", "options": ["佔領資源豐富的地點建立生產基地，透過跨國貿易赚取價差利潤", "直接在當地進行慈善事業幫助原住民改善生活", "關閉邊境防止外來競爭者進入市場", "投入巨資建設公共娛樂設施以提升居民幸福感"], "answer": 0, "explanation": "教材描述的荷蘭模式正是招募移民開墾高利潤作物、進口低價商品轉賣高價市場，是典型套利經濟模型。其他選項與教材所述的壓榨性經濟模式和貿易本質完全不同。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "荷治經濟模式的現代理解", "skill": "綜合分析能力", "difficulty": 4, "id": 21}, {"question": "假如你是當時的一位漢人農民，面對荷治晚期的困境，你最可能會面臨哪些問題？", "options": ["被徵收高額稅金且遭遇天災收成銳減無力繳納", "享受到荷蘭人提供的免費醫療和營養補助", "可以自由參選議會代表表達自身意見", "農業產品價格逐年上漲使生活越來越富裕"], "answer": 0, "explanation": "教材指出荷蘭士兵經常壓榨漢人，加上大旱災导致產量銳減，農民連稅金都繳不起生存困難，終於引發郭懷一事件。其他選項描述的情況與教材所述的壓迫現實截然相反。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "荷治社會矛盾分析", "skill": "情境應用能力", "difficulty": 4, "id": 22}, {"question": "郭懷一事件雖然失敗，但它對後續歷史發展產生了怎樣的深遠影響？", "options": ["促使荷蘭人重建防禦體系，同時也埋下了統治危機的种子", "讓荷蘭人徹底離開台灣尋找其他貿易据點", "使鄭成功立即決定出兵台灣的計畫", "迫使西班牙人重新占领台灣南部"], "answer": 0, "explanation": "教材指出郭懷一事件後荷蘭人意識到防禦不夠而興建普羅民遮城，形成雙核防御體系；同時事件暴露了統治的不穩定性。這並未導致荷蘭人立即離開或西班牙人捲土重來，鄭成功出兵也是數年後的事。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "郭懷一事件的深層影響", "skill": "因果關係推論能力", "difficulty": 4, "id": 23}, {"question": "從地緣政治的角度分析，為何鄭成功選擇在台灣而非其他地方建立反清復明基地？", "options": ["台灣位于海上航線樞紐且土地肥沃能提供充足糧食補給", "台灣距離北京最近便於快速北伐恢復中原", "台灣當時沒有任何外国勢力存在易于控制", "台灣擁有最先進的武器製造技術可以生產大量軍火"], "answer": 0, "explanation": "教材指出鄭成功需要獨立後方重整旗鼓、維持海上貿易、解決軍隊糧食問題，而台灣正好位於航線樞紐且土地肥沃。其他選項與地理實際情況和教材所述事實不符。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "鄭成功選擇台灣的戰略考量", "skill": "綜合分析能力", "difficulty": 4, "id": 24}, {"question": "倘若你是鄭成功的軍事謀士，建議你如何在進攻台灣時避免像郭懷一那樣孤軍奮戰的悲劇？", "options": ["優先切斷荷軍各據點之間的聯繫，再逐一圍困孤立之敵", "集中所有兵力正面強攻防守最堅固的熱蘭遮城", "聯合台灣原住民一起發動全面總反攻", "放弃進攻直接在海面上封鎖台灣"], "answer": 0, "explanation": "教材顯示鄭成功實際採取的策略正是先攻普羅民遮城切斷聯絡，再包圍熱蘭遮城長期圍困，最終勝利。這比郭懷一的單次武裝起義更有戰略規劃，避免了孤軍奮戰的局面。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "鄭成功戰略的明智之處", "skill": "情境應用能力", "difficulty": 4, "id": 25}, {"question": "荷蘭人統治台灣期間的『套利經濟模型』存在什麼根本性的弱點？", "options": ["過度依賴壓榨本地民眾導致社會動盪威脅統治穩定", "缺乏足夠的資金支持跨國貿易活動", "無法与中国和日本建立有效的貿易聯繫", "台灣本地人口太少不足以支撐經濟運轉"], "answer": 0, "explanation": "教材明確指出這種模式的致命弱點是對原住民和漢人的壓榨，導致不满累積最終引發郭懷一事件，動搖了統治根基。荷蘭人實際上資金充裕且能有效開展跨國貿易，人數問題也不是主要弱點。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "荷治經濟模式的脆弱性", "skill": "因果關係推論能力", "difficulty": 4, "id": 26}, {"question": "從「多人線上即時戰略遊戲」的角度來理解，荷、西、鄭三個勢力在台灣伺服器上的競爭過程反映了什麼歷史規律？", "options": ["誰能掌握關鍵地理位置並有效整合資源，誰就能獲得競爭優勢", "遊戲中角色等級最高的人必然會贏得最終勝利", "只要擁有最先進的武器就一定能掌控全局", "隨機的事件對歷史進程完全沒有影響"], "answer": 0, "explanation": "教材用遊戲比喻串講整段歷史，核心道理是地理位置（航線樞紐）和資源整合能力（貿易網絡）决定勝敗。荷蘭統一台灣、鄭成功接管都是基於這些要素，而隨機事件如旱災也會影響局勢但不能說完全無影響。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "歷史競爭的本質洞察", "skill": "跨概念整合能力", "difficulty": 4, "id": 27}, {"question": "如果老師在考試中問『為什麼鄭成功能夠成功收復台灣而郭懷一失敗了』，你最應該如何回答？", "options": ["鄭成功具備更完善的組織能力和軍事實力，而郭懷一支眾寡難敵", "因為郭懷一運氣不好遇到天氣不佳所以失敗", "鄭成功比郭懷一更早來到台灣因此更有經驗", "郭懷一沒有得到原住民的任何支持完全是孤立的"], "answer": 0, "explanation": "教材指出郭懷一隻帶領數千農民使用竹杖農具對抗荷蘭火槍隊迅速失敗；而鄭成功是有組織的大軍作戰歷經戰略部署最終獲勝。關鍵差異在於組織程度和軍事實力而非運氣或先来後到。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "成敗原因的比較分析", "skill": "綜合分析能力", "difficulty": 4, "id": 28}, {"question": "承天府的設立對台灣歷史有什麼重要的象徵意義？", "options": ["標誌著台灣首次出現漢人政權的正式行政建制", "表示荷蘭東印度公司擴張了其統治範圍", "證明清朝已經正式管轄台灣地區", "代表台灣與其他亞洲國家建立了外交關係"], "answer": 0, "explanation": "教材明確指出鄭成功設立承天府是「台灣第一個漢人政權的建立」，具有劃時代的象徵意義。這不是荷蘭人或清朝的行為，教材也未提及此舉代表與外國建交的外交意義。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "承天府的歷史意義", "skill": "概念辨析能力", "difficulty": 4, "id": 29}, {"question": "看完這段歷史後，若想深入了解鄭成功是否真的到過宜蘭，你應該怎麼做才符合歷史研究的基本方法？", "options": ["查閱可信的歷史文獻資料，區分史實與民間傳說", "聽信當地口耳相傳的故事作為真實歷史依據", "假設所有流傳的故事都一定是真的不需要驗證", "直接刪除這個討論議題避免浪費時間"], "answer": 0, "explanation": "教材最後特別提醒要「區分歷史事實與民間傳奇故事」，這是歷史研究的重要方法。龜山島傳說就是例子——看似有趣但非史實。聽信傳說、忽略驗證或直接刪除都不是正確的學術態度。", "subject": "歷史", "unit": "荷西時期與明鄭治台", "concept": "史學研究方法應用", "skill": "區分史實與傳說的辨析能力", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
