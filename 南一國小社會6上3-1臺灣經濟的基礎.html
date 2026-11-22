@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會6上3-1臺灣經濟的基礎</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "七年級至九年級", "unit": "臺灣經濟發展史", "topic": "從日治時期到科技之島的經濟現代化進程", "filename": "南一國小社會6上3-1臺灣經濟的基礎", "summary": "以遊戲化比喻串講臺灣自日治至科技之島的經濟現代化歷程，涵蓋專賣制度、土地改革、美援、十大建設與科學園區等關鍵政策。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "後藤新平在日治時期擔任什麼職務？", "options": ["臺灣總督", "民政長官", "立法委員", "財政部長"], "answer": 1, "explanation": "後藤新平是日治時期的總督府民政長官，也是關鍵任務發起者，而非總督或其他職位。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "日治時期經濟政策人物", "skill": "基本知識記憶", "difficulty": 2, "id": 1}, {"question": "日治時期的專賣制度不包括下列哪一項物資？", "options": ["鴉片", "茶葉", "食鹽", "酒類"], "answer": 1, "explanation": "專賣制度包含鴉片、樟腦、食鹽、菸草、酒類五種物資，茶葉不在其中。其他三個選項皆為專賣項目。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "日治時期專賣制度內容", "skill": "知識辨識", "difficulty": 2, "id": 2}, {"question": "後藤新平推動的三項基本調查任務，不包括下列何者？", "options": ["土地調查", "戶口普查", "氣候調查", "舊慣調查"], "answer": 2, "explanation": "三項基本調查為土地調查、戶口普查、舊慣調查，目的在數據採集與建立統治基礎；氣候調查不在其中。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "日治時期基礎調查內容", "skill": "知識辨識", "difficulty": 2, "id": 3}, {"question": "日治時期的交通建設包含下列哪一組合？", "options": ["北迴鐵路、蘇花公路、松山機場", "縱貫鐵路、基隆港、高雄港", "西部高鐵、桃園機場、花蓮港", "台鐵屏東線、阿里山森林鐵路、安平港"], "answer": 1, "explanation": "教材明確記載的交通建設為縱貫鐵路、基隆港、高雄港，用於連結物產與運輸網絡。其餘選項的建設不在教材所述範圍內。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "日治時期交通建設", "skill": "知識辨識", "difficulty": 2, "id": 4}, {"question": "戰後土地改革的三步曲正確順序為何？", "options": ["耕者有其田、公地放領、三七五減租", "公地放領、三七五減租、耕者有其田", "三七五減租、公地放領、耕者有其田", "三七五減租、耕者有其田、公地放領"], "answer": 2, "explanation": "土地改革三步曲依序為三七五減租、公地放領、耕者有其田，順序不可顛倒。選項A、B、C的順序均有誤。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "戰後土地改革步驟", "skill": "排序記憶", "difficulty": 2, "id": 5}, {"question": "美援開始提供臺灣的原因，與下列哪一事件最為直接相關？", "options": ["第二次世界大戰結束", "民國39年韓戰爆發", "抗日戰爭勝利", "國共內戰全面開打"], "answer": 1, "explanation": "教材明確指出民國39年韓戰爆發後，美國開始援助臺灣，象徵外部DLC解鎖。其他事件皆非教材所述美援啟動的直接原因。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "美援起源背景", "skill": "基本因果理解", "difficulty": 2, "id": 6}, {"question": "下列哪一選項是加工出口區的主要特色？", "options": ["產品主要供國內消費，徵收關稅保護", "外商投資享免稅優惠，產品全數外銷", "專注於農業產品出口，免收任何費用", "由政府全額投資經營，不允許外商參與"], "answer": 1, "explanation": "加工出口區位於台中與高雄，特點是免稅區，外商投資享有優惠，且產品全部外銷。其他選項皆不符合教材描述。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "加工出口區政策特色", "skill": "知識辨識", "difficulty": 2, "id": 7}, {"question": "十大建設中包含下列哪一項工程？", "options": ["離岸風力發電場", "核能發電廠", "海底隧道系統", "太陽能發電站"], "answer": 1, "explanation": "十大建設包含核能發電廠、高速公路、國際機場與港口等大型工程。風力、隧道、太陽能均不在教材所列項目之中。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "十大建設內容", "skill": "知識辨識", "difficulty": 2, "id": 8}, {"question": "新竹科學園區成立於西元哪一年，促成臺灣成為科技之島？", "options": ["民國59年（1970年）", "民國65年（1976年）", "民國69年（1980年）", "民國75年（1986年）"], "answer": 2, "explanation": "教材明確記載民國69年（西元1980年）科學園區成立，完整供應鏈形成，臺灣成為科技之島。其他年份皆不符合教材所述。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "科學園區成立時間", "skill": "時間記憶", "difficulty": 2, "id": 9}, {"question": "家庭代工政策對臺灣社會造成什麼樣的影響？", "options": ["男性勞動力大規模投入工廠生產", "農業人口大幅增加，糧食自給率提升", "女性勞動力大規模投入，騎腳踏車上班", "外銷產品轉為主要供應國內市場消費"], "answer": 2, "explanation": "家庭代工政策使客廳變工廠，女性勞動力大規模投入，被稱為經濟起飛的功臣。其他選項與教材所述不符。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "家庭代工政策的社會影響", "skill": "基本影響認知", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "日治時期總督府實施專賣制度，其主要目的是什麼？", "options": ["滿足民眾日常生活的多樣需求", "增加財政收入以改善初期財源不足的狀況", "減少對外貿易逆差以平衡國際收支", "促進民間企業自由競爭市場的發展"], "answer": 1, "explanation": "專賣制度是官方商城獨家銷售，目的是改善初期財源不足，帶來財政收入Buff。選項A、C、D皆非專賣制度的主要目的，屬於概念混淆。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "專賣制度的目的與功能", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "日治時期嘉南大圳與機械化製糖的實施，最主要的經濟影響為何？", "options": ["使臺灣完全脫離農業，全面轉向重工業", "帶動農業科技樹升級，邁向半農半工社會", "阻礙交通建設進展，延緩經濟現代化進程", "迫使農民放棄耕地，全面投入海外貿易"], "answer": 1, "explanation": "嘉南大圳與機械化製糖是農業科技樹升級，搭配發電廠設立，促使臺灣邁向半農半工社會。選項A、C、D皆與教材所述事實相反。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "農業發展對經濟型態的影響", "skill": "因果分析", "difficulty": 3, "id": 12}, {"question": "戰後初期政府實施貨幣改革，以四萬舊臺幣換一元新臺幣，此舉最主要的作用為何？", "options": ["大幅降低進口關稅，促進外銷產品競爭力", "重新設定貨幣匯率，穩定整體幣值", "增加物價管制範圍，壓制黑市交易活動", "獎勵民众將金錢存入銀行吸收流動資金"], "answer": 1, "explanation": "貨幣改革如同系統重啟，目的是重新設定貨幣匯率、穩定幣值。選項A關乎關稅而非幣值，C、D皆非貨幣改革的直接作用，屬因果錯置。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "貨幣改革的功能與目的", "skill": "因果分析", "difficulty": 3, "id": 13}, {"question": "美援對臺灣經濟發展發揮了什麼關鍵作用？", "options": ["提供大量軍用武器裝備以強化國防力量", "帶來貸款與物資，促進民生工業及內需市場擴大", "直接接管臺灣金融體系，掌控貨幣發行權", "強制臺灣開放所有產業供外國資本獨佔經營"], "answer": 1, "explanation": "美援提供貸款和物資（如脫脂奶粉），政府運用美援發展紡織、塑膠、五金等民生工業，擴大內需市場。選項A、C、D皆超出教材所述美援作用的範圍。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "美援的經濟功能", "skill": "因果分析", "difficulty": 3, "id": 14}, {"question": "民國60年代石油危機對臺灣經濟造成衝擊後，政府採取的主要因應策略是什麼？", "options": ["全面停止對外貿易，轉向完全自給自足", "推行十大建設，擴大內需以突破經濟瓶頸", "削減基礎建設預算，將資源集中於農業部門", "降低工資水平，以價格優勢爭取國際訂單"], "answer": 1, "explanation": "石油危機導致Debuff疊滿，政府推出十大建設（核能發電廠、高速公路、國際機場港口等），擴大內需、突破瓶頸。選項A、C、D皆非教材所述的實際應對策略。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "經濟危機的政府應對策略", "skill": "因果分析", "difficulty": 3, "id": 15}, {"question": "戰後土地改革「三七五減租」最主要的作用是什麼？", "options": ["將公有土地直接分配給無地農民永久持有", "提高地主租金收入，鼓勵農民兼業務農", "減輕佃農負擔，提升生產意願以恢復農業產出", "廢除私有土地制度，全面實行國有農地政策"], "answer": 2, "explanation": "三七五減租旨在減輕佃農租負，提升其生產意願，是土地改革第一步。選項A描述的是耕者有其田，B、D皆與該政策意圖不符。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "土地改革政策的作用", "skill": "概念辨析", "difficulty": 3, "id": 16}, {"question": "加工出口區與新竹科學園區這兩項政策，最主要的差異在哪裡？", "options": ["加工出口區設置較早，科學園區成立於三十年之後", "加工出口區以外銷導向為主，科學園區著重高科技產業聚落", "加工出口區由政府全額投資，科學園區依賴民間資金運作", "加工出口區僅限於南部地區，科學園區遍布全國各縣市"], "answer": 1, "explanation": "兩者的核心差異在於政策定位：加工出口區是外銷導向的免稅區；科學園區則是聚集高科技產業、形成半導體完整供應鏈的技術聚落。選項A年份有誤，C、D與事實不符。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "加工出口區與科學園區的政策比較", "skill": "比較分析", "difficulty": 3, "id": 17}, {"question": "十大建設中高速公路通車後，臺北到高雄的行車時間從多少縮短為多少？", "options": ["從六小時縮短為兩小時", "從九小時縮短為四小時", "從十二小時縮短為五小時", "從八小時縮短為三小時"], "answer": 1, "explanation": "教材明確記載高速公路通車後，臺北到高雄行車時間從九小時縮短為四小時，大幅改善區域連結與生活便利性。其他數字皆為錯誤數據。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "十大建設的交通成效", "skill": "資料判讀", "difficulty": 3, "id": 18}, {"question": "日治時期的「統一度量衡」與「發行臺灣銀行券」，其主要功能分別是什麼？", "options": ["統一度量衡是為了文化同化，發行銀券是為了軍事籌資", "統一度量衡是標準化交易尺規，發行銀券是建立標準化貨幣系統", "統一度量衡是推動教育改革，發行銀券是發展觀光產業", "統一度量衡是促進農業推廣，發行銀券是鼓勵民間借貸"], "answer": 1, "explanation": "統一度量衡使各地交易規則一致，發行臺灣銀行券建立標準化貨幣系統，兩者皆為了消除交易混亂、加速經濟現代化。選項A、C、D皆屬概念混淆或因果錯置。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "經濟標準化政策的功能", "skill": "概念辨析", "difficulty": 3, "id": 19}, {"question": "從日治後期到戰後的經濟轉型過程中，臺灣社會形態發生什麼關鍵變化？", "options": ["由農業社會直接躍升至完全工業化社會，跳過過渡階段", "從純农业社會維持不變，直至科學園區成立才有改變", "由半農半工社會進一步深化，最終轉型為高科技產業主導的經濟體", "由工业社會倒退為农业社會，再經現代化回復原有面貌"], "answer": 2, "explanation": "日治後期已邁向半農半工社會，戰後經歷土地改革、美援、加工出口區、十大建設、科學園區等階段，最終形成科技之島。選項A跳過過渡階段，B、D與事實相反。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "臺灣社會形態的歷史演變", "skill": "綜合分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "假如你是一位地方政府官員，面臨經濟成長帶來的空氣污染與水質惡化問題，基於教材所提及的經濟現代化歷程，你應該最先採取什麼行動？", "options": ["終止所有工業生產活動以杜絕污染源頭", "忽略環境問題持續追求經濟成長最大化", "分析問題成因並尋求发展与環保兼顧的解決方案", "將所有污染企業遷移至國外以避免本土爭議"], "answer": 2, "explanation": "教材結尾強調學習經濟史是為了成為現代公民，分析問題成因、找出解決方法，兼顧發展與環境。選項A過於極端，B忽視環境挑戰，D未正視根本問題。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "經濟發展與環境議題的公民責任", "skill": "情境應用", "difficulty": 4, "id": 21}, {"question": "若某開發中國家欲複製臺灣的科技產業升級經驗，依據教材內容，他們最應該優先完成的基礎工作是什麼？", "options": ["直接投資興建高科技芯片製造廠以快速提升產值", "首先建立詳細的土地、人口等基礎數據搜集與整理機制", "立即關閉所有傳統產業全力發展人工智慧領域", "效仿他國模式完全依賴外國技術而不培養本土人才"], "answer": 1, "explanation": "後藤新平的經驗顯示，先進行土地調查、戶口普查、舊慣調查等數據搜集，才能有效開發資源、制定政策。直接建廠（A）、關閉產業（C）或依賴外國（D）皆忽略了循序漸進的重要性。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "經濟現代的基礎條件與發展步驟", "skill": "推論應用", "difficulty": 4, "id": 22}, {"question": "某位高中生發現家中客廳堆滿待縫製的外銷袋料，家人正忙碌趕工。這個情境最符合臺灣經濟史上的哪一個政策階段？", "options": ["日治時期的專賣制度執行階段", "戰後的貨幣改革穩定時期", "家庭代工政策推行的經濟起飛階段", "十大建設期間的重大工程進行階段"], "answer": 2, "explanation": "客廳變工廠、女性騎腳踏車上班正是家庭代工政策的典型畫面，屬於經濟起飛階段的重要現象。專賣制度（A）、貨幣改革（B）、十大建設（D）皆與此情境無關。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "家庭代工政策的生活面貌", "skill": "情境判斷", "difficulty": 4, "id": 23}, {"question": "一位商人考慮在臺灣南部設置工廠生產電子零組件並出口至歐洲，依據教材中的經濟政策演進，他最適合選擇在哪裡設廠以獲得最大政策支援？", "options": ["日治時期專賣制度的樟腦生產區域", "十大建設期間修建的高速公路沿線城鎮", "中部或南部原有的加工出口區範圍內", "科學園區附近已形成完整供應鏈的地帶"], "answer": 3, "explanation": "電子零組件屬高科技產業，應選擇科學園區附近以獲得完整供應鏈支援。加工出口區（C）主要面向勞動密集產品外銷，非高科技聚落。A、B與設廠時機亦不匹配。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "產業類型與政策區域的配合選擇", "skill": "綜合分析應用", "difficulty": 4, "id": 24}, {"question": "倘若政府面臨石油危機引發的全球經濟衰退，想要避免臺灣經濟陷入瓶頸，最合理的政策連鎖反應應該是？", "options": ["削減教育預算以節省支出，等待經濟自然復甦", "推出大型公共工程擴大內需，隨後投資高科技產業以提升竞争力", "大幅提高關稅全面封閉邊境，切斷所有對外貿易聯繫", "將全部財政投入農業補貼，恢復傳統的自給自足經濟模式"], "answer": 1, "explanation": "教材顯示臺灣的做法是十大建設擴大內需突破瓶頸，之後成立科學園區推動高科技產業升級。選項A放任不管，C過度封閉，D開倒车，皆非合理策略。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "經濟危機的連鎖政策應對", "skill": "綜合推論", "difficulty": 4, "id": 25}, {"question": "小明閱讀教材後寫下以下心得，其中有幾處錯誤？①韓戰爆發後美國開始援助臺灣②加工出口區的產品主要銷售於國內市場③十大建設是在石油危機前就已全部完工④科學園區成立的同年臺灣正式獨立", "options": ["只有一處錯誤", "有兩處錯誤", "有三處錯誤", "四處都有錯誤"], "answer": 2, "explanation": "①正確；②錯誤（加工出口區產品全數外銷）；③錯誤（十大建設是應對石油危機的回應）；④錯誤（時間錯誤且政治表述不當）。因此共有三處錯誤。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "經濟史知識的綜合辨識", "skill": "錯誤分析", "difficulty": 4, "id": 26}, {"question": "一位歷史學者撰寫論文，要比較日治時期與戰後兩個階段的經濟政策異同，以下哪個觀點最符合教材所呈現的事實？", "options": ["兩個階段完全沒有任何共同之處，是完全對立的政策体系", "兩個階段都曾透過基礎建設推動經濟發展，但主導者与目的不同", "戰後政策完全是照搬日治時期的做法，缺乏自主創新", "日治時期的經濟建設完全沒有任何長期正面的影響價值"], "answer": 1, "explanation": "教材顯示兩階段皆有建設推動經濟（如日治交通建設、戰後土地改革與十大建設），但主導體系不同（殖民地vs獨立發展）。選項A、C、D皆過於偏頗或絕對化，不符合教材客觀陳述。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "日治與戰後經濟政策的比較分析", "skill": "比較綜合", "difficulty": 4, "id": 27}, {"question": "若以「政策推動的因果鏈」來分析，下列哪一項最能呈現臺灣從農業經濟走向科技經濟的關鍵路徑？", "options": ["韓戰爆發→美援引入→加工出口→十大建設→科學園區成立", "科學園區成立→十大建設→加工出口→美援引入→韓戰爆發", "十大建設→科學園區→韓戰→美援→加工出口", "美援引入→科學園區→加工出口→十大建設→韓戰爆發"], "answer": 0, "explanation": "正確時間與因果鏈為：韓戰爆發（民國39年）→美援引入→設立加工出口區外銷→石油危機後十大建設→民國69年科學園區成立。選項B、C、D順序完全錯亂。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "經濟現代化的因果推進路徑", "skill": "因果排序分析", "difficulty": 4, "id": 28}, {"question": "某位年輕創業者想用「遊戲攻略」的方式介紹臺灣經濟史，他希望將「戰後土地改革三步曲」設計成一連串需按順序完成的任务，以下哪一種安排最符合教材原意？", "options": ["先完成「耕者有其田」拿到最終獎勵，再依次解锁「公地放領」和「三七五減租」", "三者可以任意順序完成，因為它們都是同一时期的政策", "依照「三七五減租→公地放領→耕者有其田」的順續解鎖，缺一不可", "只需選擇其中任一項完成即可跳過後續的所有土地相關任务"], "answer": 2, "explanation": "教材比喻土地改革三步曲像遊戲裡的任務連鎖，缺一不可，依序為三七五減租、公地放領、耕者有其田。選項A、B、D皆違反循序解鎖的原則設定。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "土地改革政策序列的任務化理解", "skill": "情境應用整合", "difficulty": 4, "id": 29}, {"question": "根據教材所述，經濟現代化歷程中最具代表性的產業升級轉變是從哪裡到哪裡？", "options": ["從重工業主導轉變為輕工業衰退", "從農業社會轉變為完全去工業化的服務業社會", "從家電業起步經電子零組件發展至半導體晶片的高科技聚落", "從海陸交通建設擴展到全面太空探測的宇宙經濟時代"], "answer": 2, "explanation": "教材明確描述新竹科學園區的產業演进路徑：家電業→電子零組件→半導體晶片，是技術密集升級的典型代表。選項A、B、D皆誇大或未反映教材所述真實轉型軌跡。", "subject": "社會科", "unit": "臺灣經濟發展史", "concept": "產業升級的典型路徑與代表意義", "skill": "綜合歸納", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
