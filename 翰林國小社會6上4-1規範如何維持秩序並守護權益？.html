@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 翰林國小社會6上4-1規範如何維持秩序並守護權益？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "公民", "grade": "國二／國三", "unit": "社會規範與法律", "topic": "風俗、宗教、道德與法律的區辨及其關係", "filename": "翰林國小社會6上4-1規範如何維持秩序並守護權益？", "summary": "以遊戲比喻解說社會規範的四層結構，釐清道德與法律在強制力上的根本差異，並探討科技對傳統規範的影響。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據課本比喻，神明屬於哪個層級的社會規範？", "options": ["第一層：風俗習慣", "第二層：宗教信仰", "第三層：道德", "第四層：法律"], "answer": 1, "explanation": "課本以遊戲比喻說明社會規範的四層防護牆，其中神明屬於第二層的宗教信仰，是道德層級的Buff，沒有強制懲罰機制，效果取決於個人信仰強度。", "subject": "公民", "unit": "社會規範與法律", "concept": "四層規範的基本定義", "skill": "概念辨識", "difficulty": 2, "id": 1}, {"question": "下列何者屬於『軟性規範』，違反不會被封號但會受到側目？", "options": ["闖紅燈", "不禮让行人", "不遵守風俗或宗教", "販賣菸酒給未成年人"], "answer": 2, "explanation": "課本指出風俗和宗教如同伺服器裡的潛規則，不遵守也不會被封號，只是會被其他玩家白眼。只有法律才帶有強制執行權限。", "subject": "公民", "unit": "社會規範與法律", "concept": "軟性規範的特性", "skill": "概念辨析", "difficulty": 2, "id": 2}, {"question": "開車禮讓行人目前屬於什麼性質的行為？", "options": ["純粹的道德要求", "風俗習慣", "已經入法的法律規範", "宗教信仰"], "answer": 2, "explanation": "課本特別提到這是一個陷阱題，禮讓行人已入法，違規最高可罰六千元，所以屬於法律層次，不是純粹的道德問題。", "subject": "公民", "unit": "社會規範與法律", "concept": "禮讓行人已入法", "skill": "情境判斷", "difficulty": 2, "id": 3}, {"question": "下列何種行為主要依靠良心與社會輿論來維持？", "options": ["不闖紅燈", "主動撿拾垃圾", "禁止販賣菸酒給未成年人", "依法納稅"], "answer": 1, "explanation": "課本指出撿拾垃圾仍屬公德心，是道德層次，依靠良心與社會輿論，缺乏外部強制力；其餘三個選項皆有明確法律規範。", "subject": "公民", "unit": "社會規範與法律", "concept": "道德的運作機制", "skill": "行為歸類", "difficulty": 2, "id": 4}, {"question": "『線上祭祖』被課本認為是怎樣的現象？", "options": ["完全破壞了傳統", "新型的宗教迷信", "傳統的數位轉型版本", "應被禁止的行為"], "answer": 2, "explanation": "課本說明線上祭祖是傳統在數位時代的轉型版本，科技改變的是形式，核心敬意與追思仍可保留，只要心誠，媒介不同也不影響意義。", "subject": "公民", "unit": "社會規範與法律", "concept": "科技與傳統的適應", "skill": "概念理解", "difficulty": 2, "id": 5}, {"question": "風俗習慣在社會規範四層防護牆中位居第幾層？", "options": ["第一層", "第二層", "第三層", "第四層"], "answer": 0, "explanation": "課本明確指出四層由外到內依序為：第一層風俗習慣、第二層宗教信仰、第三層道德、第四層法律。", "subject": "公民", "unit": "社會規範與法律", "concept": "四層規範的順序", "skill": "基本知識回憶", "difficulty": 1, "id": 6}, {"question": "判斷一個行為屬於道德還是法律，最快速的依據是什麼？", "options": ["是否違反傳統", "是否有罰則", "是否符合宗教教義", "是否被人看見"], "answer": 1, "explanation": "課本總結：段考看到『罰則』兩字直接選法律，看到『良心』『輿論』選道德，有罰則的就是法律，沒有就是道德。", "subject": "公民", "unit": "社會規範與法律", "concept": "道德與法律的區辨方法", "skill": "判断技巧", "difficulty": 2, "id": 7}, {"question": "道德被課本比喻為什麼樣的角色？", "options": ["封號機制", "自我防弊系統", "輔助職業", "最後底線"], "answer": 1, "explanation": "課本將道德比喻為『自我防弊系統』，就像遊戲裡的榮譽系統讓你self-police，靠良心與輿論運作，無法強制別人安裝。", "subject": "公民", "unit": "社會規範與法律", "concept": "道德的自我管制特性", "skill": "比喻對應", "difficulty": 2, "id": 8}, {"question": "《兒童及少年福利與權益保障法》在課本中被比喻為什麼？", "options": ["防禦外掛", "後勤補給", "輔助技能", "懲罰系統"], "answer": 2, "explanation": "課本形容這部法律像遊戲裡的輔助職業，專門保護新手玩家（弱勢族群），確保他們享有基本權益，例如博物館和大眾運輸提供年齡優惠。", "subject": "公民", "unit": "社會規範與法律", "concept": "兒童權益保障法的性質", "skill": "比喻對應", "difficulty": 2, "id": 9}, {"question": "『不遵守神明勸誡亂丟垃圾』之所以仍發生，主要原因是什麼？", "options": ["神明不存在", "宗教勸誡不等於強制遵守", "法律允許亂丟垃圾", "神明只管理大人"], "answer": 1, "explanation": "課本開頭提出的認知誤區正是要釐清這一點：宗教勸誡屬於道德層級，沒有強制懲罰機制，所以不能把神明勸誡等同於法律強制遵守。", "subject": "公民", "unit": "社會規範與法律", "concept": "宗教勸誡的效力限制", "skill": "因果理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "在道德與法律的維恩圖比較中，兩者最主要的區別特徵是什麼？", "options": ["是否具有強制力", "是否與生活相關", "是否隨著時間改變", "是否需要教育"], "answer": 0, "explanation": "課本強調維恩圖比較的關節在『強制力』這個特徵：道德依靠良心與輿論，法律依靠國家強制力，這是區辨兩者的核心標準。", "subject": "公民", "unit": "社會規範與法律", "concept": "道德與法律的維恩圖比較", "skill": "比較分析", "difficulty": 3, "id": 11}, {"question": "課本說『道德是法律的前置過濾網，法律是道德的最後底線』，這兩句話分別說明什麼意思？", "options": ["法律比道德重要得多", "道德先勸導大部分人守法，法律在道德失效時介入", "道德和法律毫無關聯", "法律應該取代道德"], "answer": 1, "explanation": "這句話的意思是道德發揮預防作用，引導人們自覺遵守行為準則；當道德無力制止某些行為時，法律才作為最後的底線強制介入。", "subject": "公民", "unit": "社會規範與法律", "concept": "道德與法律的互補關係", "skill": "原理推演", "difficulty": 3, "id": 12}, {"question": "A停在白線內卻擋住B的出入，課本案例对此如何判定？", "options": ["法律與道德都有問題", "法律上未違規，但道德上有問題", "法律與道德都無問題", "法律有問題，道德無問題"], "answer": 1, "explanation": "課本案例指出，若A未違法停放在白線內，警方不會處罰，但道德上應主動溝通協調，這正說明明確了道德與法律作用的界線：法律管底線，道德管高標準。", "subject": "公民", "unit": "社會規範與法律", "concept": "法律與道德的作用界線", "skill": "案例應用", "difficulty": 3, "id": 13}, {"question": "『道德是高標準，法律是低標準』這段話的正確理解是什麼？", "options": ["道德的要求比法律更低", "法律只規範最基本的行為，道德涵蓋更高的自我期許", "道德和法律的要求一樣", "法律只管小事，道德不管事"], "answer": 1, "explanation": "法律是最後的底線，只規範社會最基本的行為；道德則是更高的自我期許，要求人們在合法之上進一步考慮他人感受與社會價值。", "subject": "公民", "unit": "社會規範與法律", "concept": "道德高標準與法律底線的關係", "skill": "概念辨析", "difficulty": 3, "id": 14}, {"question": "如果社會只有道德而沒有法律，可能會產生什麼問題？", "options": ["社會會變得過度嚴厲", "缺乏強制約束力，部分人違規無法被有效制裁", "所有人都會成為聖人", "經濟發展會更快速"], "answer": 1, "explanation": "課本指出『如果只有道德，又缺乏強制約束力』，意味著有些人不自覺就不會守規矩，此時沒有法律就沒有有效的懲罰機制。", "subject": "公民", "unit": "社會規範與法律", "concept": "單一規範制度的缺陷", "skill": "因果推論", "difficulty": 3, "id": 15}, {"question": "為什麼有些學生明明知道法律規定，仍然違規？", "options": ["他們根本不知道有這個法律", "認知與選擇之間存在落差，心存僥倖心態", "法律從來沒有真正執行過", "老師沒有教導清楚"], "answer": 1, "explanation": "課本指出關鍵在於『認知與選擇的落差』，有些人明知違法卻心存僥倖，以為不會被發現，但最終仍會被處罰。", "subject": "公民", "unit": "社會規範與法律", "concept": "違規行為的心理因素", "skill": "心理分析", "difficulty": 3, "id": 16}, {"question": "《兒童及少年福利與權益保障法》的主要立法目的是什麼？", "options": ["懲罰所有青少年犯罪", "保障弱勢族群的基本權益", "取代其他所有社會規範", "鼓勵商業利潤"], "answer": 1, "explanation": "課本說明政府為了保護弱勢族群制定專屬法律，例如禁止販賣菸酒給未成年人、要求各場所提供年齡優惠，目的就是守護特定族群的權益。", "subject": "公民", "unit": "社會規範與法律", "concept": "兒童權益保障法的立法目的", "skill": "目的分析", "difficulty": 3, "id": 17}, {"question": "『法律管底線，道德管高標準』这句话，可以用以下哪個例子來佐證？", "options": ["闖紅燈是違法，禮讓行人是更高要求的道德行為", "亂丟垃圾只違反道德，不受法律制裁", "宗教活動受法律嚴格監管", "風俗習慣可以凌駕法律"], "answer": 0, "explanation": "闖紅燈已入法，是法律設下的底線；禮讓行人在許多時候雖已入法，但在更广意义上，幫助他人的行为超出法律强制要求，是道德的高標準範例。", "subject": "公民", "unit": "社會規範與法律", "concept": "法律底線與道德高標準的具體例证", "skill": "案例佐證", "difficulty": 3, "id": 18}, {"question": "課本提到『宗教勸誡』和『法律強制』的根本差異在哪裡？", "options": ["宗教較古老，法律較新", "宗教沒有強制懲罰機制，法律有", "宗教只針對成年人，法律針對所有人", "宗教只影響內心，法律只影響行為"], "answer": 1, "explanation": "課本明確指出神明屬於道德層級的Buff，沒有強制懲罰機制；而法律是唯一具強制力的規範，違規者面臨罰鍰或判刑。", "subject": "公民", "unit": "社會規範與法律", "concept": "宗教勸誡與法律強制的差異", "skill": "差異分析", "difficulty": 3, "id": 19}, {"question": "道德依靠『良心』與『社會輿論』共同施壓，以下哪一個屬於良心機制？", "options": ["鄰居批評你沒公德心", "搶座時感到自責", "警察開罰單給你", "學校頒發模範生"], "answer": 1, "explanation": "課本舉例說明：當你搶座卻沒人讓座時『你會自責』這就是良心機制；而『別人罵你没公德心』才是社會輿論懲罰。", "subject": "公民", "unit": "社會規範與法律", "concept": "良心的內在機制", "skill": "機制辨識", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "某個城市推動『線上看展』代替傳統博物館參觀，有人擔心失去文化體驗的溫度。依據課本關於科技衝擊規範的理念，最合理的觀點是什麼？", "options": ["科技絕對有害，應全面恢復實體參觀", "完全拋棄傳統去擁抱科技最有效率", "應探索新型態是否能平衡創新與文化傳承", "傳統與科技永遠不可能共存"], "answer": 2, "explanation": "課本指出遇到科技與傳統衝突的題目，答案通常強調『平衡創新與尊重』，不應一概否定新形式，也不應完全拋棄舊意義，關鍵在於尋找合適的整合點。", "subject": "公民", "unit": "社會規範與法律", "concept": "科技與傳統的平衡觀點", "skill": "综合分析", "difficulty": 4, "id": 21}, {"question": "小明認為『反正沒人看見，闖個紅燈沒關係』。課本用什麼比喻來形容這種心態？", "options": ["像是知道偵測系統卻仍想開外掛", "像是玩遊戲忘了存檔", "像是忘記裝備防禦道具", "像是選擇了錯誤的英雄"], "answer": 0, "explanation": "課本明確指出：心存僥倖的心態就像『知道有偵測系統卻仍想開外掛』，最終還是會被封號（被處罰）。", "subject": "公民", "unit": "社會規範與法律", "concept": "僥倖心態的分析", "skill": "情境對應", "difficulty": 4, "id": 22}, {"question": "如果某地大量居民普遍相信『神明會懲罰亂丟垃圾的人』，但當地仍有嚴重亂丟垃圾問題，最合理的解釋是什麼？", "options": ["神明根本不存在的證據", "宗教勸誡缺乏強制執行機制，單靠信仰不足以形成社會规范", "這些居民並不真的信神", "垃圾太多是因為垃圾筒太少"], "answer": 1, "explanation": "課本開頭正是以此例說明認知誤區：神明屬於道德層級的Buff，沒有強制懲罰機制，效果取決於個人信仰強度，不能把宗教勸誡等同於法律強制遵守。", "subject": "公民", "unit": "社會規範與法律", "concept": "宗教勸誡效力的現實檢驗", "skill": "批判思考", "difficulty": 4, "id": 23}, {"question": "某地方政府計畫立法要求市民每天清掃社區街道。從課本規範層級的角度分析，此舉最可能遭遇什麼問題？", "options": ["這太浪費時間了", "清扫街道主要屬道德自律範疇，立法強制可能超出法律應管的範圍", "政府永遠不能干涉任何事", "這只會增加政府收入"], "answer": 1, "explanation": "課本強調『法律管底線，道德管高標準』，清潔社區更多依賴公德心與自覺（道德層），若以法律強制反而模糊了規範層級的適當分工。", "subject": "公民", "unit": "社會規範與法律", "concept": "法律適度性原則", "skill": "政策分析", "difficulty": 4, "id": 24}, {"question": "課本說『規範不是僵化的舊程式，而是會隨著科技與文化不斷打patch的系統』，下列哪個例子最能體現此觀點？", "options": ["清明祭祖從親臨墓地變為線上升祭，儀式形式改變但敬意不變", "法律永遠不需要修改", "宗教完全被科技取代", "道德在科技社會中不再重要"], "answer": 0, "explanation": "課本以此為例說明：線上祭祖是傳統的數位轉型版本，科技改變的是形式而非核心價值，體現了規範隨時代進步而調整的彈性。", "subject": "公民", "unit": "社會規範與法律", "concept": "規範的動態演化觀", "skill": "概念應用", "difficulty": 4, "id": 25}, {"question": "某公司規定員工上班不准玩手机，但有員工認為『我只是回個訊息又沒影響工作』，這爭議最適合用課本的哪個觀點來釐清？", "options": ["手機科技本身有問題", "道德自律與制度規定的邊界需釐清，若僅靠自覺常不够", "員工應該完全服從老闆", "公司規則是多餘的"], "answer": 1, "explanation": "此情境凸顯了道德自律的局限：員工覺得『沒影響工作』是其主觀判斷，但制度作為法律層級的規範提供了明確底線，說明僅靠自覺容易產生分歧。", "subject": "公民", "unit": "社會規範與法律", "concept": "自律與他律的界線", "skill": "情境判讀", "difficulty": 4, "id": 26}, {"question": "如果社會逐漸將『禮讓老人下車』從道德期待轉為法律強制，這反映了課本所說的什麼道理？", "options": ["道德已經完全被淘汰", "某些高標準的道德期望可能被提升為法律底線，反映規範層級的流動", "法律本來就該管所有事", "老人比其他人更重要"], "answer": 1, "explanation": "課本提醒『開車禮讓行人已入法』正是說明原本屬道德層次的高標準行為，在特定情況下可以被提升為法律強制，顯示規範層級之間可以互相影響與轉換。", "subject": "公民", "unit": "社會規範與法律", "concept": "規範層級的流動性", "skill": "趨勢分析", "difficulty": 4, "id": 27}, {"question": "某個社群開發了一款App鼓勵使用者自願回報鄰里違規行為，這最接近課本所描述的哪種規範運作機制？", "options": ["法律強制執行", "道德層級的社會輿論監督", "風俗習慣的自然演進", "宗教的神明審判"], "answer": 1, "explanation": "課本描述道德依靠『良心與社會輿論的共同施壓』，此App讓民眾互相監督報告，類似輿論懲罰機制，但不具法律強制力，屬於道德層級的運作。", "subject": "公民", "unit": "社會規範與法律", "concept": "社會輿論監督機制", "skill": "機制歸納", "difficulty": 4, "id": 28}, {"question": "課本提到『遵守規範不能只靠恐懼，還需要內化價值觀』，這暗示了法律與道德之間怎樣的關係？", "options": ["法律越嚴苛越好", "法律提供外在強制，道德提供內在認同，兩者缺一不可但功能不同", "應該廢除法律只用道德", "恐懼是最高效的管理工具"], "answer": 1, "explanation": "課本總結指出道德和法律『缺一不可』：法律靠強制讓人不敢違規，道德靠內化價值讓人自覺守規，二者相輔相成才能建構完整的規範體系。", "subject": "公民", "unit": "社會規範與法律", "concept": "法律與道德的功能互補", "skill": "原理統合", "difficulty": 4, "id": 29}, {"question": "假設某種新型態的網路詐騙行為出現，現行法律尚未規範，但社會大眾普遍认为這不對。依課本框架，接下來最可能發生的情況是什麼？", "options": ["因為沒有法律禁止所以大家都能做", "道德層面的共識可能成為將來立法的基礎， eventually 進入法律底線", "法律必須永遠走在道德前面", "民眾不應該批評新事物"], "answer": 1, "explanation": "課本說明『道德是法律的前置過濾網』，當多數人已形成道德共识認為某事不對，這種共識往往會推动立法，使新的道德期待逐步昇華為法律規範。", "subject": "公民", "unit": "社會規範與法律", "concept": "道德共識帶動法律變革", "skill": "預測推演", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
