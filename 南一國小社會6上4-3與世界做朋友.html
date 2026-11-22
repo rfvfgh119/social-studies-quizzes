@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 南一國小社會6上4-3與世界做朋友</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "社會科", "grade": "三年級", "unit": "中華民國的國際處境與外交", "topic": "台灣參與國際組織的歷程與務實外交策略", "filename": "南一國小社會6上4-3與世界做朋友", "summary": "本文說明台灣1971年後如何以經貿與民間外交突破受限空間。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "民國60年（西元1971年），聯合國通過決議，由哪個國家取代中華民國在聯合國的席位？", "options": ["日本", "中華人民共和國", "韓國", "菲律賓"], "answer": 1, "explanation": "民國60年聯合國通過決議，由中華人民共和國取代中華民國在聯合國的席位，這使台灣在國際上遭遇重大挫折。其他選項均非當時取代中華民國席位的國家。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "聯合國席次更替", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 1}, {"question": "中華民國是聯合國的哪種身分？", "options": ["觀察員國", "創始會員國", "新興會員國", "準會員國"], "answer": 1, "explanation": "中華民國是聯合國的創始會員國之一。选项中「觀察員國」「新興會員國」「準會員國」皆不符合歷史事實。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "聯合國席次更替", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 2}, {"question": "因為聯合國席次的變動，台灣選手參加奧運時必須使用什麼旗幟進場？", "options": ["中華民國國旗", "台灣省會旗", "中華奧會旗", "青天白日滿地紅旗"], "answer": 2, "explanation": "因政治因素受限，台灣選手參加奧運等國際賽事時不能使用中華民國國旗，只能用中華奧會旗進場。选项A和D實質相同；B無此安排。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "體育外交與中華台北模式", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 3}, {"question": "台灣於民國80年加入了哪個國際經貿組織？", "options": ["世界貿易組織（WTO）", "跨太平洋夥伴全面進步協定（CPTPP）", "亞太經濟合作會議（APEC）", "東南亞國協（ASEAN）"], "answer": 2, "explanation": "台灣於民國80年加入APEC（亞太經濟合作會議）。WTO是民國91年加入；CPTPP台灣尚未正式加入；ASEAN則是區域性政府組織，台灣並非成員。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "經濟外交與多邊貿易組織", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 4}, {"question": "台灣於民國91年加入了哪個國際經貿組織？", "options": ["亞太經濟合作會議（APEC）", "跨太平洋夥伴全面進步協定（CPTPP）", "國際貨幣基金組織（IMF）", "世界貿易組織（WTO）"], "answer": 3, "explanation": "台灣於民國91年加入WTO（世界貿易組織）。APEC是民國80年加入；CPTPP台灣尚未加入；IMF台灣亦非以獨立會員身分加入。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "經濟外交與多邊貿易組織", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 5}, {"question": "以下關於CPTPP的說明，何者正確？", "options": ["CPTPP是一個亞洲區域性的軍事同盟組織", "CPTPP成員國之間實施幾乎零關稅的貿易優惠機制", "CPTPP是由美國主導建立的跨大西洋貿易協定", "CPTPP主要目的是促進東亞地區的觀光交流"], "answer": 1, "explanation": "CPTPP是跨太平洋夥伴全面進步協定，其核心特色是成員國之間貿易幾乎零關稅。選項A誤植為軍事同盟；C誤植為美國主導且跨大西洋；D則誤解為觀光協定。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "CPTPP的性質與影響", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 6}, {"question": "台灣民間組織「路竹會」的主要活動是什麼？", "options": ["在海外推動民主選舉", "提供海外巡迴醫療服務", "協助國外台商投資設廠", "在台灣舉辦國際書展"], "answer": 1, "explanation": "路竹會專門前往海外偏遠地區提供巡迴醫療援助，幫助弱勢族群。選項A、C、D皆非路竹會的宗旨與活動內容。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "民間外交與人道援助", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 7}, {"question": "「口罩國家隊」事件中，台灣透過捐贈醫療物資給各國，主要產生了什麼效果？", "options": ["立即獲得聯合國席次重返機會", "累積國際善意並引發後續互助回報", "迫使美國與台灣簽訂雙邊軍事同盟", "直接促成CPTPP接纳台灣為成員國"], "answer": 1, "explanation": "疫情初期台灣捐贈口罩等物資，累積了國際善意，後來在美國、日本等非邦交國援助疫苗一事中獲得了互惠回應。選項A、C、D誇大了該事件的即時效果。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "民間外交與人道援助", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 8}, {"question": "根據教材，台灣在國際上被形容為「神隊友」，主要原因是以下哪一項？", "options": ["台灣擁有最多的聯合國安理會席次", "台灣在所有邦交國中軍力最為強盛", "台灣憑藉經貿、科技、醫療及民主價值累積國際聲望", "台灣已正式加入所有主要國際貿易組織"], "answer": 2, "explanation": "台灣雖有政治上的限制，但憑藉經濟實力、科技製造力、完善的醫療體系與自由民主價值，在世界舞台上建立了不可替代的地位，故被稱為「神隊友」。選項A、B、D皆與事實不符。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "台灣國際角色的當代定位", "skill": "史實記憶與關鍵資訊檢索", "difficulty": 2, "id": 9}, {"question": "以下關於APEC與WTO的比較，何者正確？", "options": ["APEC具有約束力的貿易規則，WTO則是鬆散的對話平台", "APEC與WTO皆是全球性、具強制約束力的貿易組織", "APEC是區域性貿易交流平台，WTO是全球性貿易規則制定者", "APEC與WTO皆專注於政治安全事務而非經濟議題"], "answer": 2, "explanation": "APEC（亞太經合會）是亞洲太平洋地區松散的貿易交流平台；WTO則是全球性的貿易規則制定者，具有較高的約束力。選項A將兩者性質顛倒；B、D的描述亦有誤。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "APEC與WTO之性質分野", "skill": "概念比較與分類推演", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "聯合國席次變更後，台灣為何無法再以中華民國的名義參與多數國際組織？", "options": ["因為台灣自願退出所有國際組織，主動放棄參與資格", "因為聯合國決議承認中華人民共和國代表中國，導致中華民國失去席位", "因為美國禁止台灣以任何名義參與國際活動", "因為台灣本身不具備任何國際參與的能力與條件"], "answer": 1, "explanation": "聯合國第2758號決議承認中華人民共和國代表中國在聯合國的席位，致使中華民國被迫離開聯合國及其相關體系。選項A主觀臆測；C和D過度簡化或扭曲責任歸屬。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "聯合國席次更替的外交影響", "skill": "因果推理與資料解讀", "difficulty": 3, "id": 11}, {"question": "台灣選擇以「中華台北」之名參與奧運，這個做法主要反映了下列哪一項現實？", "options": ["台灣人自願放棄以國家名義參賽的權利", "台灣的國旗和國名在國際上被永久禁令使用，需以折衷名稱爭取參與空間", "國際奧會認為台灣的運動表現不足以使用國名", "中華奧會旗的設計靈感來自美國的星條旗"], "answer": 1, "explanation": "由於聯合國席次喪失的政治後果，台灣在國際体育赛事中被要求不使用中華民國國旗與國號，因此以「中華台北」及中華奧會旗作為折衷方案參與。選項A、C、D都與事實無關。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "體育外交的政治意涵", "skill": "概念辨析與關聯推導", "difficulty": 3, "id": 12}, {"question": "台灣加入APEC和WTO這兩個行動，最主要希望達成什麼目的？", "options": ["在軍事安全方面取得與其他大國平等的協商地位", "透過參與國際經貿框架來拓展空間、提升國際能見度", "恢復聯合國安理會常任理事國的席位資格", "讓中華人民共和國承認台灣的主權獨立地位"], "answer": 1, "explanation": "台灣在政治外交受挫後，轉向務實經濟外交路線，以APEC和WTO的成員身份在國際經貿領域建立存在感。選項A、C、D皆超出這兩個組織的功能範圍或當前現實。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "經濟外交的策略動機", "skill": "因果推理與資料解讀", "difficulty": 3, "id": 13}, {"question": "如果台灣未能加入CPTPP，可能對台灣造成什麼主要負面影響？", "options": ["台灣將立即斷絕與所有亞洲國家的貿易往來", "台灣的商品在CPTPP成員市場中可能面臨較高關稅，處於競爭劣勢", "CPTPP會派兵介入台海局勢並威脅台灣安全", "台灣將自動成為WTO的觀察員而被剝奪會員資格"], "answer": 1, "explanation": "CPTPP實行成員間近乎零關稅，未加入的國家面對這些市場時產品競爭力相對下降，形成潛在貿易劣勢。選項A過度誇張；C、D皆與CPTPP性質無關。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "CPTPP未加入的風險評估", "skill": "因果推理與資料解讀", "difficulty": 3, "id": 14}, {"question": "APEC和WTO在台灣外交突围过程中扮演不同角色，兩者的最大差別在哪裡？", "options": ["APEC是全球性組織而WTO僅限亞太地區", "APEC具有法律約束力而WTO僅提供對話平台", "APEC著重區域經濟整合對話，WTO制定具有約束力的全球貿易規範", "APEC由台灣主導成立，WTO由中國發起設立"], "answer": 2, "explanation": "APEC是區域性、較為鬆散的經濟論壇；WTO則是全球性、具有強制約束力的貿易規則機構。選項A和B將兩者性質顛倒；D關於成立起源的說法完全錯誤。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "APEC與WTO之性質分野", "skill": "概念比較與分類推演", "difficulty": 3, "id": 15}, {"question": "台灣紅十字會在國際上的主要作用是什麼？", "options": ["代替台灣政府在联合国發表演說", "作為中立的人道救援組織在全球災區執行救助任務", "主導國際間的軍事同盟談判", "負責審核每個國家的入會申請資格"], "answer": 1, "explanation": "紅十字會是全球性的中立人道救援組織，在台灣遭遇國際困境時，透過人道援助展現台灣的力量與善意。選項A、C、D超出了紅十字會的職責範圍。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "民間外交的運作方式", "skill": "概念辨析與功能認定", "difficulty": 3, "id": 16}, {"question": "「Taiwan can help」口號的提出，最能體現台灣在國際事務中的哪一種形象？", "options": ["依賴他國援助才能生存的脆弱狀態", "以自身資源積極貢獻全球的主動參與者", "試圖對抗聯合國權威的激進行為", "只關注國內福利忽視國際責任的態度"], "answer": 1, "explanation": "\"Taiwan can help\"彰顯台灣在防疫期間主動對外捐贈醫療物資、展現承擔全球健康責任的積極形象。選項A、C、D皆與該口號所傳達的精神相反。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "民間外交的形象經營", "skill": "概念辨析與意涵詮釋", "difficulty": 3, "id": 17}, {"question": "日本311地震與能登地震時，台灣提供援助的主要意義為何？", "options": ["藉此向聯合國抗議日本過去的殖民統治", "履行世界公民責任並進一步鞏固雙方的友好關係", "以救災之名行軍事偵察之實", "換取日本在台海問題上支持台灣加入聯合國"], "answer": 1, "explanation": "台灣對日本兩次大地震的援助，既是履行國際人道責任，也是深化台日民間友好的重要舉措。選項A、C、D皆非此次援助行動的核心目標與歷史事實。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "民間外交與人道援助", "skill": "因果推理與資料解讀", "difficulty": 3, "id": 18}, {"question": "當一個國家的選手在國際體育賽事中不能使用國旗，而只能使用特定會旗時，最可能反映的是什麼情況？", "options": ["該國體育選手的競技水準不高，不值得展示國旗", "該國在國際政治上受到某種限制或歧視待遇", "該國的國旗設計不够精美而未獲國際認可", "該國主動選擇不以國家名義參與體育賽事"], "answer": 1, "explanation": "以中華奧會旗替代國旗的情況，源於台灣在國際政治舞台上的特殊困境，是外部政治壓力所致，並非基於體育表現或自主意願。選項A、C、D皆未觸及根本原因。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "體育外交的政治意涵", "skill": "因果推理與資料解讀", "difficulty": 3, "id": 19}, {"question": "台灣民間組織如路竹會能在國際上發揮影響力，最主要的助力來自於什麼？", "options": ["國際組織強制要求各會員國接受台灣民間團隊進入", "透過實際提供醫療援助等具體行動建立國際信任與好感", "台灣政府的資金挹注足以賄賂國際評審委員", "這些組織得到联合国安理會的直接授權與支持"], "answer": 1, "explanation": "路竹會等民间組織藉由實際行動——為海外弱勢提供醫療服務——贏得國際社会的認同與好感，這是其影响力的根基。選項A、C、D皆有違事實與國際組織運作原則。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "民間外交的運作方式", "skill": "因果推理與資料解讀", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "假設你是一位台灣青年，未來想參與國際事務但意識到台灣政治地位受限，根據教材所提策略，以下哪一個方向最為切實可行？", "options": ["拒絕承認任何國際規則，單方面宣佈台灣為主權獨立國家", "加入民間團體的人道救援行列，以專業服務贏得國際尊重與合作机会", "退縮回本土，完全不再參與任何國際組織與活動", "集中全部資源競逐聯合國安理會常任理事國席次"], "answer": 1, "explanation": "教材指出台灣透過民間組織如路竹會、紅十字會和人道援助累積國際 goodwill，以務實方式突破外交困境。選項A過於激進且不切實際；C消極放棄；D在現況下無實現可能。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "務實外交策略的個人實踐", "skill": "情境分析与策略评估", "difficulty": 4, "id": 21}, {"question": "同學小華聽說CPTPP是個「超級大Buff」，便建議台灣不惜一切代價也要盡快加入。你根據教材內容，如何理性評估這個觀點？", "options": ["完全同意，因為只要加入CPTPP就能立刻解決台灣所有的國際孤立問題", "持保留態度，雖然CPTPP確實提供重要經貿優勢，但其門檻高且台灣目前尚未符合申請資格", "完全反對，因為CPTPP是對台灣最不利的貿易協定，應該全力抵制", "毫不在意，因為CPTPP只是一個地方性的旅遊推廣組織，與經濟毫無關聯"], "answer": 1, "explanation": "CPTPP确实为成员间带来大幅关税减免，是重要机遇，但加入门槛高，台湾至今尚未获准申请，需要审慎务实的态度。选项A过于乐观；C和D则错误认知CPTPP的性质与影响。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "CPTPP加入困境的综合评估", "skill": "价值判断与国际视野养成", "difficulty": 4, "id": 22}, {"question": "某篇新闻报道：「台湾近年多次参与国际灾害救援，却仍无法加入世界卫生组织（WHO）。」以下哪项解释最为合理？", "options": ["台湾没有能力参与国际救灾，新闻报导内容有误", "台湾虽在经貿与人道层面积极拓展空间，但因政治地位争议，在部分政府间组织仍面临参与障碍", "台湾已主动拒绝所有国际组织的邀请，选择闭关自守", "世界卫生组织故意刁难台湾，原因完全是因为台湾的经济实力过强"], "answer": 1, "explanation": "台湾通过民间外交积累了不少国际善意，但在涉及国家主权承认的政府间组织中，仍然面临政治阻力。这体现了经济/民间外交与政治外交之间的落差。选项A否定事实；C与D的解释与实际情况相悖。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "政治受限与经貿民间外交的交互影响", "skill": "综合分析能力", "difficulty": 4, "id": 23}, {"question": "如果未来台湾成功加入CPTPP，最可能产生的正面效果是什么？", "options": ["中华民国立即恢复在联合国的完整席位与所有权利", "台湾的商品和服务能够以较低关税进入其他成员国市场，增强经济竞争力", "所有CPTPP成员国从此承认台湾是一个独立主权国家", "CPTPP将自动成为军事同盟，保护台湾免受任何攻击"], "answer": 1, "explanation": "CPTPP的核心功能是降低成员间贸易壁垒，若台湾加入，将直接受益于更优惠的市场准入条件。选项A、C夸大了经济协定的政治效应；D混淆了经济协定与军事同盟的本质差异。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "经济外交效益预测", "skill": "推论与综合分析和情境应用", "difficulty": 4, "id": 24}, {"question": "从1971年失去联合国席次到今天，台湾的国际策略发生了怎样的转变？", "options": ["从坚持传统邦交体系，转向完全放弃所有国际参与追求自我隔离", "从依赖单一政治外交，拓展到结合经济外交与民间外交的多轨并进策略", "从积极参与多边主义，转变为依靠个别大国庇护的安全依附政策", "从和平共处五项原则，激进地走向武力对抗以求国际社会承认"], "answer": 1, "explanation": "教材清晰呈现台湾从政治外交受挫后，转向透过APEC、WTO进行经济外交，并通过路竹会、口罩国家队等进行民间外交，形塑出多元并进的独特策略。选项A、C、D的表述都与教材所述历史轨迹不符。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "台灣國際策略的歷史演變", "skill": "综合分析能力", "difficulty": 4, "id": 25}, {"question": "某国领导人声称：「既然台灣在政治上有诸多限制，我们就完全不需要与台湾进行任何经济往来。」你的评价最为合理的是？", "options": ["完全赞同该观点，因为政治问题应凌驾于经济利益之上", "反对该观点，因为经济交流可增进相互依存与民间友好，有助于缓解政治紧张", "支持该观点，认为经济往来会自动解决所有政治分歧而不需要额外努力", "认为此话题完全不值得讨论，因为国际经贸事务与政治毫无关联"], "answer": 1, "explanation": "教材强调台湾透过经贸与人道交流建立的国际善意（如口罩换疫苗），证明经济与民间往来可以创造超越政治对立的连接与缓冲。选项A过于绝对化；C将因果关系简单化；D否定了政经互动的现实关联性。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "经济外交的价值与意义", "skill": "价值判断与国际视野养成", "difficulty": 4, "id": 26}, {"question": "「台湾虽然是世界的『神隊友』，但仍是國際體壇的『殘缺玩家』。」这句话中的矛盾感说明了什么现象？", "options": ["台湾在所有领域都已达到全球顶尖水平，不存在任何遗憾", "台湾在经济、医疗等领域贡献卓著获得认可，但在体育等国际场合仍因政治因素受到参赛限制", "台湾其实完全没有国际影响力，只是媒体过度宣传造成的错觉", "台湾故意隐瞒了自己的真实实力，避免引起其他国家嫉妒"], "answer": 1, "explanation": "这个比喻精准捕捉了台湾的处境：软实力（经济、医疗）广受肯定，但硬实力象征（奥运国旗、国名）仍因政治因素受限。选项A、C、D都歪曲了题意与现实状况。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "台灣國際角色的當代定位", "skill": "概念辨析与意涵诠释", "difficulty": 4, "id": 27}, {"question": "假设你是台湾某高中的学生会会长，学校要举办「国际视野周」活动，你想设计一个能让同学们深入了解台湾处境的环节。下列哪种设计方案最贴合教材精神？", "options": ["放映各国国旗图片并要求学生背诵所有首都名称", "让学生分小组体验：一组扮演CPTPP谈判代表计算关税得失，另一组模拟路竹会志工规划海外医疗行程", "请同学抄写联合国宪章全文作为课堂作业", "仅安排老师单方面讲述台湾历史，不鼓励学生思考和提问"], "answer": 1, "explanation": "这个方案让学生同时接触到经济外交（CPTPP关税分析）和民间外交（路竹会医疗行程）两个核心主题，并通过角色扮演加深理解，呼应教材强调的双轨策略。选项A、C、D的内容与教材重点无关或缺乏互动参与。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "務實外交策略的綜合理解", "skill": "情境分析与策略评估", "difficulty": 4, "id": 28}, {"question": "有外国网友说：「台湾既然这么厉害，为什么还要靠别国援助疫苗？」根据教材，下列哪个回应最为得体且有说服力？", "options": ["愤怒反驳，指责对方完全不懂国际关系", "承认台湾确实曾因外交孤立而在获取疫苗资源上遇到困难，但也曾通过捐赠物资帮助他国来积累国际情谊", "否认自己曾经需要帮助，坚称台湾从未接受过任何外援", "表示台湾应该永远依赖大国施舍，这样才能确保生存"], "answer": 1, "explanation": "这个回应既客观承认台湾确实面临过疫苗短缺的困境（因外交孤立导致无法参与COVAX等机制），也提及台湾通过先前援助行动建立的关系网络获得了回报，符合教材所述互助逻辑。选项A情绪化失当；C不符合事实；D违背独立自主精神。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "民間外交與互助合作的辯證思考", "skill": "价值判断与国际视野养成", "difficulty": 4, "id": 29}, {"question": "教材以MMORPG游戏比喻台湾的国际处境，以下哪个说法最能准确对应这个比喻的内涵？", "options": ["现实国际政治就像游戏一样可以随时重启，不需要承担任何后果", "台湾如同玩家在面对版本更新（国际格局变动）时，通过调整策略（经济外交、民间外交）在不断变化的环境中寻找生存和发展空间", "游戏中的Nerf和Buff纯粹是运气，与玩家的决策和努力完全无关", "这个比喻说明国际社会实际上只是一个虚拟世界，没有任何真实意义"], "answer": 1, "explanation": "教材用游戏比喻想要表达的是：国际格局如同游戏规则般不断变化，台湾作为「玩家」需要通过策略调整（从政治到经济、民间路线转型）来适应和应对挑战。选项A、C、D都严重误解了这个比喻的教育意图。", "subject": "社會科", "unit": "中華民國的國際處境與外交", "concept": "教材主旨與隱喻解讀", "skill": "概念辨析与意涵詮釋", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
