@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會5上3-2原住民族如何與環境</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "社會", "grade": "國二／國三", "unit": "臺灣居民與史前文化", "topic": "平埔族群與原住民族的地理分佈、文化變遷與生態智慧", "filename": "康軒社會5上3-2原住民族如何與環境", "summary": "教材以遊戲比喻講解臺灣族群分佈、文化變遷、生態智慧與正名意義。"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據教材，平埔族群主要分布在哪些地區？", "options": ["高山與東部地區", "西部平原與丘陵地區", "離島與澎湖群島", "中部山區與縱谷"], "answer": 1, "explanation": "教材明確指出平埔族群位於「西部平原與丘陵地區」，而高山與東部地區則是山地原住民的居住地。選項A描述的是高山族群，C和D則不在教材提及的分佈範圍內。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "平埔族群地理分佈", "skill": "事實記憶", "difficulty": 2, "id": 1}, {"question": "政府訂定的「原住民族日」是每年的哪一天？", "options": ["三月十五日", "八月一日", "十月十日至十一月一日", "十二月二十五日"], "answer": 1, "explanation": "教材明確提到「訂八月一日為原住民族日」，並說明這日期源於四十多年前的正名運動。其他選項均非教材所述日期。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "原住民族日", "skill": "事實記憶", "difficulty": 2, "id": 2}, {"question": "魯凱族的鬼湖傳說中，巴冷小姐的愛人阿達里歐真實身分是什麼？", "options": ["外來部落的首領之子", "漢人商販的後代", "鬼湖主人的百步蛇", "遠方來訪的旅人"], "answer": 2, "explanation": "教材指出阿達里歐其實是「鬼湖的主人百步蛇」，這是故事的關鍵反轉。選項A、B、D皆非傳說內容所描述的真實身分。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "魯凱族鬼湖傳說", "skill": "概念辨識", "difficulty": 2, "id": 3}, {"question": "卑南遺址位於下列何地？", "options": ["臺西平原近海處", "臺東平原靠近卑南溪河畔", "花蓮渓谷中游", "屏東平原南端"], "answer": 1, "explanation": "教材明確指出卑南遺址「位於臺東平原，靠近卑南溪河畔」。此處為平地，水源充足，適合史前人類居住與獲取資源。其他選項地點不正確。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "史前遺址地理位置", "skill": "事實記憶", "difficulty": 2, "id": 4}, {"question": "阿美族的「巴拉告」是一種什麼樣的裝置？", "options": ["用來收割稻作的農具", "用竹子樹木打造的魚屋結構", "狩獵時使用的陷阱機關", "部落之間傳遞訊息的訊號塔"], "answer": 1, "explanation": "教材說明巴拉告是「用竹子樹木打造的魚屋結構」，模擬魚蝦生活的自然空間，讓小魚能在裡面成長而不被捕撈，體現適度取用的智慧。選項A、C、D均與巴拉告的功能不符。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "巴拉告捕魚法", "skill": "概念辨識", "difficulty": 2, "id": 5}, {"question": "目前政府認定的原住民族共有多少族？", "options": ["十二族", "十四族", "十六族", "二十族"], "answer": 2, "explanation": "教材明確提到「目前政府認定的原住民族共有十六族」，這是必須記住的重要數字，不需死背名字，但數量要掌握。其他選項數目均不正確。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "原住民族認定數量", "skill": "事實記憶", "difficulty": 2, "id": 6}, {"question": "為什麼高山族群能夠保存較完整的語言與傳統文化？", "options": ["他們拒絕學習任何外來文化", "地形阻隔形成天然保護，減少與漢人接觸", "政府法令強制要求保留傳統", "他們住在偏遠島嶼與台灣本島隔開"], "answer": 1, "explanation": "教材以遊戲比喻說明高山與東部地區的「山川阻隔形成了天然防火牆」，使漢人玩家很難突破，因此語言保存完整、傳統未被覆蓋。選項A過於極端，C和D並非教材所述原因。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "文化保留的地理成因", "skill": "因果理解", "difficulty": 2, "id": 7}, {"question": "賽德克族的狩獵規則主要包括哪些內容？", "options": ["全境開放獵捕，不受任何限制", "劃定獵區且繁殖季節春夏季全面禁獵", "只在冬季進行狩獵活動", "禁止所有形式的動物捕殺"], "answer": 1, "explanation": "教材指出賽德克族「劃定獵區，只能在自己區域打，而且繁殖季節春與夏季全面禁獵」，以此維持生態系平衡。選項A完全相反，C和D均不符合教材描述。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "賽德克族狩獵規則", "skill": "概念辨識", "difficulty": 2, "id": 8}, {"question": "平埔族群在十七世紀開始大量接觸漢人之後，發生了什麼主要變化？", "options": ["語言與傳統被大幅修改，經歷文化融合與同化", "人口因戰爭大量減少而近乎消失", "完全拒絕與漢人往來保持原有文化", "轉變為以漁業為主的經濟型態"], "answer": 0, "explanation": "教材強調平埔族群觸發的事件是「文化融合與同化」，語言與傳統被大幅修改，而非人口消滅。選項B是常見誤解，C和D與教材敘述不符。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "平埔族群文化變遷", "skill": "因果理解", "difficulty": 2, "id": 9}, {"question": "鬼湖傳說的核心意義是什麼？", "options": ["講述一段浪漫愛情故事的恐怖傳說", "透過神話力量約束行為，達到生態保護的目的", "記錄百年前部落間的戰爭經過", "說明如何辨別有毒蛇類以確保安全"], "answer": 1, "explanation": "教材反覆強調鬼湖傳說「其實是一個生態保護規則」，透過故事形式告知族人禁止在湖邊捕殺獵物或大聲喧嘩，違反者會受懲罰。選項A停留在表面情節，C和D完全偏離主旨。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "鬼湖傳說的意義", "skill": "核心概念提取", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "從地理環境的角度來看，平埔族群與高山族群發展出截然不同文化面貌的主要原因是什麼？", "options": ["平埔族天生性格較為開放，高山族則固執保守", "平埔族受到大自然災害影響較大導致文化斷裂", "平埔族因居住在西部交通樞紐接觸漢人较早而產生同化，高山族因地形隔離保留傳統較完整", "兩者的基因差異使得他們對文化的適應能力完全不同"], "answer": 2, "explanation": "教材的核心論點是「地形決定了初始裝備與難度」，平埔族居於西部平原交通樞紐故與漢人頻繁接觸而文化被改寫，高山族憑藉山川阻隔得以保留傳統。選項A和D缺乏依據，C并非教材所述原因。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "地理環境對族群文化差異的影響", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "比較巴拉告捕魚法與賽德克族狩獵規則，兩者共同體現的觀念為何？", "options": ["都依賴神靈信仰來管理族群內部秩序", "都展現適度取用、維護生態平衡的智慧", "都主要用於應對糧食短缺時的緊急措施", "都是後來受到漢人農業技術影響才出現的做法"], "answer": 1, "explanation": "教材指出巴拉告讓小魚成長不被抓走，賽德克族在繁殖季節禁獵，二者都體現「適度獵捕，拒絕竭澤而漁」的理念，是現代永續發展的範本。選項A、C、D均無法由教材內容合理推出。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "傳統生態智慧的共同特徵", "skill": "比較分析", "difficulty": 3, "id": 12}, {"question": "「原住民族」取代過去的稱呼，此一正名運動最重要的意義為何？", "options": ["單純為了增加一個新的官方稱呼以便統計人數", "消除帶有歧視色彩的舊稱，保障權利與傳承文化", "讓所有台灣人都改認同一身份以促進統合", "是為了迎合國際社會對人權的標準而做的調整"], "answer": 1, "explanation": "教材說明過去漢人給的稱呼（如番仔）帶有歧視色彩，四十年前爭取改為正名，目的是「保障權利與文化傳承」。選項A流於表面，C和D則偏離教材所述的自決與尊嚴意涵。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "正名運動的文化意涵", "skill": "概念辨析", "difficulty": 3, "id": 13}, {"question": "為什麼史前遺址大多分佈在近水平地且靠近水源的地區？", "options": ["史前人類偏好平坦土地便於興建大型石頭建築", "平地與河濱能同時提供移動採集便利與充足水源魚貝", "只有這些地方的土壤適合種植水稻等農作物", "高處濕潤容易生病所以避開高地選擇低窪地帶"], "answer": 1, "explanation": "教材以卑南遺址為例，說明其位于臺東平原靠近卑南溪河畔，具有「平地移動採集非常便利，水源充足方便取水與捕撈魚貝」的特點，反映出「環境決定生活形態」的原則。選項A過度推論，C水稻為後來引入，D缺少教材依據。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "史前遺址選址原則", "skill": "資料判讀與推理", "difficulty": 3, "id": 14}, {"question": "教材將平埔族群的文化變遷比喻為「遊戲版本更新，舊帳號數據重置」，這個比喻最能說明下列何種現象？", "options": ["平埔族群的人口被暴力清空導致文化滅絕", "平埔族群在持續接觸中主動拋棄了全部歷史與記憶", "平埔族群原有語言與傳統因長期與漢人互動而被大幅改變", "平埔族群故意隱藏自己的文化以躲避外来者的注意"], "answer": 2, "explanation": "教材強調這不是消滅而是「文化融合與同化」，語言與傳統被大幅修改，就像版本更新導致舊帳號數據重置。選項A是常見的錯誤理解（人口消滅），C與D完全不符教材本意。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "文化同化的性質理解", "skill": "比喻轉譯", "difficulty": 3, "id": 15}, {"question": "如果將臺灣地形圖上標示出的平埔族活動區域與現代行政区划相比較，下列哪個現象最符合教材所述的規律？", "options": ["平埔族區域多集中於台灣東西兩側的山區脊稜線附近", "平埔族幾乎遍佈整個臺灣島包括所有離島與高山頂", "平埔族主要集中在西部沿海平原與鄰近丘陵地帶", "平埔族的活動範圍完全侷限在北臺灣的台北盆地一隅"], "answer": 2, "explanation": "教材明確指出平埔族群分佈在「西部平原與丘陵地區」，而高山族群位於「山區與東部」，西部平原是平埔族的領地。選項A方向相反，B範圍過大，D過於狹隘。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "族群分佈的空間規律", "skill": "地圖判讀與空間分析", "difficulty": 3, "id": 16}, {"question": "鬼湖傳說中，違規者在湖邊捕殺獵物或大聲喧譁會受到神靈懲罰，這種設計在社會功能上最主要扮演什麼角色？", "options": ["通過神話故事激發人們對湖泊景觀的重視與美化", "強化部落的軍事紀律與對外防備的能力", "利用超自然力量的恐懼感來約束人們的行為，達成生態保護目的", "記錄當時氣候與生態環境的科學觀察報告"], "answer": 2, "explanation": "教材點出這段傳說的本質是「用恐懼管理生態」，是「古代的環保法令條款」，透過神話力量來約束人的行為模式，保持水源清潔。選項A停留在景觀點，C與D與教材主旨無關。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "神話故事的社会功能", "skill": "功能分析", "difficulty": 3, "id": 17}, {"question": "教材中提到平埔族群學會了從漢人那裡解鎖「種水稻」的新科技樹，這反映了兩種文化之間的何種關係？", "options": ["漢人被迫向平埔族教導生產技能以避免貿易衝突", "平埔族在被同化的過程中也吸收了部分漢人的農業知識", "水稻種植是從漢人直接移植而來而無需任何磨合過程", "這代表平埔族已經完全成為漢人社會的一員不再有獨立性"], "answer": 1, "explanation": "教材以遊戲比喻說平埔族因接觸頻繁「學會了種水稻」，這是從漢人處學來的「新科技樹」，反映的是接觸中的文化交流與吸收。選項A因果顛倒，C過度簡化，D忽略了民族文化融合的雙向性。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "文化接觸與交流的雙重性", "skill": "關聯分析", "difficulty": 3, "id": 18}, {"question": "若某考古團隊在臺灣某處發現史前遺址，該遺址出土了大量石矛與稻作農具，且位置靠近河流旁的平坦地帶，此地最有可能是哪種類型的史前聚落？", "options": ["以海洋捕魚為主的高山草原放牧聚落", "兼具狩獵與農耕的河岸平地資源豐富型聚落", "專門從事手工業製陶的都市型聚落", "依靠貿易往來的港口商業聚落"], "answer": 1, "explanation": "根據教材對卑南遺址的描述，有石矛顯示狩獵重要，也有稻作農具證明農耕存在，且位於河流旁平地反映「資源豐富型出生點」。選項A偏離河濱特征，C和D在教材中無此類型記載。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "史前聚落型態推測", "skill": "史料解讀與綜合推論", "difficulty": 3, "id": 19}, {"question": "關於原住民族日定在八月一日的解釋，下列哪项最準確反映了教材的說法？", "options": ["因為八月一日是歷史上首次舉行原住民族集會的時間", "這是配合陽曆新年後期所做的假期安排考量", "源自四十多年前大家爭取改為正名的運動紀念", "八月一日是政府宣布取消所有原住民傳統習慣的日子"], "answer": 2, "explanation": "教材明確指出八月一日設為原住民族日，原因是「四十多年前大家爭取改為正名」，如同「官方強制修復伺服器Bug」，目的是保障權利與文化傳承。選項A、B、C均非教材所述背景。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "原住民族日的歷史由來", "skill": "因果溯源", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "某部落計畫在溪流中設置攔截設備來捕捉魚群以供應全年所需的蛋白質，若你熟悉部落傳統的巴拉告捕魚法，你認為最合理的建議應該是？", "options": ["應使用最小網格的鐵絲網確保不留任何大小的魚隻逃脫", "完全禁止任何形式的捕撈活動只靠陸上狩獵維生", "設計能讓幼魚自由游入成長的設計結構再擇機捕撈成魚", "在溪流上游築壩形成大池塘將所有魚類圈養集中後捕撈"], "answer": 2, "explanation": "教材指出巴拉告的原理是「模擬魚蝦生活的自然空間，讓小魚能在裡面成長不被抓走，等魚蝦長大後才進行捕撈作業」，這就是適度取用拒絕竭澤而漁的智慧。選項A是竭澤而漁的反例，B過於極端，D同樣破壞生態平衡。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "傳統生態智慧的當代應用", "skill": "情境應用與決策", "difficulty": 4, "id": 21}, {"question": "假設你是某個鄉鎮公所的政策顧問，當地計畫開發一片靠近河川源頭的林地作為觀光遊憩區，依照教材中鬼湖傳說與各族群生態智慧所體現的理念，你最應該優先考慮的主張是？", "options": ["全面封閉該區域禁止任何人進入是最有效的保育方式", "既然已經開發就最大化商業利益不必顧及生態平衡", "允許任意活動只需在入口處張貼警告標示即可防止破壞", "制定分區管制規則限制干擾行為並保留核心聖地不受侵擾"], "answer": 3, "explanation": "教材所述鬼湖傳說的規則是「禁止在湖邊捕殺獵物或大聲喧譁」，賽德克族也是「劃定獵區，只在特定區域活動，在繁殖季禁獵」，均體現分區管理和有節制的利用。選項A過於僵化，B和C完全忽視生態保護理念。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "生態保育理念的現實轉化", "skill": "情境推演與價值判斷", "difficulty": 4, "id": 22}, {"question": "如果你正在協助數位典藏團隊製作一部介紹臺灣族群文化的影片，要把「正名運動」的意義呈現給觀眾，下列哪個腳本最貼近教材的精神？", "options": ["敘述原住民被迫放棄傳統語言與生活方式的悲情過程", "強調國家統一後所有民眾都應該認同同一個民族標籤的重要性", "說明過去稱呼帶有歧視意味，正名是追求尊重、保障權利與傳承文化的行動", "報導各個族群之間不斷發生武裝衝突最終需要政府介入調停的經過"], "answer": 2, "explanation": "教材清楚指出舊稱如「番仔」是「辱污性ID」，正名是為了「保障權利與文化傳承」，如同修復伺服器Bug。選項A僅著眼悲情忽略積極面向，B偏離自決與尊嚴的主旨，C則完全與事實相反。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "正名運動精神的核心傳達", "skill": "價值判斷與表達轉譯", "difficulty": 4, "id": 23}, {"question": "某位同學在課後討論時說：「那些住在西部的平埔族早就沒有自己的文化了，根本不能算是台灣的原住民。」關於這個說法，下列哪項評價最為適切？", "options": ["這個說法完全正確，因為文化一旦改變就等於徹底消失不再存在", "這個說法有部分道理，但平埔族只是換了另一種更進步的生活方式", "這個說法忽略了文化融合的過程並非消滅，且應該尊重平埔族群仍試圖恢復文化的努力", "這個說法反映出平埔族確實已經被漢族完全吞併失去所有獨立性證據"], "answer": 2, "explanation": "教材特別澄清平埔族的變遷是「文化融合與同化」而非「消滅」，並提醒不要以為他們消失就是沒有了。同時教材也暗示應當尊重多元文化認同。選項A太過絕對，B低估了文化流失的痛苦，D同樣抹煞了多元存在的現實。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "文化同化本質的理解與態度", "skill": "批判性評估", "difficulty": 4, "id": 24}, {"question": "近年來台灣許多地方倡導「永續發展」與「綠色能源」政策，若追溯至本土族群自古以來的生存智慧，下列哪一項最能作為支持永續發展的歷史佐证？", "options": ["高山族群在山區建立獨立堡壘抵禦外界入侵的防禦策略", "史前人類只挑選食物來源最不穩定的地區作為定居點", "平埔族群快速吸收漢人農業技術從而提升土地利用效率", "巴拉告與賽德克族規則所體現的適度取用和季節性休養生息原則"], "answer": 3, "explanation": "教材明確表示巴拉告與賽德克族的作法「根本就是現代永續發展的範本」，強調資源循環與世代延續的概念。選項A是防禦策略無關資源管理，B與實際史料相反，C雖涉及技術但不等同於可持續的理念。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "古代理念與現代議題的連結", "skill": "跨時代概念整合", "difficulty": 4, "id": 25}, {"question": "一位外地遊客來到台灣東部旅遊，看到當地的賽德克族部落標語上寫著「禁止在非指定區域狩獵」，他想了解背後的文化邏輯。下列哪項解釋最能幫助他理解這個規定的深層意義？", "options": ["這是為了讓遊客有更多機會體驗狩獵樂趣的特殊安排", "規定只在冬季實施主要是因為夏季太熱不適合作業", "目的是將狩獵權集中在少數長老手中便於政治控制", "基於劃分獵區限制活動範圍並配合繁殖季全面禁獵以維持生態平衡"], "answer": 3, "explanation": "教材指出賽德克族的規則包含「劃定獵區，只能在自己區域打，繁殖季節春與夏季全面禁獵」，是為了維持生態系平衡穩定。選項A與禁令矛盾，B時間限定錯誤，C政治化解讀缺乏教材依據。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "傳統生態規範的邏輯闡釋", "skill": "情境理解與文化轉譯", "difficulty": 4, "id": 26}, {"question": "在某次社會科考試中，題目要求學生根據提供的臺灣地形圖判斷哪一區域最可能有高密度史前遺址，並說明理由。以下哪組答案最具說服力且符合教材原理？", "options": ["選擇中央山脈最高峰附近，因為高处視野好方便發現敵襲", "選擇西部海岸陡峭悬崖上方，因為海風可以保存遺留骨骸", "選擇南部沙漠地帶边缘，因為乾燥氣候有利於挖掘發掘工作", "選擇東部河流沖積平原近水處，因為平地與水源能提供充足資源利於長期定居"], "answer": 3, "explanation": "教材以卑南遺址為例說明史前人類偏好在「平地且靠近水源」之處落戶，此乃基於資源取得便利性考量的結果。選項A選擇高山不利生存，B陡峭地形不便活動，C台灣並無沙漠地貌均属不合理推測。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "遺址分布與環境資源的關聯推論", "skill": "資料整合與推理判断", "difficulty": 4, "id": 27}, {"question": "假设你在田野調查中遇到一位長者回憶過去部落的生活，提到族人會在特定季節聚集湖邊舉行儀式後才允許捕魚，而且每年都有固定的休息月份不碰水域。這個現象讓你聯想到教材中提到的哪些智慧？", "options": ["類似現代企業的淡季休假制度以提高員工工作效率", "與賽德克族繁殖季全面禁獵以及鬼湖行为规范所體現的季节性保護概念一致", "純粹是宗教迷信行為對生態沒有任何實質正面的影響意義", "这是漢人移民帶來的農曆節慶習俗而非本土原有傳統"], "answer": 1, "explanation": "教材中指出賽德克族在繁殖季春季夏季全面禁獵，鬼湖傳說亦規定禁止捕殺與喧嘩，二者都展現依季節調節利用的生態智慧。選項A类比牵強，C否定其生態功能與教材立場相違，D则混淆文化起源。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "季節性生态管理的傳統實踐", "skill": "案例分析與原理歸納", "difficulty": 4, "id": 28}, {"question": "某個新移民社群初到臺灣西部平原定居，他們發現当地原有的居民已經很少說母語也不穿傳統服裝。如果你要向這批新移民解釋現狀成因，以下哪種說法最忠實反映教材的內容？", "options": ["這片土地原本就沒有值得稱道的文化所以不需要保留任何特色", "當地居民是因為戰亂逃難遷徙至此導致文化記憶逐漸模糊不清", "這裡地处交通樞紐自十七世紀起大量漢人移入造成深度的文化融合與交流", "原住民為了追求現代生活主動切斷了與祖先傳統的所有連繫"], "answer": 2, "explanation": "教材說明平埔族群位在「交通樞紐」，自十七世紀起漢人登入頻繁導致「文化融合與同化」，語言與傳統被大幅修改。選項A貶抑他人文化不合教材立场，B战争遷徙并非主題，D主觀意志判斷過於簡化複雜歷程。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "歷史脈絡下的文化接觸實態", "skill": "脈絡重建與合理解釋", "difficulty": 4, "id": 29}, {"question": "一位老師在課堂上請同學比較平埔族群與山地原住民兩個族群今天的處境，下列哪一項陳述最能綜合教材所傳達的核心洞察？", "options": ["兩者地位完全相等不存在任何差異因為政府已經平等對待所有族群", "平埔族由於早接觸漢人已高度融入主流社會而高山族則因地理孤立仍保有其獨特性", "山地族群始終抗拒任何改變因而落後於時代步伐不值得學習參考", "平埔族雖然失去部分特色但仍擁有完全自主的政治權力足以自治管理"], "answer": 1, "explanation": "教材總結道平埔族居於西部平原與漢人接觸早文化改變深，高山族群則因地形保護保留傳統較完整，這是全篇的核心洞見。選項A否認差異不符合教材论述，B過度負面評斷山地族群，C夸張政治自主權並非法教材所述。", "subject": "社會", "unit": "臺灣居民與史前文化", "concept": "兩大族群對比的核心結論", "skill": "綜合歸納與比較評估", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
