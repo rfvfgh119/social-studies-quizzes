@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>六號叔叔說故事｜智慧闖關測驗 - 康軒社會6上4-1都市與鄉村為什麼會互動交流？</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#141a3d;
+    --bg-deep2:#1d2557;
+    --card:#fdfbf5;
+    --ink:#1f2333;
+    --gold:#f2a93b;
+    --gold-dark:#c9821c;
+    --teal:#2fbf9f;
+    --ember:#e85d4e;
+  }
+  *{font-family:'Noto Sans TC',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  body{
+    background: radial-gradient(circle at 20% -10%, var(--bg-deep2), var(--bg-deep) 60%);
+    min-height:100vh;
+    color:var(--ink);
+  }
+  .gate-card{
+    background:linear-gradient(180deg,#fffdf8,#fdfbf5);
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 10px 30px -12px rgba(0,0,0,.45);
+  }
+  .torch-bar{
+    height:10px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden;
+  }
+  .torch-bar > div{
+    height:100%;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+    transition:width .35s ease;
+  }
+  .option-btn{
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    border:2px solid rgba(0,0,0,.08);
+  }
+  .option-btn:hover{transform:translateY(-2px);}
+  .option-btn.correct{
+    background:rgba(47,191,159,.14);border-color:var(--teal);
+  }
+  .option-btn.wrong{
+    background:rgba(232,93,78,.12);border-color:var(--ember);
+  }
+  .badge-tag{
+    font-size:.7rem;letter-spacing:.02em;
+    background:rgba(20,26,61,.06);border:1px solid rgba(20,26,61,.12);
+    border-radius:999px;padding:.15rem .6rem;
+  }
+  .fade-in{animation:fadeIn .35s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:999px;}
+</style>
+</head>
+<body class="flex items-center justify-center p-4">
+
+<div id="app" class="w-full max-w-2xl"></div>
+
+<script>
+/* ============================================================
+   六號叔叔智慧闖關測驗 — 資料層（由 Python 腳本自動注入）
+   ============================================================ */
+const QUIZ_DATA = {"meta": {"subject": "社會", "grade": "二年級", "unit": "城鄉發展與互動", "topic": "交通建設對城鄉的影響與生活圈的形塑", "filename": "康軒社會6上4-1都市與鄉村為什麼會互動交流？", "summary": "透過國六號案例解析交通建設如何重塑城鄉產業分工與人口分布，揭示發展紅利與環境成本並存的複雜機制"}, "levels": [{"level": 1, "name": "基礎理解", "questions": [{"question": "根據課本內容，都市與鄉村之間的產業關係為何？", "options": ["單向輸送關係，鄉村供應都市所需", "互相依賴的關係，各有資源交換", "競爭取代關係，都市壓榨鄉村", "完全獨立運作，彼此無需互動"], "answer": 1, "explanation": "課本明確指出「都市和鄉村的產業是『互相依賴』的關係，不是單向輸送」，且用雙向流動說明雙方各有資源交換。A為單向誤解；C為過度推論；D與課本描述相悖。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉產業互補關係", "skill": "基本知識辨識", "difficulty": 2, "id": 1}, {"question": "下列何者屬於都市向鄉村輸出服務的「正確組合」？", "options": ["漁產加工廠、觀光農場、民宿", "機械設備廠、五金製造業、礦業", "醫療、教育、金融、大型商場", "魚鬆罐頭、餐飲店、水產市場"], "answer": 2, "explanation": "課本明確列出醫療、教育、金融、大型商場是都市向鄉村輸出的服務包。A為鄉村產業；B為都市產業但未列為服務輻射項目；D為具體商品而非服務類型。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉產業互補關係", "skill": "概念歸類", "difficulty": 2, "id": 2}, {"question": "關於國六號國道的功能，下列敘述何者正確？", "options": ["主要用於運送漁獲至都會區銷售", "主要作為連結離島的空運通道", "大幅縮短台中到日月潭、清境農場的行車時間", "主要連接台北與高雄的高鐵走廊"], "answer": 2, "explanation": "課本指出國六號開通後「台中到日月潭、清境農場的行車時間大幅縮短」。A屬其他國道功能；B為澎湖輪/空運功能；C混淆國一與國六號。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通建設的分級功能", "skill": "基本知識辨識", "difficulty": 2, "id": 3}, {"question": "根據教材，宜蘭冬山鄉的產業发展模式為何？", "options": ["利用都市資金開發高科技產業", "依靠鄰近港口優勢從事水產加工並銷售至都市", "發展觀光休閒遊憩吸引都市人口移入", "以農作物種植為主直銷當地市場"], "answer": 1, "explanation": "課本提到宜蘭冬山鄉「靠近南方澳漁港，利用漁獲便利設立魚鬆、魚罐頭加工廠，產品再運回都市銷售」，呈現鄉村→都市的原料鏈。A無關教材；C為觀光層面未提及；D與材料不符。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉產業互補關係", "skill": "事實記憶", "difficulty": 2, "id": 4}, {"question": "課本所提都市化的問題，主要包括哪些面向？", "options": ["空氣污染、水污染、噪音污染", "交通擁擠、垃圾處理困難、房價高漲、居住空間狹小", "農業用地流失、水源枯竭、土壤沙化", "勞動力不足、工廠廢棄、經濟衰退"], "answer": 1, "explanation": "課本明確區分：都市化問題包含交通擁擠、垃圾處理困難、房價高漲、居住空間狹小。A為工業化帶來的污染問題；C和D未在教材中出現。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "都市化與工業化問題分類", "skill": "基本知識辨識", "difficulty": 2, "id": 5}, {"question": "根據教材，112年臺北市遷出人口的最主要去向為？", "options": ["桃園市", "高雄市", "新竹縣市", "新北市"], "answer": 3, "explanation": "課本數據顯示112年新北市接收46,741人遷入，遠高於桃園市8,382人及其他縣市合計11,718人。A數量僅次於新北；BC未在數據中出現。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "人口遷移的拉力因素", "skill": "數據判讀", "difficulty": 2, "id": 6}, {"question": "國道系統、高鐵、澎湖輪在臺灣交通網絡中的角色分別為何？", "options": ["國道客貨運、高鐵長途通勤、澎湖輪海運連接離岸", "國道高鐵專線、高鐵貨運通道、澎湖輪國內航線", "國道快速道路、高鐵國際航班、澎湖輪陸運接駁", "國道旅遊專車、高鐵商務快線、澎湖輪水上飛機"], "answer": 0, "explanation": "課本指出國一運農產品、高鐵讓人當日往返北高、澎湖輪連客運貨，三者構成「陸運、海運、空運三位一體」網絡。BCD選項均有事實錯誤。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通網絡的分級功能", "skill": "基本知識辨識", "difficulty": 2, "id": 7}, {"question": "課本認為城鄉互動的本質是什麼？", "options": ["城鄉各自發展，不需頻繁往來", "鄉村單向供給都市糧食，都市回饋技術", "都市與鄉村產業互相依賴，形成雙向流動", "都市全面主導，鄉村被動接受發展成果"], "answer": 2, "explanation": "課本核心觀點為「互相依賴」與「雙向流動」：鄉村→都市（原料）、都市→鄉村（服務），此外還有餐饮業者到鄉村拓點的反向流動。ABD皆為片面或錯誤理解。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉互動的基本模式", "skill": "概念理解", "difficulty": 2, "id": 8}, {"question": "關於「生活圈」的判斷標準，下列敘述何者最符合課本？", "options": ["以行政轄區邊界作為界定依據", "以居民日常需求能否得到滿足為核心指標", "以總人口數達到一定規模為準", "以高速公路是否經過該區域為準"], "answer": 1, "explanation": "課本指出生活圈的判斷標準是「居民在居住、交通、工作、教育、醫療、休閒等方面能否滿足彼此需求」，且「不一定受行政邊界限制」。AD誤解為行政或基建標準；C無依據。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "生活圈的定義與判定", "skill": "概念理解", "difficulty": 2, "id": 9}, {"question": "根據教材，推動「永續發展」的核心精神為何？", "options": ["停止所有開發行為以保護自然生態", "在發展與環境之間找到平衡共存的方式", "優先追求經濟成長，環境問題留待未來解決", "由單一政府部門負責執行環保政策"], "answer": 1, "explanation": "課本比喻永續發展是「平衡補丁」——不是砍掉所有內容而是讓發展和環境找到共存點，並強調「與環境和諧共存是民眾共同的責任」。A為極端做法；CD不符合材料所述。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "永續發展的內涵", "skill": "概念理解", "difficulty": 2, "id": 10}]}, {"level": 2, "name": "深入分析", "questions": [{"question": "草屯商圈在國六號開通後生意變差的主要原因為何？", "options": ["草屯自身產業結構轉型失敗", "国道改道使游客不再停留，流量重新分配", "当地政府減少行銷預算導致知名度下降", "周邊縣市開設更多相同風格餐廳造成競爭"], "answer": 1, "explanation": "課本案例指出：以前遊客走台14線會在草屯休息用餐，國六號開通後大家直接飆過去，草屯生意反而變差——這是交通捷徑造成的流量重分配。A、C、D均無法從教材推導。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通建設影響的不均等性", "skill": "因果分析", "difficulty": 3, "id": 11}, {"question": "若某條新捷運路線開通後，沿線部分舊商圈反而沒落，這最能說明什麼道理？", "options": ["交通便利必然帶來沿線全部繁榮", "交通建設只利於大城市不惠及小聚落", "交通改善會使商業活動產生新的空間配置", "舊商圈經營不善才會在新交通出現後衰微"], "answer": 2, "explanation": "草屯案例說明了「交通建設的影響具有不均等性」——如同遊戲開捷徑，沿途NPC賺不到錢。A絕對化過于簡化；B以偏概全；D將原因歸咎商家而忽略結構性改變。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通建設影響的不均等性", "skill": "原理應用", "difficulty": 3, "id": 12}, {"question": "臺北市大量人口遷移至新北市的主要推力因素為何？", "options": ["新北市工作機會明顯多於臺北市", "臺北市交通狀況優於新北市", "臺北市房價相對較低", "臺北市房價高漲造成居住壓力"], "answer": 3, "explanation": "課本指出臺北人遷往新北的原因是「房價相對低又有捷運和國道連接」，反過來說是因為臺北市房價高漲。A相反；B與遷移方向矛盾；C表述錯誤。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "人口遷移的推拉因素", "skill": "因果分析", "difficulty": 3, "id": 13}, {"question": "課本中提到「都市不只是大城市，還是一個服務輻射中心」，此說法暗示了哪項城鄉關係特徵？", "options": ["都市規模越大功能越單一", "都市的服務可延伸至周邊非都市地區", "鄉村地區無法自我提供基本服務", "都市與乡村的功能毫無交集"], "answer": 1, "explanation": "課本以台中市為例說明其醫療、餐飲等服務「延伸到周邊鄉村」，體現服務輻射的特徵。A過度簡化；C表述過於絕對；D與互相依賴論點相反。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉產業互補關係", "skill": "概念辨析", "difficulty": 3, "id": 14}, {"question": "以下哪一項最能作為判斷兩個城市已形成「生活圈」的有力證據？", "options": ["兩城市間有高速公路連接", "兩城市同屬一個省政府管轄", "大量居民每日跨城市通勤上班就學", "兩城市的GDP總量相近"], "answer": 2, "explanation": "課本以學生住路竹、歸仁的案例說明「跨縣市的日常往來」是生活圈形成的標誌。A是必要條件但不足以證明；B行政劃分不等於生活圈；C GDP無關日常往來。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "生活圈的判定標準", "skill": "概念操作化", "difficulty": 3, "id": 15}, {"question": "關於「都市化」與「工業化」帶來環境問題的差異，下列敘述何者正確？", "options": ["兩者問題相同，均可歸納為空氣和水污染", "都市化主要為居住和生活品質問題，工業化為生產端的污染問題", "工業化只產生空氣污染，不造成水污染和噪音", "都市化與環境問題無關，只有工業化才有污染"], "answer": 1, "explanation": "課本明確區分：都市化主要是交通擁擠、垃圾處理困難、房價高漲等居住生活問題；工業化額外帶來空氣、水污染、噪音等生產端污染。AD混淆兩者的區別；C不完整。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "都市化與工業化問題之別", "skill": "概念辨析", "difficulty": 3, "id": 16}, {"question": "課本以國六號為例說明交通建設的影響具有雙面刃特性，下列何組搭配最能準確呈現這種雙面效應？", "options": ["正面：環境變得更乾淨／負面：交通更壅塞", "正面：旅行時間縮短／負面：特定聚落商機減退", "正面：房屋價格下跌／負面：就業機會減少", "正面：空氣品質提升／負面：噪音污染增加"], "answer": 1, "explanation": "課本指出國六號正面 effects 是縮短行車時間，負面 effects 包含垃圾量增加（環境負擔）和草屯生意變差（商業不均等分配）。A、C、D的搭配與教材描述的具體正負效果不符。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通建設的雙面刃效應", "skill": "比較分析", "difficulty": 3, "id": 17}, {"question": "如果某地政府計畫興建一條貫穿鄉村的高速公路，根據課本所提供的思考框架，評估時應優先考量哪一項？", "options": ["工程造價是否能獲得最低標投標", "沿線哪些聚落可能受到經濟衝擊或增益", "施工期間可否完全不干擾交通流動", "能否在最短時間內完成所有工程"], "answer": 1, "explanation": "草屯案例的核心啟示是「交通建設的影響具有不均等性」，有人拿到增益就有人被Nerf。評估應優先考量正反影響的分佈。A、C、D均為工程管理面向，非課本強調的分析角度。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通建設的影響評估", "skill": "情境應用", "difficulty": 3, "id": 18}, {"question": "關於宜蘭冬山鄉的案例，課本借此說明了城鄉互動的哪個機制？", "options": ["都市資本主動投資鄉村開發觀光", "鄉村利用本地資源形成原料生產鏈供给都市", "政府強制整頓鄉村產業結構以符合都市標準", "都市消費人口大量移居鄉村形成新聚落"], "answer": 1, "explanation": "課本用冬山鄉案例說明鄉村→都市的原料鏈：利用漁獲設加工廠再運回都市銷售。A為都市主動投資未提及；C為政府干預與教材內容不符；D為人口遷移現象非本案重點。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉產業互補關係", "skill": "案例分析", "difficulty": 3, "id": 19}, {"question": "課本結尾提到「城鄉互動是一個動態系統，交通是連接線，產業是內容，人口是流動的玩家」，此種說法最能體現下列哪項學習主題？", "options": ["四大機制相互關聯，構成整體城鄉發展架構", "交通建設是解決所有城鄉問題的唯一方法", "人口遷移是驅動城鄉互動的唯一動力", "產業分工一旦形成便不會隨著時間改變"], "answer": 0, "explanation": "課本的總結比喻涵蓋了產業、交通、人口、生活圈四大機制，強調它們構成動態互動的整體系統。B、C、D均以偏概全，忽視了課本強調的多維度综合分析。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉互動的綜合理解", "skill": "綜合分析", "difficulty": 3, "id": 20}]}, {"level": 3, "name": "高階思考與情境應用", "questions": [{"question": "假設你是某縣政府顧問，當地政府計劃開闢新路直通著名景點，但擔心傳統休息站聚落生意受損。根據課本原理，你最應建議政府採取何種配套措施？", "options": ["放棄開路以避免任何經濟損失", "僅考慮新路的經濟效益，忽略老聚落困境", "評估新路的全盤影響，同時規劃對受衝擊聚落的補助或轉型方案", "強制要求所有遊客必須繞道經過傳統聚落"], "answer": 2, "explanation": "課本強調交通建設是雙面刃且影響不均等，因此政府應對潛在的負面影響提出配套措施以兼顧公平。A等於因噎廢食；B忽視負面外部性；D違背自由流動原則且不可行。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "永續發展的政策思維", "skill": "情境應用", "difficulty": 4, "id": 21}, {"question": "某研究單位發現：國道開通五年後，甲鄉村的觀光收入上升30%，但乙鄉村下降20%。基於課本知識，以下解釋最為合理的是？", "options": ["國道必然帶來所有沿岸地區的經濟繁榮", "甲乙兩村落的交通接駁位置不同，流量分配不均所致", "乙村落居民不夠努力經營，因而失去競爭力", "國道建设對乡村地区完全没有正面影響"], "answer": 1, "explanation": "草屯案例證明了交通建設的影響「不均等性」，有人被增益就有人被Nerf。甲乙村落因與國道的距離或接駁便利性不同而形成差異。A絕對化；C個人歸因忽略結構性因素；D否定了甲村的成長。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通建設影響的不均等性", "skill": "因果推論", "difficulty": 4, "id": 22}, {"question": "下列哪個處置方式最不符合「永續發展」的精神？", "options": ["發展綠色交通減少碳排放", "控制過度開發保護自然環境", "犧牲所有鄉村地區以換取最大經濟成長", "建立城鄉共用的基礎設施"], "answer": 2, "explanation": "課本強調永續發展是「與環境和諧共存」及「平衡補丁」的概念，要求在發展與環境間取得共存。ABC均符合永續理念；D犧牲鄉村的做法與「共同責任」和平衡理念完全相悖。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "永續發展的原則", "skill": "價值判斷", "difficulty": 4, "id": 23}, {"question": "如果一位考生回答：「國六號對於當地的影響完全是正面的」，根據課本內容，他漏掉了哪些關鍵要點？", "options": ["忽略了觀光效益的存在", "未提及環境負擔增加及沿線商業分布不均的問題", "沒有計算國道建設的工程成本", "遺漏了台灣交通網絡的所有組成元素"], "answer": 1, "explanation": "課本特別強調國六號的負面 effects：垃圾量增加、環境變髒亂、草屯生意變差。只答正面是典型的遺漏。A與事實相反；C和D雖是相關議題，但非課本在此強調的核心批判點。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通建設的雙面刃效應", "skill": "批判分析", "difficulty": 4, "id": 24}, {"question": "某地方政府擬定政策：要讓交通建設的惠益能平均分配給所有沿線地區。若要達到這個目標，以下哪項策略最有操作性？", "options": ["禁止任何新道路的興建以維持現狀", "在各聚落設置統一的收費站均衡收入", "透過配套措施協助受衝擊聚落轉型，並優化休憩點布局", "只修建通往熱門景點的道路忽略其他聚落"], "answer": 2, "explanation": "課本的核心教訓是交通建設的影響「不均等」，因此政策應針對被忽略或受損的聚落提供補償和轉型支援。A消極且不可行；B設計粗糙難實施；D加重不均等與目標矛盾。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通建設的社會公平考量", "skill": "政策評估", "difficulty": 4, "id": 25}, {"question": "根據課本所建立的四個核心機制框架，若有人主張「只要發展交通就能解決所有城鄉發展問題」，此論點的盲點最可能是？", "options": ["過度簡化了城鄉互動是多要素協同作用的複雜系統", "否認了交通建設的正面效益", "忽視了政府在其中應該扮演的角色", "高估了鄉村地區自主發展的能力"], "answer": 0, "explanation": "課本總結強調城鄉互動是由產業互補、交通拉近、人口遷移、生活圈形成四大機制構成的動態系統。將交通視為唯一解決方案忽略其他機制的重要性。BCD雖有一定道理，但不是此論點最核心的盲點。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉互動的綜合框架", "skill": "綜合分析", "difficulty": 4, "id": 26}, {"question": "小華家的村子因新省道開通後變成熱門觀光據點，但也面臨垃圾激增問題。根據課本知識，這是一個什麼樣的情境？", "options": ["交通建設純然的正向發展案例", "典型的城市化進程中的環境衝擊現象", "體現開發vs永續兩難的典型情境", "屬於工業化帶來的生產端污染問題"], "answer": 2, "explanation": "垃圾量增加而觀光收入也增加的案例，正是課本提到的「開發vs永續兩難」——有人拿到增益也有人承受負面外部性。A忽略負面影響；B混用了城市化概念；D混淆了工業化與觀光開發的污染類型。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "永續發展的情境判斷", "skill": "情境判別", "difficulty": 4, "id": 27}, {"question": "關於「國一」與「國六號」功能的辨析，以下叙述何者最符合課本的邏輯？", "options": ["兩者都是為了客運服務而不載貨物", "國一是貨運主幹，國六號則是觀光快速通道", "兩者都是高速道路但服務不同地域和功能", "國一與國六號功能完全相同只是名稱不同"], "answer": 2, "explanation": "課本明確區分：國一主要運農產品，國六號主要縮短台中至觀光景點的通行時間，兩者皆屬國道但功能和服務對象不同。A否認貨運功能；B將國一僅限於貨運過於簡化；D抹煞了兩者的功能差異。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "交通網絡的分級與功能", "skill": "概念辨析", "difficulty": 4, "id": 28}, {"question": "某個研究者提出：「因為新北市承接了大量從臺北市遷出的人口，所以新北的生活圈品質必然劣於臺北市。」根據課本提供的分析框架，這個結論有何問題？", "options": ["忽略了新北市擁有捷運和國道等基礎建設的優勢", "人口遷徙只能發生在都會區內部", "生活圈品質完全取決於行政區劃等級", "所有從臺北市搬出去的人都覺得生活质量下降了"], "answer": 0, "explanation": "課本指出遷移新北的原因正是因為有「捷運和國道連接」且房價較低，这说明交通便捷性和生活成本是重要的考量。A指出了研究中忽略的關鍵因素；BCD都是無法從教材支持的錯誤或過度概括陳述。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "人口遷移的綜合分析", "skill": "批判推理", "difficulty": 4, "id": 29}, {"question": "根據教材提出的城鄉互動四大機制，下列哪一敘述最能完整反映其互動邏輯順序？", "options": ["人口遷移→生活圈形成→產業互補→交通建設拉近距離", "產業互補需求→交通建設拉近距離→人口遷移→生活圈形成", "生活圈形成→交通建設拉近距離→產業互補→人口遷移", "交通建設拉近距離→人口遷移→產業互補→生活圈形成"], "answer": 1, "explanation": "根據課本的邏輯脈絡：先有城鄉產業互補的需求→透過交通建設縮短距離→促進人口遷移→最終形成跨域生活圈。A、C顛倒了因果；D將交通建設放在最前面但不見得是最原始的需求源頭。", "subject": "社會", "unit": "城鄉發展與互動", "concept": "城鄉互動機制的因果序列", "skill": "綜合分析", "difficulty": 4, "id": 30}]}]};
+
+/* ============================================================
+   狀態管理
+   ============================================================ */
+const state = {
+  screen: "home",              // home | levelIntro | quiz | feedback | levelResult | retry | final
+  currentLevelIdx: 0,
+  currentQIdx: 0,
+  selectedOption: null,
+  levelResults: [null, null, null],   // { score, correctCount, wrongIds:[], passed }
+  levelAnswers: [ {}, {}, {} ],        // 每關: {questionId: selectedIndex}
+  retryQueue: [],               // 目前錯題重練佇列（題目物件）
+  retryIdx: 0,
+  inRetry: false,
+  abilityStats: {},             // { skillName: {correct, total} }
+  conceptStats: {},             // { conceptName: {correct, total} }
+};
+
+const LEVEL_STYLES = [
+  {icon:"🧭", name:"基礎理解", stars:"★★☆☆☆"},
+  {icon:"🗺️", name:"深入分析", stars:"★★★☆☆"},
+  {icon:"⚔️", name:"高階思考與情境應用", stars:"★★★★☆"},
+];
+
+function currentLevel(){ return QUIZ_DATA.levels[state.currentLevelIdx]; }
+function currentQuestion(){ return currentLevel().questions[state.currentQIdx]; }
+
+/* ============================================================
+   畫面渲染
+   ============================================================ */
+const app = document.getElementById("app");
+
+function render(){
+  window.scrollTo({top:0, behavior:"instant"});
+  if(state.screen === "home") return renderHome();
+  if(state.screen === "levelIntro") return renderLevelIntro();
+  if(state.screen === "quiz") return renderQuiz();
+  if(state.screen === "feedback") return renderFeedback();
+  if(state.screen === "levelResult") return renderLevelResult();
+  if(state.screen === "retryIntro") return renderRetryIntro();
+  if(state.screen === "final") return renderFinal();
+}
+
+function renderHome(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-2">UNCLE SIX STORY LAB</p>
+      <h1 class="text-3xl font-black mb-1">六號叔叔說故事</h1>
+      <h2 class="text-lg font-bold text-[var(--gold-dark)] mb-6">智慧闖關測驗</h2>
+      <div class="bg-white/60 rounded-2xl p-4 mb-6 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">本次教材</p>
+        <p class="text-xl font-bold">${esc(QUIZ_DATA.meta.filename || QUIZ_DATA.meta.unit)}</p>
+        ${QUIZ_DATA.meta.summary ? `<p class="text-sm text-gray-600 mt-2 leading-relaxed">${esc(QUIZ_DATA.meta.summary)}</p>` : ""}
+        <p class="mono text-xs text-gray-500 mt-2">${esc(QUIZ_DATA.meta.subject)} ・ ${esc(QUIZ_DATA.meta.grade || "")}</p>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-8">
+        ${LEVEL_STYLES.map((l,i)=>`
+          <div class="rounded-xl border border-black/10 p-3">
+            <div class="text-2xl mb-1">${l.icon}</div>
+            <p class="text-xs font-bold">第${["一","二","三"][i]}關</p>
+            <p class="mono text-[10px] text-[var(--gold-dark)]">${l.stars}</p>
+          </div>
+        `).join("")}
+      </div>
+      <button onclick="startAdventure()" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        🚀 開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function startAdventure(){
+  state.currentLevelIdx = 0;
+  state.screen = "levelIntro";
+  render();
+}
+
+function renderLevelIntro(){
+  const idx = state.currentLevelIdx;
+  const style = LEVEL_STYLES[idx];
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-5xl mb-3">${style.icon}</div>
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">LEVEL ${idx+1}</p>
+      <h2 class="text-2xl font-black mb-2">第${["一","二","三"][idx]}關｜${style.name}</h2>
+      <p class="mono text-sm text-[var(--gold-dark)] mb-6">${style.stars}</p>
+      <div class="flex justify-center gap-6 text-sm text-gray-600 mb-8">
+        <div><p class="text-2xl font-bold text-[var(--ink)]">10</p><p>題數</p></div>
+        <div><p class="text-2xl font-bold text-[var(--ink)]">60</p><p>通關門檻</p></div>
+      </div>
+      <p class="text-sm text-gray-500 mb-6">準備好了嗎？這一關開始囉！</p>
+      <button onclick="beginLevelQuiz()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110 transition">
+        開始挑戰
+      </button>
+    </div>
+  `;
+}
+
+function beginLevelQuiz(){
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function renderProgress(current, total){
+  const pct = Math.round((current/total)*100);
+  return `<div class="torch-bar mb-2"><div style="width:${pct}%"></div></div>
+          <p class="mono text-[11px] text-white/70 text-right mb-4">${current}/${total}</p>`;
+}
+
+function renderQuiz(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const total = state.inRetry ? state.retryQueue.length : 10;
+  const current = (state.inRetry ? state.retryIdx : state.currentQIdx) + 1;
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+
+  app.innerHTML = `
+    ${renderProgress(current, total)}
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="flex items-center justify-between mb-4">
+        <span class="badge-tag mono">${style.icon} 第${["一","二","三"][state.currentLevelIdx]}關${state.inRetry ? " ・錯題重練" : ""}</span>
+        <span class="badge-tag mono">${esc(q.concept)}</span>
+      </div>
+      <h3 class="text-lg font-bold mb-5 leading-relaxed">${esc(q.question)}</h3>
+      <div class="space-y-3" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option-btn w-full text-left px-4 py-3 rounded-xl bg-white" onclick="selectOption(${i})">
+            <span class="mono text-xs text-gray-400 mr-2">${String.fromCharCode(65+i)}</span>${esc(opt)}
+          </button>
+        `).join("")}
+      </div>
+      <button id="confirmBtn" disabled onclick="confirmAnswer()"
+        class="w-full mt-6 bg-gray-300 text-white font-bold py-3 rounded-xl cursor-not-allowed transition">
+        確認答案
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(i){
+  state.selectedOption = i;
+  document.querySelectorAll(".option-btn").forEach((btn,idx)=>{
+    btn.classList.toggle("ring-2", idx===i);
+    btn.classList.toggle("ring-[var(--gold-dark)]", idx===i);
+  });
+  const btn = document.getElementById("confirmBtn");
+  btn.disabled = false;
+  btn.classList.remove("bg-gray-300","cursor-not-allowed");
+  btn.classList.add("bg-[var(--bg-deep)]","hover:bg-[var(--bg-deep2)]");
+}
+
+function confirmAnswer(){
+  if(state.selectedOption === null) return;
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const isCorrect = state.selectedOption === q.answer;
+
+  if(!state.inRetry){
+    state.levelAnswers[state.currentLevelIdx][q.id] = state.selectedOption;
+    recordStats(q, isCorrect);
+  }
+  state.lastCorrect = isCorrect;
+  state.screen = "feedback";
+  render();
+}
+
+function recordStats(q, isCorrect){
+  const s = state.abilityStats[q.skill] || {correct:0,total:0};
+  s.total++; if(isCorrect) s.correct++;
+  state.abilityStats[q.skill] = s;
+  const c = state.conceptStats[q.concept] || {correct:0,total:0};
+  c.total++; if(isCorrect) c.correct++;
+  state.conceptStats[q.concept] = c;
+}
+
+function renderFeedback(){
+  const q = state.inRetry ? state.retryQueue[state.retryIdx] : currentQuestion();
+  const correct = state.lastCorrect;
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-6 fade-in">
+      <div class="text-center mb-4">
+        <div class="text-4xl mb-2">${correct ? "✅" : "❌"}</div>
+        <p class="text-xl font-black ${correct ? "text-[var(--teal)]" : "text-[var(--ember)]"}">
+          ${correct ? "答對了！漂亮！" : "再想一下！答錯很正常。"}
+        </p>
+      </div>
+      <div class="bg-white/70 rounded-2xl p-4 border border-black/5">
+        <p class="text-sm text-gray-500 mb-1">正確答案</p>
+        <p class="font-bold mb-3">${String.fromCharCode(65+q.answer)}. ${esc(q.options[q.answer])}</p>
+        <p class="text-sm text-gray-500 mb-1">解析</p>
+        <p class="text-sm leading-relaxed mb-3">${esc(q.explanation)}</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="badge-tag mono">考點：${esc(q.concept)}</span>
+          <span class="badge-tag mono">能力：${esc(q.skill)}</span>
+        </div>
+      </div>
+      <button onclick="nextQuestion()" class="w-full mt-6 bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)] transition">
+        下一題
+      </button>
+    </div>
+  `;
+}
+
+function nextQuestion(){
+  state.selectedOption = null;
+  if(state.inRetry){
+    if(!state.lastCorrect){
+      // 答錯：保留在錯題佇列尾端，稍後再考
+      state.retryQueue.push(state.retryQueue[state.retryIdx]);
+    }
+    state.retryIdx++;
+    // 過濾掉已經跳過的（已處理）題目，改用重新計算的 remaining 清單
+    state.retryQueue = state.retryQueue.slice(state.retryIdx);
+    state.retryIdx = 0;
+    if(state.retryQueue.length === 0){
+      state.screen = "levelResult";
+    } else {
+      state.screen = "quiz";
+    }
+    render();
+    return;
+  }
+
+  state.currentQIdx++;
+  if(state.currentQIdx >= 10){
+    finishLevel();
+  } else {
+    state.screen = "quiz";
+    render();
+  }
+}
+
+function finishLevel(){
+  const level = currentLevel();
+  const answers = state.levelAnswers[state.currentLevelIdx];
+  let correctCount = 0;
+  const wrongQuestions = [];
+  level.questions.forEach(q=>{
+    if(answers[q.id] === q.answer) correctCount++;
+    else wrongQuestions.push(q);
+  });
+  const score = correctCount * 10;
+  state.levelResults[state.currentLevelIdx] = {
+    score, correctCount, wrongCount: 10-correctCount,
+    wrongQuestions, passed: score >= 60,
+  };
+  state.screen = "levelResult";
+  render();
+}
+
+function scoreComment(score){
+  if(score >= 90) return {tag:"🏆 完美通關", text:"太棒了！這一關的核心概念掌握得非常穩。"};
+  if(score >= 80) return {tag:"🔥 穩定通關", text:"表現很好！主要知識已經掌握，只需要注意少數細節。"};
+  if(score >= 60) return {tag:"⚔️ 驚險通關", text:"成功通關！但有幾個考點還需要再確認。"};
+  return {tag:"💪 尚未通關", text:"這一關還沒成功，但不用氣餒。先把錯題弄懂，再挑戰一次。"};
+}
+
+function renderLevelResult(){
+  const r = state.levelResults[state.currentLevelIdx];
+  const c = scoreComment(r.score);
+  const style = LEVEL_STYLES[state.currentLevelIdx];
+  const isLast = state.currentLevelIdx === 2;
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">第${["一","二","三"][state.currentLevelIdx]}關｜${style.name}</p>
+      <div class="text-4xl mb-2">${c.tag.split(" ")[0]}</div>
+      <p class="font-black text-lg mb-1">${c.tag.split(" ")[1]}</p>
+      <p class="text-5xl font-black my-4">${r.score}<span class="text-lg text-gray-400"> /100</span></p>
+      <p class="text-sm text-gray-600 mb-6">答對 ${r.correctCount} 題・答錯 ${r.wrongCount} 題</p>
+      <p class="text-sm bg-white/60 rounded-xl p-4 mb-6">${c.text}</p>
+
+      ${r.wrongQuestions.length > 0 ? `
+        <div class="text-left bg-white/60 rounded-xl p-4 mb-6">
+          <p class="text-sm font-bold mb-2">錯題清單</p>
+          <ul class="text-xs text-gray-600 space-y-1">
+            ${r.wrongQuestions.map(q=>`<li>・${esc(q.concept)}：${esc(q.question.slice(0,24))}${q.question.length>24?"...":""}</li>`).join("")}
+          </ul>
+        </div>
+      ` : ""}
+
+      <div class="flex flex-col gap-3">
+        ${r.wrongQuestions.length > 0 ? `<button onclick="startRetry()" class="w-full bg-[var(--ember)] text-white font-bold py-3 rounded-xl hover:brightness-110">📝 錯題重練</button>` : ""}
+        ${r.passed
+          ? `<button onclick="${isLast ? "goFinal()" : "nextLevel()"}" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">${isLast ? "查看學習診斷 📊" : "繼續挑戰下一關 🚀"}</button>`
+          : `<button onclick="retryLevel()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">重新挑戰這一關</button>`
+        }
+      </div>
+    </div>
+  `;
+}
+
+function startRetry(){
+  const r = state.levelResults[state.currentLevelIdx];
+  state.retryQueue = [...r.wrongQuestions];
+  state.retryIdx = 0;
+  state.inRetry = true;
+  state.screen = "retryIntro";
+  render();
+}
+
+function renderRetryIntro(){
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 text-center fade-in">
+      <div class="text-4xl mb-3">📝</div>
+      <h2 class="text-xl font-black mb-2">錯題重練</h2>
+      <p class="text-sm text-gray-600 mb-6">這個考點很容易混淆，記住這個關鍵！本次只練習你答錯的 ${state.retryQueue.length} 題，全部答對就能離開。</p>
+      <button onclick="state.screen='quiz'; render();" class="w-full bg-[var(--bg-deep)] text-white font-bold py-3 rounded-xl hover:bg-[var(--bg-deep2)]">
+        開始重練
+      </button>
+    </div>
+  `;
+}
+
+function retryLevel(){
+  state.levelAnswers[state.currentLevelIdx] = {};
+  state.currentQIdx = 0;
+  state.inRetry = false;
+  state.screen = "quiz";
+  render();
+}
+
+function nextLevel(){
+  state.currentLevelIdx++;
+  state.screen = "levelIntro";
+  render();
+}
+
+function goFinal(){
+  state.screen = "final";
+  render();
+}
+
+function renderFinal(){
+  const totalScore = state.levelResults.reduce((a,r)=>a+r.score,0);
+  const totalCorrect = state.levelResults.reduce((a,r)=>a+r.correctCount,0);
+  const totalWrong = 30 - totalCorrect;
+
+  const conceptEntries = Object.entries(state.conceptStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+  const strongest = conceptEntries.slice(0,3);
+  const weakest = [...conceptEntries].sort((a,b)=>a.pct-b.pct).slice(0,3);
+
+  const abilityEntries = Object.entries(state.abilityStats)
+    .map(([name,s])=>({name, pct: Math.round((s.correct/s.total)*100)}))
+    .sort((a,b)=>b.pct-a.pct);
+
+  app.innerHTML = `
+    <div class="gate-card rounded-3xl p-8 fade-in">
+      <div class="text-center mb-6">
+        <p class="mono text-xs tracking-widest text-[var(--gold-dark)] mb-1">UNCLE SIX DIAGNOSIS</p>
+        <h2 class="text-2xl font-black mb-1">六號叔叔學習診斷</h2>
+        <p class="text-5xl font-black my-3">${totalScore}<span class="text-lg text-gray-400"> /300</span></p>
+        <p class="text-sm text-gray-600">答對 ${totalCorrect} 題・答錯 ${totalWrong} 題</p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        ${state.levelResults.map((r,i)=>`
+          <div class="rounded-xl border border-black/10 p-3 text-center">
+            <p class="text-xs text-gray-500">第${["一","二","三"][i]}關</p>
+            <p class="text-xl font-black">${r.score}</p>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="bg-white/60 rounded-2xl p-4 mb-4">
+        <p class="text-sm font-bold mb-2">能力分析</p>
+        ${abilityEntries.map(a=>`
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>${esc(a.name)}</span><span class="mono">${a.pct}%</span></div>
+            <div class="torch-bar" style="background:rgba(0,0,0,.08)"><div style="width:${a.pct}%"></div></div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">✓ 學習優勢</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${strongest.map(c=>`<li>✓ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+        <div class="bg-white/60 rounded-2xl p-4">
+          <p class="text-sm font-bold mb-2">⚠ 待加強領域</p>
+          <ul class="text-xs text-gray-700 space-y-1">
+            ${weakest.map(c=>`<li>⚠ ${esc(c.name)}（${c.pct}%）</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-[var(--bg-deep)] text-white rounded-2xl p-4 mb-6">
+        <p class="text-sm font-bold mb-1">💡 學習建議</p>
+        <p class="text-xs leading-relaxed opacity-90">
+          建議重新複習「${esc(weakest[0]?.name || "")}」相關內容，
+          並特別留意容易混淆的概念。掌握這些考點之後，你的學習就會更完整！
+        </p>
+      </div>
+
+      <button onclick="restartAll()" class="w-full bg-[var(--gold-dark)] text-white font-bold py-3 rounded-xl hover:brightness-110">
+        🔄 重新挑戰全部
+      </button>
+    </div>
+  `;
+}
+
+function restartAll(){
+  state.screen = "home";
+  state.currentLevelIdx = 0;
+  state.currentQIdx = 0;
+  state.selectedOption = null;
+  state.levelResults = [null,null,null];
+  state.levelAnswers = [{},{},{}];
+  state.retryQueue = [];
+  state.retryIdx = 0;
+  state.inRetry = false;
+  state.abilityStats = {};
+  state.conceptStats = {};
+  render();
+}
+
+function esc(str){
+  const div = document.createElement("div");
+  div.textContent = String(str ?? "");
+  return div.innerHTML;
+}
+
+render();
+</script>
+</body>
+</html>
